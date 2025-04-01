@@ -1,5 +1,3 @@
-import FetchErrorMessage from '@/components/FetchErrorMessage'
-import MarkdownContent from '@/components/MarkdownContent'
 import MatrixEffect from '@/components/MatrixEffect'
 import TerminalFooter from '@/components/TerminalFooter'
 import TerminalHeader from '@/components/TerminalHeader'
@@ -10,30 +8,9 @@ import {
 	BreadcrumbList,
 	BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Impressum = () => {
-	const [markdown, setMarkdown] = useState('')
-	const [error, setError] = useState<string | null>(null)
-
-	useEffect(() => {
-		fetch('assets/imprint.md')
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error(`HTTP error! Status: ${response.status}`)
-				}
-				return response.text()
-			})
-			.then((text) => setMarkdown(text))
-			.catch((error) => {
-				console.error('Error fetching Impressum:', error)
-				setError(
-					'Fehler beim Laden des Impressums. Bitte versuche es später erneut.'
-				)
-			})
-	}, [])
-
 	return (
 		<div className="terminal-container min-h-screen relative">
 			<MatrixEffect />
@@ -56,11 +33,44 @@ const Impressum = () => {
 						</BreadcrumbList>
 					</Breadcrumb>
 
-					{error ? (
-						<FetchErrorMessage message={error} />
-					) : (
-						<MarkdownContent content={markdown} />
-					)}
+					<div className="markdown-content">
+						<h1>Impressum</h1>
+
+						<p>
+							Neuland Ingolstadt e.V.
+							<br />
+							Esplanade 10
+							<br />
+							85049 Ingolstadt
+						</p>
+						<p>
+							Registergericht: Amtsgericht Ingolstadt
+							<br />
+							Registernummer: VR 201088
+						</p>
+
+						<h3>Kontakt</h3>
+						<p>
+							E-Mail: info@neuland-ingolstadt.de
+							<br />
+							Telefon: 015678 384646
+						</p>
+
+						<h3>Vorstand</h3>
+						<p>
+							Vertreten durch:
+							<br />
+							<strong>Alexander Horn</strong>
+							<br />
+							<strong>Timo Weese</strong>
+							<br />
+							<strong>Michael Schubert</strong>
+						</p>
+
+						<p>
+							Inhaltlich verantwortlich: <strong>Alexander Horn</strong>
+						</p>
+					</div>
 				</div>
 				<TerminalFooter />
 			</div>
