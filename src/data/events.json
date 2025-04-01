@@ -1,0 +1,33 @@
+{
+	"semester": "SS25",
+	"events": [
+		{
+			"title": "Stammtisch",
+			"description": "Jeden zweiten Donnerstag um 19:00 Uhr"
+		},
+		{
+			"title": "Spieleabend",
+			"description": "Einmal im Monat um 19:00 Uhr\nNächster Termin am Donnerstag, 24. April um 19:00 in J101"
+		},
+		{
+			"title": "Infoveranstaltung",
+			"description": "Montag, 31. März um 19:00 Uhr in D112"
+		},
+		{
+			"title": "LAN-Party mit HGI",
+			"description": "Freitag, 23. Mai um 15:00 in J101"
+		},
+		{
+			"title": "Coding Session",
+			"description": "Einmal im Monat um 19:00 Uhr"
+		},
+		{
+			"title": "Cookie Talks",
+			"description": "(tba)"
+		},
+		{
+			"title": "3D-Druck-Workshop",
+			"description": "(tba)"
+		}
+	]
+}
