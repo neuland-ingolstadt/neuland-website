@@ -23,7 +23,7 @@ const Index = () => {
 
 				<div className="pt-20">
 					<TypewriterText
-						text="Der studentische Verein für alle Studierenden mit einer Begeisterung für die Informatik an der TH Ingolstadt."
+						text="Der studentische Verein für alle informatikbegeisterten Studierenden der TH Ingolstadt."
 						className="text-xl mb-12"
 						delay={30}
 						preventLayoutJumps={true}
