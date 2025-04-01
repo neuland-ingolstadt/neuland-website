@@ -1,0 +1,25 @@
+name: CI - Biome and TypeScript
+on:
+  pull_request:
+    branches: [develop, main]
+jobs:
+  test:
+    name: Biome & TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 3
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Run TypeScript checks
+        run: bunx tsc --noEmit
+
+      - name: Run Biome check
+        run: bunx biome ci .
