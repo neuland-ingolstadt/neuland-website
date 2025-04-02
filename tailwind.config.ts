@@ -109,16 +109,54 @@ export default {
 					'100%': { transform: 'translateY(100%)' }
 				},
 				glitch: {
-					'0%, 100%': { clipPath: 'inset(50% 0 50% 0)' },
-					'10%': { clipPath: 'inset(0% 0 85% 0)' },
-					'20%': { clipPath: 'inset(25% 0 60% 0)' },
-					'30%': { clipPath: 'inset(50% 0 50% 0)' },
-					'40%': { clipPath: 'inset(15% 0 65% 0)' },
-					'50%': { clipPath: 'inset(38% 0 61% 0)' },
-					'60%': { clipPath: 'inset(75% 0 23% 0)' },
-					'70%': { clipPath: 'inset(5% 0 69% 0)' },
-					'80%': { clipPath: 'inset(82% 0 17% 0)' },
-					'90%': { clipPath: 'inset(32% 0 41% 0)' }
+					'0%, 100%': {
+						opacity: '1',
+						textShadow: '0 0 0 rgba(64, 255, 64, 0.7)'
+					},
+					'10%': {
+						opacity: '0.9',
+						textShadow:
+							'3px 0 0 rgba(64, 255, 64, 0.6), -1px 0 0 rgba(64, 255, 64, 0.6)'
+					},
+					'20%': {
+						opacity: '0.95',
+						textShadow:
+							'-3px 0 0 rgba(64, 255, 64, 0.7), 1px 0 0 rgba(64, 255, 64, 0.7)'
+					},
+					'30%': {
+						opacity: '1',
+						textShadow: '0 0 0 rgba(64, 255, 64, 0.8)'
+					},
+					'40%': {
+						opacity: '0.8',
+						textShadow:
+							'2px -2px 0 rgba(64, 255, 64, 0.6), -2px 2px 0 rgba(64, 255, 64, 0.6)'
+					},
+					'50%': {
+						opacity: '0.9',
+						textShadow:
+							'-1px 1px 0 rgba(64, 255, 64, 0.7), 1px -1px 0 rgba(64, 255, 64, 0.7)'
+					},
+					'60%': {
+						opacity: '0.93',
+						textShadow:
+							'2px 2px 0 rgba(64, 255, 64, 0.6), -2px -2px 0 rgba(64, 255, 64, 0.6)'
+					},
+					'70%': {
+						opacity: '0.85',
+						textShadow:
+							'-2px 0 0 rgba(64, 255, 64, 0.5), 2px 0 0 rgba(64, 255, 64, 0.5)'
+					},
+					'80%': {
+						opacity: '0.97',
+						textShadow:
+							'0 1px 0 rgba(64, 255, 64, 0.8), 0 -1px 0 rgba(64, 255, 64, 0.8)'
+					},
+					'90%': {
+						opacity: '0.9',
+						textShadow:
+							'1px 1px 0 rgba(64, 255, 64, 0.7), -1px -1px 0 rgba(64, 255, 64, 0.7)'
+					}
 				},
 				matrix: {
 					'0%': { transform: 'translateY(-100%)' },
@@ -132,7 +170,7 @@ export default {
 				typewriter: 'typewriter 2s steps(40) forwards',
 				blink: 'blink 1s infinite',
 				scanline: 'scanline 8s linear infinite',
-				glitch: 'glitch 500ms infinite',
+				glitch: 'glitch 3500ms infinite ease-in-out',
 				matrix: 'matrix 20s linear infinite'
 			},
 			fontFamily: {

@@ -59,7 +59,18 @@ const TocModal: React.FC<TocModalProps> = ({ sections, isOpen, onClose }) => {
 								<a
 									href={`#${section.id}`}
 									className="text-terminal-green hover:text-terminal-cyan hover:underline flex items-center no-underline"
-									onClick={onClose}
+									onClick={(e) => {
+										e.preventDefault()
+										const targetElement = document.getElementById(section.id)
+										if (targetElement) {
+											const y =
+												targetElement.getBoundingClientRect().top +
+												window.pageYOffset -
+												90
+											window.scrollTo({ top: y, behavior: 'smooth' })
+										}
+										onClose()
+									}}
 								>
 									{section.level > 1 && (
 										<span className="mr-2 text-terminal-cyan">

@@ -1,8 +1,6 @@
 import FetchErrorMessage from '@/components/FetchErrorMessage'
 import MarkdownContent from '@/components/MarkdownContent'
-import MatrixEffect from '@/components/MatrixEffect'
 import TerminalFooter from '@/components/TerminalFooter'
-import TerminalHeader from '@/components/TerminalHeader'
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -35,35 +33,29 @@ const Datenschutzordnung = () => {
 	}, [])
 
 	return (
-		<div className="terminal-container min-h-screen relative">
-			<MatrixEffect />
-			<div className="scanline" />
+		<div className="container px-4 sm:px-6 mx-auto pt-6 relative z-10">
+			<div className="pt-20">
+				<Breadcrumb className="mb-6">
+					<BreadcrumbList>
+						<BreadcrumbItem>
+							<BreadcrumbLink asChild>
+								<Link to="/">root</Link>
+							</BreadcrumbLink>
+						</BreadcrumbItem>
+						<BreadcrumbSeparator />
+						<BreadcrumbItem>
+							<BreadcrumbLink>Datenschutzordnung</BreadcrumbLink>
+						</BreadcrumbItem>
+					</BreadcrumbList>
+				</Breadcrumb>
 
-			<div className="container px-4 sm:px-6 mx-auto pt-6 relative z-10">
-				<TerminalHeader />
-				<div className="pt-20">
-					<Breadcrumb className="mb-6">
-						<BreadcrumbList>
-							<BreadcrumbItem>
-								<BreadcrumbLink asChild>
-									<Link to="/">root</Link>
-								</BreadcrumbLink>
-							</BreadcrumbItem>
-							<BreadcrumbSeparator />
-							<BreadcrumbItem>
-								<BreadcrumbLink>Datenschutzordnung</BreadcrumbLink>
-							</BreadcrumbItem>
-						</BreadcrumbList>
-					</Breadcrumb>
-
-					{error ? (
-						<FetchErrorMessage message={error} />
-					) : (
-						<MarkdownContent content={markdown} showToc />
-					)}
-				</div>
-				<TerminalFooter />
+				{error ? (
+					<FetchErrorMessage message={error} />
+				) : (
+					<MarkdownContent content={markdown} showToc />
+				)}
 			</div>
+			<TerminalFooter />
 		</div>
 	)
 }

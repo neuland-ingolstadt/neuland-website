@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 
 interface TerminalSectionProps {
 	title: string
+	subtitle?: string
 	children: React.ReactNode
 	delay?: number
 	id?: string
@@ -11,6 +12,7 @@ interface TerminalSectionProps {
 
 const TerminalSection: React.FC<TerminalSectionProps> = ({
 	title,
+	subtitle,
 	children,
 	id,
 	headingLevel = 3
@@ -62,6 +64,9 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 			>
 				{title}
 			</h2>
+			{subtitle && (
+				<p className="text-md opacity-90 -mt-2 mb-6 font-mono">{subtitle}</p>
+			)}
 			<div
 				className={`${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
 			>

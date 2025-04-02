@@ -65,7 +65,7 @@ const projectsData: ProjectDetails[] = [
 		imageUrl: '/assets/ersti_kit.png',
 		tags: ['Next.js', 'Web', 'StudVer'],
 		longDescription:
-			'Das Ersti-Hilfe-Kit ist eine Webseite speziell für Erstsemester an der THI. Hier finden neue Studierende alle wichtigen Informationen zum Studienstart, zur Orientierung auf dem Campus und zu Veranstaltungen in der Studieneingangsphase. Eine hilfreiche Ressource, um den Einstieg ins Studium zu erleichtern.',
+			'Das Ersti-Hilfe-Kit ist eine Webseite speziell für Erstsemester an der THI. Hier finden neue Studierende alle wichtigen Informationen zum Studienstart, zur Orientierung auf dem Campus und zu Veranstaltungen in der Studieneingangsphase',
 		additionalInfo:
 			'Das Projekt wurde mit Next.js und TailwindCSS umgesetzt und bietet eine benutzerfreundliche Oberfläche, die auf die Bedürfnisse von Erstsemestern zugeschnitten ist.'
 	},
@@ -143,7 +143,7 @@ const ProjectsShowcase: React.FC = () => {
 				viewport={{ once: true }}
 				className="mb-6"
 			>
-				<p className="text-sm opacity-70 mb-6 font-mono">
+				<p className="text-sm opacity-80 mb-6 font-mono">
 					$ projects --list | grep featured
 				</p>
 			</motion.div>
