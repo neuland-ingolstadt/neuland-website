@@ -1,6 +1,6 @@
-import FetchErrorMessage from '@/components/FetchErrorMessage'
-import MarkdownContent from '@/components/MarkdownContent'
-import TerminalFooter from '@/components/TerminalFooter'
+import TerminalFooter from '@/components/Footer/TerminalFooter'
+import FetchErrorMessage from '@/components/Markdown/FetchErrorMessage'
+import MarkdownContent from '@/components/Markdown/MarkdownContent'
 import {
 	Breadcrumb,
 	BreadcrumbItem,

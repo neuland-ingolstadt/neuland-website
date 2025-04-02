@@ -1,5 +1,5 @@
-import MatrixEffect from '@/components/MatrixEffect'
-import ScrollToTop from '@/components/ScrollToTop'
+import MatrixEffect from '@/components/Background/PageBackground'
+import ScrollToTop from '@/components/Layout/ScrollToTop'
 import { Outlet } from 'react-router-dom'
 import TerminalHeader from './TerminalHeader'
 
@@ -9,7 +9,11 @@ const MainLayout = () => {
 			<TerminalHeader />
 			<ScrollToTop />
 			<MatrixEffect />
-			<Outlet />
+			<div className="pt-16">
+				{' '}
+				{/* Add padding to account for fixed navbar height */}
+				<Outlet />
+			</div>
 		</div>
 	)
 }

@@ -1,6 +1,7 @@
 import type React from 'react'
 import { useCallback, useRef, useState } from 'react'
-import '../styles/animations.css'
+import '../../styles/animations.css'
+import StickyNote from './StickyNote'
 import TerminalWindowButtons from './TerminalWindowButtons'
 
 type ButtonColor = 'red' | 'yellow' | 'green'
@@ -24,7 +25,11 @@ const bootSequence = [
 	'Terminal ready'
 ]
 
-const TerminalWindow: React.FC<TerminalWindowProps> = ({ title, children }) => {
+const TerminalWindow: React.FC<TerminalWindowProps> = ({
+	title,
+	children,
+	showStickyNote = true
+}) => {
 	// State
 	const [activeGlow, setActiveGlow] = useState<ButtonColor | null>(null)
 	const [confetti, setConfetti] = useState<JSX.Element[]>([])
@@ -191,16 +196,10 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({ title, children }) => {
 				border: isTransparentBg ? 'none' : undefined
 			}}
 		>
-			{terminalState === 'on' && (
-				<div className="group absolute top-10 z-10 rotate-6 pointer-events-auto -right-4 w-[120px] h-[110px] bg-[#ffe44a] p-2 shadow-xl rounded-sm">
-					<div className="relative text-center text-black leading-tight font-semibold text-md mt-2">
-						Do not close the terminal!
-						<span className="block text-red-600 text-md font-bold opacity-0 transition-opacity duration-200 group-hover:opacity-100 mt-1">
-							IMPORTANT
-						</span>
-					</div>
-				</div>
-			)}
+			<StickyNote
+				message="Do not close the terminal!"
+				visible={terminalState === 'on' && showStickyNote}
+			/>
 
 			{(terminalState === 'shutting-down' || terminalState === 'off') && (
 				<div className="shrug-emote glowing-text">¯\_(ツ)_/¯</div>

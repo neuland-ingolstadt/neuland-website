@@ -46,7 +46,7 @@ const TerminalHeader: React.FC = () => {
 					</Link>
 				</div>
 				<nav className="terminal-menu">
-					<ul className="flex">
+					<ul className="flex gap-2">
 						<li>
 							<a
 								href="https://blog.neuland-ingolstadt.de/"
@@ -64,7 +64,7 @@ const TerminalHeader: React.FC = () => {
 								target="_blank"
 								className="px-3 py-2 rounded transition-colors duration-300 text-terminal-text"
 							>
-								Mitgliederbereich
+								Login
 							</a>
 						</li>
 					</ul>

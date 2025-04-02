@@ -68,7 +68,7 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 			<h2
 				className={`${getTitleClass()} font-bold mb-4 font-mono text-terminal-cyan flex items-center`}
 			>
-				<span className="text-terminal-text mr-3">$</span>
+				<span className="text-terminal-text mr-3">{'>'}</span>
 				{title}
 			</h2>
 			{subtitle && (

@@ -1,5 +1,5 @@
 import type React from 'react'
-import TerminalActionButton from './TerminalActionButton'
+import TerminalActionButton from '../Events/TerminalActionButton'
 
 interface SimpleTerminalWindowProps {
 	title: string

@@ -1,5 +1,5 @@
+import TerminalHeader from '@/components/Layout/TerminalHeader'
 import TerminalButton from '@/components/TerminalButton'
-import TerminalHeader from '@/components/TerminalHeader'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 

@@ -2,9 +2,9 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import type React from 'react'
 import { useEffect, useState } from 'react'
+import TypewriterText from '../TypewriterText'
 import type { ProjectDetails } from './ProjectCard'
 import SimpleTerminalWindow from './SimpleTerminalWindow'
-import TypewriterText from './TypewriterText'
 
 interface ProjectDetailModalProps {
 	project: ProjectDetails | null
@@ -22,7 +22,11 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 	useEffect(() => {
 		if (isOpen) {
 			const timer = setTimeout(() => setShowContent(true), 300)
-			return () => clearTimeout(timer)
+			document.body.style.overflow = 'hidden'
+			return () => {
+				clearTimeout(timer)
+				document.body.style.overflow = 'auto'
+			}
 		}
 		setShowContent(false)
 	}, [isOpen])
@@ -43,7 +47,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 		<AnimatePresence>
 			{isOpen && (
 				<>
-					{/* Backdrop - z-40 to be below the modal */}
+					{/* Backdrop - z-40 to be below the modal but above other content */}
 					<motion.div
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
@@ -60,10 +64,17 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 						animate={{ scale: 1, opacity: 1 }}
 						exit={{ scale: 0.9, opacity: 0 }}
 						transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-						className="fixed inset-4 sm:inset-16 md:inset-32 z-50 flex flex-col items-center justify-center pointer-events-none"
+						className="fixed z-50 flex flex-col items-center justify-center pointer-events-none"
+						style={{
+							top: '60px', // Space for navbar
+							left: '0',
+							right: '0',
+							bottom: '0',
+							padding: '16px'
+						}}
 					>
 						{/* SimpleTerminalWindow with pointer-events-auto to receive clicks */}
-						<div className="pointer-events-auto w-full max-w-4xl">
+						<div className="pointer-events-auto w-full max-w-4xl max-h-full overflow-auto">
 							<SimpleTerminalWindow
 								title={`projekt.sh --name="${project.title}"`}
 								onClose={onClose}
@@ -76,7 +87,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 												<img
 													src={project.imageUrl}
 													alt={project.title}
-													className=" max-h-svh rounded border border-terminal-windowBorder"
+													className="max-h-[70vh] rounded border border-terminal-windowBorder"
 												/>
 											</div>
 										)}

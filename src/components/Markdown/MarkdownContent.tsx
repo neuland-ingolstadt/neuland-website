@@ -6,10 +6,10 @@ import ReactMarkdown from 'react-markdown'
 import rehypeFormat from 'rehype-format'
 import rehypeStringify from 'rehype-stringify'
 import remarkGfm from 'remark-gfm'
-import TerminalSection from './TerminalSection'
+import TerminalSection from '../Layout/TerminalSection'
+import type { TocItem } from '../types/TocTypes'
 import TocButton from './TocButton'
 import TocModal from './TocModal'
-import type { TocItem } from './types/TocTypes'
 
 interface MarkdownContentProps {
 	content: string

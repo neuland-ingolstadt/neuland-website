@@ -136,7 +136,7 @@ const NextAppShowcase = () => {
 								<img
 									src="assets/app_store_badge_de.svg"
 									alt="Apple App Store"
-									className="h-14"
+									className="h-12"
 								/>
 							</a>
 							<a
@@ -148,7 +148,7 @@ const NextAppShowcase = () => {
 								<img
 									src="assets/play_store_badge_de.svg"
 									alt="Google Play Store"
-									className="h-14"
+									className="h-12"
 								/>
 							</a>
 						</div>

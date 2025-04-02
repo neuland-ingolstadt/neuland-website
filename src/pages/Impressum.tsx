@@ -1,4 +1,4 @@
-import TerminalFooter from '@/components/TerminalFooter'
+import TerminalFooter from '@/components/Footer/TerminalFooter'
 import {
 	Breadcrumb,
 	BreadcrumbItem,
