@@ -54,7 +54,7 @@ interface TerminalListProps {
 
 const TerminalList: React.FC<TerminalListProps> = ({
 	children,
-	baseDelay = 100
+	baseDelay = 150
 }) => {
 	return (
 		<ul className="terminal-list">

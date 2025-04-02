@@ -35,11 +35,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 		<motion.div
 			whileHover={{ scale: 1.03 }}
 			transition={{ type: 'spring', stiffness: 300 }}
-			className="h-full p-2" // Added padding to prevent cut-off
+			className="h-full p-2"
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			exit={{ opacity: 0, scale: 0.95 }}
-			style={{ transformOrigin: 'center' }} // Ensure scaling from center
+			style={{ transformOrigin: 'center' }}
 		>
 			<Card
 				className="h-full rounded-xl bg-terminal-window border-terminal-windowBorder cursor-pointer group relative overflow-hidden flex flex-col"
@@ -47,7 +47,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 			>
 				<CardHeader className="bg-terminal-windowTitle/50 pb-1">
 					<CardTitle className="text-md font-bold flex items-center gap-2 text-terminal-cyan">
-						<Code size={18} className="text-terminal-cyan" />
+						<Code size={18} className="text-terminal-text mr-1" />
 						{project.title}
 					</CardTitle>
 				</CardHeader>
@@ -62,7 +62,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 								<span
 									// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 									key={tag + index}
-									className="text-xs px-2 py-1 rounded-sm bg-terminal-darkGreen bg-opacity-30 text-terminal-mediumGreen"
+									className="text-xs px-2 py-1 rounded-sm bg-terminal-text bg-opacity-30 text-terminal-text"
 								>
 									{tag}
 								</span>
@@ -99,7 +99,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 					</motion.div>
 				</CardFooter>
 
-				{/* Terminal glow effect on hover */}
+				{}
 				<div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 rounded-xl">
 					<div className="absolute inset-0 border border-terminal-cyan shadow-[0_0_10px_rgba(51,195,240,0.3)] rounded-xl" />
 				</div>

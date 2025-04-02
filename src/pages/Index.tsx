@@ -25,16 +25,18 @@ const Index = () => {
 			<TerminalSection
 				title="Aktuelle Veranstaltungen"
 				subtitle={`Events im ${eventData.semester}`}
+				headingLevel={2}
 			>
-				<div className="max-w-5xl mx-auto justify-start mt-8">
+				<div className="max-w-5xl mx-auto justify-start mt-10 ">
 					<TerminalWindow
 						title={`events.sh --semester '${eventData.semester}'`}
+						showStickyNote={true}
 					>
 						<TerminalList>
 							{eventData.events.map((event, index) => (
 								// biome-ignore lint/suspicious/noArrayIndexKey: not a problem here
 								<div key={index}>
-									<strong className="keyword">
+									<strong className=" text-terminal-highlight font-medium">
 										{event.title}
 										{event.location && (
 											<span className="text-terminal-text/60 ml-2">
@@ -61,10 +63,10 @@ const Index = () => {
 			<NextAppShowcase />
 
 			{/* Replace the old TerminalList with our new ProjectsShowcase */}
-			<TerminalSection title="Auszug aus unseren Projekten">
+			<TerminalSection title="Auszug aus unseren Projekten" headingLevel={2}>
 				<ProjectsShowcase />
 			</TerminalSection>
-			<TerminalSection title="Über uns">
+			<TerminalSection title="Über uns" headingLevel={2}>
 				<p>
 					Wir bieten den Studierenden eine Plattform, um sich auszutauschen, um
 					Projekte zu realisieren und um ihr Wissen zu erweitern.
@@ -76,11 +78,11 @@ const Index = () => {
 					Und das ganz unabhängig von der Fakultät oder dem Studiengang.
 				</p>
 			</TerminalSection>
-			<TerminalSection title="Mitgliedschaft">
+			<TerminalSection title="Mitgliedschaft" headingLevel={2}>
 				<TerminalMembership />
 			</TerminalSection>
 
-			<TerminalSection title="Unterstützt durch">
+			<TerminalSection title="Unterstützt durch" headingLevel={2}>
 				<TerminalPartners />
 			</TerminalSection>
 

@@ -73,9 +73,9 @@ export default {
 					muted: '#006600',
 					mediumGreen: '#34df34',
 					lightGreen: '#40ff40',
-					window: '#1E1E1E',
+					window: '#111111',
 					windowBorder: '#333333',
-					windowTitle: '#555555'
+					windowTitle: '#414141'
 				}
 			},
 			borderRadius: {
@@ -103,10 +103,6 @@ export default {
 					'0%': { opacity: '1' },
 					'50%': { opacity: '0' },
 					'100%': { opacity: '1' }
-				},
-				scanline: {
-					'0%': { transform: 'translateY(0%)' },
-					'100%': { transform: 'translateY(100%)' }
 				},
 				glitch: {
 					'0%, 100%': {
@@ -161,6 +157,20 @@ export default {
 				matrix: {
 					'0%': { transform: 'translateY(-100%)' },
 					'100%': { transform: 'translateY(100%)' }
+				},
+				'cyberpunk-glow': {
+					'0%, 100%': {
+						filter:
+							'drop-shadow(0 0 4px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 3px rgba(46, 206, 255, 0.8))'
+					},
+					'33%': {
+						filter:
+							'drop-shadow(0 0 4px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 6px rgba(46, 206, 255, 0.9))'
+					},
+					'66%': {
+						filter:
+							'drop-shadow(0 0 3px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 6px rgba(46, 206, 255, 0.7))'
+					}
 				}
 			},
 			animation: {
@@ -171,7 +181,8 @@ export default {
 				blink: 'blink 1s infinite',
 				scanline: 'scanline 8s linear infinite',
 				glitch: 'glitch 3500ms infinite ease-in-out',
-				matrix: 'matrix 20s linear infinite'
+				matrix: 'matrix 20s linear infinite',
+				cyberpunk: 'cyberpunk-glow 1.5s ease-in-out infinite'
 			},
 			fontFamily: {
 				mono: ['mono', 'monospace']

@@ -7,6 +7,7 @@ interface TerminalSectionProps {
 	children: React.ReactNode
 	delay?: number
 	id?: string
+	classNames?: string
 	headingLevel?: number // 1 = h1, 2 = h2, 3 = h3
 }
 
@@ -15,6 +16,7 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 	subtitle,
 	children,
 	id,
+	classNames = '',
 	headingLevel = 3
 }) => {
 	const [isVisible, setIsVisible] = useState(false)
@@ -58,10 +60,15 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 	}
 
 	return (
-		<div ref={sectionRef} className="terminal-section mb-16" id={id}>
+		<section
+			className={`${classNames} mb-16 relative`}
+			id={id}
+			ref={sectionRef}
+		>
 			<h2
-				className={`terminal-prompt ${getTitleClass()} font-bold mb-4 font-mono text-terminal-cyan`}
+				className={`${getTitleClass()} font-bold mb-4 font-mono text-terminal-cyan flex items-center`}
 			>
+				<span className="text-terminal-text mr-3">$</span>
 				{title}
 			</h2>
 			{subtitle && (
@@ -69,10 +76,11 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 			)}
 			<div
 				className={`${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
+				style={{ overflow: 'visible' }} // Add explicit overflow visible here
 			>
 				{children}
 			</div>
-		</div>
+		</section>
 	)
 }
 

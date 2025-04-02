@@ -1,31 +1,54 @@
 import type React from 'react'
-import { useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import '../styles/animations.css'
+import TerminalWindowButtons from './TerminalWindowButtons'
+
+type ButtonColor = 'red' | 'yellow' | 'green'
+type TerminalState = 'on' | 'shutting-down' | 'off' | 'starting-up'
 
 interface TerminalWindowProps {
 	title: string
 	children: React.ReactNode
-	onClose?: () => void
+	showStickyNote?: boolean
 }
 
-const TerminalWindow: React.FC<TerminalWindowProps> = ({
-	title,
-	children,
-	onClose
-}) => {
-	const [activeGlow, setActiveGlow] = useState<
-		'red' | 'yellow' | 'green' | null
-	>(null)
-	const [confetti, setConfetti] = useState<JSX.Element[]>([])
+const bootSequence = [
+	'BIOS v3.14.15 initialized',
+	'Running memory test...',
+	'Memory OK: 640K should be enough for anybody',
+	'Detecting hardware...',
+	'Loading kernel...',
+	'Mounting file systems...',
+	'Starting network services...',
+	'Starting terminal service...',
+	'Terminal ready'
+]
 
-	const createConfetti = () => {
+const TerminalWindow: React.FC<TerminalWindowProps> = ({ title, children }) => {
+	// State
+	const [activeGlow, setActiveGlow] = useState<ButtonColor | null>(null)
+	const [confetti, setConfetti] = useState<JSX.Element[]>([])
+	const [animationInProgress, setAnimationInProgress] = useState(false)
+	const [terminalState, setTerminalState] = useState<TerminalState>('on')
+	const [bootText, setBootText] = useState<string[]>([])
+	const [flickerIntensity, setFlickerIntensity] = useState(0)
+	const [containerHeight, setContainerHeight] = useState<number | null>(null)
+	const [restoreBackground, setRestoreBackground] = useState(false)
+
+	// Refs
+	const terminalRef = useRef<HTMLDivElement>(null)
+
+	// Helper functions
+	const createConfetti = useCallback(() => {
 		const elements: JSX.Element[] = []
 		const colors = ['#ff3b30', '#ffcc00', '#28cd41', '#33C3F0']
 
 		for (let i = 0; i < 30; i++) {
 			const left = `${Math.random() * 100}%`
+			const animationDuration = `${Math.random() * 2 + 2}s`
 			const color = colors[Math.floor(Math.random() * colors.length)]
-			const delay = `${Math.random() * 1}s`
+			const delay = `${Math.random() * 0.5}s`
+			const size = `${Math.random() * 8 + 5}px`
 
 			elements.push(
 				<div
@@ -34,55 +57,221 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 					style={{
 						left,
 						backgroundColor: color,
-						animationDelay: delay
+						animationDelay: delay,
+						width: size,
+						height: size,
+						animationDuration,
+						position: 'absolute',
+						top: '-20px',
+						zIndex: 10
 					}}
 				/>
 			)
 		}
 		return elements
-	}
+	}, [])
 
-	const handleButtonClick = (color: 'red' | 'yellow' | 'green') => {
-		if (color === 'red' && onClose) {
-			onClose()
-			return
+	const createStaticNoise = useCallback(() => {
+		const noise = []
+		for (let i = 0; i < 50; i++) {
+			const top = `${Math.random() * 100}%`
+			const left = `${Math.random() * 100}%`
+			const width = `${Math.random() * 8 + 2}px`
+			const height = `${Math.random() * 4 + 1}px`
+			const opacity = Math.random() * 0.8 + 0.2
+			const duration = `${Math.random() * 0.5 + 0.2}s`
+			const delay = `${Math.random() * 0.3}s`
+
+			noise.push(
+				<div
+					key={`static-${i}`}
+					className="static-noise"
+					style={{
+						position: 'absolute',
+						top,
+						left,
+						width,
+						height,
+						opacity,
+						background: '#ddd',
+						zIndex: 20,
+						animation: `flicker ${duration} step-end infinite ${delay}`
+					}}
+				/>
+			)
 		}
-		setActiveGlow(color)
-		setConfetti(createConfetti())
+		return noise
+	}, [])
+
+	const simulateShutdown = useCallback(() => {
+		if (terminalRef.current) {
+			setContainerHeight(terminalRef.current.offsetHeight)
+		}
+
+		setAnimationInProgress(true)
+		setRestoreBackground(false)
+		setTerminalState('shutting-down')
+		setFlickerIntensity(5)
+
+		// Stage 1: Shutdown - increased from 800ms to 2000ms
 		setTimeout(() => {
-			setActiveGlow(null)
-			setConfetti([])
-		}, 3000)
-	}
+			setTerminalState('off')
+			setBootText([])
+
+			// Stage 2: Prepare for startup
+			setTimeout(() => {
+				setTerminalState('starting-up')
+
+				// Stage 3: Restore background
+				setTimeout(() => {
+					setRestoreBackground(true)
+				}, 1000)
+
+				// Stage 4: Boot sequence
+				setTimeout(() => {
+					bootSequence.forEach((text, index) => {
+						setTimeout(
+							() => {
+								setBootText((prev) => [...prev, text])
+
+								// Stage 5: Complete boot
+								if (index === bootSequence.length - 1) {
+									setTimeout(() => {
+										setTerminalState('on')
+										setContainerHeight(null)
+										setAnimationInProgress(false)
+									}, 1200)
+								}
+							},
+							800 * (index + 1)
+						)
+					})
+				}, 1000)
+			}, 1500)
+		}, 2000)
+	}, [])
+
+	const handleButtonClick = useCallback(
+		(color: ButtonColor) => {
+			if (animationInProgress) return
+
+			setAnimationInProgress(true)
+
+			if (color === 'red') {
+				simulateShutdown()
+			} else {
+				setActiveGlow(color)
+				setConfetti(createConfetti())
+
+				setTimeout(() => {
+					setActiveGlow(null)
+					setConfetti([])
+					setAnimationInProgress(false)
+				}, 3000)
+			}
+		},
+		[animationInProgress, createConfetti, simulateShutdown]
+	)
+
+	// Derived values for conditional styling
+	const isTransparentBg =
+		terminalState === 'shutting-down' ||
+		terminalState === 'off' ||
+		(terminalState === 'starting-up' && !restoreBackground)
 
 	return (
 		<div
-			className={`terminal-window relative ${activeGlow ? `terminal-glow-${activeGlow}` : ''}`}
+			ref={terminalRef}
+			className={`terminal-window ${activeGlow ? `terminal-glow-${activeGlow}` : ''} overflow-visible`}
+			style={{
+				height: containerHeight ? `${containerHeight}px` : 'auto',
+				minHeight: containerHeight ? `${containerHeight}px` : 'auto',
+				background: isTransparentBg ? 'transparent' : undefined,
+				position: 'relative',
+				border: isTransparentBg ? 'none' : undefined
+			}}
 		>
-			{confetti}
-			<div className="terminal-window-title">
-				<div className="flex">
-					<div
-						className="window-button window-button-red"
-						onClick={() => handleButtonClick('red')}
-						onKeyDown={() => handleButtonClick('red')}
-					/>
-					<div
-						className="window-button window-button-yellow"
-						onClick={() => handleButtonClick('yellow')}
-						onKeyDown={() => handleButtonClick('yellow')}
-					/>
-					<div
-						className="window-button window-button-green"
-						onClick={() => handleButtonClick('green')}
-						onKeyDown={() => handleButtonClick('green')}
-					/>
+			{terminalState === 'on' && (
+				<div className="group absolute top-10 z-10 rotate-6 pointer-events-auto -right-4 w-[120px] h-[110px] bg-[#ffe44a] p-2 shadow-xl rounded-sm">
+					<div className="relative text-center text-black leading-tight font-semibold text-md mt-2">
+						Do not close the terminal!
+						<span className="block text-red-600 text-md font-bold opacity-0 transition-opacity duration-200 group-hover:opacity-100 mt-1">
+							IMPORTANT
+						</span>
+					</div>
 				</div>
-				<div className="ml-4 flex-1 text-center text-sm opacity-80">
-					{title}
+			)}
+
+			{(terminalState === 'shutting-down' || terminalState === 'off') && (
+				<div className="shrug-emote glowing-text">¯\_(ツ)_/¯</div>
+			)}
+
+			<div
+				className={`terminal-inner ${
+					terminalState === 'shutting-down' ? 'terminal-shutdown' : ''
+				} ${terminalState === 'off' ? 'terminal-off' : ''} ${
+					terminalState === 'starting-up' ? 'terminal-startup' : ''
+				} ${restoreBackground ? 'terminal-bg-visible' : ''}`}
+				style={{
+					background: isTransparentBg ? 'transparent' : undefined,
+					borderRadius: '0.375rem'
+				}}
+			>
+				{/* Confetti container */}
+				<div
+					className="confetti-container"
+					style={{
+						position: 'absolute',
+						inset: 0,
+						overflow: 'hidden',
+						pointerEvents: 'none'
+					}}
+				>
+					{confetti}
+				</div>
+
+				{terminalState === 'shutting-down' && (
+					<div
+						className="terminal-flicker"
+						style={{
+							opacity: flickerIntensity * 0.1,
+							pointerEvents: 'none',
+							position: 'absolute',
+							inset: 0,
+							background: 'black',
+							zIndex: 10
+						}}
+					/>
+				)}
+
+				{terminalState === 'shutting-down' && createStaticNoise()}
+
+				<div className="bg-terminal-windowTitle text-terminal-text px-4 py-2 flex items-center overflow-hidden rounded-t-md">
+					<TerminalWindowButtons
+						onButtonClick={handleButtonClick}
+						animationInProgress={animationInProgress}
+					/>
+					<div className="ml-4 flex-1 text-center text-sm opacity-80">
+						{title}
+					</div>
+				</div>
+				<div className="p-4">
+					{terminalState === 'starting-up' ? (
+						<div className="boot-sequence">
+							{bootText.map((line) => (
+								<div key={line} className="boot-line">
+									<span className="boot-prompt">&gt;</span> {line}
+								</div>
+							))}
+							<div className="blinking-cursor">_</div>
+						</div>
+					) : terminalState === 'off' ? (
+						<div className="terminal-off-screen" />
+					) : (
+						children
+					)}
 				</div>
 			</div>
-			<div className="terminal-window-content">{children}</div>
 		</div>
 	)
 }

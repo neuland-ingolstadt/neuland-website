@@ -1,32 +1,13 @@
 import { motion } from 'framer-motion'
 import { Calendar, ForkKnife, MapPin } from 'lucide-react'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import TerminalButton from './TerminalButton'
 
 const NextAppShowcase = () => {
 	const phoneRef = useRef<HTMLDivElement>(null)
 
-	useEffect(() => {
-		const handleScroll = () => {
-			if (!phoneRef.current) return
-			const rect = phoneRef.current.getBoundingClientRect()
-			const windowHeight = window.innerHeight
-
-			if (rect.top < windowHeight && rect.bottom > 0) {
-				const scrollPercentage =
-					(windowHeight - rect.top) / (windowHeight + rect.height)
-				const rotation = Math.min(scrollPercentage * 15, 15)
-				phoneRef.current.style.transform = `perspective(1000px) rotateY(${rotation}deg)`
-			}
-		}
-
-		window.addEventListener('scroll', handleScroll)
-		return () => window.removeEventListener('scroll', handleScroll)
-	}, [])
-
 	return (
-		<div className="w-full overflow-hidden py-12 relative">
-			{/* Background glow effect */}
+		<div className="w-full overflow-hidden pt-12 pb-16 relative">
 			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-3xl max-h-96 bg-terminal-cyan/5 blur-[100px] rounded-full pointer-events-none" />
 
 			<div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
@@ -46,7 +27,6 @@ const NextAppShowcase = () => {
 				</motion.div>
 
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-					{/* Left column - Phone mockup */}
 					<motion.div
 						ref={phoneRef}
 						initial={{ opacity: 0, x: -50 }}
@@ -63,11 +43,9 @@ const NextAppShowcase = () => {
 							/>
 						</div>
 
-						{/* Reflective surface under phone */}
 						<div className="w-40 h-1 bg-gradient-to-r from-transparent via-terminal-cyan/30 to-transparent rounded mx-auto mt-5 blur-sm" />
 					</motion.div>
 
-					{/* Right column - Text content */}
 					<motion.div
 						initial={{ opacity: 0, x: 50 }}
 						whileInView={{ opacity: 1, x: 0 }}

@@ -9,8 +9,6 @@ const MainLayout = () => {
 			<TerminalHeader />
 			<ScrollToTop />
 			<MatrixEffect />
-			<div className="scanline" />
-
 			<Outlet />
 		</div>
 	)

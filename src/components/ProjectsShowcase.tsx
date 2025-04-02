@@ -176,8 +176,7 @@ const ProjectsShowcase: React.FC = () => {
 			{/* Terminal decoration */}
 			<div className="mt-6 mb-8">
 				<div className="font-mono text-sm opacity-80">
-					<span className="text-terminal-cyan">$</span> echo "Mehr Projekte auf
-					GitHub" &gt;&gt;{' '}
+					<span className="text-terminal-cyan">$</span> curl{' '}
 					<a
 						href="https://github.com/neuland-ingolstadt"
 						target="_blank"

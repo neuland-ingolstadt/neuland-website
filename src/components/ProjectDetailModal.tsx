@@ -3,7 +3,7 @@ import { ExternalLink } from 'lucide-react'
 import type React from 'react'
 import { useEffect, useState } from 'react'
 import type { ProjectDetails } from './ProjectCard'
-import TerminalWindow from './TerminalWindow'
+import SimpleTerminalWindow from './SimpleTerminalWindow'
 import TypewriterText from './TypewriterText'
 
 interface ProjectDetailModalProps {
@@ -49,7 +49,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.2 }}
-						className="fixed inset-0 bg-black bg-opacity-70 z-40"
+						className="fixed inset-0 bg-black bg-opacity-70 z-40 bg"
 						onClick={onClose}
 						aria-hidden="true"
 					/>
@@ -60,11 +60,11 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 						animate={{ scale: 1, opacity: 1 }}
 						exit={{ scale: 0.9, opacity: 0 }}
 						transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-						className="fixed inset-4 sm:inset-16 md:inset-32 z-50 flex flex-col overflow-visible pointer-events-none"
+						className="fixed inset-4 sm:inset-16 md:inset-32 z-50 flex flex-col items-center justify-center pointer-events-none"
 					>
-						{/* TerminalWindow with pointer-events-auto to receive clicks */}
-						<div className="pointer-events-auto">
-							<TerminalWindow
+						{/* SimpleTerminalWindow with pointer-events-auto to receive clicks */}
+						<div className="pointer-events-auto w-full max-w-4xl">
+							<SimpleTerminalWindow
 								title={`projekt.sh --name="${project.title}"`}
 								onClose={onClose}
 							>
@@ -76,7 +76,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 												<img
 													src={project.imageUrl}
 													alt={project.title}
-													className="w-full h-auto rounded border border-terminal-windowBorder"
+													className=" max-h-svh rounded border border-terminal-windowBorder"
 												/>
 											</div>
 										)}
@@ -162,7 +162,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 										</div>
 									</div>
 								</div>
-							</TerminalWindow>
+							</SimpleTerminalWindow>
 						</div>
 					</motion.div>
 				</>

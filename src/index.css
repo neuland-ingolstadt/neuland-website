@@ -107,11 +107,6 @@
 		@apply text-xl sm:text-2xl relative;
 	}
 
-	h2::before {
-		content: "> ";
-		@apply text-terminal-cyan;
-	}
-
 	p {
 		@apply mb-6;
 	}
@@ -133,88 +128,13 @@
 		@apply hidden;
 	}
 
-	.terminal-container::before {
-		content: "";
-		@apply absolute top-0 left-0 right-0 bottom-0 bg-terminal-darkGreen opacity-5 pointer-events-none overflow-hidden;
-		background-image: repeating-linear-gradient(
-			0deg,
-			rgba(0, 255, 0, 0.15),
-			rgba(0, 255, 0, 0.15) 1px,
-			transparent 1px,
-			transparent 2px
-		);
-		z-index: 1;
-	}
-
-	.matrix-effect {
-		pointer-events: none;
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		overflow: hidden;
-		z-index: 0;
-	}
-
-	.scanline {
-		@apply absolute top-0 left-0 w-full h-[2px] bg-terminal-text opacity-10 pointer-events-none;
-		z-index: 1;
-		animation: scanline 8s linear infinite;
-	}
-
 	.terminal-window {
-		@apply bg-terminal-window border border-terminal-windowBorder rounded-md overflow-hidden mb-8 shadow-lg;
-	}
-
-	.terminal-window-title {
-		@apply bg-terminal-windowTitle text-terminal-text px-4 py-2 flex items-center;
-	}
-
-	.window-button {
-		@apply w-3 h-3 rounded-full mx-1;
-	}
-
-	.window-button-red {
-		@apply bg-red-500;
-	}
-
-	.window-button-yellow {
-		@apply bg-yellow-500;
-	}
-
-	.window-button-green {
-		@apply bg-green-500;
-	}
-
-	.terminal-window-content {
-		@apply p-4;
+		@apply bg-terminal-window border border-terminal-windowBorder rounded-md mb-8;
 	}
 }
 
 @layer components {
-	.terminal-section {
-		@apply mb-8 relative;
-	}
-
-	.terminal-prompt {
-		@apply text-terminal-cyan mb-2 flex items-center;
-	}
-
-	.terminal-prompt::before {
-		content: "$ ";
-		@apply mr-2 text-terminal-text;
-	}
-
-	.terminal-btn {
-		@apply inline-flex items-center justify-center px-4 py-2 border border-terminal-cyan text-terminal-cyan bg-transparent hover:bg-terminal-cyan hover:text-terminal-bg transition-colors duration-300 mr-4 mb-4 rounded;
-	}
-
 	.partner-logo {
-		@apply h-12 sm:h-16 mx-4 my-2 filter brightness-75 hover:brightness-100 transition-all duration-300;
-	}
-
-	.keyword {
-		@apply text-terminal-mediumGreen font-medium;
+		@apply h-12 sm:h-16 mx-4 my-2 filter brightness-90 hover:brightness-100 transition-all duration-300;
 	}
 }
