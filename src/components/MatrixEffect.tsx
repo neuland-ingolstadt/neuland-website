@@ -195,19 +195,12 @@ const MatrixEffect: React.FC = () => {
 			}
 
 			resizeTimeoutRef.current = setTimeout(() => {
-				if (canvasRef.current) {
-					const pixelRatio = window.devicePixelRatio || 1
-					canvasRef.current.width = window.innerWidth * pixelRatio
-					canvasRef.current.height = window.innerHeight * pixelRatio
-					canvasRef.current.style.width = `${window.innerWidth}px`
-					canvasRef.current.style.height = `${window.innerHeight}px`
-
-					const ctx = canvasRef.current.getContext('2d', { alpha: false })
-					if (ctx) {
-						ctx.scale(pixelRatio, pixelRatio)
-						setupMatrixColumns(ctx, window.innerWidth, window.innerHeight)
-					}
+				// Remove old canvas and restart matrix animation to reset colors/background
+				if (canvasRef.current && containerRef.current) {
+					containerRef.current.removeChild(canvasRef.current)
+					canvasRef.current = null
 				}
+				startMatrixAnimation()
 			}, 300)
 		}
 
