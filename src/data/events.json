@@ -3,31 +3,38 @@
 	"events": [
 		{
 			"title": "Stammtisch",
-			"description": "Jeden zweiten Donnerstag um 19:00 Uhr"
+			"description": "Jeden zweiten Donnerstag um 19:00 Uhr",
+			"location": ""
 		},
 		{
 			"title": "Spieleabend",
-			"description": "Einmal im Monat um 19:00 Uhr\nNächster Termin am Donnerstag, 24. April um 19:00 in J101"
+			"description": "Einmal im Monat um 19:00 Uhr\nNächster Termin am Donnerstag, 24. April um 19:00",
+			"location": "J101"
 		},
 		{
 			"title": "Infoveranstaltung",
-			"description": "Montag, 31. März um 19:00 Uhr in D112"
+			"description": "Montag, 31. März um 19:00 Uhr",
+			"location": "D112"
 		},
 		{
 			"title": "LAN-Party mit HGI",
-			"description": "Freitag, 23. Mai um 15:00 in J101"
+			"description": "Freitag, 23. Mai um 15:00",
+			"location": "J101"
 		},
 		{
 			"title": "Coding Session",
-			"description": "Einmal im Monat um 19:00 Uhr"
+			"description": "Einmal im Monat um 19:00 Uhr",
+			"location": ""
 		},
 		{
 			"title": "Cookie Talks",
-			"description": "(tba)"
+			"description": "(tba)",
+			"location": ""
 		},
 		{
 			"title": "3D-Druck-Workshop",
-			"description": "(tba)"
+			"description": "(tba)",
+			"location": "Makerspace"
 		}
 	]
 }

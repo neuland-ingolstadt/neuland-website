@@ -34,7 +34,14 @@ const Index = () => {
 							{eventData.events.map((event, index) => (
 								// biome-ignore lint/suspicious/noArrayIndexKey: not a problem here
 								<div key={index}>
-									<strong className="keyword">{event.title}</strong>
+									<strong className="keyword">
+										{event.title}
+										{event.location && (
+											<span className="text-terminal-text/60 ml-2">
+												@{event.location}
+											</span>
+										)}
+									</strong>
 									<br />
 									{event.description.split('\n').map((line, i) => (
 										// biome-ignore lint/suspicious/noArrayIndexKey: not a problem here
