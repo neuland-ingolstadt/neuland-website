@@ -1,6 +1,11 @@
 FROM oven/bun:1 as builder
 WORKDIR /app
 
+# Define build argument for Aptabase key
+ARG VITE_APTABASE_KEY
+# Make it available as an environment variable during build
+ENV VITE_APTABASE_KEY=${VITE_APTABASE_KEY}
+
 COPY package.json bun.lockb ./
 
 RUN bun install --frozen-lockfile

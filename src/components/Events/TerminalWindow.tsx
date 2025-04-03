@@ -1,6 +1,7 @@
 import type React from 'react'
 import { useCallback, useRef, useState } from 'react'
 import '../../styles/animations.css'
+import { useAptabase } from '@aptabase/react'
 import StickyNote from './StickyNote'
 import TerminalWindowButtons from './TerminalWindowButtons'
 
@@ -30,7 +31,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 	children,
 	showStickyNote = true
 }) => {
-	// State
+	const { trackEvent } = useAptabase()
 	const [activeGlow, setActiveGlow] = useState<ButtonColor | null>(null)
 	const [confetti, setConfetti] = useState<JSX.Element[]>([])
 	const [animationInProgress, setAnimationInProgress] = useState(false)
@@ -163,8 +164,14 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 			setAnimationInProgress(true)
 
 			if (color === 'red') {
+				trackEvent('EasterEgg', {
+					name: 'terminalShutdown'
+				})
 				simulateShutdown()
 			} else {
+				trackEvent('EasterEgg', {
+					name: 'terminalGlow'
+				})
 				setActiveGlow(color)
 				setConfetti(createConfetti())
 

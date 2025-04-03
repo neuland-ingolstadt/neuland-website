@@ -1,5 +1,6 @@
 import { Switch } from '@/components/ui/switch'
 import { useBackground } from '@/contexts/BackgroundContext'
+import { useAptabase } from '@aptabase/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import type React from 'react'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -7,6 +8,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 const MAX_TOGGLE_ATTEMPTS = 4
 
 const SettingsLinks: React.FC = () => {
+	const { trackEvent } = useAptabase()
 	const { backgroundType, toggleBackgroundType } = useBackground()
 	const [lightTogglePosition, setLightTogglePosition] = useState({ x: 0, y: 0 })
 	const [toggleAttempts, setToggleAttempts] = useState(0)
@@ -28,7 +30,12 @@ const SettingsLinks: React.FC = () => {
 						(newY - lightTogglePosition.y) ** 2
 				)
 			} while (distance < 30)
-			setToggleAttempts(toggleAttempts + 1)
+			const attempts = toggleAttempts + 1
+			setToggleAttempts(attempts)
+			trackEvent('EasterEgg', {
+				name: 'lightMode',
+				attempt: attempts
+			})
 			setLightTogglePosition({ x: newX, y: newY })
 		}
 	}, [toggleAttempts, lightTogglePosition])
