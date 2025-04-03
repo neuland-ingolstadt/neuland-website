@@ -180,7 +180,7 @@ const GameOfLife: React.FC = () => {
 				gridRef.current = nextGeneration(gridRef.current)
 				startGameLoop(ctx, width, height)
 			}
-		}, 2500)
+		}, 2000)
 	}
 
 	const checkAndResetIfNeeded = (
