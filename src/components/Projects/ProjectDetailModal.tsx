@@ -4,7 +4,7 @@ import type React from 'react'
 import { useEffect, useState } from 'react'
 import TypewriterText from '../TypewriterText'
 import type { ProjectDetails } from './ProjectCard'
-import SimpleTerminalWindow from './SimpleTerminalWindow'
+import ProjectTerminalWindow from './ProjectTerminalWindow'
 
 interface ProjectDetailModalProps {
 	project: ProjectDetails | null
@@ -75,7 +75,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 					>
 						{/* SimpleTerminalWindow with pointer-events-auto to receive clicks */}
 						<div className="pointer-events-auto w-full max-w-4xl max-h-full overflow-auto">
-							<SimpleTerminalWindow
+							<ProjectTerminalWindow
 								title={`projekt.sh --name="${project.title}"`}
 								onClose={onClose}
 							>
@@ -173,7 +173,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 										</div>
 									</div>
 								</div>
-							</SimpleTerminalWindow>
+							</ProjectTerminalWindow>
 						</div>
 					</motion.div>
 				</>

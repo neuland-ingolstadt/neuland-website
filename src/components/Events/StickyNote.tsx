@@ -22,7 +22,7 @@ const StickyNote: React.FC<StickyNoteProps> = ({
 			w-[130px] h-[120px] 
 			bg-[#ffe44a] shadow-md rounded-sm overflow-hidden"
 		>
-			<div className="absolute -bottom-4 -right-4 w-12 h-12 bg-white/20 shadow-inner transform rotate-45" />
+			<div className="absolute -bottom-4 -right-4 w-12 h-12 bg-white/30 shadow-inner transform rotate-45" />
 
 			<div className="relative p-3 text-center text-black leading-tight font-semibold text-md mt-2">
 				{message}
@@ -30,7 +30,7 @@ const StickyNote: React.FC<StickyNoteProps> = ({
 					{importantText}
 				</span>
 			</div>
-			<div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-10 h-3 bg-gray-200/50 rounded-b-sm" />
+			<div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-10 h-3 bg-gray-100/50 rounded-b-sm" />
 		</div>
 	)
 }

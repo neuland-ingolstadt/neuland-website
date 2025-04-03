@@ -67,4 +67,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            VITE_APTABASE_KEY=${{ env.VITE_APTABASE_KEY }}
+            VITE_APTABASE_KEY=${{ vars.VITE_APTABASE_KEY }}
