@@ -52,7 +52,6 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 		<AnimatePresence>
 			{isOpen && (
 				<>
-					{}
 					<motion.div
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
@@ -63,7 +62,6 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 						aria-hidden="true"
 					/>
 
-					{}
 					<motion.div
 						initial={{ scale: 0.9, opacity: 0 }}
 						animate={{ scale: 1, opacity: 1 }}
@@ -78,15 +76,13 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 							padding: '16px'
 						}}
 					>
-						{}
-						<div className="pointer-events-auto w-full max-w-4xl max-h-full overflow-auto">
+						<div className="pointer-events-auto w-full max-w-4xl max-h-[calc(100vh-120px)] mb-10 overflow-visible">
 							<ProjectTerminalWindow
 								title={`projekt.sh --name="${project.title}"`}
 								onClose={onClose}
 							>
-								<div className="flex flex-col h-full overflow-hidden">
-									<div className="flex flex-col md:flex-row gap-6 overflow-auto p-1">
-										{}
+								<div className="flex flex-col h-full">
+									<div className="flex flex-col md:flex-row gap-6 p-1">
 										{project.imageUrl && (
 											<div className="hidden md:block md:w-1/3 flex-shrink-0">
 												<img
@@ -98,7 +94,6 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 											</div>
 										)}
 
-										{}
 										<div className="flex-1 overflow-auto">
 											<h3 className="text-xl font-bold text-terminal-cyan mb-4">
 												{project.title}
@@ -125,7 +120,6 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 														</div>
 													)}
 
-													{}
 													{project.tags && project.tags.length > 0 && (
 														<div className="mb-6">
 															<p className="text-sm mb-2 font-mono opacity-70">
@@ -144,7 +138,6 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 														</div>
 													)}
 
-													{}
 													<div className="mt-4">
 														<p className="text-sm mb-4 font-mono opacity-70">
 															$ links --open

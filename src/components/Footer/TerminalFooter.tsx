@@ -5,7 +5,7 @@ import type React from 'react'
 
 const TerminalFooter: React.FC = () => {
 	return (
-		<div className="cols grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-terminal-muted pt-6 my-8 text-terminal-text">
+		<div className="cols grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-terminal-windowBorder pt-6 my-8 text-terminal-text">
 			<TerminalLinks />
 			<SocialLinks />
 			<SettingsLinks />

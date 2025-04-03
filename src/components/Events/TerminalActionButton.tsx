@@ -56,7 +56,7 @@ const TerminalActionButton: React.FC<TerminalActionButtonProps> = ({
 			{!isDisabled && (
 				<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
 					<span
-						className={`rounded-full ${pingClass} opacity-0 group-hover:animate-ping group-hover:opacity-50 h-4 w-4`}
+						className={`rounded-full ${pingClass} opacity-0 group-hover:animate-ping group-hover:opacity-50 h-3 w-3`}
 					/>
 				</div>
 			)}

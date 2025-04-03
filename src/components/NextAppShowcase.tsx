@@ -52,8 +52,7 @@ const NextAppShowcase = () => {
 
 	return (
 		<div className="w-full pt-12 pb-16 relative">
-			{/* Moved the shadow outside the inner container and removed overflow-hidden */}
-			<div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 w-full h-full max-w-none bg-terminal-cyan/5 blur-[100px] rounded-full pointer-events-none" />
+			{}
 
 			<div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
 				<motion.div
@@ -80,6 +79,8 @@ const NextAppShowcase = () => {
 						viewport={{ once: true }}
 						className="relative"
 					>
+						<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-terminal-cyan/10 blur-3xl rounded-full pointer-events-none -z-10" />
+
 						<div
 							className="relative mx-auto w-[270px] h-[560px] rounded-[48px] overflow-hidden"
 							style={{ willChange: 'transform' }}

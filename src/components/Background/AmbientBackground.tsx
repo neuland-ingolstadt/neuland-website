@@ -42,9 +42,9 @@ const AmbientBackground: React.FC = () => {
 			Math.max(window.innerWidth, window.innerHeight) * 0.7
 		)
 
-		gradient.addColorStop(0, 'rgba(7, 30, 15, 0.6)')
-		gradient.addColorStop(0.5, 'rgba(4, 25, 12, 0.4)')
-		gradient.addColorStop(1, 'rgba(2, 15, 8, 0.2)')
+		gradient.addColorStop(0, 'rgba(3, 15, 7, 0.8)')
+		gradient.addColorStop(0.5, 'rgba(2, 12, 6, 0.6)')
+		gradient.addColorStop(1, 'rgba(1, 8, 4, 0.4)')
 
 		ctx.fillStyle = gradient
 		ctx.fillRect(0, 0, window.innerWidth, window.innerHeight)
@@ -57,8 +57,8 @@ const AmbientBackground: React.FC = () => {
 			const blobGradient = ctx.createRadialGradient(x, y, 0, x, y, size)
 
 			const hue = 110 + (Math.random() * 30 - 15)
-			blobGradient.addColorStop(0, `hsla(${hue}, 95%, 8%, 0.3)`)
-			blobGradient.addColorStop(1, 'rgba(0, 25, 0, 0)')
+			blobGradient.addColorStop(0, `hsla(${hue}, 95%, 5%, 0.4)`)
+			blobGradient.addColorStop(1, 'rgba(0, 15, 0, 0)')
 
 			ctx.fillStyle = blobGradient
 			ctx.beginPath()

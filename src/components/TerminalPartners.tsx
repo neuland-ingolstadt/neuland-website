@@ -2,7 +2,7 @@ import type React from 'react'
 
 const TerminalPartners: React.FC = () => {
 	return (
-		<div className="partner-logos flex flex-wrap justify-center items-center my-6">
+		<div className="partner-logos flex flex-wrap justify-center items-center my-6 gap-6">
 			<a
 				href="https://www.epos-cat.de/"
 				className="badge-link no-underline"

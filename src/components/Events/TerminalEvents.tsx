@@ -110,17 +110,20 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 										<TerminalTypeWriter
 											text={events[selectedEventIndex].description}
 											isActive={true}
-											delay={15}
+											delay={5}
 										/>
 									</div>
 
 									<div className="mt-auto pt-3 pb-4">
 										<button
 											onClick={resetSelectedEvent}
-											className="text-terminal-text/60 hover:text-terminal-highlight transition-colors px-2 py-1 text-sm inline-flex items-center"
+											className="text-terminal-text  transition-colors px-2 py-1 text-sm inline-flex items-center font-bold group bg-black rounded-md border border-terminal-windowBorder hover:bg-terminal-windowBorder/30  "
 											type="button"
 										>
-											<LucideArrowBigLeft size={15} className="mr-1" />
+											<LucideArrowBigLeft
+												size={16}
+												className="mr-1 group-hover:text-terminal-highlight transition-colors"
+											/>
 											Alle Events
 										</button>
 									</div>
