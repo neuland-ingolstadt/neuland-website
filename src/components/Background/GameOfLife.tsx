@@ -4,32 +4,47 @@ import { useEffect, useRef } from 'react'
 const GameOfLife: React.FC = () => {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const canvasRef = useRef<HTMLCanvasElement | null>(null)
-	const animationFrameRef = useRef<number | null>(null)
 	const resizeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-	const gridRef = useRef<boolean[][]>([])
-	const cellSizeRef = useRef<number>(18) // Increased from 16 to 20
-	const generationTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+	interface Cell {
+		alive: boolean
+		opacity: number
+		transitioning: boolean
+		targetState: boolean
+	}
+
+	const gridRef = useRef<Cell[][]>([])
+	const cellSizeRef = useRef<number>(18)
+	const timeoutsAndFramesRef = useRef<{
+		generation: NodeJS.Timeout | null
+		render: number | null
+		animation: number | null
+	}>({ generation: null, render: null, animation: null })
 	const isRunningRef = useRef<boolean>(true)
 
 	const initializeGrid = (width: number, height: number) => {
 		const cellSize = cellSizeRef.current
 		const cols = Math.floor(width / cellSize)
 		const rows = Math.floor(height / cellSize)
-
-		const grid: boolean[][] = []
+		const grid: Cell[][] = []
 
 		for (let i = 0; i < rows; i++) {
 			grid[i] = []
 			for (let j = 0; j < cols; j++) {
-				grid[i][j] = Math.random() < 0.15
+				const alive = Math.random() < 0.15
+				grid[i][j] = {
+					alive,
+					opacity: alive ? 1 : 0,
+					transitioning: false,
+					targetState: alive
+				}
 			}
 		}
 
 		return grid
 	}
 
-	const countNeighbors = (grid: boolean[][], row: number, col: number) => {
+	const countNeighbors = (grid: Cell[][], row: number, col: number) => {
 		const rows = grid.length
 		const cols = grid[0].length
 		let count = 0
@@ -37,37 +52,67 @@ const GameOfLife: React.FC = () => {
 		for (let i = -1; i <= 1; i++) {
 			for (let j = -1; j <= 1; j++) {
 				if (i === 0 && j === 0) continue
-
 				const r = (row + i + rows) % rows
 				const c = (col + j + cols) % cols
-
-				if (grid[r][c]) count++
+				if (grid[r][c].alive) count++
 			}
 		}
 
 		return count
 	}
 
-	const nextGeneration = (grid: boolean[][]) => {
+	const nextGeneration = (grid: Cell[][]) => {
 		const rows = grid.length
 		const cols = grid[0].length
-		const nextGrid: boolean[][] = Array(rows)
-			.fill(false)
-			.map(() => Array(cols).fill(false))
 
 		for (let i = 0; i < rows; i++) {
 			for (let j = 0; j < cols; j++) {
 				const neighbors = countNeighbors(grid, i, j)
+				const currentCell = grid[i][j]
+				const nextState = currentCell.alive
+					? neighbors === 2 || neighbors === 3
+					: neighbors === 3
 
-				if (grid[i][j]) {
-					nextGrid[i][j] = neighbors === 2 || neighbors === 3
-				} else {
-					nextGrid[i][j] = neighbors === 3
+				if (nextState !== currentCell.alive) {
+					currentCell.transitioning = true
+					currentCell.targetState = nextState
 				}
 			}
 		}
 
-		return nextGrid
+		return grid
+	}
+
+	const updateTransitions = (grid: Cell[][]) => {
+		const fadeSpeed = 0.04
+		let stillTransitioning = false
+
+		for (let i = 0; i < grid.length; i++) {
+			for (let j = 0; j < grid[i].length; j++) {
+				const cell = grid[i][j]
+
+				if (cell.transitioning) {
+					if (cell.targetState) {
+						cell.opacity += fadeSpeed
+						if (cell.opacity >= 1) {
+							cell.opacity = 1
+							cell.transitioning = false
+							cell.alive = true
+						}
+					} else {
+						cell.opacity -= fadeSpeed
+						if (cell.opacity <= 0) {
+							cell.opacity = 0
+							cell.transitioning = false
+							cell.alive = false
+						}
+					}
+					stillTransitioning = true
+				}
+			}
+		}
+
+		return { grid, stillTransitioning }
 	}
 
 	const renderGrid = (
@@ -83,13 +128,14 @@ const GameOfLife: React.FC = () => {
 
 		if (!grid.length) return
 
-		ctx.fillStyle = 'rgba(0, 99, 0, 1)'
 		ctx.shadowColor = 'rgba(0, 124, 0, 0.7)'
 		ctx.shadowBlur = 6
 
 		for (let i = 0; i < grid.length; i++) {
 			for (let j = 0; j < grid[i].length; j++) {
-				if (grid[i][j]) {
+				const cell = grid[i][j]
+				if (cell.opacity > 0) {
+					ctx.fillStyle = `rgba(0, 99, 0, ${cell.opacity})`
 					ctx.fillRect(
 						j * cellSize + 2,
 						i * cellSize + 2,
@@ -103,101 +149,38 @@ const GameOfLife: React.FC = () => {
 		ctx.shadowBlur = 0
 	}
 
+	const animateAndUpdate = (
+		ctx: CanvasRenderingContext2D,
+		width: number,
+		height: number
+	) => {
+		if (!isRunningRef.current) return
+
+		const { grid } = updateTransitions(gridRef.current)
+		gridRef.current = grid
+		renderGrid(ctx, width, height)
+
+		timeoutsAndFramesRef.current.render = requestAnimationFrame(() =>
+			animateAndUpdate(ctx, width, height)
+		)
+	}
+
 	const startGameLoop = (
 		ctx: CanvasRenderingContext2D,
 		width: number,
 		height: number
 	) => {
-		if (generationTimeoutRef.current) {
-			clearTimeout(generationTimeoutRef.current)
-		}
+		const { generation, render } = timeoutsAndFramesRef.current
 
-		renderGrid(ctx, width, height)
+		if (generation) clearTimeout(generation)
+		if (!render) animateAndUpdate(ctx, width, height)
 
-		generationTimeoutRef.current = setTimeout(() => {
+		timeoutsAndFramesRef.current.generation = setTimeout(() => {
 			if (isRunningRef.current) {
 				gridRef.current = nextGeneration(gridRef.current)
 				startGameLoop(ctx, width, height)
 			}
-		}, 2000)
-	}
-
-	const _resetGame = () => {
-		if (!canvasRef.current) return
-
-		const ctx = canvasRef.current.getContext('2d', { alpha: false })
-		if (!ctx) return
-
-		isRunningRef.current = false
-
-		if (generationTimeoutRef.current) {
-			clearTimeout(generationTimeoutRef.current)
-		}
-
-		// Fade out effect before reset
-		let opacity = 0.2
-		const fadeOut = () => {
-			if (opacity > 0.05) {
-				opacity -= 0.05
-				if (canvasRef.current) {
-					canvasRef.current.style.filter = `opacity(${opacity})`
-				}
-				requestAnimationFrame(fadeOut)
-			} else {
-				// Initialize new grid and restart
-				gridRef.current = initializeGrid(window.innerWidth, window.innerHeight)
-
-				// Fade back in
-				let fadeInOpacity = 0.05
-				const fadeIn = () => {
-					if (fadeInOpacity < 0.2) {
-						fadeInOpacity += 0.05
-						if (canvasRef.current) {
-							canvasRef.current.style.filter = `opacity(${fadeInOpacity})`
-						}
-						requestAnimationFrame(fadeIn)
-					} else {
-						isRunningRef.current = true
-						startGameLoop(ctx, window.innerWidth, window.innerHeight)
-					}
-				}
-				fadeIn()
-			}
-		}
-		fadeOut()
-	}
-
-	const startGameOfLife = () => {
-		if (!containerRef.current) return
-
-		if (generationTimeoutRef.current) {
-			clearTimeout(generationTimeoutRef.current)
-		}
-
-		if (!canvasRef.current) {
-			canvasRef.current = document.createElement('canvas')
-			canvasRef.current.style.filter = 'opacity(0.2)'
-			containerRef.current.appendChild(canvasRef.current)
-		}
-
-		const canvas = canvasRef.current
-		const ctx = canvas.getContext('2d', { alpha: false })
-		if (!ctx) return
-
-		const pixelRatio = window.devicePixelRatio || 1
-		canvas.width = window.innerWidth * pixelRatio
-		canvas.height = window.innerHeight * pixelRatio
-		canvas.style.width = `${window.innerWidth}px`
-		canvas.style.height = `${window.innerHeight}px`
-
-		ctx.scale(pixelRatio, pixelRatio)
-
-		cellSizeRef.current = window.innerWidth < 768 ? 16 : 20 // Increased from 14/18 to 18/24
-
-		gridRef.current = initializeGrid(window.innerWidth, window.innerHeight)
-		isRunningRef.current = true
-
-		startGameLoop(ctx, window.innerWidth, window.innerHeight)
+		}, 2500)
 	}
 
 	const checkAndResetIfNeeded = (
@@ -205,26 +188,26 @@ const GameOfLife: React.FC = () => {
 		width: number,
 		height: number
 	) => {
-		if (!animationFrameRef.current) {
-			animationFrameRef.current = requestAnimationFrame(() => {
+		if (!timeoutsAndFramesRef.current.animation) {
+			timeoutsAndFramesRef.current.animation = requestAnimationFrame(() => {
 				const grid = gridRef.current
 				if (!grid.length) return
 
+				// Count live cells
 				let liveCells = 0
 				let totalCells = 0
-
 				for (let i = 0; i < grid.length; i++) {
 					for (let j = 0; j < grid[i].length; j++) {
 						totalCells++
-						if (grid[i][j]) liveCells++
+						if (grid[i][j].alive) liveCells++
 					}
 				}
 
+				// Reset if too few live cells
 				if (liveCells / totalCells < 0.005) {
 					isRunningRef.current = false
-					if (generationTimeoutRef.current) {
-						clearTimeout(generationTimeoutRef.current)
-					}
+
+					clearTimersAndFrames()
 
 					setTimeout(() => {
 						gridRef.current = initializeGrid(width, height)
@@ -234,59 +217,90 @@ const GameOfLife: React.FC = () => {
 				}
 
 				setTimeout(() => {
-					animationFrameRef.current = null
+					timeoutsAndFramesRef.current.animation = null
 					checkAndResetIfNeeded(ctx, width, height)
 				}, 7000)
 			})
 		}
 	}
 
-	const cleanupAnimation = () => {
-		if (animationFrameRef.current) {
-			cancelAnimationFrame(animationFrameRef.current)
-			animationFrameRef.current = null
+	const clearTimersAndFrames = () => {
+		const { generation, render, animation } = timeoutsAndFramesRef.current
+
+		if (generation) {
+			clearTimeout(generation)
+			timeoutsAndFramesRef.current.generation = null
 		}
 
-		if (generationTimeoutRef.current) {
-			clearTimeout(generationTimeoutRef.current)
-			generationTimeoutRef.current = null
+		if (render) {
+			cancelAnimationFrame(render)
+			timeoutsAndFramesRef.current.render = null
 		}
 
-		if (canvasRef.current && containerRef.current) {
-			containerRef.current.removeChild(canvasRef.current)
-			canvasRef.current = null
+		if (animation) {
+			cancelAnimationFrame(animation)
+			timeoutsAndFramesRef.current.animation = null
 		}
 	}
 
-	useEffect(() => {
-		// Set up proper container positioning
-		if (containerRef.current) {
-			containerRef.current.style.position = 'fixed'
-			containerRef.current.style.top = '0'
-			containerRef.current.style.left = '0'
-			containerRef.current.style.right = '0'
-			containerRef.current.style.bottom = '0'
-			containerRef.current.style.zIndex = '-1'
+	const startGameOfLife = () => {
+		if (!containerRef.current) return
 
-			// Remove all the focus, keyboard and click handlers
+		clearTimersAndFrames()
+
+		// Create canvas if needed
+		if (!canvasRef.current) {
+			canvasRef.current = document.createElement('canvas')
+			canvasRef.current.style.filter = 'opacity(0.20)'
+			containerRef.current.appendChild(canvasRef.current)
+		}
+
+		const canvas = canvasRef.current
+		const ctx = canvas.getContext('2d', { alpha: false })
+		if (!ctx) return
+
+		// Set up canvas dimensions
+		const pixelRatio = window.devicePixelRatio || 1
+		canvas.width = window.innerWidth * pixelRatio
+		canvas.height = window.innerHeight * pixelRatio
+		canvas.style.width = `${window.innerWidth}px`
+		canvas.style.height = `${window.innerHeight}px`
+		ctx.scale(pixelRatio, pixelRatio)
+
+		cellSizeRef.current = window.innerWidth < 768 ? 16 : 20
+		gridRef.current = initializeGrid(window.innerWidth, window.innerHeight)
+		isRunningRef.current = true
+
+		startGameLoop(ctx, window.innerWidth, window.innerHeight)
+	}
+
+	useEffect(() => {
+		if (containerRef.current) {
+			Object.assign(containerRef.current.style, {
+				position: 'fixed',
+				top: '0',
+				left: '0',
+				right: '0',
+				bottom: '0',
+				zIndex: '-1'
+			})
 		}
 
 		startGameOfLife()
 
 		if (canvasRef.current) {
 			const ctx = canvasRef.current.getContext('2d', { alpha: false })
-			if (ctx) {
-				checkAndResetIfNeeded(ctx, window.innerWidth, window.innerHeight)
-			}
+			if (ctx) checkAndResetIfNeeded(ctx, window.innerWidth, window.innerHeight)
 		}
 
 		const handleResize = () => {
-			if (resizeTimeoutRef.current) {
-				clearTimeout(resizeTimeoutRef.current)
-			}
-
+			if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current)
 			resizeTimeoutRef.current = setTimeout(() => {
-				cleanupAnimation()
+				if (canvasRef.current && containerRef.current) {
+					containerRef.current.removeChild(canvasRef.current)
+					canvasRef.current = null
+				}
+				clearTimersAndFrames()
 				startGameOfLife()
 			}, 300)
 		}
@@ -295,11 +309,11 @@ const GameOfLife: React.FC = () => {
 
 		return () => {
 			window.removeEventListener('resize', handleResize)
-
-			cleanupAnimation()
-
-			if (resizeTimeoutRef.current) {
-				clearTimeout(resizeTimeoutRef.current)
+			if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current)
+			clearTimersAndFrames()
+			if (canvasRef.current && containerRef.current) {
+				containerRef.current.removeChild(canvasRef.current)
+				canvasRef.current = null
 			}
 		}
 	}, [])

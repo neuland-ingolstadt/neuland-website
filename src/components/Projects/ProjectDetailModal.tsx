@@ -140,7 +140,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
 													{/* Links */}
 													<div className="mt-4">
-														<p className="text-sm mb-2 font-mono opacity-70">
+														<p className="text-sm mb-4 font-mono opacity-70">
 															$ links --open
 														</p>
 														<div className="flex flex-wrap gap-3">
