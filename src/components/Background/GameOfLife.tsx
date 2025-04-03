@@ -251,7 +251,7 @@ const GameOfLife: React.FC = () => {
 		// Create canvas if needed
 		if (!canvasRef.current) {
 			canvasRef.current = document.createElement('canvas')
-			canvasRef.current.style.filter = 'opacity(0.25)'
+			canvasRef.current.style.filter = 'opacity(0.23)'
 			containerRef.current.appendChild(canvasRef.current)
 		}
 

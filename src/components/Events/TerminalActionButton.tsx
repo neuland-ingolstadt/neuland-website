@@ -39,17 +39,20 @@ const TerminalActionButton: React.FC<TerminalActionButtonProps> = ({
 
 	return (
 		<div className="relative group">
-			<div
-				className={`w-3 h-3 rounded-full mx-1 transition-opacity duration-200 ${className} ${isDisabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+			<button
+				className={`p-1 -m-1 ${isDisabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}
 				onClick={() => !isDisabled && onButtonClick(color)}
 				onKeyDown={(e) =>
 					e.key === 'Enter' && !isDisabled && onButtonClick(color)
 				}
-				role="button"
-				tabIndex={0}
+				disabled={isDisabled}
 				aria-label={label}
-				aria-disabled={isDisabled}
-			/>
+				type="button"
+			>
+				<div
+					className={`w-3 h-3 rounded-full mx-1 transition-opacity duration-200 ${className} ${isDisabled ? 'opacity-50' : ''}`}
+				/>
+			</button>
 			{!isDisabled && (
 				<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
 					<span

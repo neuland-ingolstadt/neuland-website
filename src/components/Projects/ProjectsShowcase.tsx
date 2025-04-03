@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/carousel'
 import { motion } from 'framer-motion'
 import type React from 'react'
-import { useState } from 'react'
+import { memo, useCallback, useMemo, useState } from 'react'
 import projectsData from '../../data/projects.json'
 import ProjectCard, { type ProjectDetails } from './ProjectCard'
 import ProjectDetailModal from './ProjectDetailModal'
@@ -18,20 +18,29 @@ const ProjectsShowcase: React.FC = () => {
 	)
 	const [isModalOpen, setIsModalOpen] = useState(false)
 
-	const openProjectDetails = (project: ProjectDetails) => {
+	const memoizedProjects = useMemo(() => projectsData, [])
+
+	const openProjectDetails = useCallback((project: ProjectDetails) => {
 		setSelectedProject(project)
 		setIsModalOpen(true)
-	}
+	}, [])
 
-	const closeProjectDetails = () => {
+	const closeProjectDetails = useCallback(() => {
 		setIsModalOpen(false)
-		// Keep the selected project during close animation
 		setTimeout(() => setSelectedProject(null), 300)
-	}
+	}, [])
+
+	const carouselOptions = useMemo(
+		() => ({
+			align: 'start' as const,
+			loop: true
+		}),
+		[]
+	)
 
 	return (
 		<div className="relative">
-			{/* Title with animation */}
+			{}
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
 				whileInView={{ opacity: 1, y: 0 }}
@@ -44,16 +53,10 @@ const ProjectsShowcase: React.FC = () => {
 				</p>
 			</motion.div>
 
-			{/* Project Carousel */}
-			<Carousel
-				opts={{
-					align: 'start',
-					loop: true
-				}}
-				className="w-full"
-			>
+			{}
+			<Carousel opts={carouselOptions} className="w-full">
 				<CarouselContent className="-ml-4">
-					{projectsData.map((project) => (
+					{memoizedProjects.map((project) => (
 						<CarouselItem
 							key={project.id}
 							className="pl-4 sm:basis-1/2 lg:basis-1/3"
@@ -69,7 +72,7 @@ const ProjectsShowcase: React.FC = () => {
 				<CarouselNext className="right-0" />
 			</Carousel>
 
-			{/* Terminal decoration */}
+			{}
 			<div className="mt-6 mb-8">
 				<div className="font-mono text-sm opacity-80">
 					<span className="text-terminal-cyan">$</span> curl{' '}
@@ -84,7 +87,7 @@ const ProjectsShowcase: React.FC = () => {
 				</div>
 			</div>
 
-			{/* Details Modal */}
+			{}
 			<ProjectDetailModal
 				project={selectedProject}
 				isOpen={isModalOpen}
@@ -94,4 +97,4 @@ const ProjectsShowcase: React.FC = () => {
 	)
 }
 
-export default ProjectsShowcase
+export default memo(ProjectsShowcase)

@@ -1,4 +1,5 @@
 import type React from 'react'
+import { useEffect } from 'react'
 import { useCallback, useRef, useState } from 'react'
 import '../../styles/animations.css'
 import { useAptabase } from '@aptabase/react'
@@ -12,10 +13,11 @@ interface TerminalWindowProps {
 	title: string
 	children: React.ReactNode
 	showStickyNote?: boolean
+	onRedButtonClick?: () => void
 }
 
 const bootSequence = [
-	'BIOS v3.14.15 initialized',
+	'BIOS v3.14.42 initialized',
 	'Running memory test...',
 	'Memory OK: 640K should be enough for anybody',
 	'Detecting hardware...',
@@ -29,7 +31,8 @@ const bootSequence = [
 const TerminalWindow: React.FC<TerminalWindowProps> = ({
 	title,
 	children,
-	showStickyNote = true
+	showStickyNote = true,
+	onRedButtonClick
 }) => {
 	const { trackEvent } = useAptabase()
 	const [activeGlow, setActiveGlow] = useState<ButtonColor | null>(null)
@@ -41,10 +44,24 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 	const [containerHeight, setContainerHeight] = useState<number | null>(null)
 	const [restoreBackground, setRestoreBackground] = useState(false)
 
-	// Refs
 	const terminalRef = useRef<HTMLDivElement>(null)
+	const timeoutsRef = useRef<number[]>([])
 
-	// Helper functions
+	const setManagedTimeout = useCallback(
+		(callback: () => void, delay: number) => {
+			const id = window.setTimeout(callback, delay)
+			timeoutsRef.current.push(id)
+			return id
+		},
+		[]
+	)
+
+	useEffect(() => {
+		return () => {
+			timeoutsRef.current.forEach((id) => window.clearTimeout(id))
+		}
+	}, [])
+
 	const createConfetti = useCallback(() => {
 		const elements: JSX.Element[] = []
 		const colors = ['#ff3b30', '#ffcc00', '#28cd41', '#33C3F0']
@@ -119,30 +136,29 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 		setTerminalState('shutting-down')
 		setFlickerIntensity(5)
 
-		// Stage 1: Shutdown
-		setTimeout(() => {
+		setManagedTimeout(() => {
 			setTerminalState('off')
 			setBootText([])
 
-			// Stage 2: Prepare for startup
-			setTimeout(() => {
+			if (onRedButtonClick) {
+				onRedButtonClick()
+			}
+
+			setManagedTimeout(() => {
 				setTerminalState('starting-up')
 
-				// Stage 3: Restore background
-				setTimeout(() => {
+				setManagedTimeout(() => {
 					setRestoreBackground(true)
 				}, 1000)
 
-				// Stage 4: Boot sequence
-				setTimeout(() => {
+				setManagedTimeout(() => {
 					bootSequence.forEach((text, index) => {
-						setTimeout(
+						setManagedTimeout(
 							() => {
 								setBootText((prev) => [...prev, text])
 
-								// Stage 5: Complete boot
 								if (index === bootSequence.length - 1) {
-									setTimeout(() => {
+									setManagedTimeout(() => {
 										setTerminalState('on')
 										setContainerHeight(null)
 										setAnimationInProgress(false)
@@ -155,7 +171,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 				}, 2000)
 			}, 1500)
 		}, 2500)
-	}, [])
+	}, [onRedButtonClick, setManagedTimeout])
 
 	const handleButtonClick = useCallback(
 		(color: ButtonColor) => {
@@ -175,17 +191,22 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 				setActiveGlow(color)
 				setConfetti(createConfetti())
 
-				setTimeout(() => {
+				setManagedTimeout(() => {
 					setActiveGlow(null)
 					setConfetti([])
 					setAnimationInProgress(false)
 				}, 3000)
 			}
 		},
-		[animationInProgress, createConfetti, simulateShutdown]
+		[
+			animationInProgress,
+			createConfetti,
+			simulateShutdown,
+			trackEvent,
+			setManagedTimeout
+		]
 	)
 
-	// Derived values for conditional styling
 	const isTransparentBg =
 		terminalState === 'shutting-down' ||
 		terminalState === 'off' ||
@@ -223,7 +244,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 					borderRadius: '0.375rem'
 				}}
 			>
-				{/* Confetti container */}
+				{}
 				<div
 					className="confetti-container"
 					style={{

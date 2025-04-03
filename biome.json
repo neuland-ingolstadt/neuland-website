@@ -32,6 +32,9 @@
 			},
 			"complexity": {
 				"noForEach": "off"
+			},
+			"suspicious": {
+				"noArrayIndexKey": "off"
 			}
 		}
 	},

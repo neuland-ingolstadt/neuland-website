@@ -6,24 +6,27 @@ const TerminalLinks: React.FC = () => {
 		<nav>
 			<ul>
 				<li className="mb-2">
-					<Link to="/satzung" className="!text-terminal-text">
-						$ <span className="text-terminal-cyan">cat</span> Satzung
+					<Link to="/satzung" className="!text-terminal-text group">
+						<span className="group-hover:animate-cyberpunk">$</span>{' '}
+						<span className="text-terminal-cyan">cat</span> Satzung
 					</Link>
 				</li>
 				<li className="mb-2">
-					<Link to="/datenschutzordnung" className="!text-terminal-text">
-						$ <span className="text-terminal-cyan">cat</span> Datenschutzordnung
+					<Link to="/datenschutzordnung" className="!text-terminal-text group">
+						<span className="group-hover:animate-cyberpunk">$</span>{' '}
+						<span className="text-terminal-cyan">cat</span> Datenschutzordnung
 					</Link>
 				</li>
 				<li className="mb-2">
-					<Link to="/datenschutzhinweise" className="!text-terminal-text">
-						$ <span className="text-terminal-cyan">cat</span>{' '}
-						Datenschutzhinweise
+					<Link to="/datenschutzhinweise" className="!text-terminal-text group">
+						<span className="group-hover:animate-cyberpunk">$</span>{' '}
+						<span className="text-terminal-cyan">cat</span> Datenschutzhinweise
 					</Link>
 				</li>
 				<li className="mb-2">
-					<Link to="/impressum" className="!text-terminal-text">
-						$ <span className="text-terminal-cyan">cat</span> Impressum
+					<Link to="/impressum" className="!text-terminal-text group">
+						<span className="group-hover:animate-cyberpunk">$</span>{' '}
+						<span className="text-terminal-cyan">cat</span> Impressum
 					</Link>
 				</li>
 			</ul>

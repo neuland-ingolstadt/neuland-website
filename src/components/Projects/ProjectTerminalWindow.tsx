@@ -1,5 +1,5 @@
 import type React from 'react'
-import { useState } from 'react'
+import { memo, useCallback, useMemo, useState } from 'react'
 import TerminalActionButton from '../Events/TerminalActionButton'
 
 interface SimpleTerminalWindowProps {
@@ -20,44 +20,36 @@ const ProjectTerminalWindow: React.FC<SimpleTerminalWindowProps> = ({
 		}
 	)
 
-	const handleButtonClick = (color: 'red' | 'yellow' | 'green') => {
-		if (color === 'red' && onClose) {
-			onClose()
-		} else if (color === 'yellow' && !emojiRain.active) {
-			setEmojiRain({ active: true, type: 'food' })
-			setTimeout(() => setEmojiRain({ active: false, type: '' }), 4000)
-		} else if (color === 'green' && !emojiRain.active) {
-			setEmojiRain({ active: true, type: 'nature' })
-			setTimeout(() => setEmojiRain({ active: false, type: '' }), 4000)
-		}
-	}
+	const handleButtonClick = useCallback(
+		(color: 'red' | 'yellow' | 'green') => {
+			if (color === 'red' && onClose) {
+				onClose()
+			} else if (color === 'yellow' && !emojiRain.active) {
+				setEmojiRain({ active: true, type: 'food' })
+				setTimeout(() => setEmojiRain({ active: false, type: '' }), 4000)
+			} else if (color === 'green' && !emojiRain.active) {
+				setEmojiRain({ active: true, type: 'nature' })
+				setTimeout(() => setEmojiRain({ active: false, type: '' }), 4000)
+			}
+		},
+		[emojiRain.active, onClose]
+	)
 
-	const getEmojis = (type: string, count: number) => {
-		const foodEmojis = [
-			'🍕',
-			'🍔',
-			'🌮',
-			'🍦',
-			'🍩',
-			'🍪',
-			'🍇',
-			'🍓',
-			'🌭',
-			'🧀'
-		]
-		const natureEmojis = [
-			'🌱',
-			'🌲',
-			'🌻',
-			'🌷',
-			'🌵',
-			'🍀',
-			'🌿',
-			'🌴',
-			'🦋',
-			'🐝'
-		]
-		const emojisToUse = type === 'food' ? foodEmojis : natureEmojis
+	const foodEmojis = useMemo(
+		() => ['🍕', '🍔', '🌮', '🍦', '🍩', '🍪', '🍇', '🍓', '🌭', '🧀'],
+		[]
+	)
+
+	const natureEmojis = useMemo(
+		() => ['🌱', '🌲', '🌻', '🌷', '🌵', '🍀', '🌿', '🌴', '🦋', '🐝'],
+		[]
+	)
+
+	const emojis = useMemo(() => {
+		if (!emojiRain.active) return []
+
+		const count = 30
+		const emojisToUse = emojiRain.type === 'food' ? foodEmojis : natureEmojis
 
 		return Array.from({ length: count }, (_, i) => ({
 			id: i,
@@ -67,7 +59,7 @@ const ProjectTerminalWindow: React.FC<SimpleTerminalWindowProps> = ({
 			delay: Math.random() * 0.5,
 			duration: Math.random() * 1 + 2
 		}))
-	}
+	}, [emojiRain.active, emojiRain.type, foodEmojis, natureEmojis])
 
 	return (
 		<div className="w-full bg-terminal-window border border-terminal-windowBorder rounded-md overflow-hidden mb-8 relative">
@@ -96,10 +88,9 @@ const ProjectTerminalWindow: React.FC<SimpleTerminalWindowProps> = ({
 			<div className="p-4 relative">
 				{children}
 
-				{}
 				{emojiRain.active && (
 					<div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-						{getEmojis(emojiRain.type, 30).map((emoji) => (
+						{emojis.map((emoji) => (
 							<div
 								key={`emoji-${emoji.id}`}
 								className="absolute emoji-rain"
@@ -120,4 +111,4 @@ const ProjectTerminalWindow: React.FC<SimpleTerminalWindowProps> = ({
 	)
 }
 
-export default ProjectTerminalWindow
+export default memo(ProjectTerminalWindow)

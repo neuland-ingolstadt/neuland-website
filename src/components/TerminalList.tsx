@@ -48,7 +48,7 @@ const TerminalListItem: React.FC<TerminalListItemProps> = ({
 }
 
 interface TerminalListProps {
-	children: React.ReactNode[]
+	children: React.ReactNode
 	baseDelay?: number
 }
 

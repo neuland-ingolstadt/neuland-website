@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import type React from 'react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-const MAX_TOGGLE_ATTEMPTS = 4
+const MAX_TOGGLE_ATTEMPTS = 3
 
 const SettingsLinks: React.FC = () => {
 	const { trackEvent } = useAptabase()
@@ -58,9 +58,10 @@ const SettingsLinks: React.FC = () => {
 						href="https://github.com/neuland-ingolstadt/neuland-website"
 						rel="noreferrer noopener"
 						target="_blank"
-						className="!text-terminal-text"
+						className="!text-terminal-text group"
 					>
-						$ <span className="text-terminal-cyan">git clone</span>{' '}
+						<span className="group-hover:animate-cyberpunk">$</span>{' '}
+						<span className="text-terminal-cyan">git clone</span>{' '}
 						neuland-website
 						<span className="ml-1 text-terminal-yellow">✨</span>
 					</a>

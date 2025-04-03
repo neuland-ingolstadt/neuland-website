@@ -8,6 +8,7 @@ import {
 import { motion } from 'framer-motion'
 import { ChevronRight, Code, ExternalLink } from 'lucide-react'
 import type React from 'react'
+import { memo, useCallback } from 'react'
 
 export interface ProjectLink {
 	label: string
@@ -31,6 +32,10 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
+	const handleLinkClick = useCallback((e: React.MouseEvent) => {
+		e.stopPropagation()
+	}, [])
+
 	return (
 		<motion.div
 			whileHover={{ scale: 1.03 }}
@@ -57,12 +62,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 					</p>
 
 					{project.tags && project.tags.length > 0 && (
-						<div className="flex flex-wrap gap-1 mb-3">
+						<div className="flex flex-wrap gap-1 mb-3 mt-1">
 							{project.tags.map((tag, index) => (
 								<span
-									// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-									key={tag + index}
-									className="text-xs px-2 py-1 rounded-sm bg-terminal-text bg-opacity-30 text-terminal-text"
+									key={index}
+									className="text-xs px-2 py-1 rounded-sm bg-terminal-text/20 text-terminal-text"
 								>
 									{tag}
 								</span>
@@ -79,7 +83,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 								target="_blank"
 								rel="noreferrer noopener"
 								className="text-terminal-cyan flex items-center hover:text-terminal-highlight transition-colors"
-								onClick={(e) => e.stopPropagation()}
+								onClick={handleLinkClick}
 							>
 								<ExternalLink size={12} className="mr-1" />
 								{link.label}
@@ -99,7 +103,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 					</motion.div>
 				</CardFooter>
 
-				{}
 				<div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 rounded-xl">
 					<div className="absolute inset-0 border border-terminal-cyan shadow-[0_0_10px_rgba(51,195,240,0.3)] rounded-xl" />
 				</div>
@@ -108,4 +111,4 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 	)
 }
 
-export default ProjectCard
+export default memo(ProjectCard)

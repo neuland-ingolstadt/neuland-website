@@ -1,4 +1,4 @@
-import type React from 'react'
+import React from 'react'
 
 interface StickyNoteProps {
 	message: string
@@ -16,10 +16,10 @@ const StickyNote: React.FC<StickyNoteProps> = ({
 	return (
 		<div
 			className="group absolute 
-			sm:top-10 sm:-right-4 sm:rotate-6
+			sm:-top-0 sm:-right-4 sm:rotate-6
 			bottom-[-30px] right-0 rotate-3
 			z-10 pointer-events-auto 
-			w-[130px] h-[120px] 
+			w-[120px] h-[110px] 
 			bg-[#ffe44a] shadow-md rounded-sm overflow-hidden"
 		>
 			<div className="absolute -bottom-4 -right-4 w-12 h-12 bg-white/30 shadow-inner transform rotate-45" />
@@ -35,4 +35,4 @@ const StickyNote: React.FC<StickyNoteProps> = ({
 	)
 }
 
-export default StickyNote
+export default React.memo(StickyNote)

@@ -27,7 +27,7 @@
 		],
 		"tags": ["React Native", "Expo", "Mobile"],
 		"longDescription": "Neuland Next bietet als inoffizielle Campus-App für die THI eine moderne und benutzerfreundliche Oberfläche für Studierende, um den Studienalltag zu erleichtern.",
-		"imageUrl": "/assets/neuland_next_screenshot.png",
+		"imageUrl": "/assets/neuland-next/next_1.png",
 		"additionalInfo": "Die App wurde mit React Native und Expo entwickelt und ist sowohl im App Store als auch im Play Store verfügbar."
 	},
 	{
@@ -41,7 +41,7 @@
 				"url": "https://github.com/neuland-ingolstadt/orientierungsphase"
 			}
 		],
-		"imageUrl": "/assets/ersti_kit.png",
+		"imageUrl": "/assets/ersti/image.png",
 		"tags": ["Next.js", "Web", "StudVer"],
 		"longDescription": "Das Ersti-Hilfe-Kit ist eine Webseite speziell für Erstsemester an der THI. Hier finden neue Studierende alle wichtigen Informationen zum Studienstart, zur Orientierung auf dem Campus und in der Stadt.",
 		"additionalInfo": "Das Projekt wurde mit Next.js umgesetzt, mit einem Fokus auf Benutzerfreundlichkeit und ansprechendes Design."
@@ -56,8 +56,8 @@
 			{ "label": "Neuland CTF", "url": "https://ctf.neuland-ingolstadt.de" }
 		],
 		"tags": ["Cybersecurity", "CTF", "Hacking", "Wettbewerbe"],
-		"longDescription": "Unser CTF-Team nimmt regelmäßig an Capture-the-Flag-Wettbewerben teil, bei denen es darum geht, IT-Sicherheitsprobleme zu lösen und \"Flaggen\" zu erobern. Diese Wettbewerbe sind eine hervorragende Möglichkeit, praktische Erfahrungen im Bereich der IT-Sicherheit zu sammeln und die eigenen Fähigkeiten weiterzuentwickeln.",
-		"additionalInfo": "Wir organisieren regelmäßig Trainings und Workshops, um neue Mitglieder in die Welt der CTFs einzuführen und gemeinsam unsere Fähigkeiten zu verbessern."
+		"longDescription": "Unser CTF-Team nimmt regelmäßig an Capture-the-Flag-Wettbewerben teil, bei denen es darum geht, IT-Sicherheitsprobleme zu lösen und \"Flaggen\" zu erobern.",
+		"additionalInfo": "Diese Wettbewerbe sind eine hervorragende Möglichkeit, praktische Erfahrungen im Bereich der IT-Sicherheit zu sammeln und die eigenen Fähigkeiten weiterzuentwickeln."
 	},
 	{
 		"id": "it-studver",

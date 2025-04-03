@@ -1,14 +1,12 @@
-import TerminalWindow from '@/components/Events/TerminalWindow'
+import TerminalEvents from '@/components/Events/TerminalEvents'
 import TerminalFooter from '@/components/Footer/TerminalFooter'
 import TerminalSection from '@/components/Layout/TerminalSection'
 import NextAppShowcase from '@/components/NextAppShowcase'
 import ProjectsShowcase from '@/components/Projects/ProjectsShowcase'
-import TerminalList from '@/components/TerminalList'
 import TerminalMembership from '@/components/TerminalMembership'
 import TerminalPartners from '@/components/TerminalPartners'
 import TypewriterText from '@/components/TypewriterText'
 import eventData from '@/data/events.json'
-import React from 'react'
 
 const Index = () => {
 	return (
@@ -22,47 +20,10 @@ const Index = () => {
 				/>
 			</div>
 
-			<TerminalSection
-				title="Aktuelle Veranstaltungen"
-				subtitle={`Events im ${eventData.semester}`}
-				headingLevel={2}
-			>
-				<div className="max-w-5xl mx-auto justify-start mt-10 ">
-					<TerminalWindow
-						title={`events.sh --semester '${eventData.semester}'`}
-						showStickyNote={true}
-					>
-						<TerminalList>
-							{eventData.events.map((event, index) => (
-								// biome-ignore lint/suspicious/noArrayIndexKey: not a problem here
-								<div key={index}>
-									<strong className=" text-terminal-highlight font-medium">
-										{event.title}
-										{event.location && (
-											<span className="text-terminal-text/60 ml-2">
-												@{event.location}
-											</span>
-										)}
-									</strong>
-									<br />
-									{event.description.split('\n').map((line, i) => (
-										// biome-ignore lint/suspicious/noArrayIndexKey: not a problem here
-										<React.Fragment key={i}>
-											{line}
-											{i < event.description.split('\n').length - 1 && <br />}
-										</React.Fragment>
-									))}
-								</div>
-							))}
-						</TerminalList>
-					</TerminalWindow>
-				</div>
-			</TerminalSection>
+			<TerminalEvents semester={eventData.semester} events={eventData.events} />
 
-			{/* Add our NextAppShowcase component */}
 			<NextAppShowcase />
 
-			{/* Replace the old TerminalList with our new ProjectsShowcase */}
 			<TerminalSection title="Auszug aus unseren Projekten" headingLevel={2}>
 				<ProjectsShowcase />
 			</TerminalSection>

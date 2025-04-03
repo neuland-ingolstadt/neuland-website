@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import type React from 'react'
-import { useEffect, useState } from 'react'
+import { memo, useCallback, useEffect, useState } from 'react'
 import TypewriterText from '../TypewriterText'
 import type { ProjectDetails } from './ProjectCard'
 import ProjectTerminalWindow from './ProjectTerminalWindow'
@@ -25,40 +25,45 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 			document.body.style.overflow = 'hidden'
 			return () => {
 				clearTimeout(timer)
-				document.body.style.overflow = 'auto'
 			}
 		}
 		setShowContent(false)
+		document.body.style.overflow = 'auto'
 	}, [isOpen])
 
-	// Close on escape key
 	useEffect(() => {
+		if (!isOpen) return
+
 		const handleEscape = (e: KeyboardEvent) => {
 			if (e.key === 'Escape') onClose()
 		}
 
 		window.addEventListener('keydown', handleEscape)
 		return () => window.removeEventListener('keydown', handleEscape)
+	}, [isOpen, onClose])
+
+	const handleBackdropClick = useCallback(() => {
+		onClose()
 	}, [onClose])
 
-	if (!project) return null
+	if (!project || !isOpen) return null
 
 	return (
 		<AnimatePresence>
 			{isOpen && (
 				<>
-					{/* Backdrop - z-40 to be below the modal but above other content */}
+					{}
 					<motion.div
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.2 }}
 						className="fixed inset-0 bg-black bg-opacity-70 z-40 bg"
-						onClick={onClose}
+						onClick={handleBackdropClick}
 						aria-hidden="true"
 					/>
 
-					{/* Modal - z-50 to be above backdrop */}
+					{}
 					<motion.div
 						initial={{ scale: 0.9, opacity: 0 }}
 						animate={{ scale: 1, opacity: 1 }}
@@ -66,14 +71,14 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 						transition={{ type: 'spring', damping: 20, stiffness: 300 }}
 						className="fixed z-50 flex flex-col items-center justify-center pointer-events-none"
 						style={{
-							top: '60px', // Space for navbar
+							top: '60px',
 							left: '0',
 							right: '0',
 							bottom: '0',
 							padding: '16px'
 						}}
 					>
-						{/* SimpleTerminalWindow with pointer-events-auto to receive clicks */}
+						{}
 						<div className="pointer-events-auto w-full max-w-4xl max-h-full overflow-auto">
 							<ProjectTerminalWindow
 								title={`projekt.sh --name="${project.title}"`}
@@ -81,18 +86,19 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 							>
 								<div className="flex flex-col h-full overflow-hidden">
 									<div className="flex flex-col md:flex-row gap-6 overflow-auto p-1">
-										{/* Left side: Image or preview - hidden on small screens */}
+										{}
 										{project.imageUrl && (
 											<div className="hidden md:block md:w-1/3 flex-shrink-0">
 												<img
 													src={project.imageUrl}
 													alt={project.title}
-													className="max-h-[70vh] rounded border border-terminal-windowBorder"
+													className="max-h-[60vh]"
+													loading="lazy"
 												/>
 											</div>
 										)}
 
-										{/* Right side: Content */}
+										{}
 										<div className="flex-1 overflow-auto">
 											<h3 className="text-xl font-bold text-terminal-cyan mb-4">
 												{project.title}
@@ -119,7 +125,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 														</div>
 													)}
 
-													{/* Tags */}
+													{}
 													{project.tags && project.tags.length > 0 && (
 														<div className="mb-6">
 															<p className="text-sm mb-2 font-mono opacity-70">
@@ -138,7 +144,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 														</div>
 													)}
 
-													{/* Links */}
+													{}
 													<div className="mt-4">
 														<p className="text-sm mb-4 font-mono opacity-70">
 															$ links --open
@@ -182,4 +188,4 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 	)
 }
 
-export default ProjectDetailModal
+export default memo(ProjectDetailModal)

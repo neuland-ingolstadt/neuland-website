@@ -1,14 +1,59 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Calendar, ForkKnife, MapPin } from 'lucide-react'
-import { useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import FeatureItem from './FeatureItem'
 import TerminalButton from './TerminalButton'
 
 const NextAppShowcase = () => {
 	const phoneRef = useRef<HTMLDivElement>(null)
+	const [activeIndex, setActiveIndex] = useState(0)
+	const screenshots = [
+		'/assets/neuland-next/next_1.png',
+		'/assets/neuland-next/next_2.png',
+		'/assets/neuland-next/next_4.png',
+		'/assets/neuland-next/next_3.png'
+	]
+
+	const rotateScreenshot = useCallback(() => {
+		setActiveIndex((prev) => (prev + 1) % screenshots.length)
+	}, [screenshots.length])
+
+	useEffect(() => {
+		const timer = setInterval(rotateScreenshot, 3500)
+		return () => clearInterval(timer)
+	}, [rotateScreenshot])
+
+	useEffect(() => {
+		screenshots.forEach((src) => {
+			const img = new Image()
+			img.src = src
+		})
+	}, [screenshots])
+
+	const imageVariants = {
+		initial: {
+			opacity: 0
+		},
+		animate: {
+			opacity: 1,
+			transition: {
+				duration: 1,
+				ease: 'easeInOut'
+			}
+		},
+		exit: {
+			opacity: 0,
+			transition: {
+				duration: 1.2,
+				ease: 'easeInOut'
+			}
+		}
+	}
 
 	return (
-		<div className="w-full overflow-hidden pt-12 pb-16 relative">
-			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-3xl max-h-96 bg-terminal-cyan/5 blur-[100px] rounded-full pointer-events-none" />
+		<div className="w-full pt-12 pb-16 relative">
+			{/* Moved the shadow outside the inner container and removed overflow-hidden */}
+			<div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 w-full h-full max-w-none bg-terminal-cyan/5 blur-[100px] rounded-full pointer-events-none" />
 
 			<div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
 				<motion.div
@@ -35,12 +80,44 @@ const NextAppShowcase = () => {
 						viewport={{ once: true }}
 						className="relative"
 					>
-						<div className="relative mx-auto w-[280px] h-[580px] rounded-[48px] overflow-hidden shadow-[0_0_40px_rgba(51,195,240,0.15)]">
-							<img
-								src="/assets/neuland_next_screenshot.png"
-								alt="Neuland Next App Screenshot"
-								className="h-full w-full object-cover"
-							/>
+						<div
+							className="relative mx-auto w-[270px] h-[560px] rounded-[48px] overflow-hidden"
+							style={{ willChange: 'transform' }}
+						>
+							<AnimatePresence mode="sync">
+								<motion.img
+									key={activeIndex}
+									src={screenshots[activeIndex]}
+									alt={`Neuland Next App Screenshot ${activeIndex + 1}`}
+									className="absolute inset-0 h-full w-full object-cover"
+									variants={imageVariants}
+									initial="initial"
+									animate="animate"
+									exit="exit"
+									style={{ willChange: 'opacity' }}
+									loading="eager"
+								/>
+							</AnimatePresence>
+						</div>
+
+						<div className="flex justify-center gap-2 mt-4">
+							{screenshots.map((_, idx) => (
+								<motion.button
+									key={idx}
+									onClick={() => setActiveIndex(idx)}
+									className="w-2 h-2 rounded-full bg-terminal-cyan/30 focus:outline-none"
+									animate={{
+										scale: activeIndex === idx ? 1.4 : 1,
+										backgroundColor:
+											activeIndex === idx
+												? 'rgba(51, 195, 240, 0.8)'
+												: 'rgba(51, 195, 240, 0.3)'
+									}}
+									whileHover={{ scale: 1.2 }}
+									transition={{ duration: 0.2 }}
+									aria-label={`Show screenshot ${idx + 1}`}
+								/>
+							))}
 						</div>
 
 						<div className="w-40 h-1 bg-gradient-to-r from-transparent via-terminal-cyan/30 to-transparent rounded mx-auto mt-5 blur-sm" />
@@ -65,65 +142,24 @@ const NextAppShowcase = () => {
 						</p>
 
 						<div className="space-y-4 mb-8">
-							<motion.div
-								initial={{ opacity: 0, x: 20 }}
-								whileInView={{ opacity: 1, x: 0 }}
-								transition={{ duration: 0.5, delay: 0.5 }}
-								viewport={{ once: true }}
-								className="flex items-start"
-							>
-								<div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-terminal-bg mr-4">
-									<Calendar className="h-5 w-5 text-terminal-cyan" />
-								</div>
-								<div>
-									<h4 className="font-medium text-terminal-cyan leading-tight mb-0">
-										Stundenplan
-									</h4>
-									<p className="text-sm opacity-80 mt-0.5">
-										Behalte deine Vorlesungen im Blick
-									</p>
-								</div>
-							</motion.div>
-
-							<motion.div
-								initial={{ opacity: 0, x: 20 }}
-								whileInView={{ opacity: 1, x: 0 }}
-								transition={{ duration: 0.5, delay: 0.6 }}
-								viewport={{ once: true }}
-								className="flex items-start"
-							>
-								<div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-terminal-bg mr-4">
-									<MapPin className="h-5 w-5 text-terminal-cyan" />
-								</div>
-								<div>
-									<h4 className="font-medium text-terminal-cyan leading-tight mb-0">
-										Raumfinder
-									</h4>
-									<p className="text-sm opacity-80 mt-0.5">
-										Finde freie Räume zum Lernen
-									</p>
-								</div>
-							</motion.div>
-
-							<motion.div
-								initial={{ opacity: 0, x: 20 }}
-								whileInView={{ opacity: 1, x: 0 }}
-								transition={{ duration: 0.5, delay: 0.7 }}
-								viewport={{ once: true }}
-								className="flex items-start"
-							>
-								<div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-terminal-bg mr-4">
-									<ForkKnife className="h-5 w-5 text-terminal-cyan" />
-								</div>
-								<div>
-									<h4 className="font-medium text-terminal-cyan leading-tight mb-0">
-										Essen
-									</h4>
-									<p className="text-sm opacity-80 mt-0.5">
-										Aktuelle Speisepläne der Mensen
-									</p>
-								</div>
-							</motion.div>
+							<FeatureItem
+								icon={<Calendar className="h-5 w-5 text-terminal-cyan" />}
+								title="Stundenplan"
+								description="Behalte deine Vorlesungen im Blick"
+								delay={0.5}
+							/>
+							<FeatureItem
+								icon={<MapPin className="h-5 w-5 text-terminal-cyan" />}
+								title="Raumfinder"
+								description="Finde freie Räume zum Lernen"
+								delay={0.6}
+							/>
+							<FeatureItem
+								icon={<ForkKnife className="h-5 w-5 text-terminal-cyan" />}
+								title="Essen"
+								description="Aktuelle Speisepläne der Mensen"
+								delay={0.7}
+							/>
 						</div>
 
 						<div className="flex items-center flex-wrap gap-4 pb-4">
