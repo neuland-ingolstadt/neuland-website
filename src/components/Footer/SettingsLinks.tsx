@@ -4,6 +4,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import type React from 'react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
+const MAX_TOGGLE_ATTEMPTS = 4
+
 const SettingsLinks: React.FC = () => {
 	const { backgroundType, toggleBackgroundType } = useBackground()
 	const [lightTogglePosition, setLightTogglePosition] = useState({ x: 0, y: 0 })
@@ -12,17 +14,27 @@ const SettingsLinks: React.FC = () => {
 	const containerRef = useRef<HTMLLIElement>(null)
 
 	const handleLightToggleClick = useCallback(() => {
-		if (toggleAttempts < 3) {
+		if (toggleAttempts < MAX_TOGGLE_ATTEMPTS) {
+			let newX: number
+			let newY: number
+			let distance: number
+			do {
+				const angle = Math.random() * Math.PI * 2
+				newX = Math.cos(angle) * 60
+				newY = Math.sin(angle) * 60
+
+				distance = Math.sqrt(
+					(newX - lightTogglePosition.x) ** 2 +
+						(newY - lightTogglePosition.y) ** 2
+				)
+			} while (distance < 30)
 			setToggleAttempts(toggleAttempts + 1)
-			const angle = Math.random() * Math.PI * 2
-			const newX = Math.cos(angle) * 60
-			const newY = Math.sin(angle) * 60
 			setLightTogglePosition({ x: newX, y: newY })
 		}
-	}, [toggleAttempts])
+	}, [toggleAttempts, lightTogglePosition])
 
 	useEffect(() => {
-		if (toggleAttempts >= 3) {
+		if (toggleAttempts >= MAX_TOGGLE_ATTEMPTS) {
 			const timer = setTimeout(() => {
 				setToggleAttempts(0)
 				setLightTogglePosition({ x: 0, y: 0 })
@@ -62,8 +74,7 @@ const SettingsLinks: React.FC = () => {
 						<span className="text-terminal-text mr-2">
 							$ <span className="text-terminal-cyan">toggle</span> light mode
 						</span>
-						{toggleAttempts < 3 && (
-							// biome-ignore lint/a11y/useKeyWithClickEvents: not needed for the easter egg
+						{toggleAttempts < MAX_TOGGLE_ATTEMPTS && (
 							<div
 								ref={lightToggleRef}
 								onClick={handleLightToggleClick}
@@ -73,6 +84,11 @@ const SettingsLinks: React.FC = () => {
 										'transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1)',
 									display: 'inline-block',
 									willChange: 'transform'
+								}}
+								onKeyDown={(e) => {
+									if (e.key === 'Enter') {
+										handleLightToggleClick()
+									}
 								}}
 							>
 								<Switch
@@ -84,7 +100,7 @@ const SettingsLinks: React.FC = () => {
 						)}
 					</div>
 					<AnimatePresence>
-						{toggleAttempts >= 3 && (
+						{toggleAttempts >= MAX_TOGGLE_ATTEMPTS && (
 							<motion.div
 								initial={{ opacity: 0, height: 0 }}
 								animate={{ opacity: 1, height: 'auto' }}
@@ -98,7 +114,9 @@ const SettingsLinks: React.FC = () => {
 									transition={{ delay: 0.2 }}
 								>
 									<span className="text-terminal-lightGreen">Error:</span> Light
-									mode rejected. Real developers embrace the darkness.
+									mode rejected.
+									<br />
+									Real developers embrace the darkness. ;)
 								</motion.div>
 							</motion.div>
 						)}

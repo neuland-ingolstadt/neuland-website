@@ -17,7 +17,7 @@ const projectsData: ProjectDetails[] = [
 		id: 'neuland-app',
 		title: 'neuland.app',
 		description:
-			'Eine moderne, web-basierte, sichere und vor allem stabile Alternative zur THI-App.',
+			'Eine web-basierte und sichere und vor allem stabile Alternative zur THI-App.',
 		links: [
 			{ label: 'Web', url: 'https://neuland.app' },
 			{
@@ -27,7 +27,7 @@ const projectsData: ProjectDetails[] = [
 		],
 		tags: ['Next.js', 'PWA', 'Web'],
 		longDescription:
-			'Die neuland.app ist eine progressive Web-App, die als Alternative zur offiziellen THI-App entwickelt wurde. Sie bietet eine übersichtliche Darstellung von Stundenplan, Noten, Prüfungsterminen und vielen weiteren Funktionen rund um den Studienalltag.',
+			'Die ist eine progressive Web-App, die als Alternative zur offiziellen THI-App entwickelt wurde. In ihr liegt der Grunstein für Neuland Ingolstadt und die Neuland Next App.',
 		additionalInfo:
 			'Das Projekt wurde als Next.js-Anwendung umgesetzt und ist mittlerweile weitesgehends von unserer Neuland Next App abgelöst worden.'
 	},
@@ -65,9 +65,9 @@ const projectsData: ProjectDetails[] = [
 		imageUrl: '/assets/ersti_kit.png',
 		tags: ['Next.js', 'Web', 'StudVer'],
 		longDescription:
-			'Das Ersti-Hilfe-Kit ist eine Webseite speziell für Erstsemester an der THI. Hier finden neue Studierende alle wichtigen Informationen zum Studienstart, zur Orientierung auf dem Campus und zu Veranstaltungen in der Studieneingangsphase',
+			'Das Ersti-Hilfe-Kit ist eine Webseite speziell für Erstsemester an der THI. Hier finden neue Studierende alle wichtigen Informationen zum Studienstart, zur Orientierung auf dem Campus und in der Stadt.',
 		additionalInfo:
-			'Das Projekt wurde mit Next.js und TailwindCSS umgesetzt und bietet eine benutzerfreundliche Oberfläche, die auf die Bedürfnisse von Erstsemestern zugeschnitten ist.'
+			'Das Projekt wurde mit Next.js umgesetzt, mit einem Fokus auf Benutzerfreundlichkeit und ansprechendes Design.'
 	},
 	{
 		id: 'ctf-team',

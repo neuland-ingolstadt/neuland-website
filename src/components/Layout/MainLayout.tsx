@@ -9,11 +9,7 @@ const MainLayout = () => {
 			<TerminalHeader />
 			<ScrollToTop />
 			<MatrixEffect />
-			<div className="pt-16">
-				{' '}
-				{/* Add padding to account for fixed navbar height */}
-				<Outlet />
-			</div>
+			<Outlet />
 		</div>
 	)
 }

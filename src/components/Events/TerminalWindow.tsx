@@ -118,7 +118,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 		setTerminalState('shutting-down')
 		setFlickerIntensity(5)
 
-		// Stage 1: Shutdown - increased from 800ms to 2000ms
+		// Stage 1: Shutdown
 		setTimeout(() => {
 			setTerminalState('off')
 			setBootText([])
@@ -151,9 +151,9 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 							800 * (index + 1)
 						)
 					})
-				}, 1000)
+				}, 2000)
 			}, 1500)
-		}, 2000)
+		}, 2500)
 	}, [])
 
 	const handleButtonClick = useCallback(
