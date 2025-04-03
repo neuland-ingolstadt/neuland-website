@@ -77,10 +77,7 @@ const NextAppShowcase = () => {
 						whileInView={{ opacity: 1, x: 0 }}
 						transition={{ duration: 0.8, delay: 0.2 }}
 						viewport={{ once: true }}
-						className="relative"
 					>
-						<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-terminal-cyan/10 blur-3xl rounded-full pointer-events-none -z-10" />
-
 						<div
 							className="relative mx-auto w-[270px] h-[560px] rounded-[48px] overflow-hidden"
 							style={{ willChange: 'transform' }}

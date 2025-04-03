@@ -16,7 +16,7 @@ const StickyNote: React.FC<StickyNoteProps> = ({
 	return (
 		<div
 			className="group absolute 
-			sm:-top-0 sm:-right-4 sm:rotate-6
+			sm:top-9 sm:-right-4 sm:rotate-6
 			bottom-[-30px] right-0 rotate-3
 			z-10 pointer-events-auto 
 			w-[120px] h-[110px] 
