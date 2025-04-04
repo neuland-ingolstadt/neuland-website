@@ -120,7 +120,7 @@ const GameOfLife: React.FC = () => {
 		width: number,
 		height: number
 	) => {
-		ctx.fillStyle = 'rgb(0, 0, 0)'
+		ctx.fillStyle = 'rgb(0, 6, 0)'
 		ctx.fillRect(0, 0, width, height)
 
 		const cellSize = cellSizeRef.current
@@ -135,7 +135,7 @@ const GameOfLife: React.FC = () => {
 			for (let j = 0; j < grid[i].length; j++) {
 				const cell = grid[i][j]
 				if (cell.opacity > 0) {
-					ctx.fillStyle = `rgba(0, 99, 0, ${cell.opacity})`
+					ctx.fillStyle = `rgba(0, 99, 0, ${cell.opacity * 0.15})`
 					ctx.fillRect(
 						j * cellSize + 2,
 						i * cellSize + 2,
@@ -250,7 +250,6 @@ const GameOfLife: React.FC = () => {
 
 		if (!canvasRef.current) {
 			canvasRef.current = document.createElement('canvas')
-			canvasRef.current.style.filter = 'opacity(0.20)'
 			containerRef.current.appendChild(canvasRef.current)
 		}
 
@@ -266,7 +265,7 @@ const GameOfLife: React.FC = () => {
 		canvas.style.height = `${window.innerHeight}px`
 		ctx.scale(pixelRatio, pixelRatio)
 
-		cellSizeRef.current = window.innerWidth < 768 ? 16 : 20
+		cellSizeRef.current = window.innerWidth < 768 ? 24 : 20
 		gridRef.current = initializeGrid(window.innerWidth, window.innerHeight)
 		isRunningRef.current = true
 

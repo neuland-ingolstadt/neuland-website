@@ -78,17 +78,15 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 							}}
 						>
 							{selectedEventIndex !== null ? (
-								<div className="h-full flex flex-col overflow-hidden">
-									<div className="mb-2">
-										<strong className="text-terminal-highlight font-medium">
-											{events[selectedEventIndex].title}
-											{events[selectedEventIndex].location && (
-												<span className="text-terminal-text/60 ml-2">
-													@{events[selectedEventIndex].location}
-												</span>
-											)}
-										</strong>
-									</div>
+								<div className="h-full flex flex-col overflow-hidden ml-1 pt-1">
+									<strong className="text-terminal-highlight font-medium">
+										{events[selectedEventIndex].title}
+										{events[selectedEventIndex].location && (
+											<span className="text-terminal-text/60 ml-2">
+												@{events[selectedEventIndex].location}
+											</span>
+										)}
+									</strong>
 
 									<div className="mb-5 text-terminal-text/80">
 										{events[selectedEventIndex].date
@@ -106,7 +104,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 									<strong className="text-terminal-highlight font-medium">
 										Details
 									</strong>
-									<div className="mt-3 overflow-y-auto">
+									<div className="mt-0 overflow-y-auto">
 										<TerminalTypeWriter
 											text={events[selectedEventIndex].description}
 											isActive={true}
