@@ -1,3 +1,4 @@
+import { fetchDocument } from '@/api/documents'
 import TerminalFooter from '@/components/Footer/TerminalFooter'
 import FetchErrorMessage from '@/components/Markdown/FetchErrorMessage'
 import MarkdownContent from '@/components/Markdown/MarkdownContent'
@@ -8,29 +9,17 @@ import {
 	BreadcrumbList,
 	BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
-import { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 
 const Datenschutzhinweise = () => {
-	const [markdown, setMarkdown] = useState('')
-	const [error, setError] = useState<string | null>(null)
-
-	useEffect(() => {
-		fetch('https://pad.informatik.sexy/s/Datenschutzhinweise/download')
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error(`HTTP error! Status: ${response.status}`)
-				}
-				return response.text()
-			})
-			.then((text) => setMarkdown(text))
-			.catch((error) => {
-				console.error('Error fetching Datenschutzhinweise:', error)
-				setError(
-					'Fehler beim Laden der Datenschutzhinweise. Bitte versuche es später erneut.'
-				)
-			})
-	}, [])
+	const { data, error, isLoading } = useQuery({
+		queryKey: ['datenschutzhinweise'],
+		queryFn: () =>
+			fetchDocument(
+				'https://pad.informatik.sexy/s/Datenschutzhinweise/download'
+			)
+	})
 
 	return (
 		<div className="container px-4 sm:px-6 mx-auto pt-6 relative z-10">
@@ -49,10 +38,12 @@ const Datenschutzhinweise = () => {
 					</BreadcrumbList>
 				</Breadcrumb>
 
-				{error ? (
-					<FetchErrorMessage message={error} />
+				{isLoading ? (
+					<div>Lade Datenschutzhinweise...</div>
+				) : error ? (
+					<FetchErrorMessage message="Fehler beim Laden der Datenschutzhinweise. Bitte versuche es später erneut." />
 				) : (
-					<MarkdownContent content={markdown} showToc />
+					<MarkdownContent content={data || ''} showToc />
 				)}
 			</div>
 
