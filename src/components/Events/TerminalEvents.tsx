@@ -2,6 +2,7 @@ import TerminalTypeWriter from '@/components/Events/TerminalTypeWriter'
 import TerminalWindow from '@/components/Events/TerminalWindow'
 import TerminalSection from '@/components/Layout/TerminalSection'
 import TerminalList from '@/components/TerminalList'
+import { cn } from '@/lib/utils'
 import { LucideArrowBigLeft } from 'lucide-react'
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 
@@ -107,7 +108,11 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 										)}
 									</div>
 
-									<strong className="text-terminal-highlight font-medium">
+									<strong
+										className={cn('text-terminal-highlight font-medium', {
+											hidden: !events[selectedEventIndex].description
+										})}
+									>
 										Details
 									</strong>
 									<div className="mt-0 overflow-y-auto">
