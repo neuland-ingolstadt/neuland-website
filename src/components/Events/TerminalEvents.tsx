@@ -12,6 +12,7 @@ interface Event {
 	location: string
 	description: string
 	rruleText?: string
+	rruleTextShort?: string
 }
 
 interface TerminalEventsProps {
@@ -165,9 +166,9 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 													{i < event.date.split('\n').length - 1 && <br />}
 												</React.Fragment>
 											))}
-											{event.rruleText && (
+											{event.rruleTextShort && (
 												<div className="text-terminal-text/60 text-sm first-letter:uppercase">
-													{event.rruleText}
+													{event.rruleTextShort}
 												</div>
 											)}
 										</div>

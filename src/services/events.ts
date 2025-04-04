@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { rrulestr } from 'rrule'
+import { Frequency, rrulestr } from 'rrule' // Import Frequency enum
 import 'moment/locale/de'
 import type { Language } from 'rrule/dist/esm/nlp/i18n'
 
@@ -27,6 +27,7 @@ interface Event {
 	location: string
 	description: string
 	rruleText?: string
+	rruleTextShort?: string
 	nextOccurrence: moment.Moment
 }
 
@@ -187,18 +188,41 @@ export const fetchEvents = async (): Promise<{
 			let nextOccurrence = startDate
 
 			let rruleText = undefined
+			let rruleTextShort = undefined
 			if (event.rrule) {
 				try {
 					const rule = rrulestr(event.rrule)
 
 					rruleText = rule.toText(getText, GERMAN)
 
+					if (rule.options.freq !== undefined) {
+						const freqMap = {
+							[Frequency.YEARLY]: 'Jährlich',
+							[Frequency.MONTHLY]: 'Monatlich',
+							[Frequency.WEEKLY]: 'Wöchentlich',
+							[Frequency.DAILY]: 'Täglich'
+						}
+
+						rruleTextShort = freqMap[rule.options.freq] || ''
+
+						if (rule.options.interval && rule.options.interval > 1) {
+							rruleTextShort = `Alle ${rule.options.interval} ${
+								rule.options.freq === Frequency.YEARLY
+									? 'Jahre'
+									: rule.options.freq === Frequency.MONTHLY
+										? 'Monate'
+										: rule.options.freq === Frequency.WEEKLY
+											? 'Wochen'
+											: 'Tage'
+							}`
+						}
+					}
+
 					if (!rruleText.includes('at ') && rule.options.dtstart) {
 						const time = moment(rule.options.dtstart).format('HH:mm')
 						rruleText += ` um ${time} Uhr`
 					}
 
-					// override startDateStr and get next occurrence of the event
 					nextOccurrence = moment(rule.after(new Date(), true))
 					if (nextOccurrence) {
 						dateStr = getDateStr(moment(nextOccurrence), event)
@@ -214,6 +238,7 @@ export const fetchEvents = async (): Promise<{
 				location: event.location || '',
 				description: event.description.de || '',
 				rruleText,
+				rruleTextShort,
 				nextOccurrence
 			}
 		}
