@@ -6,9 +6,16 @@ import ProjectsShowcase from '@/components/Projects/ProjectsShowcase'
 import TerminalMembership from '@/components/TerminalMembership'
 import TerminalPartners from '@/components/TerminalPartners'
 import TypewriterText from '@/components/TypewriterText'
-import eventData from '@/data/events.json'
+import { fetchEvents } from '@/services/events'
+import { useQuery } from '@tanstack/react-query'
 
 const Index = () => {
+	const { data: eventsData } = useQuery({
+		queryKey: ['events'],
+		queryFn: fetchEvents,
+		initialData: { semester: 'WS 23/24', events: [] }
+	})
+
 	return (
 		<div className="container px-4 sm:px-12 mx-auto pt-6 relative z-10">
 			<div className="pt-20">
@@ -20,7 +27,10 @@ const Index = () => {
 				/>
 			</div>
 
-			<TerminalEvents semester={eventData.semester} events={eventData.events} />
+			<TerminalEvents
+				semester={eventsData.semester}
+				events={eventsData.events}
+			/>
 
 			<NextAppShowcase />
 
