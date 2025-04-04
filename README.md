@@ -20,6 +20,9 @@ cd neuland-website
 
 # Install dependencies
 bun install
+
+# Run prebuild script
+bun run prebuild
 ```
 
 ### Development

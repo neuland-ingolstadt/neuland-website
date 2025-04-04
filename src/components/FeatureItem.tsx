@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 
 interface FeatureItemProps {
 	icon: JSX.Element
