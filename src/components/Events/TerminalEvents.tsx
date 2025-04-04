@@ -101,7 +101,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 												</React.Fragment>
 											))}
 										{events[selectedEventIndex].rruleText && (
-											<div className="text-terminal-text/60 text-sm">
+											<div className="text-terminal-text/60 text-sm first-letter:uppercase">
 												{events[selectedEventIndex].rruleText}
 											</div>
 										)}
@@ -161,7 +161,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 												</React.Fragment>
 											))}
 											{event.rruleText && (
-												<div className="text-terminal-text/60 text-sm">
+												<div className="text-terminal-text/60 text-sm first-letter:uppercase">
 													{event.rruleText}
 												</div>
 											)}

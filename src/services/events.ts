@@ -1,6 +1,7 @@
 import moment from 'moment'
 import { rrulestr } from 'rrule'
 import 'moment/locale/de'
+import type { Language } from 'rrule/dist/esm/nlp/i18n'
 
 interface NeulandEventResponse {
 	id: string
@@ -26,6 +27,120 @@ interface Event {
 	location: string
 	description: string
 	rruleText?: string
+	nextOccurrence: moment.Moment
+}
+
+const GERMAN: Language = {
+	dayNames: [
+		'Sonntag',
+		'Montag',
+		'Dienstag',
+		'Mittwoch',
+		'Donnerstag',
+		'Freitag',
+		'Samstag'
+	],
+	monthNames: [
+		'Januar',
+		'Februar',
+		'März',
+		'April',
+		'Mai',
+		'Juni',
+		'Juli',
+		'August',
+		'September',
+		'Oktober',
+		'November',
+		'Dezember'
+	],
+	tokens: {
+		every: /jede(n)?/i,
+		until: /bis/i,
+		day: /Tag/i,
+		days: /Tage/i,
+		week: /Woche/i,
+		weeks: /Wochen/i,
+		on: /am/i,
+		in: /im/i,
+		'on the': /am/i,
+		for: /für/i,
+		and: /und/i,
+		or: /oder/i,
+		at: /um/i,
+		last: /letzten/i,
+		'time(s)': /mal/i,
+		'(~ approximate)': /(~ ungefähr)/i,
+		times: /mal/i,
+		time: /mal/i,
+		minutes: /Minuten/i,
+		hours: /Stunden/i,
+		weekdays: /Wochentage/i,
+		weekday: /Wochentag/i,
+		months: /Monate/i,
+		month: /Monat/i,
+		years: /Jahre/i,
+		year: /Jahr/i
+	}
+}
+
+const germanStrings = {
+	every: 'jede(n)',
+	until: 'bis',
+	day: 'Tag',
+	days: 'Tage',
+	week: 'Woche',
+	weeks: 'Wochen',
+	on: 'am',
+	in: 'im',
+	'on the': 'am',
+	for: 'für',
+	and: 'und',
+	or: 'oder',
+	at: 'um',
+	last: 'letzten',
+	'time(s)': 'mal',
+	'(~ approximate)': '(~ ungefähr)',
+	times: 'mal',
+	time: 'mal',
+	minutes: 'Minuten',
+	hours: 'Stunden',
+	weekdays: 'Wochentage',
+	weekday: 'Wochentag',
+	months: 'Monate',
+	month: 'Monat',
+	years: 'Jahre',
+	year: 'Jahr',
+	first: 'ersten',
+	second: 'zweiten',
+	third: 'dritten',
+	fourth: 'vierten',
+	fifth: 'fünften',
+	nth: 'ten',
+	st: '.',
+	nd: '.',
+	rd: '.',
+	th: '.'
+}
+
+const getText = (id: string): string => {
+	return germanStrings[id] || id
+}
+
+function getDateStr(startDate: moment.Moment, event: NeulandEventResponse) {
+	const formattedStart = startDate.format('DD.MM.YYYY, HH:mm')
+
+	let dateStr = formattedStart
+	if (event.endTime) {
+		const endDate = moment(event.endTime)
+		if (startDate.isSame(endDate, 'day')) {
+			dateStr += ` - ${endDate.format('HH:mm')}`
+		} else {
+			dateStr += ` - ${endDate.format('DD.MM.YYYY, HH:mm')}`
+		}
+	}
+
+	return dateStr
 }
 
 export const fetchEvents = async (): Promise<{
@@ -68,30 +183,25 @@ export const fetchEvents = async (): Promise<{
 			moment.locale('de')
 
 			const startDate = moment(event.startTime)
-			const formattedStart = startDate.format('DD.MM.YYYY, HH:mm')
-
-			let dateStr = formattedStart
-			if (event.endTime) {
-				const endDate = moment(event.endTime)
-				if (startDate.isSame(endDate, 'day')) {
-					dateStr += ` - ${endDate.format('HH:mm')}`
-				} else {
-					dateStr += ` - ${endDate.format('DD.MM.YYYY, HH:mm')}`
-				}
-			}
+			let dateStr = getDateStr(startDate, event)
+			let nextOccurrence = startDate
 
 			let rruleText = undefined
 			if (event.rrule) {
 				try {
 					const rule = rrulestr(event.rrule)
 
-					rruleText = rule.toText()
-
-					rruleText = rruleText.charAt(0).toUpperCase() + rruleText.slice(1)
+					rruleText = rule.toText(getText, GERMAN)
 
 					if (!rruleText.includes('at ') && rule.options.dtstart) {
 						const time = moment(rule.options.dtstart).format('HH:mm')
-						rruleText += ` at ${time}`
+						rruleText += ` um ${time} Uhr`
+					}
+
+					// override startDateStr and get next occurrence of the event
+					nextOccurrence = moment(rule.after(new Date(), true))
+					if (nextOccurrence) {
+						dateStr = getDateStr(moment(nextOccurrence), event)
 					}
 				} catch (error) {
 					console.error('Error parsing rrule:', error)
@@ -103,7 +213,8 @@ export const fetchEvents = async (): Promise<{
 				date: dateStr,
 				location: event.location || '',
 				description: event.description.de || '',
-				rruleText
+				rruleText,
+				nextOccurrence
 			}
 		}
 	)
@@ -121,6 +232,17 @@ export const fetchEvents = async (): Promise<{
 
 	return {
 		semester,
-		events
+		events: events.sort((a, b) => {
+			const dateA = moment(a.nextOccurrence)
+			const dateB = moment(b.nextOccurrence)
+
+			if (dateA.isBefore(dateB)) {
+				return -1
+			}
+			if (dateA.isAfter(dateB)) {
+				return 1
+			}
+			return 0
+		})
 	}
 }
