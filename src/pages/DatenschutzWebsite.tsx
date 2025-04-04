@@ -9,9 +9,9 @@ import {
 } from '@/components/ui/breadcrumb'
 import { Link } from 'react-router-dom'
 
-import datenschutzordnungContent from '@/static/content/datenschutzordnung.md?raw'
+import datenschutzContent from '@/static/content/datenschutz.md?raw'
 
-const Datenschutzordnung = () => {
+const DatenschutzWebsite = () => {
 	return (
 		<div className="container px-4 sm:px-6 mx-auto pt-6 relative z-10">
 			<div className="pt-20">
@@ -24,16 +24,17 @@ const Datenschutzordnung = () => {
 						</BreadcrumbItem>
 						<BreadcrumbSeparator />
 						<BreadcrumbItem>
-							<BreadcrumbLink>Datenschutzordnung</BreadcrumbLink>
+							<BreadcrumbLink>Datenschutzerklärung</BreadcrumbLink>
 						</BreadcrumbItem>
 					</BreadcrumbList>
 				</Breadcrumb>
 
-				<MarkdownContent content={datenschutzordnungContent} showToc />
+				<MarkdownContent content={datenschutzContent} showToc />
 			</div>
+
 			<TerminalFooter />
 		</div>
 	)
 }
 
-export default Datenschutzordnung
+export default DatenschutzWebsite
