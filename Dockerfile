@@ -1,4 +1,4 @@
-FROM oven/bun:1 as builder
+FROM oven/bun:1 AS builder
 WORKDIR /app
 
 # Define build argument for Aptabase key
@@ -12,9 +12,12 @@ RUN bun install --frozen-lockfile
 
 COPY . .
 
+RUN bun run prebuild
+
 RUN bun run build
 
 FROM node:23-alpine
+
 WORKDIR /app
 
 COPY --from=builder /app/dist /app/dist

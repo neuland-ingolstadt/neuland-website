@@ -24,6 +24,12 @@ const TerminalLinks: React.FC = () => {
 					</Link>
 				</li>
 				<li className="mb-2">
+					<Link to="/datenschutz" className="!text-terminal-text group">
+						<span className="group-hover:animate-cyberpunk">$</span>{' '}
+						<span className="text-terminal-cyan">cat</span> Datenschutzerklärung
+					</Link>
+				</li>
+				<li className="mb-2">
 					<Link to="/impressum" className="!text-terminal-text group">
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
 						<span className="text-terminal-cyan">cat</span> Impressum
