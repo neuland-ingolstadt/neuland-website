@@ -10,6 +10,7 @@ interface Event {
 	date: string
 	location: string
 	description: string
+	rruleText?: string
 }
 
 interface TerminalEventsProps {
@@ -99,6 +100,11 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 															1 && <br />}
 												</React.Fragment>
 											))}
+										{events[selectedEventIndex].rruleText && (
+											<div className="text-terminal-text/60 text-sm">
+												{events[selectedEventIndex].rruleText}
+											</div>
+										)}
 									</div>
 
 									<strong className="text-terminal-highlight font-medium">
@@ -154,6 +160,11 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 													{i < event.date.split('\n').length - 1 && <br />}
 												</React.Fragment>
 											))}
+											{event.rruleText && (
+												<div className="text-terminal-text/60 text-sm">
+													{event.rruleText}
+												</div>
+											)}
 										</div>
 									))}
 								</>

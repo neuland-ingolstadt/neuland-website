@@ -24,6 +24,7 @@
 		"embla-carousel-react": "^8.5.2",
 		"framer-motion": "12.6.3",
 		"lucide-react": "0.487.0",
+		"moment": "^2.30.1",
 		"next-themes": "^0.3.0",
 		"react": "19.1.0",
 		"react-dom": "19.1.0",
@@ -32,6 +33,7 @@
 		"rehype-format": "^5.0.1",
 		"rehype-stringify": "^10.0.1",
 		"remark-gfm": "^4.0.1",
+		"rrule": "^2.8.1",
 		"sonner": "^1.7.4",
 		"tailwind-merge": "^2.6.0",
 		"tailwindcss-animate": "^1.0.7"

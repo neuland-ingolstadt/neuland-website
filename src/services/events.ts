@@ -1,3 +1,7 @@
+import moment from 'moment'
+import { rrulestr } from 'rrule'
+import 'moment/locale/de'
+
 interface NeulandEventResponse {
 	id: string
 	location: string
@@ -21,6 +25,7 @@ interface Event {
 	date: string
 	location: string
 	description: string
+	rruleText?: string
 }
 
 export const fetchEvents = async (): Promise<{
@@ -58,33 +63,51 @@ export const fetchEvents = async (): Promise<{
 	})
 
 	const { data } = await response.json()
-
-	// Transform API response to match expected format
 	const events = data.neulandEvents.map(
 		(event: NeulandEventResponse): Event => {
-			// Format date from startTime
-			const date = new Date(event.startTime)
-			const formattedDate = date.toLocaleDateString('de-DE', {
-				day: '2-digit',
-				month: '2-digit',
-				year: 'numeric'
-			})
+			moment.locale('de')
 
-			const formattedTime = date.toLocaleTimeString('de-DE', {
-				hour: '2-digit',
-				minute: '2-digit'
-			})
+			const startDate = moment(event.startTime)
+			const formattedStart = startDate.format('DD.MM.YYYY, HH:mm')
+
+			let dateStr = formattedStart
+			if (event.endTime) {
+				const endDate = moment(event.endTime)
+				if (startDate.isSame(endDate, 'day')) {
+					dateStr += ` - ${endDate.format('HH:mm')}`
+				} else {
+					dateStr += ` - ${endDate.format('DD.MM.YYYY, HH:mm')}`
+				}
+			}
+
+			let rruleText = undefined
+			if (event.rrule) {
+				try {
+					const rule = rrulestr(event.rrule)
+
+					rruleText = rule.toText()
+
+					rruleText = rruleText.charAt(0).toUpperCase() + rruleText.slice(1)
+
+					if (!rruleText.includes('at ') && rule.options.dtstart) {
+						const time = moment(rule.options.dtstart).format('HH:mm')
+						rruleText += ` at ${time}`
+					}
+				} catch (error) {
+					console.error('Error parsing rrule:', error)
+				}
+			}
 
 			return {
 				title: event.title.de,
-				date: `${formattedDate}, ${formattedTime}`,
+				date: dateStr,
 				location: event.location || '',
-				description: event.description.de || ''
+				description: event.description.de || '',
+				rruleText
 			}
 		}
 	)
 
-	// Get the current semester (simple estimation)
 	const currentMonth = new Date().getMonth() + 1
 	const currentYear = new Date().getFullYear()
 	const semester =
