@@ -121,75 +121,77 @@ const NextAppShowcase = () => {
 						<div className="w-40 h-1 bg-gradient-to-r from-transparent via-terminal-cyan/30 to-transparent rounded mx-auto mt-5 blur-sm" />
 					</motion.div>
 
-					<motion.div
-						initial={{ opacity: 0, x: 50 }}
-						whileInView={{ opacity: 1, x: 0 }}
-						transition={{ duration: 0.8, delay: 0.4 }}
-						viewport={{ once: true }}
-					>
-						<h3 className="text-xl mb-6 font-bold relative pl-4 border-l-2 border-terminal-cyan">
-							Unser Flaggschiff-Projekt
-						</h3>
+					<div className="overflow-x-hidden">
+						<motion.div
+							initial={{ opacity: 0, x: 50 }}
+							whileInView={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.8, delay: 0.4 }}
+							viewport={{ once: true }}
+						>
+							<h3 className="text-xl mb-6 font-bold relative pl-4 border-l-2 border-terminal-cyan">
+								Unser Flaggschiff-Projekt
+							</h3>
 
-						<p className="mb-6">
-							Die moderne Campus-App von Studierenden für Studierende der TH
-							Ingolstadt.
-							<br />
-							Neuland Next bietet alle wichtigen Funktionen für deinen
-							Studienalltag.
-						</p>
+							<p className="mb-6">
+								Die moderne Campus-App von Studierenden für Studierende der TH
+								Ingolstadt.
+								<br />
+								Neuland Next bietet alle wichtigen Funktionen für deinen
+								Studienalltag.
+							</p>
 
-						<div className="space-y-4 mb-8">
-							<FeatureItem
-								icon={<Calendar className="h-5 w-5 text-terminal-cyan" />}
-								title="Stundenplan"
-								description="Behalte deine Vorlesungen im Blick"
-								delay={0.5}
-							/>
-							<FeatureItem
-								icon={<MapPin className="h-5 w-5 text-terminal-cyan" />}
-								title="Raumfinder"
-								description="Finde freie Räume zum Lernen"
-								delay={0.6}
-							/>
-							<FeatureItem
-								icon={<ForkKnife className="h-5 w-5 text-terminal-cyan" />}
-								title="Essen"
-								description="Aktuelle Speisepläne der Mensen"
-								delay={0.7}
-							/>
-						</div>
-
-						<div className="flex items-center flex-wrap gap-4 pb-4">
-							<a
-								href="https://apps.apple.com/app/neuland-next/id1617096811"
-								rel="noreferrer noopener"
-								target="_blank"
-								className="no-underline"
-							>
-								<img
-									src="assets/app_store_badge_de.svg"
-									alt="Apple App Store"
-									className="h-12"
+							<div className="space-y-4 mb-8">
+								<FeatureItem
+									icon={<Calendar className="h-5 w-5 text-terminal-cyan" />}
+									title="Stundenplan"
+									description="Behalte deine Vorlesungen im Blick"
+									delay={0.5}
 								/>
-							</a>
-							<a
-								href="https://play.google.com/store/apps/details?id=app.neuland"
-								rel="noreferrer noopener"
-								target="_blank"
-								className="no-underline"
-							>
-								<img
-									src="assets/play_store_badge_de.svg"
-									alt="Google Play Store"
-									className="h-12"
+								<FeatureItem
+									icon={<MapPin className="h-5 w-5 text-terminal-cyan" />}
+									title="Raumfinder"
+									description="Finde freie Räume zum Lernen"
+									delay={0.6}
 								/>
-							</a>
-						</div>
-						<TerminalButton href="https://next.neuland.app">
-							Weitere Infos
-						</TerminalButton>
-					</motion.div>
+								<FeatureItem
+									icon={<ForkKnife className="h-5 w-5 text-terminal-cyan" />}
+									title="Essen"
+									description="Aktuelle Speisepläne der Mensen"
+									delay={0.7}
+								/>
+							</div>
+
+							<div className="flex items-center flex-wrap gap-4 pb-4">
+								<a
+									href="https://apps.apple.com/app/neuland-next/id1617096811"
+									rel="noreferrer noopener"
+									target="_blank"
+									className="no-underline"
+								>
+									<img
+										src="assets/app_store_badge_de.svg"
+										alt="Apple App Store"
+										className="h-12"
+									/>
+								</a>
+								<a
+									href="https://play.google.com/store/apps/details?id=app.neuland"
+									rel="noreferrer noopener"
+									target="_blank"
+									className="no-underline"
+								>
+									<img
+										src="assets/play_store_badge_de.svg"
+										alt="Google Play Store"
+										className="h-12"
+									/>
+								</a>
+							</div>
+							<TerminalButton href="https://next.neuland.app">
+								Weitere Infos
+							</TerminalButton>
+						</motion.div>
+					</div>
 				</div>
 			</div>
 		</div>

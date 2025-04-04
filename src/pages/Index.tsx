@@ -29,14 +29,16 @@ const Index = () => {
 			</TerminalSection>
 			<TerminalSection title="Über uns" headingLevel={2}>
 				<p>
-					Wir bieten den Studierenden eine Plattform, um sich auszutauschen, um
-					Projekte zu realisieren und um ihr Wissen zu erweitern.
+					Wir bieten den Studierenden eine <strong>Plattform</strong>, um sich
+					auszutauschen, um <strong>Projekte</strong> zu realisieren und um ihr{' '}
+					<strong>Wissen</strong> zu erweitern.
 					<br />
-					Gemeinsam entwickeln wir Projekte für die Studierenden, nehmen an
-					Wettbewerben teil und führen selbst Veranstaltungen rund um die
-					Informatik durch.
+					Gemeinsam entwickeln wir <strong>Projekte</strong> für die
+					Studierenden, nehmen an <strong>Wettbewerben</strong> teil und führen
+					selbst <strong>Veranstaltungen</strong> rund um die Informatik durch.
 					<br />
-					Und das ganz unabhängig von der Fakultät oder dem Studiengang.
+					Und das ganz unabhängig von der <strong>Fakultät</strong> oder dem{' '}
+					<strong>Studiengang</strong>.
 				</p>
 			</TerminalSection>
 			<TerminalSection title="Mitgliedschaft" headingLevel={2}>
