@@ -1,5 +1,5 @@
 import type React from 'react'
-import { useEffect } from 'react'
+import { type JSX, useEffect } from 'react'
 import { useCallback, useRef, useState } from 'react'
 import '../../styles/animations.css'
 import { useAptabase } from '@aptabase/react'

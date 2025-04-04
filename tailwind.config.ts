@@ -19,7 +19,6 @@ export default {
 		},
 		extend: {
 			colors: {
-				// Original colors
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -63,16 +62,15 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Terminal-themed colors (less green-heavy)
 				terminal: {
 					bg: '#121212',
-					text: '#E0E0E0', // Changed from green to light gray
-					cyan: '#2eceff',
-					highlight: '#33cbf9',
+					text: '#E0E0E0',
+					cyan: 'oklch(0.73 0.1727 224.58)',
+					highlight: 'oklch(0.75 0.1727 224.58)',
 					darkGreen: '#003300',
 					muted: '#006600',
-					mediumGreen: '#34df34',
-					lightGreen: '#40ff40',
+					lightGreen: 'oklch(0.79 0.2935 142.83)',
+					mediumGreen: 'oklch(0.72 0.2837 142.83)',
 					window: '#111111',
 					windowBorder: '#333333',
 					windowTitle: '#414141'

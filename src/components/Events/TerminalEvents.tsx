@@ -108,7 +108,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 										<TerminalTypeWriter
 											text={events[selectedEventIndex].description}
 											isActive={true}
-											delay={5}
+											delay={7}
 										/>
 									</div>
 
