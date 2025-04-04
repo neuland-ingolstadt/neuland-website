@@ -149,7 +149,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 																	href={link.url}
 																	target="_blank"
 																	rel="noreferrer noopener"
-																	className="text-terminal-cyan flex items-center px-3 py-1 border border-terminal-cyan rounded-sm hover:bg-terminal-cyan hover:bg-opacity-10 transition-colors"
+																	className="text-terminal-cyan flex items-center px-3 py-1 border border-terminal-cyan rounded-sm hover:bg-terminal-cyan hover:bg-opacity-10 transition-colors hover:text-terminal-bg duration-300"
 																>
 																	<ExternalLink size={14} className="mr-2" />
 																	{link.label}
