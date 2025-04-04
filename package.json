@@ -1,5 +1,5 @@
 {
-	"name": "vite_react_shadcn_ts",
+	"name": "neuland-website",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
@@ -52,5 +52,6 @@
 		"tailwindcss": "^3.4.17",
 		"typescript": "^5.8.2",
 		"vite": "6.2.5"
-	}
+	},
+	"trustedDependencies": ["@biomejs/biome"]
 }
