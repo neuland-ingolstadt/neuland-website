@@ -1,19 +1,25 @@
 import AboutUsSection from '@/components/AboutUs/AboutUsSection'
 import TerminalEvents from '@/components/Events/TerminalEvents'
 import TerminalFooter from '@/components/Footer/TerminalFooter'
-import HeaderIntroText from '@/components/Header/HeaderIntroText'
 import TerminalSection from '@/components/Layout/TerminalSection'
 import NextAppShowcase from '@/components/NextAppShowcase'
 import ProjectsShowcase from '@/components/Projects/ProjectsShowcase'
 import TerminalMembership from '@/components/TerminalMembership'
 import TerminalPartners from '@/components/TerminalPartners'
-import eventData from '@/data/events.json'
+import TypewriterText from '@/components/TypewriterText'
 
 const Index = () => {
 	return (
 		<div className="container px-4 sm:px-12 mx-auto pt-6 relative z-10">
-			<HeaderIntroText />
-			<TerminalEvents semester={eventData.semester} events={eventData.events} />
+			<div className={'pt-20'}>
+				<TypewriterText
+					text="Der studentische Verein für alle informatikbegeisterten Studierenden der TH Ingolstadt."
+					className="text-xl mb-12"
+					delay={25}
+					preventLayoutJumps={true}
+				/>
+			</div>
+			<TerminalEvents />
 			<NextAppShowcase />
 			<TerminalSection title="Auszug aus unseren Projekten" headingLevel={2}>
 				<ProjectsShowcase />

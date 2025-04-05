@@ -14,6 +14,7 @@ interface TerminalWindowProps {
 	children: React.ReactNode
 	showStickyNote?: boolean
 	onRedButtonClick?: () => void
+	className?: string
 }
 
 const bootSequence = [
@@ -32,7 +33,8 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 	title,
 	children,
 	showStickyNote = true,
-	onRedButtonClick
+	onRedButtonClick,
+	className = ''
 }) => {
 	const { trackEvent } = useAptabase()
 	const [activeGlow, setActiveGlow] = useState<ButtonColor | null>(null)
@@ -215,7 +217,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 	return (
 		<div
 			ref={terminalRef}
-			className={`terminal-window ${activeGlow ? `terminal-glow-${activeGlow}` : ''} overflow-visible`}
+			className={`terminal-window ${activeGlow ? `terminal-glow-${activeGlow}` : ''} overflow-visible ${className}`}
 			style={{
 				height: containerHeight ? `${containerHeight}px` : 'auto',
 				minHeight: containerHeight ? `${containerHeight}px` : 'auto',
