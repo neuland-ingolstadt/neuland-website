@@ -11,8 +11,13 @@ import type { TocItem } from '../types/TocTypes'
 import TocButton from './TocButton'
 import TocModal from './TocModal'
 
-interface MarkdownContentProps {
+interface MarkdownDocument {
 	content: string
+	title?: string
+}
+
+interface MarkdownContentProps {
+	content: string | MarkdownDocument[]
 	showToc?: boolean
 }
 
@@ -21,54 +26,132 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
 	showToc = false
 }) => {
 	const [isTocModalOpen, setIsTocModalOpen] = useState(false)
-	const sections = parseMarkdownSections(content)
 
-	const headerTitles: TocItem[] = []
-	const headerSection = sections.find((s) => s.title === 'header')
+	// Convert single content to array format for unified processing
+	const contentArray: MarkdownDocument[] = Array.isArray(content)
+		? content
+		: [{ content }]
 
-	if (headerSection) {
-		const h1Matches = headerSection.content.match(/^# (.+)$/m)
-		if (h1Matches?.[1]) {
-			const title = h1Matches[1].trim()
-			const id = title
-				.toLowerCase()
-				.replace(/\s+/g, '-')
-				.replace(/[^a-z0-9-]/g, '')
-			headerTitles.push({
-				title,
-				id,
-				level: 1
-			})
+	// Process all markdown documents
+	const allSections = contentArray.flatMap((doc, docIndex) => {
+		const sections = parseMarkdownSections(doc.content)
+		// Add document index to section IDs to avoid conflicts
+		return sections.map((section) => ({
+			...section,
+			docIndex,
+			docTitle: doc.title
+		}))
+	})
+
+	// Generate TOC items for all documents
+	const tocItems: TocItem[] = []
+
+	// Process header sections first
+	contentArray.forEach((doc, docIndex) => {
+		const sections = parseMarkdownSections(doc.content)
+		const headerSection = sections.find((s) => s.title === 'header')
+
+		if (headerSection) {
+			const h1Matches = headerSection.content.match(/^# (.+)$/m)
+			if (h1Matches?.[1]) {
+				const title = h1Matches[1].trim()
+				const id = `doc-${docIndex}-${title
+					.toLowerCase()
+					.replace(/\s+/g, '-')
+					.replace(/[^a-z0-9-]/g, '')}`
+
+				tocItems.push({
+					title: doc.title ? `${doc.title}: ${title}` : title,
+					id,
+					level: 1,
+					docIndex
+				})
+			}
 		}
-	}
+	})
 
-	const regularTocItems: TocItem[] = sections
+	// Process regular sections
+	allSections
 		.filter((section) => section.title !== 'header')
-		.map((section) => {
-			const id = section.title
+		.forEach((section) => {
+			const id = `doc-${section.docIndex}-${section.title
 				.toLowerCase()
 				.replace(/\s+/g, '-')
-				.replace(/[^a-z0-9-]/g, '')
+				.replace(/[^a-z0-9-]/g, '')}`
 
 			let level = 2
 			if (section.headingLevel) {
 				level = section.headingLevel
 			}
 
-			return {
-				title: section.title,
+			const title = section.docTitle
+				? `${section.docTitle}: ${section.title}`
+				: section.title
+
+			tocItems.push({
+				title,
 				id,
-				level
-			}
+				level,
+				docIndex: section.docIndex
+			})
 		})
 
-	const tocItems: TocItem[] = [...headerTitles, ...regularTocItems]
-
-	const renderContent = (content: string) => (
+	const renderContent = (content: string, docIndex: number) => (
 		<ReactMarkdown
 			remarkPlugins={[remarkGfm]}
 			rehypePlugins={[rehypeStringify, rehypeFormat, rehypeCustomLists]}
 			components={{
+				h1: ({ children }) => {
+					const id =
+						typeof children === 'string'
+							? `doc-${docIndex}-${children
+									.toString()
+									.toLowerCase()
+									.replace(/\s+/g, '-')
+									.replace(/[^a-z0-9-]/g, '')}`
+							: undefined
+
+					return (
+						<h1 className="text-3xl font-bold mb-8 text-terminal-cyan" id={id}>
+							{children}
+						</h1>
+					)
+				},
+				h2: ({ children }) => {
+					const id =
+						typeof children === 'string'
+							? `doc-${docIndex}-${children
+									.toString()
+									.toLowerCase()
+									.replace(/\s+/g, '-')
+									.replace(/[^a-z0-9-]/g, '')}`
+							: undefined
+
+					return (
+						<h2 className="text-2xl font-bold mb-6 text-terminal-cyan" id={id}>
+							{children}
+						</h2>
+					)
+				},
+				h3: ({ children }) => {
+					const id =
+						typeof children === 'string'
+							? `doc-${docIndex}-${children
+									.toString()
+									.toLowerCase()
+									.replace(/\s+/g, '-')
+									.replace(/[^a-z0-9-]/g, '')}`
+							: undefined
+
+					return (
+						<h3
+							className="text-xl font-semibold mb-6 text-terminal-cyan"
+							id={id}
+						>
+							{children}
+						</h3>
+					)
+				},
 				ol: ({
 					node,
 					children,
@@ -109,54 +192,6 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
 					return <li className="mt-1">{children}</li>
 				},
 				p: ({ children }) => <p className="mb-6">{children}</p>,
-				h1: ({ children }) => (
-					<h1
-						className="text-3xl font-bold mb-8 text-terminal-cyan"
-						id={
-							typeof children === 'string'
-								? children
-										.toString()
-										.toLowerCase()
-										.replace(/\s+/g, '-')
-										.replace(/[^a-z0-9-]/g, '')
-								: undefined
-						}
-					>
-						{children}
-					</h1>
-				),
-				h2: ({ children }) => (
-					<h2
-						className="text-2xl font-bold mb-6 text-terminal-cyan"
-						id={
-							typeof children === 'string'
-								? children
-										.toString()
-										.toLowerCase()
-										.replace(/\s+/g, '-')
-										.replace(/[^a-z0-9-]/g, '')
-								: undefined
-						}
-					>
-						{children}
-					</h2>
-				),
-				h3: ({ children }) => (
-					<h3
-						className="text-xl font-semibold mb-6 text-terminal-cyan"
-						id={
-							typeof children === 'string'
-								? children
-										.toString()
-										.toLowerCase()
-										.replace(/\s+/g, '-')
-										.replace(/[^a-z0-9-]/g, '')
-								: undefined
-						}
-					>
-						{children}
-					</h3>
-				),
 				table: ({ children }) => (
 					<div className="overflow-x-auto">
 						<table className="min-w-[50%] mb-6 border-collapse border border-terminal-windowBorder">
@@ -204,36 +239,50 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
 				</>
 			)}
 
-			{sections.some((s) => s.title === 'header') && (
-				<div className="mb-4">
-					{renderContent(
-						sections.find((s) => s.title === 'header')?.content || ''
-					)}
-				</div>
-			)}
+			{contentArray.map((doc, docIndex) => {
+				const docSections = parseMarkdownSections(doc.content)
+				const headerSection = docSections.find((s) => s.title === 'header')
 
-			{sections
-				.filter((section) => section.title !== 'header')
-				.map((section) => {
-					const sectionId = section.title
-						.toLowerCase()
-						.replace(/\s+/g, '-')
-						.replace(/[^a-z0-9-]/g, '')
-					return (
-						<div
-							id={sectionId}
-							key={section.title}
-							className="text-terminal-text"
-						>
-							<TerminalSection
-								title={section.title}
-								headingLevel={section.headingLevel || 3}
-							>
-								{renderContent(section.content)}
-							</TerminalSection>
-						</div>
-					)
-				})}
+				return (
+					<div key={`doc-${docIndex}`} className="mb-12">
+						{doc.title && (
+							<h1 className="text-4xl font-bold mb-8 text-terminal-yellow">
+								{doc.title}
+							</h1>
+						)}
+
+						{headerSection && (
+							<div className="mb-4">
+								{renderContent(headerSection.content, docIndex)}
+							</div>
+						)}
+
+						{docSections
+							.filter((section) => section.title !== 'header')
+							.map((section) => {
+								const sectionId = `doc-${docIndex}-${section.title
+									.toLowerCase()
+									.replace(/\s+/g, '-')
+									.replace(/[^a-z0-9-]/g, '')}`
+
+								return (
+									<div
+										id={sectionId}
+										key={`${docIndex}-${section.title}`}
+										className="text-terminal-text"
+									>
+										<TerminalSection
+											title={section.title}
+											headingLevel={section.headingLevel || 3}
+										>
+											{renderContent(section.content, docIndex)}
+										</TerminalSection>
+									</div>
+								)
+							})}
+					</div>
+				)
+			})}
 		</>
 	)
 }

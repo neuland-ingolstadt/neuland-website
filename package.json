@@ -9,6 +9,7 @@
 		"build:dev": "vite build --mode development",
 		"lint": "biome check",
 		"format": "biome check --fix",
+		"format:unsafe": "biome check --fix --unsafe",
 		"preview": "vite preview",
 		"prebuild": "node scripts/fetchStaticContent.cjs"
 	},

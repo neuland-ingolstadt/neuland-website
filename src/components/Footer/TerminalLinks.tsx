@@ -14,21 +14,14 @@ const TerminalLinks: React.FC = () => {
 				<li className="mb-2">
 					<Link to="/datenschutzordnung" className="!text-terminal-text group">
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
-						<span className="text-terminal-cyan">cat</span> Datenschutzordnung
-					</Link>
-				</li>
-				<li className="mb-2">
-					<Link to="/datenschutzhinweise" className="!text-terminal-text group">
-						<span className="group-hover:animate-cyberpunk">$</span>{' '}
-						<span className="text-terminal-cyan">cat</span> Datenschutzhinweise
+						<span className="text-terminal-cyan">cat</span> Datenschutz Neuland
 					</Link>
 				</li>
 				<div className="border-t border-terminal-windowBorder my-3 mr-10" />
 				<li className="mb-2">
 					<Link to="/datenschutz" className="!text-terminal-text group">
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
-						<span className="text-terminal-cyan">cat</span> Datenschutz -
-						Website
+						<span className="text-terminal-cyan">cat</span> Datenschutz Website
 					</Link>
 				</li>
 				<li className="mb-2">

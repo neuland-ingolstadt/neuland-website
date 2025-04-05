@@ -6,9 +6,8 @@ import { AptabaseProvider } from '@aptabase/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import MainLayout from './components/Layout/MainLayout'
-import Datenschutzerklaerung from './pages/Datenschutzerklaerung'
-import Datenschutzhinweise from './pages/Datenschutzhinweise'
-import Datenschutzordnung from './pages/Datenschutzordnung'
+import DatenschutzVerein from './pages/DatenschutzVerein'
+import DatenschutzWebsite from './pages/DatenschutzWebsite'
 import Impressum from './pages/Impressum'
 import Index from './pages/Index'
 import NotFound from './pages/NotFound'
@@ -37,16 +36,10 @@ const App = () => {
 									<Route path="/satzung" element={<Satzung />} />
 									<Route
 										path="/datenschutzordnung"
-										element={<Datenschutzordnung />}
+										element={<DatenschutzVerein />}
 									/>
-									<Route
-										path="/datenschutzhinweise"
-										element={<Datenschutzhinweise />}
-									/>
-									<Route
-										path="/datenschutz"
-										element={<Datenschutzerklaerung />}
-									/>
+
+									<Route path="/datenschutz" element={<DatenschutzWebsite />} />
 									<Route path="/impressum" element={<Impressum />} />
 									{/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
 									<Route path="*" element={<NotFound />} />

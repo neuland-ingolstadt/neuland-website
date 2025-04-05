@@ -3,6 +3,8 @@ import TerminalWindow from '@/components/Events/TerminalWindow'
 import TerminalSection from '@/components/Layout/TerminalSection'
 import TerminalList from '@/components/TerminalList'
 import { cn } from '@/lib/utils'
+import { fetchEvents } from '@/services/events'
+import { useQuery } from '@tanstack/react-query'
 import { LucideArrowBigLeft } from 'lucide-react'
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 
@@ -17,13 +19,17 @@ interface Event {
 
 interface TerminalEventsProps {
 	semester: string
-	events: Event[]
+	eventsData: Event[]
 }
 
-const TerminalEvents: React.FC<TerminalEventsProps> = ({
-	semester,
-	events
-}) => {
+const TerminalEvents: React.FC<TerminalEventsProps> = () => {
+	const { data: eventsData } = useQuery({
+		queryKey: ['eventsData'],
+		queryFn: fetchEvents,
+		initialData: { semester: 'SS 25', events: [] }
+	})
+	console.log(eventsData)
+
 	const [selectedEventIndex, setSelectedEventIndex] = useState<number | null>(
 		null
 	)
@@ -56,12 +62,12 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 	return (
 		<TerminalSection
 			title="Aktuelle Veranstaltungen"
-			subtitle={`Events im ${semester}`}
+			subtitle={`Events im ${eventsData.semester}`}
 			headingLevel={2}
 		>
 			<div className="max-w-5xl mx-auto justify-start mt-10">
 				<TerminalWindow
-					title={`events.sh --semester '${semester}'`}
+					title={`eventsData.sh --semester '${eventsData.semester}'`}
 					showStickyNote={true}
 					onRedButtonClick={handleRedButtonClick}
 				>
@@ -83,42 +89,44 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 							{selectedEventIndex !== null ? (
 								<div className="h-full flex flex-col overflow-hidden ml-1 pt-1">
 									<strong className="text-terminal-highlight font-medium">
-										{events[selectedEventIndex].title}
-										{events[selectedEventIndex].location && (
+										{eventsData.events[selectedEventIndex].title}
+										{eventsData.events[selectedEventIndex].location && (
 											<span className="text-terminal-text/60 ml-2">
-												@{events[selectedEventIndex].location}
+												@{eventsData.events[selectedEventIndex].location}
 											</span>
 										)}
 									</strong>
 
 									<div className="mb-5 text-terminal-text/80">
-										{events[selectedEventIndex].date
+										{eventsData.events[selectedEventIndex].date
 											.split('\n')
 											.map((line, i) => (
 												<React.Fragment key={i}>
 													{line}
 													{i <
-														events[selectedEventIndex].date.split('\n').length -
+														eventsData.events[selectedEventIndex].date.split(
+															'\n'
+														).length -
 															1 && <br />}
 												</React.Fragment>
 											))}
-										{events[selectedEventIndex].rruleText && (
+										{eventsData.events[selectedEventIndex].rruleText && (
 											<div className="text-terminal-text/60 text-sm first-letter:uppercase">
-												{events[selectedEventIndex].rruleText}
+												{eventsData.events[selectedEventIndex].rruleText}
 											</div>
 										)}
 									</div>
 
 									<strong
 										className={cn('text-terminal-highlight font-medium', {
-											hidden: !events[selectedEventIndex].description
+											hidden: !eventsData.events[selectedEventIndex].description
 										})}
 									>
 										Details
 									</strong>
 									<div className="mt-0 overflow-y-auto">
 										<TerminalTypeWriter
-											text={events[selectedEventIndex].description}
+											text={eventsData.events[selectedEventIndex].description}
 											isActive={true}
 											delay={7}
 										/>
@@ -140,7 +148,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 								</div>
 							) : (
 								<>
-									{events.map((event, index) => (
+									{eventsData?.events?.map((event, index) => (
 										<div
 											key={index}
 											onClick={() => handleEventClick(index)}

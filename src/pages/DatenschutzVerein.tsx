@@ -10,8 +10,20 @@ import {
 import { Link } from 'react-router-dom'
 
 import datenschutzhinweiseContent from '@/static/content/datenschutzhinweise.md?raw'
+import datenschutzordnungContent from '@/static/content/datenschutzordnung.md?raw'
 
-const Datenschutzhinweise = () => {
+const DatenschutzVerein = () => {
+	const markdownContents = [
+		{
+			title: 'Datenschutzordnung',
+			content: datenschutzordnungContent
+		},
+		{
+			title: 'Datenschutzhinweise',
+			content: datenschutzhinweiseContent
+		}
+	]
+
 	return (
 		<div className="container px-4 sm:px-6 mx-auto pt-6 relative z-10">
 			<div className="pt-20">
@@ -24,12 +36,12 @@ const Datenschutzhinweise = () => {
 						</BreadcrumbItem>
 						<BreadcrumbSeparator />
 						<BreadcrumbItem>
-							<BreadcrumbLink>Datenschutzhinweise</BreadcrumbLink>
+							<BreadcrumbLink>Datenschutz</BreadcrumbLink>
 						</BreadcrumbItem>
 					</BreadcrumbList>
 				</Breadcrumb>
 
-				<MarkdownContent content={datenschutzhinweiseContent} showToc />
+				<MarkdownContent content={markdownContents} showToc />
 			</div>
 
 			<TerminalFooter />
@@ -37,4 +49,4 @@ const Datenschutzhinweise = () => {
 	)
 }
 
-export default Datenschutzhinweise
+export default DatenschutzVerein
