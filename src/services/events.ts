@@ -129,6 +129,10 @@ const getText = (id: string): string => {
 }
 
 function getDateStr(startDate: moment.Moment, event: NeulandEventResponse) {
+	if (!startDate.isValid()) {
+		return 'tbd'
+	}
+
 	const formattedStart = startDate.format('DD.MM.YYYY, HH:mm')
 
 	let dateStr = formattedStart
@@ -258,6 +262,20 @@ export const fetchEvents = async (): Promise<{
 	return {
 		semester,
 		events: events.sort((a, b) => {
+			// If either date is invalid, handle special sorting
+			const dateAValid = a.nextOccurrence.isValid()
+			const dateBValid = b.nextOccurrence.isValid()
+
+			// If both are invalid, sort by title
+			if (!dateAValid && !dateBValid) {
+				return a.title.localeCompare(b.title)
+			}
+
+			// Invalid dates should be at the end
+			if (!dateAValid) return 1
+			if (!dateBValid) return -1
+
+			// Normal date comparison for valid dates
 			const dateA = moment(a.nextOccurrence)
 			const dateB = moment(b.nextOccurrence)
 

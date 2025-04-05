@@ -74,7 +74,15 @@ const TerminalEvents: React.FC = () => {
 												.split('\n')
 												.map((line, i) => (
 													<React.Fragment key={i}>
-														{line}
+														<span
+															className={
+																line.trim().toLowerCase() === 'tbd'
+																	? 'text-terminal-text/50'
+																	: ''
+															}
+														>
+															{line}
+														</span>
 														{i <
 															eventsData.events[selectedEventIndex].date.split(
 																'\n'
@@ -143,7 +151,15 @@ const TerminalEvents: React.FC = () => {
 												<br />
 												{event.date.split('\n').map((line, i) => (
 													<React.Fragment key={i}>
-														{line}
+														<span
+															className={
+																line.trim().toLowerCase() === 'tbd'
+																	? 'text-terminal-text/50'
+																	: ''
+															}
+														>
+															{line}
+														</span>
 														{i < event.date.split('\n').length - 1 && <br />}
 													</React.Fragment>
 												))}
