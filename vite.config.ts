@@ -1,4 +1,5 @@
 import path from 'node:path'
+import ViteYaml from '@modyfi/vite-plugin-yaml'
 import react from '@vitejs/plugin-react-swc'
 import { defineConfig } from 'vite'
 
@@ -9,7 +10,7 @@ export default defineConfig(({ mode }) => ({
 		host: '::',
 		port: 8080
 	},
-	plugins: [react()].filter(Boolean),
+	plugins: [react(), ViteYaml()].filter(Boolean),
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src')

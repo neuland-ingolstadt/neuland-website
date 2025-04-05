@@ -147,12 +147,14 @@ function getDateStr(startDate: moment.Moment, event: NeulandEventResponse) {
 
 	return dateStr
 }
+const API_URL =
+	import.meta.env.VITE_API_URL ?? 'https://api.dev.neuland.app/graphql'
 
 export const fetchEvents = async (): Promise<{
 	semester: string
 	events: Event[]
 }> => {
-	const response = await fetch('https://api.dev.neuland.app/graphql', {
+	const response = await fetch(API_URL, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'

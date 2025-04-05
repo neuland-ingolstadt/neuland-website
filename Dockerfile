@@ -1,10 +1,10 @@
 FROM oven/bun:1 AS builder
 WORKDIR /app
 
-# Define build argument for Aptabase key
 ARG VITE_APTABASE_KEY
-# Make it available as an environment variable during build
+ARG VITE_API_URL
 ENV VITE_APTABASE_KEY=${VITE_APTABASE_KEY}
+ENV VITE_API_URL=${VITE_API_URL}
 
 COPY package.json bun.lockb ./
 

@@ -5,10 +5,10 @@ import {
 	CarouselNext,
 	CarouselPrevious
 } from '@/components/ui/carousel'
+import projectsData from '@/data/projects.yml'
 import { motion } from 'framer-motion'
 import type React from 'react'
 import { memo, useCallback, useMemo, useState } from 'react'
-import projectsData from '../../data/projects.json'
 import ProjectCard, { type ProjectDetails } from './ProjectCard'
 import ProjectDetailModal from './ProjectDetailModal'
 

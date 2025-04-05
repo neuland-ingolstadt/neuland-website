@@ -69,3 +69,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             VITE_APTABASE_KEY=${{ vars.VITE_APTABASE_KEY }}
+            VITE_API_URL=${{vars.VITE_API_URL}}

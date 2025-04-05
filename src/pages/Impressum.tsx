@@ -6,6 +6,7 @@ import {
 	BreadcrumbList,
 	BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
+import vorstandData from '@/data/vorstand.yml'
 import { Link } from 'react-router-dom'
 
 const Impressum = () => {
@@ -53,15 +54,17 @@ const Impressum = () => {
 					<p>
 						Vertreten durch:
 						<br />
-						<strong>Alexander Horn</strong>
-						<br />
-						<strong>Timo Weese</strong>
-						<br />
-						<strong>Michael Schubert</strong>
+						{vorstandData.vorstand.map((member, index) => (
+							<strong key={index}>
+								{member.name}
+								<br />
+							</strong>
+						))}
 					</p>
 
 					<p>
-						Inhaltlich verantwortlich: <strong>Alexander Horn</strong>
+						Inhaltlich verantwortlich:{' '}
+						<strong>{vorstandData.verantwortlicher}</strong>
 					</p>
 				</div>
 			</div>
