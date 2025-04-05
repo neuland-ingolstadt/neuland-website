@@ -58,22 +58,23 @@ const TerminalEvents: React.FC = () => {
 							{isError ? (
 								<div className="p-4 text-terminal-lightGreen">
 									<p className="text-md mb-2">
-										Oh no! Something went wrong while fetching the events.
+										Oh nein! Beim Abrufen der Events ist etwas schiefgelaufen.
 									</p>
 
 									<p className="text-sm mt-4 text-terminal-text/70">
-										Our hamsters powering the server might be taking a break.
+										Unsere Serverwartungsmannschaft macht gerade wohl
+										Kaffeepause.
 										<br />
-										Please check back later!
+										Bitte versuche es später noch einmal!
 									</p>
 								</div>
 							) : isFetching ? (
 								<div className="p-4 max-w-lg">
 									<p className="text-terminal-lightGreen animate-pulse">
-										Loading events...
+										Veranstaltungen werden geladen...
 										<br />
-										Please wait while we fetch the latest hackathons, workshops,
-										and pizza parties...
+										Bitte warte, während wir die neuesten Hackathons, Workshops
+										und Pizza-Partys abrufen...
 									</p>
 								</div>
 							) : (
@@ -191,7 +192,7 @@ const TerminalEvents: React.FC = () => {
 															{i < event.date.split('\n').length - 1 && <br />}
 														</React.Fragment>
 													))}
-													{event.rruleTextShort && (
+													{event.rruleTextShort?.length > 0 && (
 														<div className="text-terminal-text/60 text-sm first-letter:uppercase">
 															{event.rruleTextShort}
 														</div>
