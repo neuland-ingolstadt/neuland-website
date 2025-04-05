@@ -19,7 +19,7 @@
 		"title": "Neuland Next",
 		"description": "Unsere inoffizielle Campus-App für die THI, als Nachtfolger der neuland.app.",
 		"links": [
-			{ "label": "Details", "url": "https://next.neuland.app" },
+			{ "label": "Mehr", "url": "https://next.neuland.app" },
 			{
 				"label": "GitHub",
 				"url": "https://github.com/neuland-ingolstadt/neuland.app-native"
@@ -55,7 +55,7 @@
 			{ "label": "CTFtime", "url": "https://ctftime.org/team/150968" },
 			{ "label": "Neuland CTF", "url": "https://ctf.neuland-ingolstadt.de" }
 		],
-		"tags": ["Cybersecurity", "CTF", "Hacking", "Wettbewerbe"],
+		"tags": ["Cybersecurity", "Hacking"],
 		"longDescription": "Unser CTF-Team nimmt regelmäßig an Capture-the-Flag-Wettbewerben teil, bei denen es darum geht, IT-Sicherheitsprobleme zu lösen und \"Flaggen\" zu erobern.",
 		"additionalInfo": "Diese Wettbewerbe sind eine hervorragende Möglichkeit, praktische Erfahrungen im Bereich der IT-Sicherheit zu sammeln und die eigenen Fähigkeiten weiterzuentwickeln."
 	},
@@ -66,9 +66,9 @@
 		"links": [
 			{ "label": "Kontakt", "url": "mailto:info@neuland-ingolstadt.de" }
 		],
-		"tags": ["Infrastruktur", "Server", "Dienstleistung"],
-		"longDescription": "Wir stellen IT-Infrastruktur für die Studierendenvertretung und andere studentische Vereine an der THI bereit.",
-		"additionalInfo": "Wir bieten Unterstützung bei der Einrichtung von Servern, Webanwendungen und anderen IT-Diensten, um den Vereinen zu helfen, ihre Arbeit effizienter zu gestalten."
+		"tags": ["Infrastruktur", "Server"],
+		"longDescription": "Wir stehen Vereinen und Organisationen an der THI mit Rat und Tat zur Seite, wenn es um die Einrichtung und Verwaltung von IT-Infrastruktur geht.",
+		"additionalInfo": "Wir bieten Unterstützung bei der Einrichtung von Servern, Webanwendungen und anderen IT-Diensten für Vereine und Organisationen an der THI."
 	},
 	{
 		"id": "neuland-api",

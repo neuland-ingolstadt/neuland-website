@@ -67,7 +67,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
 					intervalRef.current = null
 				}
 				setIsComplete(true)
-				setTimeout(() => setShowCursor(false), 1500)
+				setTimeout(() => setShowCursor(false), 1000)
 			}
 		}, delay)
 	}

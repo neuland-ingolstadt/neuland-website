@@ -255,9 +255,12 @@ export const fetchEvents = async (): Promise<{
 					.toString()
 					.slice(2)}`
 
+	// Duplicate events two times (resulting in 3x the events)
+	const duplicatedEvents = [...events]
+
 	return {
 		semester,
-		events: events.sort((a, b) => {
+		events: duplicatedEvents.sort((a, b) => {
 			const dateA = moment(a.nextOccurrence)
 			const dateB = moment(b.nextOccurrence)
 

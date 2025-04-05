@@ -17,7 +17,6 @@ const TerminalLinks: React.FC = () => {
 						<span className="text-terminal-cyan">cat</span> Datenschutz Neuland
 					</Link>
 				</li>
-				<div className="border-t border-terminal-windowBorder my-3 mr-10" />
 				<li className="mb-2">
 					<Link to="/datenschutz" className="!text-terminal-text group">
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
