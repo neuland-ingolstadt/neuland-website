@@ -58,7 +58,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.2 }}
-						className="fixed inset-0 bg-terminal-bg/70 z-40"
+						className="fixed inset-0 bg-terminal-bg/60 backdrop-blur-sm z-40"
 						onClick={handleBackdropClick}
 						aria-hidden="true"
 					/>

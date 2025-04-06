@@ -42,7 +42,7 @@ const TocModal: React.FC<TocModalProps> = ({ sections, isOpen, onClose }) => {
 
 	return (
 		<div
-			className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+			className="fixed inset-0 z-50 flex items-center justify-center bg-terminal-bg/60 backdrop-blur-sm"
 			onClick={onClose}
 			onKeyDown={(e) => {
 				if (e.key === 'Escape') {

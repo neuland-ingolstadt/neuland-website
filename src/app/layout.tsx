@@ -33,6 +33,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="de" className="dark">
+			<head>
+				<meta name="theme-color" content="#000000" />
+			</head>
 			<body
 				className={`${overpassMono.variable} ${shantellSans.variable} font-mono antialiased`}
 			>

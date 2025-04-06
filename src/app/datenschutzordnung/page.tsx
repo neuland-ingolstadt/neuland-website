@@ -40,16 +40,7 @@ async function fetchDatenschutzContent() {
 		const ordnungContent = await ordnungResponse.text()
 		const hinweiseContent = await hinweiseResponse.text()
 
-		const markdownContents = [
-			{
-				title: 'Datenschutzordnung',
-				content: ordnungContent
-			},
-			{
-				title: 'Datenschutzhinweise',
-				content: hinweiseContent
-			}
-		]
+		const markdownContents = `${ordnungContent}\n\n${hinweiseContent}`
 
 		return { success: true, markdownContents }
 	} catch (error) {
