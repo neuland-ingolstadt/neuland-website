@@ -9,7 +9,11 @@ const TerminalPartners: React.FC = () => {
 				target="_blank"
 				rel="noreferrer noopener"
 			>
-				<img
+
+
+
+
+						<img
 					src="assets/epos_dark.svg"
 					alt="EPOS CAT GmbH"
 					className="partner-logo"

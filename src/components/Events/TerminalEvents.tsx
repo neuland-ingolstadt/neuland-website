@@ -1,3 +1,4 @@
+'use client'
 import TerminalTypeWriter from '@/components/Events/TerminalTypeWriter'
 import TerminalWindow from '@/components/Events/TerminalWindow'
 import TerminalSection from '@/components/Layout/TerminalSection'
@@ -12,14 +13,17 @@ const TerminalEvents: React.FC = () => {
 	const {
 		data: eventsData,
 		isFetching,
-		isError
+		isError,
+		error
 	} = useQuery({
 		queryKey: ['eventsData'],
 		queryFn: fetchEvents,
-		initialData: { semester: 'SS 25', events: [] }
+		retry: 2,
+		refetchOnWindowFocus: false,
+		staleTime: 5 * 60 * 1000, // 5 minutes
+		initialData: { semester: `SS ${new Date().getFullYear()}`, events: [] }
 	})
-	console.log(eventsData, isFetching, isError)
-
+	
 	const [selectedEventIndex, setSelectedEventIndex] = useState<number | null>(
 		null
 	)
@@ -40,12 +44,12 @@ const TerminalEvents: React.FC = () => {
 	return (
 		<TerminalSection
 			title="Aktuelle Veranstaltungen"
-			subtitle={`Events im ${eventsData.semester}`}
+			subtitle={`Events im ${eventsData?.semester || `SS ${new Date().getFullYear()}`}`}
 			headingLevel={2}
 		>
 			<div className="max-w-5xl mx-auto justify-start mt-10 mb-8">
 				<TerminalWindow
-					title={`eventsData.sh --semester '${eventsData.semester}'`}
+					title={`eventsData.sh --semester '${eventsData?.semester || `SS ${new Date().getFullYear()}`}'`}
 					showStickyNote={true}
 					onRedButtonClick={handleRedButtonClick}
 					className="max-h-[65vh] sm:max-h-[55vh] md:max-h-[60vh] overflow-hidden"
@@ -60,7 +64,9 @@ const TerminalEvents: React.FC = () => {
 									<p className="text-md mb-2">
 										Oh nein! Beim Abrufen der Events ist etwas schiefgelaufen.
 									</p>
-
+									<p className="text-sm text-terminal-lightGreen/60">
+										{error instanceof Error ? error.message : 'Unbekannter Fehler'}
+									</p>
 									<p className="text-sm mt-4 text-terminal-text/70">
 										Unsere Serverwartungsmannschaft macht gerade wohl
 										Kaffeepause.
@@ -75,6 +81,15 @@ const TerminalEvents: React.FC = () => {
 										<br />
 										Bitte warte, während wir die neuesten Hackathons, Workshops
 										und Pizza-Partys abrufen...
+									</p>
+								</div>
+							) : !eventsData?.events || eventsData.events.length === 0 ? (
+								<div className="p-4 text-terminal-lightGreen">
+									<p className="text-md mb-2">
+										Aktuell sind keine Veranstaltungen geplant.
+									</p>
+									<p className="text-sm mt-4 text-terminal-text/70">
+										Schau bald wieder vorbei für neue Events!
 									</p>
 								</div>
 							) : (
@@ -192,7 +207,7 @@ const TerminalEvents: React.FC = () => {
 															{i < event.date.split('\n').length - 1 && <br />}
 														</React.Fragment>
 													))}
-													{event.rruleTextShort?.length > 0 && (
+													{event.rruleTextShort && (
 														<div className="text-terminal-text/60 text-sm first-letter:uppercase">
 															{event.rruleTextShort}
 														</div>

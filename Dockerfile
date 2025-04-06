@@ -12,18 +12,22 @@ RUN bun install --frozen-lockfile
 
 COPY . .
 
-RUN bun run prebuild
-
+# Build the Next.js application
 RUN bun run build
 
-FROM node:23-alpine
-
+# Use Node.js for the production environment (Next.js works well with Node.js)
+FROM node:23-alpine AS runner
 WORKDIR /app
 
-COPY --from=builder /app/dist /app/dist
+ENV NODE_ENV production
 
-RUN npm i -g serve
+# Copy necessary files from builder stage
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
+# Expose the port Next.js will run on
 EXPOSE 3000
 
-CMD [ "serve", "-s", "dist" ]
+# Start the Next.js server
+CMD ["node", "server.js"]

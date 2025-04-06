@@ -1,3 +1,4 @@
+'use client'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Calendar, ForkKnife, MapPin } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'

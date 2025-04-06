@@ -1,3 +1,4 @@
+'use client'
 import { parseMarkdownSections } from '@/utils/markdownParser'
 import rehypeCustomLists from '@/utils/rehypeCustomLists'
 import type React from 'react'
@@ -11,7 +12,7 @@ import type { TocItem } from '../types/TocTypes'
 import TocButton from './TocButton'
 import TocModal from './TocModal'
 
-interface MarkdownDocument {
+export interface MarkdownDocument {
 	content: string
 	title?: string
 }

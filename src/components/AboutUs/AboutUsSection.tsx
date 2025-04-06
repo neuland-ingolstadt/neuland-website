@@ -1,3 +1,4 @@
+'use client'
 import TerminalSection from '@/components/Layout/TerminalSection'
 import type React from 'react'
 

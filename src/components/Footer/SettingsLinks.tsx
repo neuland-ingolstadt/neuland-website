@@ -1,3 +1,4 @@
+'use client'
 import { Switch } from '@/components/ui/switch'
 import { useBackground } from '@/contexts/BackgroundContext'
 import { useAptabase } from '@aptabase/react'

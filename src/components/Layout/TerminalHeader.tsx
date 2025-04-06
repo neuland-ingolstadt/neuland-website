@@ -1,10 +1,12 @@
+'use client'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import type React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
 
 const TerminalHeader: React.FC = () => {
 	const [scrolled, setScrolled] = useState(false)
-	const navigate = useNavigate()
+	const navigate = useRouter()
 	const isJune = new Date().getMonth() === 5
 
 	useEffect(() => {
@@ -23,7 +25,7 @@ const TerminalHeader: React.FC = () => {
 
 	const handleHomeClick = (e: React.MouseEvent) => {
 		e.preventDefault()
-		navigate('/')
+		navigate.replace('/')
 	}
 
 	return (
@@ -33,7 +35,7 @@ const TerminalHeader: React.FC = () => {
 			<div className="container px-4 sm:px-6 mx-auto flex justify-between items-center">
 				<div className="terminal-logo flex flex-col items-start">
 					<Link
-						to="/"
+						href="/"
 						className="flex items-center no-underline"
 						onClick={handleHomeClick}
 					>

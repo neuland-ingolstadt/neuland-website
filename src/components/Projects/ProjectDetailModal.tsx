@@ -1,3 +1,4 @@
+'use client'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import type React from 'react'

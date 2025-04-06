@@ -23,3 +23,5 @@ src/static/content
 *.njsproj
 *.sln
 *.sw?
+
+.next
