@@ -47,12 +47,12 @@ const TerminalEvents: React.FC = () => {
 			subtitle={`Events im ${eventsData?.semester || `SS ${new Date().getFullYear()}`}`}
 			headingLevel={2}
 		>
-			<div className="max-w-5xl mx-auto justify-start mt-10 mb-8">
+			<div className="max-w-5xl mx-auto justify-start mt-10 mb-8 relative overflow-visible">
 				<TerminalWindow
 					title={`eventsData.sh --semester '${eventsData?.semester || `SS ${new Date().getFullYear()}`}'`}
 					showStickyNote={true}
 					onRedButtonClick={handleRedButtonClick}
-					className="max-h-[65vh] sm:max-h-[55vh] md:max-h-[60vh] overflow-hidden"
+					className="max-h-[65vh] sm:max-h-[55vh] md:max-h-[60vh]"
 				>
 					<div
 						className="overflow-auto"
@@ -179,14 +179,14 @@ const TerminalEvents: React.FC = () => {
 												<div
 													key={index}
 													onClick={() => handleEventClick(index)}
-													className="cursor-pointer hover:bg-terminal-windowBorder/30 p-1 rounded transition-colors mb-2"
+													className="cursor-pointer hover:bg-terminal-window-border/30 p-1 rounded-lg transition-colors mb-2"
 													onKeyDown={(e) => {
 														if (e.key === 'Enter') {
 															handleEventClick(index)
 														}
 													}}
 												>
-													<strong className="text-terminal-highlight font-medium">
+													<strong className="text-terminal-highlight">
 														{event.title}
 														{event.location && (
 															<span className="text-terminal-text/60 ml-2">

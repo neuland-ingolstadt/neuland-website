@@ -10,6 +10,7 @@ const AboutUsSection: React.FC = () => {
 				auszutauschen, um <strong>Projekte</strong> zu realisieren und um ihr{' '}
 				<strong>Wissen</strong> zu erweitern.
 				<br />
+				<br />
 				Gemeinsam entwickeln wir <strong>Projekte</strong> für die Studierenden,
 				nehmen an <strong>Wettbewerben</strong> teil und führen selbst{' '}
 				<strong>Veranstaltungen</strong> rund um die Informatik durch.

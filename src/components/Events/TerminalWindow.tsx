@@ -217,13 +217,14 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 	return (
 		<div
 			ref={terminalRef}
-			className={`terminal-window ${activeGlow ? `terminal-glow-${activeGlow}` : ''} overflow-visible ${className}`}
+			className={`terminal-window ${activeGlow ? `terminal-glow-${activeGlow}` : ''} ${className}`}
 			style={{
 				height: containerHeight ? `${containerHeight}px` : 'auto',
 				minHeight: containerHeight ? `${containerHeight}px` : 'auto',
 				background: isTransparentBg ? 'transparent' : undefined,
 				position: 'relative',
-				border: isTransparentBg ? 'none' : undefined
+				border: isTransparentBg ? 'none' : undefined,
+				overflow: 'visible'
 			}}
 		>
 			<StickyNote
@@ -280,7 +281,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 						onButtonClick={handleButtonClick}
 						animationInProgress={animationInProgress}
 					/>
-					<div className="ml-4 flex-1 text-center text-sm opacity-80">
+					<div className="ml-4 flex-1 text-center text-sm opacity-90 font-semibold">
 						{title}
 					</div>
 				</div>

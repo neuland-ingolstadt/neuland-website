@@ -28,17 +28,13 @@
 	--color-terminal-text: #ffffff;
 	--color-terminal-cyan: oklch(0.73 0.1727 224.58);
 	--color-terminal-highlight: oklch(0.75 0.1727 224.58);
-	--color-terminal-dark-green: #003300;
+	--color-terminal-darkGreen: #003300;
 	--color-terminal-muted: #006600;
-	--color-terminal-light-green: oklch(0.79 0.2935 142.83);
-	--color-terminal-medium-green: oklch(0.72 0.2837 142.83);
+	--color-terminal-lightGreen: oklch(0.79 0.2935 142.83);
+	--color-terminal-mediumGreen: oklch(0.72 0.2837 142.83);
 	--color-terminal-window: #111111;
 	--color-terminal-window-border: #333333;
-	--color-terminal-window-title: #414141;
-
-	--radius-lg: var(--radius);
-	--radius-md: calc(var(--radius) - 2px);
-	--radius-sm: calc(var(--radius) - 4px);
+	--color-terminal-windowTitle: #414141;
 
 	--animate-cursor: cursor 1s infinite step-end;
 	--animate-typewriter: typewriter 2s steps(40) forwards;

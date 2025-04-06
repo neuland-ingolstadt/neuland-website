@@ -25,7 +25,7 @@ const FeatureItem = memo(
 					<h4 className="font-medium text-terminal-cyan leading-tight mb-0">
 						{title}
 					</h4>
-					<p className="text-sm opacity-80 mt-0.5">{description}</p>
+					<p className="text-sm opacity-90 mt-0.5">{description}</p>
 				</div>
 			</motion.div>
 		)

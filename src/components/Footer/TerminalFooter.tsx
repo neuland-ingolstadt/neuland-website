@@ -13,7 +13,7 @@ const TerminalFooter: React.FC = () => {
 				<SocialLinks />
 				<SettingsLinks />
 			</div>
-			<div className="text-center text-terminal-text/50 text-sm py-3 border-t border-terminal-windowBorder/20">
+			<div className="text-center text-terminal-text/50 text-sm pt-2 pb-8">
 				© {currentYear} Neuland Ingolstadt e.V.
 			</div>
 		</div>

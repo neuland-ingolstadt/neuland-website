@@ -61,10 +61,6 @@
 		"description": "Vereins-Team, welches an verschiedenen Capture-the-Flag-Wettbewerben teilnimmt.",
 		"links": [
 			{
-				"label": "Blog",
-				"url": "https://blog.neuland-ingolstadt.de"
-			},
-			{
 				"label": "CTFtime",
 				"url": "https://ctftime.org/team/150968"
 			},

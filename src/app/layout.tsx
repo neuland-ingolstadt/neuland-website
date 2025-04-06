@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { DM_Mono } from 'next/font/google'
+import { Noto_Sans_Mono, Shantell_Sans } from 'next/font/google'
 
 import '../styles/index.css'
 
@@ -8,10 +8,15 @@ import TerminalFooter from '@/components/Footer/TerminalFooter'
 import TerminalHeader from '@/components/Layout/TerminalHeader'
 import Providers from '@/components/Provider'
 
-const spaceMono = DM_Mono({
+const overpassMono = Noto_Sans_Mono({
 	variable: '--font-mono',
 	subsets: ['latin'],
-	weight: ['400', '500'],
+	display: 'swap'
+})
+
+const shantellSans = Shantell_Sans({
+	variable: '--font-sans',
+	subsets: ['latin'],
 	display: 'swap'
 })
 
@@ -28,7 +33,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className="dark">
-			<body className={`${spaceMono.variable} font-mono antialiased`}>
+			<body
+				className={`${overpassMono.variable} ${shantellSans.variable} font-mono antialiased`}
+			>
 				<Providers>
 					<TerminalHeader />
 					<MatrixEffect />
