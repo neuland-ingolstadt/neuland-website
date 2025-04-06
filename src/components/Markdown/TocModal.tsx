@@ -1,3 +1,4 @@
+'use client'
 import { useEffect } from 'react'
 import type { TocItem } from '../types/TocTypes'
 
@@ -49,8 +50,8 @@ const TocModal: React.FC<TocModalProps> = ({ sections, isOpen, onClose }) => {
 				}
 			}}
 		>
-			<div className="relative bg-terminal-bg border-2 border-terminal-windowBorder rounded-lg w-11/12 max-w-md max-h-[80vh] overflow-hidden">
-				<div className="p-4 bg-terminal-windowBorder flex items-center justify-between">
+			<div className="relative bg-terminal-bg border-2 border-terminal-window-border rounded-lg w-11/12 max-w-md max-h-[80vh] overflow-hidden">
+				<div className="p-4 bg-terminal-window-border flex items-center justify-between">
 					<h2 className="text-xl text-terminal-cyan">Inhaltsverzeichnis</h2>
 					<button
 						onClick={onClose}

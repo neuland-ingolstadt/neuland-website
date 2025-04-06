@@ -10,7 +10,7 @@ const SocialLinks: React.FC = () => {
 						href="https://github.com/neuland-ingolstadt/"
 						rel="noreferrer noopener"
 						target="_blank"
-						className="!text-terminal-text group"
+						className="text-terminal-text! group"
 					>
 						<span className="text-terminal-cyan transition-all duration-300 group-hover:text-white group-hover:animate-cyberpunk">
 							<GithubIcon className="inline-block" size={16} />
@@ -23,7 +23,7 @@ const SocialLinks: React.FC = () => {
 						href="https://www.linkedin.com/company/neuland-ingolstadt"
 						rel="noreferrer noopener"
 						target="_blank"
-						className="!text-terminal-text group"
+						className="text-terminal-text! group"
 					>
 						<span className="text-terminal-cyan transition-all duration-300 group-hover:text-white group-hover:animate-cyberpunk">
 							<LinkedinIcon className="inline-block" size={16} />
@@ -36,7 +36,7 @@ const SocialLinks: React.FC = () => {
 						href="https://www.instagram.com/neuland_ingolstadt/"
 						rel="noreferrer noopener"
 						target="_blank"
-						className="!text-terminal-text group"
+						className="text-terminal-text! group"
 					>
 						<span className="text-terminal-cyan transition-all duration-300 group-hover:text-white group-hover:animate-cyberpunk">
 							<InstagramIcon className="inline-block" size={16} />

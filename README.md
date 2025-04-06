@@ -2,7 +2,7 @@
 
 A stylish and modern website for the Neuland Ingolstadt e.V. association.
 
-Built with Vite and React, this website showcases the association's activities, events, and community engagement.
+Built with NextJS and React, this website showcases the association's activities, events, and community engagement.
 
 ## Getting Started
 
@@ -21,8 +21,6 @@ cd neuland-website
 # Install dependencies
 bun install
 
-# Run prebuild script
-bun run prebuild
 ```
 
 ### Development
@@ -33,21 +31,8 @@ Start the development server:
 bun run dev
 ```
 
-The site will be available at http://localhost:5173
+The site will be available at http://localhost:3000
 
-### Building
-
-For production:
-
-```bash
-bun run build
-```
-
-Preview the production build:
-
-```bash
-npm run preview
-```
 
 ## Code Quality
 

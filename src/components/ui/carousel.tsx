@@ -6,6 +6,7 @@ import * as React from 'react'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { useRef } from 'react'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -66,7 +67,7 @@ const Carousel = React.forwardRef<
 		const [canScrollPrev, setCanScrollPrev] = React.useState(false)
 		const [canScrollNext, setCanScrollNext] = React.useState(false)
 		const [userInteracted, setUserInteracted] = React.useState(false)
-		const autoplayTimeoutRef = React.useRef<NodeJS.Timeout>()
+		const autoplayTimeoutRef = useRef<NodeJS.Timeout>(null)
 
 		// Reset user interaction after delay
 		const resetUserInteraction = React.useCallback(() => {
@@ -241,7 +242,7 @@ const CarouselPrevious = React.forwardRef<
 			variant="ghost"
 			size={size}
 			className={cn(
-				'absolute h-8 w-8 rounded-full bg-terminal-bg/80 hover:bg-terminal-bg hover:text-terminal-text border border-terminal-windowBorder',
+				'absolute h-8 w-8 rounded-full bg-terminal-bg/80 hover:bg-terminal-bg hover:text-terminal-text border border-terminal-window-border',
 				orientation === 'horizontal'
 					? '-left-12 top-1/2 -translate-y-1/2'
 					: '-top-12 left-1/2 -translate-x-1/2 rotate-90',
@@ -270,7 +271,7 @@ const CarouselNext = React.forwardRef<
 			variant="ghost"
 			size={size}
 			className={cn(
-				'absolute h-8 w-8 rounded-full bg-terminal-bg/80 hover:bg-terminal-bg hover:text-terminal-text border border-terminal-windowBorder',
+				'absolute h-8 w-8 rounded-full bg-terminal-bg/80 hover:bg-terminal-bg hover:text-terminal-text border border-terminal-window-border',
 				orientation === 'horizontal'
 					? '-right-12 top-1/2 -translate-y-1/2'
 					: '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',

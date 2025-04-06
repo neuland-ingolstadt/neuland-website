@@ -11,7 +11,7 @@ const TerminalMembership = () => {
 				großartigen Community von Gleichgesinnten.
 			</p>
 
-			<div className="terminal-price-info border border-terminal-windowBorder p-4 bg-terminal-window rounded max-w-md">
+			<div className="terminal-price-info border border-terminal-window-border p-4 bg-terminal-window rounded max-w-md">
 				<div className="text-terminal-text/50 mb-2">
 					$ cat membership-fees.txt
 				</div>

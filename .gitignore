@@ -14,8 +14,7 @@ dist-ssr
 src/static/content
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+.vscode
 .idea
 .DS_Store
 *.suo
@@ -23,3 +22,6 @@ src/static/content
 *.njsproj
 *.sln
 *.sw?
+
+.next
+tsconfig.tsbuildinfo

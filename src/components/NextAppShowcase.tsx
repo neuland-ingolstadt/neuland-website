@@ -1,3 +1,4 @@
+'use client'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Calendar, ForkKnife, MapPin } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -103,7 +104,7 @@ const NextAppShowcase = () => {
 								<motion.button
 									key={idx}
 									onClick={() => setActiveIndex(idx)}
-									className="w-2 h-2 rounded-full bg-terminal-cyan/30 focus:outline-none"
+									className="w-2 h-2 rounded-full bg-terminal-cyan/30 focus:outline-hidden"
 									animate={{
 										scale: activeIndex === idx ? 1.4 : 1,
 										backgroundColor:
@@ -118,7 +119,7 @@ const NextAppShowcase = () => {
 							))}
 						</div>
 
-						<div className="w-40 h-1 bg-gradient-to-r from-transparent via-terminal-cyan/30 to-transparent rounded mx-auto mt-5 blur-sm" />
+						<div className="w-40 h-1 bg-linear-to-r from-transparent via-terminal-cyan/30 to-transparent rounded mx-auto mt-5 blur-xs" />
 					</motion.div>
 
 					<div className="overflow-x-hidden">

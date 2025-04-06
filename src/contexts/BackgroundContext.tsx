@@ -1,7 +1,8 @@
+'use client'
 import type React from 'react'
 import { createContext, useContext, useEffect, useState } from 'react'
 
-export type BackgroundType = 'matrix' | 'gameOfLife'
+export type BackgroundType = 'simple' | 'gameOfLife'
 
 interface BackgroundContextType {
 	backgroundType: BackgroundType
@@ -23,7 +24,7 @@ export const BackgroundProvider: React.FC<{ children: React.ReactNode }> = ({
 		const savedType = localStorage.getItem(
 			'backgroundType'
 		) as BackgroundType | null
-		if (savedType && (savedType === 'matrix' || savedType === 'gameOfLife')) {
+		if (savedType && (savedType === 'simple' || savedType === 'gameOfLife')) {
 			setBackgroundTypeState(savedType)
 		}
 	}, [])
@@ -35,7 +36,7 @@ export const BackgroundProvider: React.FC<{ children: React.ReactNode }> = ({
 
 	const toggleBackgroundType = () => {
 		setBackgroundTypeState((prev) => {
-			const newType = prev === 'matrix' ? 'gameOfLife' : 'matrix'
+			const newType = prev === 'simple' ? 'gameOfLife' : 'simple'
 			localStorage.setItem('backgroundType', newType)
 			return newType
 		})

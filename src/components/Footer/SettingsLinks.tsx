@@ -1,3 +1,4 @@
+'use client'
 import { Switch } from '@/components/ui/switch'
 import { useBackground } from '@/contexts/BackgroundContext'
 import { useAptabase } from '@aptabase/react'
@@ -58,7 +59,7 @@ const SettingsLinks: React.FC = () => {
 						href="https://github.com/neuland-ingolstadt/neuland-website"
 						rel="noreferrer noopener"
 						target="_blank"
-						className="!text-terminal-text group"
+						className="text-terminal-text! group"
 					>
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
 						<span className="text-terminal-cyan">git clone</span>{' '}

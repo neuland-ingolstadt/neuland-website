@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@plugin 'tailwindcss-animate';
+
+@theme {
+	--color-border: hsl(var(--border));
+	--color-input: hsl(var(--input));
+	--color-ring: hsl(var(--ring));
+	--color-background: hsl(var(--background));
+	--color-foreground: hsl(var(--foreground));
+
+	--color-primary: hsl(var(--primary));
+	--color-primary-foreground: hsl(var(--primary-foreground));
+
+	--color-secondary: hsl(var(--secondary));
+	--color-secondary-foreground: hsl(var(--secondary-foreground));
+
+	--color-destructive: hsl(var(--destructive));
+	--color-destructive-foreground: hsl(var(--destructive-foreground));
+
+	--color-muted: hsl(var(--muted));
+	--color-muted-foreground: hsl(var(--muted-foreground));
+
+	--color-accent: hsl(var(--accent));
+	--color-accent-foreground: hsl(var(--accent-foreground));
+
+	--color-terminal-bg: #000000;
+	--color-terminal-text: #ffffff;
+	--color-terminal-cyan: oklch(0.73 0.1727 224.58);
+	--color-terminal-highlight: oklch(0.75 0.1727 224.58);
+	--color-terminal-darkGreen: #003300;
+	--color-terminal-muted: #006600;
+	--color-terminal-lightGreen: oklch(0.79 0.2935 142.83);
+	--color-terminal-mediumGreen: oklch(0.72 0.2837 142.83);
+	--color-terminal-window: #111111;
+	--color-terminal-window-border: #333333;
+	--color-terminal-windowTitle: #414141;
+
+	--animate-cursor: cursor 1s infinite step-end;
+	--animate-typewriter: typewriter 2s steps(40) forwards;
+
+	--animate-cyberpunk: cyberpunk-glow 1.5s ease-in-out infinite;
+
+	--font-mono: var(--font-mono), Source Code Pro, monospace;
+
+	@keyframes cursor {
+		0%,
+		100% {
+			opacity: 1;
+		}
+
+		50% {
+			opacity: 0;
+		}
+	}
+
+	@keyframes typewriter {
+		to {
+			width: 100%;
+		}
+	}
+
+	@keyframes cyberpunk-glow {
+		0%,
+		100% {
+			filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8))
+				drop-shadow(0 0 3px rgba(46, 206, 255, 0.8));
+		}
+
+		33% {
+			filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9))
+				drop-shadow(0 0 6px rgba(46, 206, 255, 0.9));
+		}
+
+		66% {
+			filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7))
+				drop-shadow(0 0 6px rgba(46, 206, 255, 0.7));
+		}
+	}
+}
+
+@utility container {
+	margin-inline: auto;
+	padding-inline: 2rem;
+
+	@media (width >= --theme(--breakpoint-sm)) {
+		max-width: none;
+	}
+
+	@media (width >= 1400px) {
+		max-width: 1400px;
+	}
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-mono: var(--font-mono);
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
+}
+
+@layer utilities {
+	body {
+		font-family: var(--font-mono);
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+
+	body {
+		@apply bg-terminal-bg text-terminal-text font-mono;
+		position: relative;
+		overflow-x: hidden;
+		font-family: var(--font-mono);
+		background-color: #000000;
+		color: #ffffff;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-bold mb-4 text-terminal-cyan;
+		font-family: var(--font-mono);
+	}
+
+	h2 {
+		@apply text-xl sm:text-2xl relative;
+	}
+
+	p {
+		@apply mb-6;
+	}
+
+	a {
+		@apply text-terminal-cyan hover:text-terminal-highlight transition-colors duration-300 relative;
+	}
+
+	a::after {
+		content: "";
+		@apply absolute bottom-0 left-0 w-0 h-[1px] bg-terminal-highlight transition-all duration-300;
+	}
+
+	a:hover::after {
+		@apply w-full;
+	}
+
+	a.no-underline::after {
+		@apply hidden;
+	}
+
+	.terminal-window {
+		@apply bg-terminal-window border border-terminal-window-border rounded-md mb-8;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+		background-color: #000000;
+		color: #ffffff;
+	}
+}

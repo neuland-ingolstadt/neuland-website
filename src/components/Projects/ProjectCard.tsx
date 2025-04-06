@@ -47,7 +47,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 			style={{ transformOrigin: 'center' }}
 		>
 			<Card
-				className="h-full rounded-xl bg-terminal-window border-terminal-windowBorder cursor-pointer group relative overflow-hidden flex flex-col"
+				className="h-full rounded-xl bg-terminal-window border-terminal-window-border cursor-pointer group relative overflow-hidden flex flex-col"
 				onClick={onClick}
 			>
 				<CardHeader className="bg-terminal-windowTitle/50 pb-1">
@@ -56,7 +56,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 						{project.title}
 					</CardTitle>
 				</CardHeader>
-				<CardContent className="pt-4 pb-3 flex-grow overflow-auto">
+				<CardContent className="pt-4 pb-3 grow overflow-auto">
 					<p className="text-sm mb-3 text-terminal-text">
 						{project.description}
 					</p>

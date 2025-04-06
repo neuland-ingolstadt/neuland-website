@@ -1,0 +1,108 @@
+[
+	{
+		"id": "neuland-app",
+		"title": "neuland.app",
+		"description": "Eine web-basierte und sichere und vor allem stabile Alternative zur THI-App.",
+		"links": [
+			{
+				"label": "Web",
+				"url": "https://neuland.app"
+			},
+			{
+				"label": "GitHub",
+				"url": "https://github.com/neuland-ingolstadt/neuland.app"
+			}
+		],
+		"tags": ["Next.js", "PWA", "Web"],
+		"longDescription": "Die ist eine progressive Web-App, die als Alternative zur offiziellen THI-App entwickelt wurde. In ihr liegt der Grunstein für Neuland Ingolstadt und die Neuland Next App.",
+		"additionalInfo": "Das Projekt wurde als Next.js-Anwendung umgesetzt und ist mittlerweile weitesgehends von unserer Neuland Next App abgelöst worden."
+	},
+	{
+		"id": "neuland-next",
+		"title": "Neuland Next",
+		"description": "Unsere inoffizielle Campus-App für die THI, als Nachtfolger der neuland.app.",
+		"links": [
+			{
+				"label": "Mehr",
+				"url": "https://next.neuland.app"
+			},
+			{
+				"label": "GitHub",
+				"url": "https://github.com/neuland-ingolstadt/neuland.app-native"
+			}
+		],
+		"tags": ["React Native", "Expo", "Mobile"],
+		"longDescription": "Neuland Next bietet als inoffizielle Campus-App für die THI eine moderne und benutzerfreundliche Oberfläche für Studierende, um den Studienalltag zu erleichtern.",
+		"imageUrl": "/assets/neuland-next/next_1.webp",
+		"additionalInfo": "Die App wurde mit React Native und Expo entwickelt und ist sowohl im App Store als auch im Play Store verfügbar."
+	},
+	{
+		"id": "ersti-hilfe",
+		"title": "Ersti-Hilfe-Kit",
+		"description": "Dein Campus. Dein Studium. Deine Veranstaltungen. Alles auf einen Blick!",
+		"links": [
+			{
+				"label": "Web",
+				"url": "https://ersti.neuland.app/"
+			},
+			{
+				"label": "GitHub",
+				"url": "https://github.com/neuland-ingolstadt/orientierungsphase"
+			}
+		],
+		"imageUrl": "/assets/ersti/image.webp",
+		"tags": ["Next.js", "Web", "StudVer"],
+		"longDescription": "Das Ersti-Hilfe-Kit ist eine Webseite speziell für Erstsemester an der THI. Hier finden neue Studierende alle wichtigen Informationen zum Studienstart, zur Orientierung auf dem Campus und in der Stadt.",
+		"additionalInfo": "Das Projekt wurde mit Next.js umgesetzt, mit einem Fokus auf Benutzerfreundlichkeit und ansprechendes Design."
+	},
+	{
+		"id": "ctf-team",
+		"title": "CTF-Team",
+		"description": "Vereins-Team, welches an verschiedenen Capture-the-Flag-Wettbewerben teilnimmt.",
+		"links": [
+			{
+				"label": "CTFtime",
+				"url": "https://ctftime.org/team/150968"
+			},
+			{
+				"label": "Neuland CTF",
+				"url": "https://ctf.neuland-ingolstadt.de"
+			}
+		],
+		"tags": ["Cybersecurity", "Hacking"],
+		"longDescription": "Unser CTF-Team nimmt regelmäßig an Capture-the-Flag-Wettbewerben teil, bei denen es darum geht, IT-Sicherheitsprobleme zu lösen und \"Flaggen\" zu erobern.",
+		"additionalInfo": "Diese Wettbewerbe sind eine hervorragende Möglichkeit, praktische Erfahrungen im Bereich der IT-Sicherheit zu sammeln und die eigenen Fähigkeiten weiterzuentwickeln."
+	},
+	{
+		"id": "it-studver",
+		"title": "IT für StudVer & Vereine",
+		"description": "IT-Infrastruktur für die Studierendenvertretung und studentische Vereine.",
+		"links": [
+			{
+				"label": "Kontakt",
+				"url": "mailto:info@neuland-ingolstadt.de"
+			}
+		],
+		"tags": ["Infrastruktur", "Server"],
+		"longDescription": "Wir stehen Vereinen und Organisationen an der THI mit Rat und Tat zur Seite, wenn es um die Einrichtung und Verwaltung von IT-Infrastruktur geht.",
+		"additionalInfo": "Wir bieten Unterstützung bei der Einrichtung von Servern, Webanwendungen und anderen IT-Diensten für Vereine und Organisationen an der THI."
+	},
+	{
+		"id": "neuland-api",
+		"title": "Neuland API",
+		"description": "Die zentrale GraphQL-API für alle Neuland-Projekte.",
+		"links": [
+			{
+				"label": "Info",
+				"url": "https://api.neuland.app"
+			},
+			{
+				"label": "GitHub",
+				"url": "htttps://github.com/neuland-ingolstadt/neuland.app-backend"
+			}
+		],
+		"tags": ["API", "GraphQL"],
+		"longDescription": "Die Neuland API ist das Herzstück unserer THI-Projekte. Egal ob für Mensa, Campus Events oder Hochschulsport - sie ist die zentrale Anlaufstelle für alle Daten und Informationen, die unsere Anwendungen benötigen.",
+		"additionalInfo": "Die API ist in Node.js als GraphQL-Server implementiert und bietet eine flexible und leistungsstarke Schnittstelle für unsere Frontend-Anwendungen."
+	}
+]

@@ -1,19 +1,19 @@
 import { useAptabase } from '@aptabase/react'
+import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 
 const RouteTracker = () => {
-	const location = useLocation()
+	const pathname = usePathname()
 	const { trackEvent } = useAptabase()
 
 	useEffect(() => {
-		const path = location.pathname === '/' ? 'home' : location.pathname.slice(1)
+		const path = pathname === '/' ? 'home' : pathname.slice(1)
 
 		trackEvent('Route', {
 			path,
 			referrer: document.referrer || 'direct'
 		})
-	}, [location, trackEvent])
+	}, [pathname, trackEvent])
 
 	return null
 }

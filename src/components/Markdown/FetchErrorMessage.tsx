@@ -1,14 +1,25 @@
 import type React from 'react'
 
 interface FetchErrorMessageProps {
-	message: string
+	title: string
+	error?: string
 }
 
-const FetchErrorMessage: React.FC<FetchErrorMessageProps> = ({ message }) => {
+const FetchErrorMessage: React.FC<FetchErrorMessageProps> = ({
+	title,
+	error
+}) => {
 	return (
-		<div className="error-message text-red-400 border border-red-500 p-4 rounded mb-6">
-			<h2 className="text-xl mb-2">⚠️ Fehler</h2>
-			<p>{message}</p>
+		<div className="p-4 text-terminal-lightGreen border border-terminal-window-border rounded-lg bg-terminal-window">
+			<p className="text-md mb-2">
+				Oh nein! Beim Abrufen {title} ist etwas schiefgelaufen.
+			</p>
+			{error && <p className="text-sm text-terminal-lightGreen/60">{error}</p>}
+			<p className="text-sm mt-4 text-terminal-text/70">
+				Unsere Serverwartungsmannschaft macht gerade wohl Kaffeepause.
+				<br />
+				Bitte versuche es später noch einmal!
+			</p>
 		</div>
 	)
 }

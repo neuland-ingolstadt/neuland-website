@@ -62,7 +62,7 @@ const ProjectTerminalWindow: React.FC<SimpleTerminalWindowProps> = ({
 	}, [emojiRain.active, emojiRain.type, foodEmojis, natureEmojis])
 
 	return (
-		<div className="w-full bg-terminal-window border border-terminal-windowBorder rounded-md overflow-hidden relative flex flex-col max-h-[80vh]">
+		<div className="w-full bg-terminal-window border border-terminal-window-border rounded-md overflow-hidden relative flex flex-col max-h-[80vh]">
 			<div className="bg-terminal-windowTitle text-terminal-text px-4 py-2 flex items-center sticky top-0 z-10">
 				<div className="flex">
 					<TerminalActionButton

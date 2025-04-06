@@ -1,3 +1,4 @@
+'use client'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import type React from 'react'
@@ -57,7 +58,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.2 }}
-						className="fixed inset-0 bg-black bg-opacity-70 z-40 bg"
+						className="fixed inset-0 bg-terminal-bg/70 z-40"
 						onClick={handleBackdropClick}
 						aria-hidden="true"
 					/>
@@ -84,7 +85,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 								<div className="flex flex-col h-full">
 									<div className="flex flex-col md:flex-row gap-6 p-1">
 										{project.imageUrl && (
-											<div className="hidden md:block md:w-1/3 flex-shrink-0">
+											<div className="hidden md:block md:w-1/3 shrink-0">
 												<img
 													src={project.imageUrl}
 													alt={project.title}
@@ -113,7 +114,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 													</div>
 
 													{project.additionalInfo && (
-														<div className="mb-6 mt-4 border-l-2 border-terminal-windowBorder pl-4">
+														<div className="mb-6 mt-4 border-l-2 border-terminal-window-border pl-4">
 															<p className="text-sm opacity-90">
 																{project.additionalInfo}
 															</p>
@@ -129,7 +130,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 																{project.tags.map((tag) => (
 																	<span
 																		key={tag}
-																		className="text-xs px-2 py-1 rounded-sm bg-terminal-window border border-terminal-windowBorder text-terminal-cyan"
+																		className="text-xs px-2 py-1 rounded-sm bg-terminal-window border border-terminal-window-border text-terminal-cyan"
 																	>
 																		{tag}
 																	</span>
@@ -161,10 +162,10 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 											) : (
 												<div className="animate-pulse flex space-x-4">
 													<div className="flex-1 space-y-4 py-1">
-														<div className="h-4 bg-terminal-windowBorder rounded w-3/4" />
+														<div className="h-4 bg-terminal-window-border rounded w-3/4" />
 														<div className="space-y-2">
-															<div className="h-4 bg-terminal-windowBorder rounded" />
-															<div className="h-4 bg-terminal-windowBorder rounded w-5/6" />
+															<div className="h-4 bg-terminal-window-border rounded" />
+															<div className="h-4 bg-terminal-window-border rounded w-5/6" />
 														</div>
 													</div>
 												</div>

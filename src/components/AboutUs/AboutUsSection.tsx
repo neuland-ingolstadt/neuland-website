@@ -1,3 +1,4 @@
+'use client'
 import TerminalSection from '@/components/Layout/TerminalSection'
 import type React from 'react'
 
@@ -8,6 +9,7 @@ const AboutUsSection: React.FC = () => {
 				Wir bieten den Studierenden eine <strong>Plattform</strong>, um sich
 				auszutauschen, um <strong>Projekte</strong> zu realisieren und um ihr{' '}
 				<strong>Wissen</strong> zu erweitern.
+				<br />
 				<br />
 				Gemeinsam entwickeln wir <strong>Projekte</strong> für die Studierenden,
 				nehmen an <strong>Wettbewerben</strong> teil und führen selbst{' '}
