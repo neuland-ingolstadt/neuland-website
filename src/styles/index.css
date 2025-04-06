@@ -38,7 +38,7 @@
 
 	--animate-cursor: cursor 1s infinite step-end;
 	--animate-typewriter: typewriter 2s steps(40) forwards;
-	--animate-blink: blink 1s infinite;
+
 	--animate-cyberpunk: cyberpunk-glow 1.5s ease-in-out infinite;
 
 	--font-mono: var(--font-mono), Source Code Pro, monospace;
@@ -57,20 +57,6 @@
 	@keyframes typewriter {
 		to {
 			width: 100%;
-		}
-	}
-
-	@keyframes blink {
-		0% {
-			opacity: 1;
-		}
-
-		50% {
-			opacity: 0;
-		}
-
-		100% {
-			opacity: 1;
 		}
 	}
 
@@ -127,38 +113,6 @@
 	::backdrop,
 	::file-selector-button {
 		border-color: var(--color-gray-200, currentcolor);
-	}
-}
-
-@utility partner-logo {
-	@apply h-12 sm:h-16 mx-4 my-2 filter brightness-90 hover:brightness-100 transition-all duration-300;
-}
-
-@layer utilities {
-	:root {
-		--font-mono: "Source Code Pro", monospace;
-
-		/* Set dark theme values as default */
-		--background: 0 0% 0%;
-		--foreground: 0 0% 100%;
-		--card: 0 0% 3.9%;
-		--card-foreground: 0 0% 98%;
-		--popover: 0 0% 3.9%;
-		--popover-foreground: 0 0% 98%;
-		--primary: 0 0% 98%;
-		--primary-foreground: 0 0% 9%;
-		--secondary: 0 0% 14.9%;
-		--secondary-foreground: 0 0% 98%;
-		--muted: 0 0% 14.9%;
-		--muted-foreground: 0 0% 63.9%;
-		--accent: 0 0% 14.9%;
-		--accent-foreground: 0 0% 98%;
-		--destructive: 0 62.8% 30.6%;
-		--destructive-foreground: 0 0% 98%;
-		--border: 0 0% 14.9%;
-		--input: 0 0% 14.9%;
-		--ring: 0 0% 83.1%;
-		--radius: 0.5rem;
 	}
 }
 

@@ -30,7 +30,7 @@ const TerminalHeader: React.FC = () => {
 
 	return (
 		<div
-			className={`terminal-nav fixed top-0 left-0 right-0 flex justify-between items-center py-4 border-b border-terminal-windowBorder z-50 transition-all duration-200 ${scrolled ? 'bg-terminal-bg/60 backdrop-blur-md' : 'bg-terminal-bg'}`}
+			className={`terminal-nav fixed top-0 left-0 right-0 flex justify-between items-center py-4 border-b border-terminal-window-border z-50 transition-all duration-200 ${scrolled ? 'bg-terminal-bg/60 backdrop-blur-md' : 'bg-terminal-bg'}`}
 		>
 			<div className="container px-4 sm:px-6 mx-auto flex justify-between items-center">
 				<div className="terminal-logo flex flex-col items-start">

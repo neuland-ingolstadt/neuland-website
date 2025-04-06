@@ -10,7 +10,7 @@ const FetchErrorMessage: React.FC<FetchErrorMessageProps> = ({
 	error
 }) => {
 	return (
-		<div className="p-4 text-terminal-lightGreen border border-terminal-windowBorder rounded-lg bg-terminal-window">
+		<div className="p-4 text-terminal-lightGreen border border-terminal-window-border rounded-lg bg-terminal-window">
 			<p className="text-md mb-2">
 				Oh nein! Beim Abrufen {title} ist etwas schiefgelaufen.
 			</p>

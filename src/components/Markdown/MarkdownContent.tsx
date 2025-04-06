@@ -195,7 +195,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
 				p: ({ children }) => <p className="mb-6">{children}</p>,
 				table: ({ children }) => (
 					<div className="overflow-x-auto">
-						<table className="min-w-[50%] mb-6 border-collapse border border-terminal-windowBorder">
+						<table className="min-w-[50%] mb-6 border-collapse border border-terminal-window-border">
 							{children}
 						</table>
 					</div>
@@ -209,15 +209,15 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
 					<tbody className="bg-terminal-bg">{children}</tbody>
 				),
 				tr: ({ children }) => (
-					<tr className="border-b border-terminal-windowBorder">{children}</tr>
+					<tr className="border-b border-terminal-window-border">{children}</tr>
 				),
 				th: ({ children }) => (
-					<th className="border border-terminal-windowBorder px-4 py-2 text-left font-mono">
+					<th className="border border-terminal-window-border px-4 py-2 text-left font-mono">
 						{children}
 					</th>
 				),
 				td: ({ children }) => (
-					<td className="border border-terminal-windowBorder px-4 py-2 font-mono">
+					<td className="border border-terminal-window-border px-4 py-2 font-mono">
 						{children}
 					</td>
 				)

@@ -104,7 +104,7 @@ const TerminalEvents: React.FC = () => {
 								>
 									{selectedEventIndex !== null ? (
 										<div className="h-full flex flex-col overflow-hidden ml-1 pt-1">
-											<strong className="text-terminal-highlight font-medium">
+											<strong className="text-terminal-highlight">
 												{eventsData.events[selectedEventIndex].title}
 												{eventsData.events[selectedEventIndex].location && (
 													<span className="text-terminal-text/60 ml-2">
@@ -162,7 +162,7 @@ const TerminalEvents: React.FC = () => {
 											<div className="mt-auto pt-3 pb-4">
 												<button
 													onClick={resetSelectedEvent}
-													className="text-terminal-text  transition-colors px-2 py-1 text-sm inline-flex items-center font-bold group bg-black rounded-md border border-terminal-windowBorder hover:bg-terminal-windowBorder/30  "
+													className="text-terminal-text  transition-colors px-2 py-1 text-sm inline-flex items-center font-bold group bg-black rounded-md border border-terminal-window-border hover:bg-terminal-window-border/30  "
 													type="button"
 												>
 													<LucideArrowBigLeft
