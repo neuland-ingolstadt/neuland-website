@@ -1,7 +1,6 @@
 // In Next.js, this file would be called: app/providers.tsx
 'use client'
 
-import { Toaster } from '@/components/ui/toaster'
 import { BackgroundProvider } from '@/contexts/BackgroundContext'
 import { AptabaseProvider } from '@aptabase/react'
 // Since QueryClientProvider relies on useContext under the hood, we have to put 'use client' on top
@@ -68,7 +67,6 @@ export default function Providers({
 				<QueryClientProvider client={queryClient}>
 					<HydrationBoundary state={dehydratedState}>
 						{children}
-						<Toaster />
 						<RouteTracker />
 					</HydrationBoundary>
 				</QueryClientProvider>

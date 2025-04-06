@@ -1,7 +1,8 @@
 import moment from 'moment'
-import { Frequency, rrulestr } from 'rrule' // Import Frequency enum
+import { Frequency, type Weekday, rrulestr } from 'rrule'
 import 'moment/locale/de'
 import type { Language } from 'rrule/dist/esm/nlp/i18n'
+import type { GetText } from 'rrule/dist/esm/nlp/totext'
 
 interface NeulandEventResponse {
 	id: string
@@ -85,7 +86,7 @@ const GERMAN: Language = {
 	}
 }
 
-const germanStrings = {
+const germanStrings: { [key: string]: string } = {
 	every: 'jede(n)',
 	until: 'bis',
 	day: 'Tag',
@@ -124,8 +125,8 @@ const germanStrings = {
 	th: '.'
 }
 
-const getText = (id: string): string => {
-	return germanStrings[id] || id
+const getText: GetText = (id: string | number | Weekday): string => {
+	return typeof id === 'string' ? germanStrings[id] || id : String(id)
 }
 
 function getDateStr(startDate: moment.Moment, event: NeulandEventResponse) {
@@ -214,7 +215,7 @@ export const fetchEvents = async (): Promise<{
 						rruleText = rule.toText(getText, GERMAN)
 
 						if (rule.options.freq !== undefined) {
-							const freqMap = {
+							const freqMap: { [key in Frequency]?: string } = {
 								[Frequency.YEARLY]: 'Jährlich',
 								[Frequency.MONTHLY]: 'Monatlich',
 								[Frequency.WEEKLY]: 'Wöchentlich',
@@ -275,21 +276,17 @@ export const fetchEvents = async (): Promise<{
 
 		return {
 			semester,
-			events: events.sort((a, b) => {
-				// If either date is invalid, handle special sorting
+			events: events.sort((a: Event, b: Event) => {
 				const dateAValid = a.nextOccurrence.isValid()
 				const dateBValid = b.nextOccurrence.isValid()
 
-				// If both are invalid, sort by title
 				if (!dateAValid && !dateBValid) {
 					return a.title.localeCompare(b.title)
 				}
 
-				// Invalid dates should be at the end
 				if (!dateAValid) return 1
 				if (!dateBValid) return -1
 
-				// Normal date comparison for valid dates
 				const dateA = moment(a.nextOccurrence)
 				const dateB = moment(b.nextOccurrence)
 

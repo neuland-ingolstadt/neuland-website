@@ -1,4 +1,4 @@
-import type { Element } from 'hast'
+import type { Element, ElementContent } from 'hast'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
@@ -8,8 +8,9 @@ const rehypeCustomLists: Plugin = () => {
 			if (node.tagName === 'ol') {
 				let hasAlphabeticItems = false
 
-				node.children.forEach((child: Element) => {
-					if (child.tagName === 'li') {
+				node.children.forEach((child: ElementContent) => {
+					// Check if the child is an Element node with tagName 'li'
+					if ('tagName' in child && child.tagName === 'li') {
 						const firstChild = child.children[0]
 
 						if (

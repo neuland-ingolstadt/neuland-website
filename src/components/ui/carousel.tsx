@@ -6,6 +6,7 @@ import * as React from 'react'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { useRef } from 'react'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -66,7 +67,7 @@ const Carousel = React.forwardRef<
 		const [canScrollPrev, setCanScrollPrev] = React.useState(false)
 		const [canScrollNext, setCanScrollNext] = React.useState(false)
 		const [userInteracted, setUserInteracted] = React.useState(false)
-		const autoplayTimeoutRef = React.useRef<NodeJS.Timeout>()
+		const autoplayTimeoutRef = useRef<NodeJS.Timeout>(null)
 
 		// Reset user interaction after delay
 		const resetUserInteraction = React.useCallback(() => {

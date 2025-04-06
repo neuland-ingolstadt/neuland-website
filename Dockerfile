@@ -1,4 +1,12 @@
-FROM oven/bun:1 AS builder
+FROM node:23-alpine AS base
+
+FROM oven/bun:latest AS deps
+WORKDIR /app
+
+COPY bun.lock package.json ./
+RUN bun install --frozen-lockfile 
+
+FROM base AS builder
 WORKDIR /app
 
 ARG NEXT_PUBLIC_APTABASE_KEY
@@ -6,28 +14,32 @@ ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_APTABASE_KEY=${NEXT_PUBLIC_APTABASE_KEY}
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 
-COPY package.json bun.lock ./
-
-RUN bun install --frozen-lockfile
-
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Build the Next.js application
-RUN bun run build
+ENV NEXT_SHARP_PATH=/app/node_modules/sharp
+RUN realpath . 
 
-# Use Node.js for the production environment (Next.js works well with Node.js)
+RUN npm run build
+
 FROM node:23-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
 
-# Copy necessary files from builder stage
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
-# Expose the port Next.js will run on
+COPY --from=builder /app/public ./public
+
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
 EXPOSE 3000
 
-# Start the Next.js server
-CMD ["node", "server.js"]
+CMD HOSTNAME="0.0.0.0" node server.js
