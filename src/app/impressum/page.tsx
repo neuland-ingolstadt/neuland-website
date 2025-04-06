@@ -5,32 +5,28 @@ import {
 	BreadcrumbList,
 	BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
-import Link from 'next/link'
 import vorstandData from '@/data/vorstand.json'
-
-
+import Link from 'next/link'
 
 export default async function Impressum() {
-  
-    
 	return (
-		<> 
-            <div className="pt-20">
-                <Breadcrumb className="mb-6">
-                    <BreadcrumbList>
-                        <BreadcrumbItem>
-                            <BreadcrumbLink asChild>
-                                <Link href="/">root</Link>
-                            </BreadcrumbLink>
-                        </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <BreadcrumbLink>Impressum</BreadcrumbLink>
-                        </BreadcrumbItem>
-                    </BreadcrumbList>
-                </Breadcrumb>
-                
-                <div className="markdown-content">
+		<>
+			<div className="pt-20">
+				<Breadcrumb className="mb-6">
+					<BreadcrumbList>
+						<BreadcrumbItem>
+							<BreadcrumbLink asChild>
+								<Link href="/">root</Link>
+							</BreadcrumbLink>
+						</BreadcrumbItem>
+						<BreadcrumbSeparator />
+						<BreadcrumbItem>
+							<BreadcrumbLink>Impressum</BreadcrumbLink>
+						</BreadcrumbItem>
+					</BreadcrumbList>
+				</Breadcrumb>
+
+				<div className="markdown-content">
 					<h1>Impressum</h1>
 
 					<p>
@@ -70,7 +66,7 @@ export default async function Impressum() {
 						<strong>{vorstandData.verantwortlicher}</strong>
 					</p>
 				</div>
-            </div>
-        </>
+			</div>
+		</>
 	)
 }

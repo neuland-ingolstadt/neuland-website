@@ -1,15 +1,11 @@
 import type { Metadata } from 'next'
-import {
-  DM_Mono,
-  JetBrains_Mono,
-	Space_Mono,
-} from 'next/font/google'
+import { DM_Mono } from 'next/font/google'
 
 import '../styles/index.css'
 
 import MatrixEffect from '@/components/Background/PageBackground'
-import TerminalHeader from '@/components/Layout/TerminalHeader'
 import TerminalFooter from '@/components/Footer/TerminalFooter'
+import TerminalHeader from '@/components/Layout/TerminalHeader'
 import Providers from '@/components/Provider'
 
 const spaceMono = DM_Mono({

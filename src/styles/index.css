@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-	--font-mono: 'Source Code Pro', monospace;
+	--font-mono: "Source Code Pro", monospace;
 
 	/* Set dark theme values as default */
 	--background: 0 0% 0%;

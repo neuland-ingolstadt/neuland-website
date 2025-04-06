@@ -12,7 +12,10 @@ const TerminalLinks: React.FC = () => {
 					</Link>
 				</li>
 				<li className="mb-2">
-					<Link href="/datenschutzordnung" className="!text-terminal-text group">
+					<Link
+						href="/datenschutzordnung"
+						className="!text-terminal-text group"
+					>
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
 						<span className="text-terminal-cyan">cat</span> Datenschutz Neuland
 					</Link>

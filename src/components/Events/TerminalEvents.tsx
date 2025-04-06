@@ -23,7 +23,7 @@ const TerminalEvents: React.FC = () => {
 		staleTime: 5 * 60 * 1000, // 5 minutes
 		initialData: { semester: `SS ${new Date().getFullYear()}`, events: [] }
 	})
-	
+
 	const [selectedEventIndex, setSelectedEventIndex] = useState<number | null>(
 		null
 	)
@@ -65,7 +65,9 @@ const TerminalEvents: React.FC = () => {
 										Oh nein! Beim Abrufen der Events ist etwas schiefgelaufen.
 									</p>
 									<p className="text-sm text-terminal-lightGreen/60">
-										{error instanceof Error ? error.message : 'Unbekannter Fehler'}
+										{error instanceof Error
+											? error.message
+											: 'Unbekannter Fehler'}
 									</p>
 									<p className="text-sm mt-4 text-terminal-text/70">
 										Unsere Serverwartungsmannschaft macht gerade wohl
