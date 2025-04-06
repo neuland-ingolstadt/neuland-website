@@ -15,7 +15,7 @@ async function fetchSatzungContent() {
 		const response = await fetch(
 			'https://pad.informatik.sexy/Satzung/download',
 			{
-				next: { revalidate: 3600 } // Revalidate every hour
+				next: { revalidate: 3600 }
 			}
 		)
 		console.log('Response:', response)

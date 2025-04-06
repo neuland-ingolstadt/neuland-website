@@ -32,7 +32,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en" className="dark">
+		<html lang="de" className="dark">
 			<body
 				className={`${overpassMono.variable} ${shantellSans.variable} font-mono antialiased`}
 			>

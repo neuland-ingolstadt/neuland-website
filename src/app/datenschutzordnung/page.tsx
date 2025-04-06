@@ -11,18 +11,17 @@ import Link from 'next/link'
 
 async function fetchDatenschutzContent() {
 	try {
-		// Fetch both datenschutzordnung and datenschutzhinweise files from URLs
 		const ordnungResponse = await fetch(
 			'https://pad.informatik.sexy/s/Datenschutzordnung/download',
 			{
-				next: { revalidate: 3600 } // Revalidate every hour
+				next: { revalidate: 3600 }
 			}
 		)
 
 		const hinweiseResponse = await fetch(
 			'https://pad.informatik.sexy/s/Datenschutzhinweise/download',
 			{
-				next: { revalidate: 3600 } // Revalidate every hour
+				next: { revalidate: 3600 }
 			}
 		)
 

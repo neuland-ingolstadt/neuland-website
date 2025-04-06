@@ -14,7 +14,7 @@ async function fetchDatenschutzContent() {
 		const response = await fetch(
 			'https://pad.informatik.sexy/jEf0CAYVRim-4zjgJ7gaBQ/download',
 			{
-				next: { revalidate: 3600 } // Revalidate every hour
+				next: { revalidate: 3600 }
 			}
 		)
 
