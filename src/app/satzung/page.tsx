@@ -50,7 +50,7 @@ export default async function Satzung() {
 					</BreadcrumbList>
 				</Breadcrumb>
 
-				{result.success ? (
+				{result.success && result.content ? (
 					<MarkdownContent content={result.content} showToc />
 				) : (
 					<FetchErrorMessage title="der Satzung" error={result.error} />

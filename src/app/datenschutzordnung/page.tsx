@@ -79,7 +79,7 @@ export default async function DatenschutzOrdnung() {
 					</BreadcrumbList>
 				</Breadcrumb>
 
-				{result.success ? (
+				{result.success && result.markdownContents ? (
 					<MarkdownContent content={result.markdownContents} showToc />
 				) : (
 					<FetchErrorMessage

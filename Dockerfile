@@ -1,12 +1,12 @@
 FROM oven/bun:1 AS builder
 WORKDIR /app
 
-ARG VITE_APTABASE_KEY
-ARG VITE_API_URL
-ENV VITE_APTABASE_KEY=${VITE_APTABASE_KEY}
-ENV VITE_API_URL=${VITE_API_URL}
+ARG NEXT_PUBLIC_APTABASE_KEY
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_APTABASE_KEY=${NEXT_PUBLIC_APTABASE_KEY}
+ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 
 RUN bun install --frozen-lockfile
 
@@ -19,7 +19,7 @@ RUN bun run build
 FROM node:23-alpine AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 # Copy necessary files from builder stage
 COPY --from=builder /app/public ./public

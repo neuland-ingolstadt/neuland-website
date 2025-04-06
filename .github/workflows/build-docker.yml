@@ -69,5 +69,5 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            VITE_APTABASE_KEY=${{ vars.VITE_APTABASE_KEY }}
-            VITE_API_URL=${{vars.VITE_API_URL}}
+            NEXT_PUBLIC_APTABASE_KEY=${{ vars.NEXT_PUBLIC_APTABASE_KEY }}
+            NEXT_PUBLIC_API_URL=${{vars.NEXT_PUBLIC_API_URL}}

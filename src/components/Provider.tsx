@@ -3,6 +3,7 @@
 
 import { Toaster } from '@/components/ui/toaster'
 import { BackgroundProvider } from '@/contexts/BackgroundContext'
+import { AptabaseProvider } from '@aptabase/react'
 // Since QueryClientProvider relies on useContext under the hood, we have to put 'use client' on top
 import {
 	HydrationBoundary,
@@ -11,6 +12,7 @@ import {
 	isServer
 } from '@tanstack/react-query'
 import { useState } from 'react'
+import RouteTracker from './Layout/RouteTracker'
 
 function makeQueryClient() {
 	return new QueryClient({
@@ -54,15 +56,23 @@ export default function Providers({
 	// In Next.js 13.4+, we need to initialize QueryClient inside component to
 	// prevent it from being shared between requests.
 	const [queryClient] = useState(() => getQueryClient())
-
+	const APTABASE_KEY = process.env.NEXT_PUBLIC_APTABASE_KEY ?? ''
 	return (
 		<BackgroundProvider>
-			<QueryClientProvider client={queryClient}>
-				<HydrationBoundary state={dehydratedState}>
-					{children}
-					<Toaster />
-				</HydrationBoundary>
-			</QueryClientProvider>
+			<AptabaseProvider
+				appKey={APTABASE_KEY}
+				options={{
+					host: 'https://analytics.neuland.app'
+				}}
+			>
+				<QueryClientProvider client={queryClient}>
+					<HydrationBoundary state={dehydratedState}>
+						{children}
+						<Toaster />
+						<RouteTracker />
+					</HydrationBoundary>
+				</QueryClientProvider>
+			</AptabaseProvider>
 		</BackgroundProvider>
 	)
 }

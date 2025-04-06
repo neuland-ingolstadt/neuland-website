@@ -49,7 +49,7 @@ export default async function Datenschutz() {
 					</BreadcrumbList>
 				</Breadcrumb>
 
-				{result.success ? (
+				{result.success && result.content ? (
 					<MarkdownContent content={result.content} showToc />
 				) : (
 					<FetchErrorMessage
