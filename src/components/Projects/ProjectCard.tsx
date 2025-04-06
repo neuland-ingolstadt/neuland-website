@@ -56,7 +56,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 						{project.title}
 					</CardTitle>
 				</CardHeader>
-				<CardContent className="pt-4 pb-3 flex-grow overflow-auto">
+				<CardContent className="pt-4 pb-3 grow overflow-auto">
 					<p className="text-sm mb-3 text-terminal-text">
 						{project.description}
 					</p>

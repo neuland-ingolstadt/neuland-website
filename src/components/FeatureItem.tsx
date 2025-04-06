@@ -18,7 +18,7 @@ const FeatureItem = memo(
 				viewport={{ once: true }}
 				className="flex items-start"
 			>
-				<div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-black/60 mr-4">
+				<div className="shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-black/60 mr-4">
 					{icon}
 				</div>
 				<div>
