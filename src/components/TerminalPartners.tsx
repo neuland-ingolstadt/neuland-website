@@ -22,7 +22,7 @@ const TerminalPartners: React.FC = () => {
 				rel="noreferrer noopener"
 			>
 				<img
-					src="assets/exp.png"
+					src="assets/exp.webp"
 					alt="EXP software GmbH"
 					className="partner-logo"
 				/>

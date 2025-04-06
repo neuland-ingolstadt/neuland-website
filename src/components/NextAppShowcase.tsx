@@ -8,10 +8,10 @@ const NextAppShowcase = () => {
 	const phoneRef = useRef<HTMLDivElement>(null)
 	const [activeIndex, setActiveIndex] = useState(0)
 	const screenshots = [
-		'/assets/neuland-next/next_1.png',
-		'/assets/neuland-next/next_2.png',
-		'/assets/neuland-next/next_4.png',
-		'/assets/neuland-next/next_3.png'
+		'/assets/neuland-next/next_1.webp',
+		'/assets/neuland-next/next_2.webp',
+		'/assets/neuland-next/next_4.webp',
+		'/assets/neuland-next/next_3.webp'
 	]
 
 	const rotateScreenshot = useCallback(() => {

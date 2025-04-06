@@ -26,7 +26,7 @@
     - Expo
     - Mobile
   longDescription: Neuland Next bietet als inoffizielle Campus-App für die THI eine moderne und benutzerfreundliche Oberfläche für Studierende, um den Studienalltag zu erleichtern.
-  imageUrl: /assets/neuland-next/next_1.png
+  imageUrl: /assets/neuland-next/next_1.webp
   additionalInfo: Die App wurde mit React Native und Expo entwickelt und ist sowohl im App Store als auch im Play Store verfügbar.
 
 - id: ersti-hilfe
@@ -37,7 +37,7 @@
       url: https://ersti.neuland.app/
     - label: GitHub
       url: https://github.com/neuland-ingolstadt/orientierungsphase
-  imageUrl: /assets/ersti/image.png
+  imageUrl: /assets/ersti/image.webp
   tags:
     - Next.js
     - Web
