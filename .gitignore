@@ -25,3 +25,4 @@ src/static/content
 *.sw?
 
 .next
+tsconfig.tsbuildinfo

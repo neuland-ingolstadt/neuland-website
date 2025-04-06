@@ -29,7 +29,7 @@ interface Event {
 	description: string
 	rruleText?: string
 	rruleTextShort?: string
-	nextOccurrence: moment.Moment
+	nextOccurrence: string
 }
 
 const GERMAN: Language = {
@@ -155,7 +155,6 @@ export const fetchEvents = async (): Promise<{
 	semester: string
 	events: Event[]
 }> => {
-	console.info('Fetching events from API:', API_URL)
 	try {
 		const response = await fetch(API_URL, {
 			method: 'POST',
@@ -258,7 +257,9 @@ export const fetchEvents = async (): Promise<{
 					description: event.description.de || '',
 					rruleText,
 					rruleTextShort,
-					nextOccurrence
+					nextOccurrence: nextOccurrence.isValid()
+						? nextOccurrence.toISOString()
+						: ''
 				}
 			}
 		)
@@ -277,8 +278,8 @@ export const fetchEvents = async (): Promise<{
 		return {
 			semester,
 			events: events.sort((a: Event, b: Event) => {
-				const dateAValid = a.nextOccurrence.isValid()
-				const dateBValid = b.nextOccurrence.isValid()
+				const dateAValid = a.nextOccurrence !== ''
+				const dateBValid = b.nextOccurrence !== ''
 
 				if (!dateAValid && !dateBValid) {
 					return a.title.localeCompare(b.title)
@@ -287,13 +288,13 @@ export const fetchEvents = async (): Promise<{
 				if (!dateAValid) return 1
 				if (!dateBValid) return -1
 
-				const dateA = moment(a.nextOccurrence)
-				const dateB = moment(b.nextOccurrence)
+				const dateA = new Date(a.nextOccurrence)
+				const dateB = new Date(b.nextOccurrence)
 
-				if (dateA.isBefore(dateB)) {
+				if (dateA < dateB) {
 					return -1
 				}
-				if (dateA.isAfter(dateB)) {
+				if (dateA > dateB) {
 					return 1
 				}
 				return 0
