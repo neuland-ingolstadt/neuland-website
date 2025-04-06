@@ -1,12 +1,10 @@
-FROM node:23-alpine AS base
-
 FROM oven/bun:latest AS deps
 WORKDIR /app
 
 COPY bun.lock package.json ./
 RUN bun install --frozen-lockfile 
 
-FROM base AS builder
+FROM node:23-alpine AS builder
 WORKDIR /app
 
 ARG NEXT_PUBLIC_APTABASE_KEY
@@ -18,6 +16,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 ENV NEXT_SHARP_PATH=/app/node_modules/sharp
+ENV NEXT_TELEMETRY_DISABLED=1
 RUN realpath . 
 
 RUN npm run build
@@ -42,4 +41,4 @@ USER nextjs
 
 EXPOSE 3000
 
-CMD HOSTNAME="0.0.0.0" node server.js
+CMD ["node", "server.js", "--hostname", "0.0.0.0"]
