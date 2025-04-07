@@ -82,11 +82,8 @@ const TerminalEvents: React.FC = () => {
 								</div>
 							) : isFetching ? (
 								<div className="p-4 max-w-lg">
-									<p className="text-terminal-lightGreen animate-pulse">
+									<p className="text-terminal-text/80 animate-pulse">
 										Veranstaltungen werden geladen...
-										<br />
-										Bitte warte, während wir die neuesten Hackathons, Workshops
-										und Pizza-Partys abrufen...
 									</p>
 								</div>
 							) : !eventsData?.events || eventsData.events.length === 0 ? (
