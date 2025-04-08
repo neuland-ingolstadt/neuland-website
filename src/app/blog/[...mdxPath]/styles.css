@@ -1,0 +1,84 @@
+@import "nextra-theme-blog/style.css";
+
+/* Override default container width restrictions */
+.container,
+.nextra-container,
+article,
+.x\:max-w-2xl\! {
+	max-width: 100% !important;
+	width: 100% !important;
+}
+
+/* Make headings use terminal highlight color */
+h1,
+.x\:prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+article h1 {
+	color: var(--color-terminal-highlight) !important;
+}
+
+h2,
+.x\:prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+article h2 {
+	color: var(--color-terminal-highlight) !important;
+}
+
+/* Ensure the content has some padding */
+.nextra-container {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+/* Override default font size from .875rem to 1rem */
+.x\:prose {
+	font-size: 1rem !important;
+}
+
+/* Also override the smaller font sizes that might be used in responsive views */
+.x\:max-md\:prose-sm {
+	font-size: 1rem !important;
+}
+
+/* Ensure code blocks maintain proper sizing relative to text */
+code.nextra-code {
+	font-size: 1rem !important;
+}
+
+/* Remove the default top padding from article elements */
+article {
+	padding-top: 1.5rem !important;
+}
+
+/* Ensure consistent spacing by adding a smaller top margin instead */
+article > *:first-child {
+	margin-top: 1.5rem;
+}
+
+/* Remove underlines from links in prose content */
+.x\:prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+	text-decoration: none !important;
+}
+
+/* Add distinctive styling for links without underlines */
+.x\:prose a {
+	color: var(--color-terminal-highlight, #00ffaa) !important;
+	transition: opacity 0.2s ease;
+}
+
+.x\:prose a:hover {
+	opacity: 0.8;
+}
+
+/* Ensure no underlines for breadcrumb links and other navigation elements */
+.x\:underline,
+a.x\:underline,
+article a,
+.pagination a {
+	text-decoration: none !important;
+}
+
+/* Ensure pagination is styled properly */
+.pagination-link[data-active="true"] {
+	border-color: var(--color-terminal-highlight) !important;
+	background-color: transparent !important;
+	color: var(--color-terminal-highlight) !important;
+}

@@ -6,14 +6,14 @@ const TerminalLinks: React.FC = () => {
 		<nav>
 			<ul>
 				<li className="mb-2">
-					<Link href="/satzung" className="text-terminal-text! group">
+					<Link href="/legal/satzung" className="text-terminal-text! group">
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
 						<span className="text-terminal-cyan">cat</span> Satzung
 					</Link>
 				</li>
 				<li className="mb-2">
 					<Link
-						href="/datenschutzordnung"
+						href="/legal/datenschutzordnung"
 						className="text-terminal-text! group"
 					>
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
@@ -21,13 +21,13 @@ const TerminalLinks: React.FC = () => {
 					</Link>
 				</li>
 				<li className="mb-2">
-					<Link href="/datenschutz" className="text-terminal-text! group">
+					<Link href="/legal/datenschutz" className="text-terminal-text! group">
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
 						<span className="text-terminal-cyan">cat</span> Datenschutz Website
 					</Link>
 				</li>
 				<li className="mb-2">
-					<Link href="/impressum" className="text-terminal-text! group">
+					<Link href="/legal/impressum" className="text-terminal-text! group">
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
 						<span className="text-terminal-cyan">cat</span> Impressum
 					</Link>

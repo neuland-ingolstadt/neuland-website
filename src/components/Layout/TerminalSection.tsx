@@ -20,7 +20,7 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 	id,
 	classNames = '',
 	headingLevel = 3,
-	showPrefix = true
+	showPrefix = true // Default to true for backward compatibility
 }) => {
 	const [isVisible, setIsVisible] = useState(false)
 	const sectionRef = useRef<HTMLDivElement>(null)
