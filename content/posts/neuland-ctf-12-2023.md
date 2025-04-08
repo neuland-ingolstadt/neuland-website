@@ -1,5 +1,6 @@
 ---
 title: "Neuland CTF 2023 Winter"
+description: "Neuland CTF 2023 Winter Writeups"
 authors: ["Neuland CTF Orga"]
 date: 2023-12-09T22:00
 published: true

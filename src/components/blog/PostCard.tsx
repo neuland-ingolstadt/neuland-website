@@ -24,7 +24,7 @@ export function PostCard({ post }: PostCardProps) {
 						<h2 className="text-lg font-bold mb-2 text-terminal-text line-clamp-2">
 							{post.frontMatter.title}
 						</h2>
-						<div className="flex flex-col gap-1 text-md text-terminal-text mb-3 ">
+						<div className="flex flex-col gap-1 text-md text-terminal-text/70 mb-3 ">
 							{post.frontMatter.date && (
 								<time dateTime={post.frontMatter.date}>
 									{moment(post.frontMatter.date).format('DD.MM.YYYY')}

@@ -10,18 +10,44 @@ import moment from 'moment'
 import Link from 'next/link'
 import { generateStaticParamsFor, importPage } from 'nextra/pages'
 import './styles.css'
+
+// Define proper Props type for our page components
+export interface PageProps {
+	params: {
+		mdxPath: string[]
+	}
+	searchParams?: Record<string, string | string[]>
+}
+
+// Define metadata structure
+interface PageMetadata {
+	title?: string
+	date?: string
+	readingTime?: {
+		text: string
+		minutes: number
+		time: number
+		words: number
+	}
+	authors?: string[]
+	tags?: string[]
+}
+
 export const generateStaticParams = generateStaticParamsFor('mdxPath')
 
-export async function generateMetadata(props) {
+export async function generateMetadata(props: PageProps) {
 	const params = await props.params
 	const { metadata } = await importPage(params.mdxPath)
 	return metadata
 }
 
-export default async function Page(props) {
+export default async function Page(props: PageProps) {
 	const params = await props.params
 	const result = await importPage(params.mdxPath)
-	const { default: MDXContent, metadata } = result
+	const { default: MDXContent, metadata } = result as {
+		default: React.ComponentType<PageProps>
+		metadata: PageMetadata
+	}
 
 	return (
 		<>
@@ -70,10 +96,10 @@ export default async function Page(props) {
 					{metadata?.authors && metadata.authors.length > 0 && (
 						<div className="flex items-center">
 							<span className="mr-1">By</span>
-							{metadata.authors.map((author, idx) => (
+							{metadata.authors.map((author: string, idx: number) => (
 								<span key={author} className="font-medium">
 									{author}
-									{idx < metadata.authors.length - 1 ? ', ' : ''}
+									{idx < (metadata.authors?.length ?? 0) - 1 ? ', ' : ''}
 								</span>
 							))}
 						</div>
@@ -82,7 +108,7 @@ export default async function Page(props) {
 
 				{metadata?.tags && metadata.tags.length > 0 && (
 					<div className="flex flex-wrap gap-2">
-						{metadata.tags.map((tag) => (
+						{metadata.tags.map((tag: string) => (
 							<Link
 								href={`/blog/tags/${encodeURIComponent(tag)}`}
 								key={tag}

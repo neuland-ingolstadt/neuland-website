@@ -1,6 +1,7 @@
 ---
 title: "Neuland CTF 2023 Winter - Blue Team"
 authors: ["Neuland CTF Orga"]
+description: "Neuland CTF 2023 Winter Writeups"
 date: 2023-12-09T21:00
 published: true
 tags:

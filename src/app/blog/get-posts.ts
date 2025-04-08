@@ -9,7 +9,7 @@ interface Frontmatter {
 	description?: string
 	published?: boolean
 	defaultTweetText?: string
-	[key: string]: any
+	[key: string]: unknown
 }
 
 // Add correct types to the post object
@@ -17,7 +17,7 @@ interface Post {
 	name: string
 	route: string
 	frontMatter: Frontmatter
-	[key: string]: any
+	[key: string]: unknown
 }
 
 export async function getPosts() {
