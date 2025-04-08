@@ -28,10 +28,17 @@ const TerminalEvents: React.FC = () => {
 		null
 	)
 	const containerRef = useRef<HTMLDivElement>(null)
+	const [containerHeight, setContainerHeight] = useState<number | null>(null)
 
-	const handleEventClick = useCallback((index: number) => {
-		setSelectedEventIndex((prev) => (prev === index ? null : index))
-	}, [])
+	const handleEventClick = useCallback(
+		(index: number) => {
+			if (containerRef.current && selectedEventIndex === null) {
+				setContainerHeight(containerRef.current.offsetHeight)
+			}
+			setSelectedEventIndex((prev) => (prev === index ? null : index))
+		},
+		[selectedEventIndex]
+	)
 
 	const handleRedButtonClick = useCallback(() => {
 		setSelectedEventIndex(null)
@@ -39,6 +46,7 @@ const TerminalEvents: React.FC = () => {
 
 	const resetSelectedEvent = useCallback(() => {
 		setSelectedEventIndex(null)
+		setContainerHeight(null)
 	}, [])
 
 	useEffect(() => {
@@ -56,11 +64,11 @@ const TerminalEvents: React.FC = () => {
 					title={`eventsData.sh --semester '${eventsData?.semester || `SS ${new Date().getFullYear()}`}'`}
 					showStickyNote={true}
 					onRedButtonClick={handleRedButtonClick}
-					className="max-h-[65vh] sm:max-h-[55vh] md:max-h-[60vh]"
+					className="max-h-none"
 				>
 					<div
-						className="overflow-auto"
-						style={{ maxHeight: 'calc(100% - 20px)' }}
+						className="overflow-auto overflow-x-hidden"
+						style={{ maxHeight: 'none' }}
 					>
 						<TerminalList>
 							{isError ? (
@@ -98,77 +106,100 @@ const TerminalEvents: React.FC = () => {
 							) : (
 								<div
 									ref={containerRef}
-									className="min-h-[350px] h-[calc(65vh-100px)] sm:h-[calc(55vh-100px)] md:h-[calc(60vh-100px)] overflow-y-auto relative"
+									className="min-h-[250px] h-auto relative"
 									style={{
-										overflowY: selectedEventIndex !== null ? 'auto' : 'visible'
+										overflowY: 'visible',
+										height:
+											selectedEventIndex !== null && containerHeight
+												? `${containerHeight}px`
+												: 'auto'
 									}}
 								>
 									<div
 										className={cn(
-											'h-full flex flex-col overflow-hidden ml-1 pt-1 absolute top-0 left-0 w-full transition-opacity duration-300 ease-in-out',
+											'h-full flex flex-col overflow-hidden overflow-x-hidden ml-1 pt-1 absolute top-0 left-0 w-[calc(100%-8px)] transition-opacity duration-300 ease-in-out',
 											selectedEventIndex !== null
 												? 'opacity-100 z-10'
 												: 'opacity-0 pointer-events-none'
 										)}
 									>
 										{selectedEventIndex !== null && (
-											<>
-												<strong className="text-terminal-highlight text-xl">
-													{eventsData.events[selectedEventIndex].title}
-													{eventsData.events[selectedEventIndex].location && (
-														<span className="text-terminal-text/60 ml-2">
-															@{eventsData.events[selectedEventIndex].location}
-														</span>
-													)}
-												</strong>
+											<div className="flex flex-col h-full">
+												<div className="flex-none">
+													<strong className="text-terminal-highlight text-xl break-words pr-4 max-w-full">
+														{eventsData.events[selectedEventIndex].title}
+														{eventsData.events[selectedEventIndex].location && (
+															<span className="text-terminal-text/60 ml-2 break-all">
+																@
+																{eventsData.events[selectedEventIndex].location}
+															</span>
+														)}
+													</strong>
 
-												<div className="mb-5 text-terminal-text/80">
-													{eventsData.events[selectedEventIndex].date
-														.split('\n')
-														.map((line, i) => (
-															<React.Fragment key={i}>
-																<span
-																	className={
-																		line.trim().toLowerCase() === 'tbd'
-																			? 'text-terminal-text/50 text-[0.95rem]'
-																			: 'text-[0.95rem]'
-																	}
-																>
-																	{line}
-																</span>
-																{i <
-																	eventsData.events[
-																		selectedEventIndex
-																	].date.split('\n').length -
-																		1 && <br />}
-															</React.Fragment>
-														))}
-													{eventsData.events[selectedEventIndex].rruleText && (
-														<div className="text-terminal-text/60 text-sm first-letter:uppercase">
-															{eventsData.events[selectedEventIndex].rruleText}
-														</div>
-													)}
+													<div className="mb-5 text-terminal-text/80">
+														{eventsData.events[selectedEventIndex].date
+															.split('\n')
+															.map((line, i) => (
+																<React.Fragment key={i}>
+																	<span
+																		className={
+																			line.trim().toLowerCase() === 'tbd'
+																				? 'text-terminal-text/50 text-[0.95rem]'
+																				: 'text-[0.95rem]'
+																		}
+																	>
+																		{line}
+																	</span>
+																	{i <
+																		eventsData.events[
+																			selectedEventIndex
+																		].date.split('\n').length -
+																			1 && <br />}
+																</React.Fragment>
+															))}
+														{eventsData.events[selectedEventIndex]
+															.rruleText && (
+															<div className="text-terminal-text/60 text-sm first-letter:uppercase">
+																{
+																	eventsData.events[selectedEventIndex]
+																		.rruleText
+																}
+															</div>
+														)}
+													</div>
+
+													<strong
+														className={cn('text-terminal-highlight text-lg', {
+															hidden:
+																!eventsData.events[selectedEventIndex]
+																	.description
+														})}
+													>
+														Details
+													</strong>
 												</div>
 
-												<strong
-													className={cn('text-terminal-highlight text-lg', {
-														hidden:
-															!eventsData.events[selectedEventIndex].description
-													})}
+												<div
+													className="overflow-y-auto overflow-x-hidden pr-4 max-w-full flex-1"
+													style={{
+														maxHeight: containerHeight
+															? `${containerHeight - 150}px`
+															: 'auto'
+													}}
 												>
-													Details
-												</strong>
-												<div className="mt-0 overflow-y-auto">
-													<TerminalTypeWriter
-														text={
-															eventsData.events[selectedEventIndex].description
-														}
-														isActive={true}
-														delay={7}
-													/>
+													<div className="max-w-full overflow-hidden">
+														<TerminalTypeWriter
+															text={
+																eventsData.events[selectedEventIndex]
+																	.description
+															}
+															isActive={true}
+															delay={7}
+														/>
+													</div>
 												</div>
 
-												<div className="mt-auto pt-3 pb-4">
+												<div className="flex-none pt-3 pb-4">
 													<button
 														onClick={resetSelectedEvent}
 														className="text-terminal-text transition-colors px-2 py-1 text-sm inline-flex items-center font-bold group bg-black rounded-md border border-terminal-window-border hover:bg-terminal-window-border/30"
@@ -181,7 +212,7 @@ const TerminalEvents: React.FC = () => {
 														Alle Events
 													</button>
 												</div>
-											</>
+											</div>
 										)}
 									</div>
 
@@ -197,7 +228,7 @@ const TerminalEvents: React.FC = () => {
 											<div
 												key={index}
 												onClick={() => handleEventClick(index)}
-												className="cursor-pointer hover:bg-terminal-window-border/30 p-1 rounded-lg transition-colors mb-2"
+												className="cursor-pointer hover:bg-terminal-window-border/30 p-1 rounded-lg transition-colors mb-1"
 												onKeyDown={(e) => {
 													if (e.key === 'Enter') {
 														handleEventClick(index)

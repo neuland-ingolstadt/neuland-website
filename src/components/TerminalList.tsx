@@ -57,7 +57,7 @@ const TerminalList: React.FC<TerminalListProps> = ({
 	baseDelay = 150
 }) => {
 	return (
-		<ul className="terminal-list">
+		<ul className="terminal-list overflow-x-hidden">
 			{React.Children.map(children, (child, index) => (
 				<TerminalListItem index={index} baseDelay={baseDelay}>
 					{child}

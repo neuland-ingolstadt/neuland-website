@@ -276,6 +276,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
 											title={section.title}
 											headingLevel={section.headingLevel || 3}
 											classNames="mb-8"
+											showPrefix={false}
 										>
 											{renderContent(section.content, docIndex)}
 										</TerminalSection>

@@ -10,6 +10,7 @@ interface TerminalSectionProps {
 	id?: string
 	classNames?: string
 	headingLevel?: number // 1 = h1, 2 = h2, 3 = h3
+	showPrefix?: boolean // Add this prop to control the '>' symbol
 }
 
 const TerminalSection: React.FC<TerminalSectionProps> = ({
@@ -18,7 +19,8 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 	children,
 	id,
 	classNames = '',
-	headingLevel = 3
+	headingLevel = 3,
+	showPrefix = true
 }) => {
 	const [isVisible, setIsVisible] = useState(false)
 	const sectionRef = useRef<HTMLDivElement>(null)
@@ -69,7 +71,7 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 			<h2
 				className={`${getTitleClass()} font-bold mb-4 font-mono text-terminal-cyan flex items-center`}
 			>
-				<span className="text-terminal-text mr-3">{'>'}</span>
+				{showPrefix && <span className="text-terminal-text mr-3">{'>'}</span>}
 				{title}
 			</h2>
 			{subtitle && (

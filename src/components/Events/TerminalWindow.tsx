@@ -247,7 +247,6 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 					borderRadius: '0.375rem'
 				}}
 			>
-				{}
 				<div
 					className="confetti-container"
 					style={{
