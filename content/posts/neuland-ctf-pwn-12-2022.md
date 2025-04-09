@@ -103,7 +103,7 @@ The flag is `nland{y0u_4r3_4_r34l_h4ck3r_n0w}`.
 
 <br>
 
-[Log4Flag.zip](/files/neuland-ctf-12-2022/Log4Flag.zip)
+[Log4Flag.zip](https://github.com/neuland-ingolstadt/Neuland-CTF-2022-Winter/blob/ced4cc975bdbe9e96325c74e69775142f68267f6/CTF%20Aufgaben/PWN/Log4Flag%20-%20Hard/Public/Log4Flag.zip)
 
 <br>
 

@@ -128,6 +128,6 @@ The password `supersecret` is written on a paper that is on the desk. The Twitte
 
 ![](../../src/blog/images/neuland-ctf-12-2022/polyglot.webp)
 
-We can change the file extension to `.zip` after we downloaded the file and can try to unzip the [archive](polyglot.zip). It contains the file `flag.txt`. We have to provide a password to unzip the archive. The password `supersecret` that we found earlier will do the job.
+We can change the file extension to `.zip` after we downloaded the file and can try to unzip the [archive](https://github.com/neuland-ingolstadt/Neuland-CTF-2022-Winter/blob/main/CTF%20Aufgaben/OSINT/Polyglot%20-%20Hard/Private/polyglot.zip). It contains the file `flag.txt`. We have to provide a password to unzip the archive. The password `supersecret` that we found earlier will do the job.
 
 The flag is `nland{h0w_d1d_7h15_3nd_up_1n_h3r3?}`.

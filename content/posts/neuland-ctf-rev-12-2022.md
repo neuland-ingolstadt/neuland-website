@@ -17,7 +17,7 @@ tags:
 
 <br>
 
-[strings](/files/neuland-ctf-12-2022/strings)
+[strings](https://github.com/neuland-ingolstadt/Neuland-CTF-2022-Winter/blob/ced4cc975bdbe9e96325c74e69775142f68267f6/CTF%20Aufgaben/REV/Strings%20-%20Easy/Private/strings)
 
 <br>
 
@@ -56,7 +56,7 @@ Flag format: nland{admin-password}*
 
 <br>
 
-[tracer](/files/neuland-ctf-12-2022/tracer)
+[tracer](https://github.com/neuland-ingolstadt/Neuland-CTF-2022-Winter/blob/ced4cc975bdbe9e96325c74e69775142f68267f6/CTF%20Aufgaben/REV/Tracer%20-%20Easy/Public/tracer)
 
 <br>
 

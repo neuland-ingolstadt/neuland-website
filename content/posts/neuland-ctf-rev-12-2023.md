@@ -20,7 +20,7 @@ Download challenges: [Neuland CTF Repository](https://github.com/neuland-ingolst
 ## Login - Easy
 *Log into my account to get the flag.*
 
-[login.exe](/files/neuland-ctf-12-2023/login.exe)
+[login.exe](https://github.com/neuland-ingolstadt/Neuland-CTF-2023-Winter/blob/9a801bf956bec026d57641b35fb14dbb37e5a14a/CTF%20Challenges/Reverse%20Engineering/Login%20-%20Easy/login.exe)
 
 </br>
 
@@ -39,7 +39,7 @@ Author: [Jonny](https://github.com/Baikuya) </br>
 
 *Can you Bypass the authentication and find my Flag?*
 
-[Easy_Bypass.zip](/files/neuland-ctf-12-2023/Easy_Bypass.zip)
+[Easy_Bypass.zip](https://github.com/neuland-ingolstadt/Neuland-CTF-2023-Winter/blob/9a801bf956bec026d57641b35fb14dbb37e5a14a/CTF%20Challenges/Reverse%20Engineering/Easy%20Bypass%20-%20easy/Easy_Bypass.zip)
 
 </br>
 
@@ -96,7 +96,7 @@ The flag is `nland{Kekw_Andi_C0P1UM_xD}`.
 
 *java -jar TicTacToe.jar*
 
-[TicTacToe.jar](/files/neuland-ctf-12-2023/TicTacToe.jar)
+[TicTacToe.jar](https://github.com/neuland-ingolstadt/Neuland-CTF-2023-Winter/blob/9a801bf956bec026d57641b35fb14dbb37e5a14a/CTF%20Challenges/Reverse%20Engineering/TicTacToe%20-%20Easy/TicTacToe.jar)
 
 </br>
 
@@ -115,7 +115,7 @@ Author: [Kevin](https://github.com/k-gomez)</br>
 
 *I found this binary in a br0 forum. I don't know whats happening here...*
 
-[stacked.zip](/files/neuland-ctf-12-2023/stacked.zip)
+[stacked.zip](https://github.com/neuland-ingolstadt/Neuland-CTF-2023-Winter/tree/9a801bf956bec026d57641b35fb14dbb37e5a14a/CTF%20Challenges/Reverse%20Engineering/Stacked-Medium)
 
 </br>
 

@@ -21,7 +21,7 @@ Download challenges: [Neuland CTF Repository](https://github.com/neuland-ingolst
 ## Accounting - Easy
 *An employee from the finance department downloaded an accounting template from the Internet; now he is writing an e-mail to the helpdesk that his computer is behaving strangely.*
 
-[Abrechnung_2023.xlsm](/files/neuland-ctf-12-2023/Abrechnung_2023.xlsm)
+[Abrechnung_2023.xlsm](https://github.com/neuland-ingolstadt/Neuland-CTF-2023-Winter/blob/main/CTF%20Challenges/Blue%20Team/Accounting%20-%20Easy/Abrechnung_2023.xlsm)
 
 </br>
 
@@ -57,7 +57,7 @@ Author: [Kevin](https://github.com/k-gomez) </br>
 
 *Flag format: nland{\<your-input-without-spaces\>}*
 
-[broken.zip](/files/neuland-ctf-12-2023/broken.zip)
+[broken.zip](https://github.com/neuland-ingolstadt/Neuland-CTF-2023-Winter/blob/main/CTF%20Challenges/Blue%20Team/Broken-File-Easy/broken)
 
 </br>
 
@@ -89,7 +89,7 @@ Author: [Kevin](https://github.com/k-gomez)</br>
 
 *Get the file from the challenge "Broken File - Easy" and reconstruct it.*
 
-[broken.zip](/files/neuland-ctf-12-2023/broken.zip)
+[broken.zip](https://github.com/neuland-ingolstadt/Neuland-CTF-2023-Winter/blob/main/CTF%20Challenges/Blue%20Team/Broken-File-Easy/broken)
 
 </br>
 
@@ -110,7 +110,7 @@ The flag is `nland{1_l1k3_f1l3h34d3Rs}`.
 
 *Flag format: nland{\<IP\>}*
 
-[traffic.zip](/files/neuland-ctf-12-2023/traffic.zip)
+[traffic.zip](https://github.com/neuland-ingolstadt/Neuland-CTF-2023-Winter/blob/main/CTF%20Challenges/Blue%20Team/Malware%20Beaconing%20-%20Medium/traffic.zip)
 
 </br>
 

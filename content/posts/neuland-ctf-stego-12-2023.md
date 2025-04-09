@@ -35,7 +35,7 @@ The flag is `nland{7H3y_5ho7_4_GOr1LL4_fOR_GOD554k3}`.
 ## Rick roll - Medium
 *I found a new way to save my ZIP files safely. Definitely not hackable.*
 
-[rick_roll.avi](/files/neuland-ctf-12-2023/rick_roll.avi)
+[rick_roll.avi](https://github.com/neuland-ingolstadt/Neuland-CTF-2023-Winter/blob/9a801bf956bec026d57641b35fb14dbb37e5a14a/CTF%20Challenges/Steganography/Rick%20roll%20-%20Medium/rick_roll.avi)
 
 </br>
 

@@ -377,7 +377,7 @@ The flag is ```nland{741k3r}```.
 *Someone didn't follow best practices.*
 </br>
 
-[capture.pcapng](/files/neuland-ctf-04-2022/capture.pcapng)
+[capture.pcapng](https://github.com/neuland-ingolstadt/Neuland-CTF-2022-Spring/blob/49068889e27dc990e688f7e475e1adb82633c35f/CTF%20Aufgaben/forensic/Wireshark%20-%20Easy/capture.pcapng)
 </br>
 
 The fastest way to search for the flag in a few hundred network packages is strings and grep:
@@ -396,7 +396,7 @@ HTML decode the last part  ```nland%7Bl375-3ncryp7-3v3ry7h1n6%7D``` and get the 
 
 ## Malware - Easy
 
-[malware.xlsm](/files/neuland-ctf-04-2022/malware.xlsm)
+[malware.xlsm](https://github.com/neuland-ingolstadt/Neuland-CTF-2022-Spring/blob/49068889e27dc990e688f7e475e1adb82633c35f/CTF%20Aufgaben/forensic/Malware%20-%20Easy/malware.xlsm)
 
 When we start up the Excel file we get a prompt to "Enable Editing" if we allow it a bunch of Notepads with the string "Hello World" are spawned.
 
@@ -438,7 +438,7 @@ The flag is ```nland{m41w423_0nfu5c4710n}```.
 *I'm sure I shared the flag with a friend, maybe you can find!*
 </br>
 
-[backup.ab](/files/neuland-ctf-04-2022/backup.ab)
+[backup.ab](https://github.com/neuland-ingolstadt/Neuland-CTF-2022-Spring/blob/49068889e27dc990e688f7e475e1adb82633c35f/CTF%20Aufgaben/forensic/Call%20me%20-Medium/backup.ab)
 
 </br>
 An AB file is a backup of some or all of the data stored on a user's Android device. We can use the Android Debug Bridge (ADB) with the command 

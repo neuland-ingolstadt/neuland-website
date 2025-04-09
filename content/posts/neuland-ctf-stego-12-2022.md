@@ -80,7 +80,7 @@ The flag is `nland{411_814ck_3v32y7h1n9}`.
 
 <br>
 
-[transmission.wav](/files/neuland-ctf-12-2022/transmission.wav)
+[transmission.wav](https://github.com/neuland-ingolstadt/Neuland-CTF-2022-Winter/blob/ced4cc975bdbe9e96325c74e69775142f68267f6/CTF%20Aufgaben/Stego/Moon%20transmission%20-%20Medium/Public/transmission.wav)
 
 <br>
 

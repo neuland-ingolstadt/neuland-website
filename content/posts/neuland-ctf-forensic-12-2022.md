@@ -59,7 +59,7 @@ The flag is `nland{1ff_m42k_2}`.
 
 *I received a weird PDF from a friend.*
 
-[payload.pdf](/files/neuland-ctf-12-2022/payload.pdf)
+[payload.pdf](https://github.com/neuland-ingolstadt/Neuland-CTF-2022-Winter/blob/ced4cc975bdbe9e96325c74e69775142f68267f6/CTF%20Aufgaben/Forensic/PDF%20-%20Medium/payload.pdf)
 
 </br>
 
@@ -93,7 +93,7 @@ The police department wants to know the unique identifier of the car. What are t
 
 The flag format is `nland{<unique-identifier>}`
 
-[report.pdf](/files/neuland-ctf-12-2022/report.pdf)
+[report.pdf](https://github.com/neuland-ingolstadt/Neuland-CTF-2022-Winter/blob/ced4cc975bdbe9e96325c74e69775142f68267f6/CTF%20Aufgaben/Forensic/PDF-Report-Medium/public/report.pdf)
 
 </br>
 
