@@ -4,11 +4,9 @@ authors: ["M4GNV5"]
 date: 2021-12-05T21:30:00+01:00
 published: true
 tags:
-- ctf
-- writeup
-- security
-- cyber
-- cybersecurity
+- CTF
+- Writeup
+- Cybersecurity
 ---
 
 The challenge input consists of a single .pyc file, which is a bytecode for a program run with python 3.8.

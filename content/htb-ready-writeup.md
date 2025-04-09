@@ -4,11 +4,9 @@ authors: ["0xFFD700", "M4GNV5"]
 date: 2021-03-23T13:37
 published: true
 tags:
-- hackthebox
-- writeup
-- security
-- cyber
-- cybersecurity
+- Hackthebox
+- Writeup
+- Cybersecurity
 ---
 
 - **OS: Linux**

@@ -4,11 +4,9 @@ authors: ["0xFFD700", "manuv"]
 date: 2022-12-07T18:04
 published: true
 tags:
-- ctf
-- writeup
-- security
-- cyber
-- cybersecurity
+- CTF
+- Writeup
+- Cybersecurity
 ---
 
 ## Password Guessing - Easy

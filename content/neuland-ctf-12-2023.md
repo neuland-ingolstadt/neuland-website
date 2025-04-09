@@ -5,11 +5,9 @@ authors: ["Neuland CTF Orga"]
 date: 2023-12-09T22:00
 published: true
 tags:
-- ctf
-- writeup
-- security
-- cyber
-- cybersecurity
+- CTF
+- Writeup
+- Cybersecurity
 ---
 
 On the 9th of December Neuland held its third Neuland CTF at Technische Hochschule Ingolstadt. 

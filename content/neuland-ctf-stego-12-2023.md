@@ -4,11 +4,9 @@ authors: ["Neuland CTF Orga"]
 date: 2023-12-09T21:00
 published: true
 tags:
-- ctf
-- writeup
-- security
-- cyber
-- cybersecurity
+- CTF
+- Writeup
+- Cybersecurity
 ---
 
 </br>

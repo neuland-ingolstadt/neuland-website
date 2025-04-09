@@ -4,11 +4,9 @@ author: ["0xFFD700", "manuv"]
 date: 2022-04-09T22:30
 published: true
 tags:
-- ctf
-- writeup
-- security
-- cyber
-- cybersecurity
+- CTF
+- Writeup
+- Cybersecurity
 ---
 
 On the 2nd of April, Neuland held it's first own CTF in the Technische Hochschule Ingolstadt. About 40 participants spent the following 8 hours solving challenges and making new friends. To round off the event, we wrote a blog post detailing the solutions to the challenges. If you want to try them yourself, here is the link to the corresponding [GitHub repository](https://github.com/neuland-ingolstadt/Neuland-CTF-2022). Have fun!
