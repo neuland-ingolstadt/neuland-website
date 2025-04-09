@@ -41,7 +41,7 @@ The flag is `nland{practical_application_abandoned}`.
 
 We get C code, which appears to be the login for Secure4Sure. The user can enter an access code, and the program compares it with the hardcoded string at the beginning of the program. The user input looks like a suitable attack vector because it is printed later in the program. The fgets() function reads a line of the specified input stream and stores it in the buffer variable. These are the perfect conditions for a format string attack that uses printf() features. For example, the string to be output can be manipulated using special commands such as *%s* or *%d*. `printf("My %s is", name)`. *%s* which expects a string is replaced by the contents of the name variable. Printf() reads the previous address from the stack. So if we typed *printf(%s %s)* we would get the last two strings on the stack. However, if this input is longer than the maximum length defined in fgets(), we get a segment fault. Another string format feature is *%&lt;nth address>$s*, which jumps directly to the specified point in the stack. If we write *%p* as input, the program returns the pointer address. With this address, you can look at the stack and calculate the offset. A more straightforward method that does not require precise knowledge of the stack and how it works is fuzzing. Here, you can try out all offsets until the access code is output. With the locally used compiler, the correct offset was *%23$s*.
 
-![](../../src/blog/images/neuland-ctf-12-2023/Secure4Sure.png)
+![](../../src/blog/images/neuland-ctf-12-2023/Secure4Sure.webp)
 
 </br>
 

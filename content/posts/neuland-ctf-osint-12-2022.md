@@ -16,13 +16,13 @@ tags:
 *Can you find the missing person?*
 *Flag format nland{<first name\>_<last name\>} in all lowercase*
 
-![](../../src/blog/images/neuland-ctf-12-2022/lost_person.jpg)
+![](../../src/blog/images/neuland-ctf-12-2022/lost_person.webp)
 
 </br>
 
 An efficient way to find the origin of images on the Internet is Google Images. We upload the image and find out the person it Hugh Herr.
 
-![](../../src/blog/images/neuland-ctf-12-2022/Solution.png)
+![](../../src/blog/images/neuland-ctf-12-2022/Solution.webp)
 
 </br>
 
@@ -41,7 +41,7 @@ Can you still find it?*
 
 The wayback machine is an internet archive that maps websites and other media and makes these old versions accessible to users. If we search for the [url in the Waybackmachine](https://web.archive.org/web/20221024120345/https://ctf.neuland-ingolstadt.de/) we find an image from 24 October 2022.
 
-![](../../src/blog/images/neuland-ctf-12-2022/wayback.png)
+![](../../src/blog/images/neuland-ctf-12-2022/wayback.webp)
 
 </br>
 
@@ -80,7 +80,7 @@ The following link can be used to view the Google Maps contributions, reviews an
 
 [Here](https://www.google.com/maps/contrib/114037517009879435623/) we can see that she posted a photo at Western Computer in Oxford. It seems like she had troubles with her old phone and had to buy a new one. This explains why we weren't able to contact here.
 
-![](../../src/blog/images/neuland-ctf-12-2022/google_maps_contrib.png)
+![](../../src/blog/images/neuland-ctf-12-2022/google_maps_contrib.webp)
 
 The flag is `nland{Oxford}`.
 
@@ -118,15 +118,15 @@ The flag is `nland{h4ppy_tree_friend}`.
 
 We will start the challenge with only an email address again. The information from the Google account won't help us this time. There are other ways to perform email OSINT. [Holehe](https://github.com/megadose/holehe) is one of these tools. It allows you to efficiently find the registered accounts from an email address. The output for the provided email looks like this:
 
-![](../../src/blog/images/neuland-ctf-12-2022/output_holehe_scan.png)
+![](../../src/blog/images/neuland-ctf-12-2022/output_holehe_scan.webp)
 
 This is just a snippet from the output but Twitter is the only website we have a hit. So we head over to Twitter and find the account assigned to the email address `friedrichvonhacker@gmail.com`. Searching for persons with the name `Friedrich von Hacker` we will find [this Twitter account](https://twitter.com/FriedrichHacker). There are quite a few hints that we can find here. The oldest post does show a PC setup. 
 
-![](../../src/blog/images/neuland-ctf-12-2022/setup.jpg)
+![](../../src/blog/images/neuland-ctf-12-2022/setup.webp)
 
 The password `supersecret` is written on a paper that is on the desk. The Twitter account of `David Buchanan` is open on the main monitor. The challenge description tells us to look for a Polyglot on the way to find the flag. Polyglot in this context does not refer to the term multilingualism as the second post from `Friedrich von Hacker` might suggest. In computing, a polyglot is a computer program or script written in a valid form of multiple programming languages or file formats. By looking at the [Twitter profile of David Buchanan](https://twitter.com/David3141593) or by searching for `David Buchanan polyglot` you will find [this GitHub repository](https://github.com/DavidBuchanan314/tweetable-polyglot-png). The script allows one to generate a polyglot that can be uploaded to Twitter. As described on the GitHub and in the tweets of David Buchanan we will download the picture form the latest post from `Friedrich von Hacker`. Make sure to download the full sized image. We will end up with this image:
 
-![](../../src/blog/images/neuland-ctf-12-2022/polyglot.png)
+![](../../src/blog/images/neuland-ctf-12-2022/polyglot.webp)
 
 We can change the file extension to `.zip` after we downloaded the file and can try to unzip the [archive](polyglot.zip). It contains the file `flag.txt`. We have to provide a password to unzip the archive. The password `supersecret` that we found earlier will do the job.
 

@@ -23,7 +23,7 @@ The task description tells us that we should retrieve a meme from an email that 
 
 </br>
 
-![](../../src/blog/images/neuland-ctf-12-2022/html_base64.png)
+![](../../src/blog/images/neuland-ctf-12-2022/html_base64.webp)
 
 </br>
 
@@ -31,7 +31,7 @@ Afterwards the email can be opened in an email program or the html part of the e
 
 </br>
 
-![](../../src/blog/images/neuland-ctf-12-2022/based_meme.jpg)
+![](../../src/blog/images/neuland-ctf-12-2022/based_meme.webp)
 
 </br>
 
@@ -43,13 +43,13 @@ The flag is `nland{Das_Internet_ist_für_uns_alle_NEULAND_}`.
 
 *A Neuland member lost his office access card, can you duplicate the key?*
 
-![](../../src/blog/images/neuland-ctf-12-2022/RFID-Card.jpeg)
+![](../../src/blog/images/neuland-ctf-12-2022/RFID-Card.webp)
 
 </br>
 
 According to the description it is an access card, this leads to the assumption that it is an RFID card. If we shine a light through the card, the antenna and chip can be seen. The easiest way to read the data is the NFC reader of a cell phone. This can be done using an app or by activating NFC and bringing the mobile phone into contact with the card. The mobile phone will then be able to read the data and shows the flag.
 
-![](../../src/blog/images/neuland-ctf-12-2022/RFID-Flag.jpeg)
+![](../../src/blog/images/neuland-ctf-12-2022/RFID-Flag.webp)
 
 The flag is `nland{1ff_m42k_2}`.
 
@@ -67,7 +67,7 @@ When opening the PDF, a window with the text "You are hacked!" is displayed and 
 
 </br>
 
-![](../../src/blog/images/neuland-ctf-12-2022/PDF.png)
+![](../../src/blog/images/neuland-ctf-12-2022/PDF.webp)
 
 </br>
 

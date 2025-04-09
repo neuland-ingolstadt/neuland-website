@@ -26,7 +26,7 @@ The title of the challenge already gives us an indication of the correct solutio
 
 </br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/dinge().png)
+![](../../src/blog/images/neuland-ctf-12-2023/dinge().webp)
 
 </br>
 
@@ -229,7 +229,7 @@ We see a website advertising IT security courses.
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/infosec1.png)
+![](../../src/blog/images/neuland-ctf-12-2023/infosec1.webp)
 
 <br>
 
@@ -237,12 +237,12 @@ We notice the contact form that can be sent, but this does not lead to success.
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/infosec2.png)
+![](../../src/blog/images/neuland-ctf-12-2023/infosec2.webp)
 
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/infosec3.png)
+![](../../src/blog/images/neuland-ctf-12-2023/infosec3.webp)
 
 <br>
 
@@ -250,7 +250,7 @@ In the URL, we see that pages are embedded via the file parameter. Local File In
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/infosec4.png)
+![](../../src/blog/images/neuland-ctf-12-2023/infosec4.webp)
 
 <br>
 
@@ -258,7 +258,7 @@ We can find the user `infosec-academy` through the passwd file. Now, we are able
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/infosec5.png)
+![](../../src/blog/images/neuland-ctf-12-2023/infosec5.webp)
 
 <br>
 
@@ -275,7 +275,7 @@ We were invited to a secret club.
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/odyssey1.png)
+![](../../src/blog/images/neuland-ctf-12-2023/odyssey1.webp)
 
 <br>
 
@@ -283,7 +283,7 @@ Fortunately, we have been sent login data with which we can log in. We find a te
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/odyssey4.png)
+![](../../src/blog/images/neuland-ctf-12-2023/odyssey4.webp)
 
 <br>
 
@@ -291,7 +291,7 @@ Let's take a closer look at the login window. Here we have the option of using t
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/odyssey3.png)
+![](../../src/blog/images/neuland-ctf-12-2023/odyssey3.webp)
 
 <br>
 
@@ -299,7 +299,7 @@ After we have logged in again, we can discover a cookie named `remember_user`.
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/odyssey5.png)
+![](../../src/blog/images/neuland-ctf-12-2023/odyssey5.webp)
 
 <br>
 
@@ -307,7 +307,7 @@ The value of the cookie can be decoded with the help of CyberChef.
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/odyssey6.png)
+![](../../src/blog/images/neuland-ctf-12-2023/odyssey6.webp)
 
 <br>
 
@@ -315,7 +315,7 @@ Previously we were told that only the administrator knows the mystery. Therefore
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/odyssey7.png)
+![](../../src/blog/images/neuland-ctf-12-2023/odyssey7.webp)
 
 <br>
 
@@ -323,7 +323,7 @@ Finally, we just need to set the generated token as cookie `remember_user`, whic
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/odyssey8.png)
+![](../../src/blog/images/neuland-ctf-12-2023/odyssey8.webp)
 
 <br>
 
@@ -338,7 +338,7 @@ Author: [Fabi](https://github.com/fabifighter007)</br>
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/upload1.png)
+![](../../src/blog/images/neuland-ctf-12-2023/upload1.webp)
 
 <br>
 
@@ -346,7 +346,7 @@ To see what happens after the form is submitted, we use [Burp Suite](https://por
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/upload2.png)
+![](../../src/blog/images/neuland-ctf-12-2023/upload2.webp)
 
 <br>
 
@@ -355,7 +355,7 @@ If we successfully upload PHP code, it will also end up in the uploads folder an
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/upload3.png)
+![](../../src/blog/images/neuland-ctf-12-2023/upload3.webp)
 
 <br>
 
@@ -365,11 +365,11 @@ Furthermore, we set the content of the 'image' to a webshell:
 <?php system($_REQUEST['cmd']); ?>
 ```
 
-After some fuzzing, we were able to upload a file named shell.png.Php. Now, we can visit `http://78.46.78.30:1094/uploads/upload1.png.Php?cmd=ls` to view the contents of the previously identified uploads directory. 
+After some fuzzing, we were able to upload a file named shell.webp.Php. Now, we can visit `http://78.46.78.30:1094/uploads/upload1.webp.Php?cmd=ls` to view the contents of the previously identified uploads directory. 
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/upload4.png)
+![](../../src/blog/images/neuland-ctf-12-2023/upload4.webp)
 
 <br>
 
@@ -377,7 +377,7 @@ We find the flag within the `home` directory.
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/upload5.png)
+![](../../src/blog/images/neuland-ctf-12-2023/upload5.webp)
 
 <br>
 

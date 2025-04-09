@@ -18,7 +18,7 @@ Download challenges: [Neuland CTF Repository](https://github.com/neuland-ingolst
 </br>
 
 ## This is fine - Easy
-![](../../src/blog/images/neuland-ctf-12-2023/this-is-fine.jpg)
+![](../../src/blog/images/neuland-ctf-12-2023/this-is-fine.webp)
 
 </br>
 
@@ -26,7 +26,7 @@ We get what appears to be a typical JPG image. Metadata is one of the first plac
 
 </br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/this_is_fine_properties.png)
+![](../../src/blog/images/neuland-ctf-12-2023/this_is_fine_properties.webp)
 
 The flag is `nland{7H3y_5ho7_4_GOr1LL4_fOR_GOD554k3}`.
 
@@ -41,7 +41,7 @@ The flag is `nland{7H3y_5ho7_4_GOr1LL4_fOR_GOD554k3}`.
 
 The video only displays black and white pixels. Files consist of bits that are represented by 0/1 or on/off. This encoding also works with black and white squares, which could be used to store data in video form. Now you could write a script to get the data back from the video; fortunately, some useful scripts are already on GitHub. A possible solution is the Infinite Storage Glitch created by DvorakDwarf.
 
-![](../../src/blog/images/neuland-ctf-12-2023/rick_roll.jpeg)
+![](../../src/blog/images/neuland-ctf-12-2023/rick_roll.webp)
 
 The flag is `nland{1nf1N1t3_St0rag3_gL1tch}`.
 
@@ -71,8 +71,8 @@ Author: [Fabi](https://github.com/fabifighter007)</br>
 
 We have only received the string `0x7502A60536068033cDfBAFB1E51C38a3b4470bc3` to solve the challenge. This looks like a 42-character hexadecimal Ethereum address. By using Etherscan, a blockchain explorer and analytics platform for Ethereum, we can track and analyze transactions associated with our address on the [Sepolia testnet](https://sepolia.etherscan.io/address/0x7502A60536068033cDfBAFB1E51C38a3b4470bc3). We discover a total of 1169 transactions. By inspecting some transactions, we notice that transactions were sent from '0x7502A60536068033cDfBAFB1E51C38a3b4470bc3' to '0xf255f8183922f53ec91BeFC301316D2De3701Bef'. Each transaction appears to have a value assigned to its 'Input Data' field. 
 
-![](../../src/blog/images/neuland-ctf-12-2023/blockchain_1.png)
-![](../../src/blog/images/neuland-ctf-12-2023/blockchain_2.png)
+![](../../src/blog/images/neuland-ctf-12-2023/blockchain_1.webp)
+![](../../src/blog/images/neuland-ctf-12-2023/blockchain_2.webp)
 
 "It appears that each transaction contains a word, collectively forming sentences. We will use a Python script to extract all words from each transaction. To access the blockchain data, we will use [Etherscan's free API](https://docs.etherscan.io/getting-started/viewing-api-usage-statistics).
 
@@ -146,7 +146,7 @@ print(remove_latin_chars(file_content))
 
 The script produces the following output:
 
-![](../../src/blog/images/neuland-ctf-12-2023/blockchain_3.png)
+![](../../src/blog/images/neuland-ctf-12-2023/blockchain_3.webp)
 
 Even though we removed all Latin letters, some characters that appear similar to Latin letters still remain in the text. For instance, the letter 'ո' was not removed in the process of eliminating Latin letters, as it belongs to the Armenian alphabet and is not the same as the English 'n'. Let's add the remaining the Latin and special character to our script:
 

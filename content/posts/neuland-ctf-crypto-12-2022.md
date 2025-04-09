@@ -30,7 +30,7 @@ The flag is `nland{m491c41_817w153_0p324702}`.
 
 *My friend gave me a black box to communicate.*
 
-![](../../src/blog/images/neuland-ctf-12-2022/blackbox.jpeg)
+![](../../src/blog/images/neuland-ctf-12-2022/blackbox.webp)
 
 </br>
 

@@ -58,7 +58,7 @@ hashcat.exe -a 0 -m 3000 hash.txt rockyou.txt
 
 The hash.txt file contains the hash value to be decrypted. We use the parameter *-a* to determine the dictionary mode, *-m* stands for the hash algorithm. 
 
-![](../../src/blog/images/neuland-ctf-12-2023/hash.png)
+![](../../src/blog/images/neuland-ctf-12-2023/hash.webp)
 
 </br>
 
@@ -103,7 +103,7 @@ The flag is `nland{ROll1n9_your_Own_r54}`
 
 *Flag format: nland{\<message\>} in all lowercase*
 
-![](../../src/blog/images/neuland-ctf-12-2023/xmas.jpeg)
+![](../../src/blog/images/neuland-ctf-12-2023/xmas.webp)
 
 </br>
 
@@ -124,7 +124,7 @@ A quick Google search shows that only a few cryptographic algorithms use colors 
 
 Enter the color combination into an [online decoder](https://www.dcode.fr/hexahue-cipher) and get the word ho.
 
-![](../../src/blog/images/neuland-ctf-12-2023/hexahue.png)
+![](../../src/blog/images/neuland-ctf-12-2023/hexahue.webp)
 
 </br>
 

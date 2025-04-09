@@ -22,7 +22,7 @@ Download challenges: [Neuland CTF Repository](https://github.com/neuland-ingolst
 
 *Flag format: nland{name of mountainous area} in all lowercase*
 
-![](../../src/blog/images/neuland-ctf-12-2023/Geoguessr.jpg)
+![](../../src/blog/images/neuland-ctf-12-2023/Geoguessr.webp)
 
 </br>
 
@@ -77,7 +77,7 @@ The video contains photos of a trip. By using Google Lens it becomes clear that 
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/traveler_1.png)
+![](../../src/blog/images/neuland-ctf-12-2023/traveler_1.webp)
 
 <br>
 
@@ -85,7 +85,7 @@ This means that we have already solved the first part of the challenge. Next, we
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/traveler_2.jpg)
+![](../../src/blog/images/neuland-ctf-12-2023/traveler_2.webp)
 
 <br>
 
@@ -93,11 +93,11 @@ Within the last photo, we see SSIDs of nearby WLAN networks. By using [WIGLE](ht
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/traveler_3.png)
+![](../../src/blog/images/neuland-ctf-12-2023/traveler_3.webp)
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/traveler_4.png)
+![](../../src/blog/images/neuland-ctf-12-2023/traveler_4.webp)
 
 <br>
 
