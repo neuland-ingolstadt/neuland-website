@@ -170,7 +170,7 @@ const NextAppShowcase = () => {
 									className="no-underline"
 								>
 									<img
-										src="assets/app_store_badge_de.svg"
+										src="/assets/app_store_badge_de.svg"
 										alt="Apple App Store"
 										className="h-12"
 									/>
@@ -182,7 +182,7 @@ const NextAppShowcase = () => {
 									className="no-underline"
 								>
 									<img
-										src="assets/play_store_badge_de.svg"
+										src="/assets/play_store_badge_de.svg"
 										alt="Google Play Store"
 										className="h-12"
 									/>
