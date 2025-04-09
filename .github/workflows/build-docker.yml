@@ -2,7 +2,7 @@ name: Build Docker image
 
 on:
   push:
-    branches: ['main']
+    branches: ['main', 'blog']
   workflow_dispatch:
 
 env:
