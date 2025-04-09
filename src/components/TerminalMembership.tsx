@@ -18,7 +18,7 @@ const TerminalMembership = () => {
 				<div className="flex flex-col gap-2">
 					<div>
 						<span className="text-terminal-highlight">Studierende:</span>
-						<span className="text-success ml-2">0€ / Jahr</span>
+						<span className="text-success ml-2">5€ / Jahr</span>
 					</div>
 					<div>
 						<span className="text-terminal-highlight">Externe:</span>
