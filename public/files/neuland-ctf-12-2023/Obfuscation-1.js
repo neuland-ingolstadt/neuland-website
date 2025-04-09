@@ -1,0 +1,25 @@
+var _0xb845=[
+    "\x6E\x6C\x61\x6E\x64\x7B",
+    "\x31\x46\x5F",
+    "\x6F\x38\x66\x55\x73\x63\x34\x37\x33\x64\x5F",
+    "\x6E\x6F\x37\x5F",
+    "\x70\x72\x6F\x39\x52\x34\x4D\x4D\x33\x52\x5F",
+    "\x6D\x34\x6C\x77\x34\x52\x33\x7D",
+    "\x73\x75\x72\x33\x5F",
+    "\x6F\x52\x5F",
+    "\x79\x33\x34\x52\x5F",
+    "\x46\x31\x52\x73\x37\x5F"];
+
+const flag=[_0xb845[0]];
+
+function dinge(){
+    flag[3]= _0xb845[1];
+    flag[8]= _0xb845[2];
+    flag[1]= _0xb845[3];
+    flag[6]= _0xb845[4];
+    flag[9]= _0xb845[5];
+    flag[2]= _0xb845[6];
+    flag[7]= _0xb845[7];
+    flag[5]= _0xb845[8];
+    flag[4]= _0xb845[9]
+}
