@@ -19,19 +19,19 @@ tags:
 
 The first part of the flag can be found in the website's page source in the header metatag content.
 
-![](../../src/blog/images/neuland-ctf-12-2022/meta.webp)
+![](../src/blog/images/neuland-ctf-12-2022/meta.webp)
 
 </br>
 
 The second part of the flag is hidden in a cookie called "flag".
 
-![](../../src/blog/images/neuland-ctf-12-2022/keks.webp)
+![](../src/blog/images/neuland-ctf-12-2022/keks.webp)
 
 </br>
 
 The last part of the flag is hidden in the robots.txt file. This file can be used to specify whether and how the website may be visited by a web crawler.
 
-![](../../src/blog/images/neuland-ctf-12-2022/robots.webp)
+![](../src/blog/images/neuland-ctf-12-2022/robots.webp)
 
 </br>
 
@@ -99,7 +99,7 @@ The flag is `nland{y0u-sh0u7dn7-us3-xm7}`.
 
 We are presented with the backend of a shop system. The frontend isn't of much use. There are two QR codes and the message to "Look somewhere else!". We only get rickrolled if we scan the first QR code. 
 
-![](../../src/blog/images/neuland-ctf-12-2022/frontend.webp)
+![](../src/blog/images/neuland-ctf-12-2022/frontend.webp)
 
 As already expected we have to focus on the backend. For this sake I am going to use Postman to send the requests. The task tells us to log into an account. We have to register a new account and log into it.
 
@@ -120,7 +120,7 @@ api.post('/register', (req, res) => {
 In the body we need to include a username and password. This line tells us to format the body as a json: `api.use(bodyParser.json())` 
 The final request in Postman looks like this:
 
-![](../../src/blog/images/neuland-ctf-12-2022/register.webp)
+![](../src/blog/images/neuland-ctf-12-2022/register.webp)
 
 If we used a unique username, we get back the response that we are registered and two cookies are set.
 * uid --> user id of the account
@@ -128,7 +128,7 @@ If we used a unique username, we get back the response that we are registered an
 
 To login we can use the same request and sent it to the endpoint `/login`.
 
-![](../../src/blog/images/neuland-ctf-12-2022/login.webp)
+![](../src/blog/images/neuland-ctf-12-2022/login.webp)
 
 The response does contain the first flag.
 
@@ -181,7 +181,7 @@ api.post('/buy/:article', (req, res) => {
 
 We need to send a post request to the endpoint `/buy/flag`. The body needs to contain a JSON with the fields `quantity` and `price`. The two cookies passwd and uid need to be set as well to the values of the created account. The response will then contain a comment with the second flag. An `order` cookie is set with the response as well.
 
-![](../../src/blog/images/neuland-ctf-12-2022/buy_flag.webp)
+![](../src/blog/images/neuland-ctf-12-2022/buy_flag.webp)
 
 The flag is `nland{w3lc0m3_70_y0ur_n3w_4cc0un7}`.
 
@@ -291,7 +291,7 @@ We need to send a get request to the endpoint `/checkout` with the cookies `uid`
 
 The final request will look like this:
 
-![](../../src/blog/images/neuland-ctf-12-2022/checkout.webp)
+![](../src/blog/images/neuland-ctf-12-2022/checkout.webp)
 
 The flag is `nland{y0u_w3r3_n07_5upp053d_70_b3_4bl3_70_u53_7h3_ch3ck0u7_func710n_y37}`.
 

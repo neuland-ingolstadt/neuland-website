@@ -74,11 +74,11 @@ The flag is `nland{iPhone13mini}`.
 
 To solve the problem, we received a black USB stick with no external peculiarities. After plugging it into a computer, the USB stick mounts with the meaningless name "Generic Flash Disk USB Drive". There is a file in which the BSI describes the correct handling of removable storage devices. No further data can be found even after activating hidden files in the Windows Explorer. After a few attempts to examine the file, it turns out it is a dead end and does not contain the flag. However, one passage from the directive is interesting.
 
-![](../../src/blog/images/neuland-ctf-12-2023/BSI.webp)
+![](../src/blog/images/neuland-ctf-12-2023/BSI.webp)
 
 As long as deleted data has not been overwritten, it can be restored. A free online tool like [Disk Drill Data Recovery](https://www.cleverfiles.com/disk-drill-win.html) can make the files visible. And we were right; the previous owner deleted a file named after the flag.
 
-![](../../src/blog/images/neuland-ctf-12-2023/disk_drill.webp)
+![](../src/blog/images/neuland-ctf-12-2023/disk_drill.webp)
 
 The flag is `nland{Wer_hat_uns_verraten?_Metadaten!}`.
 
@@ -156,7 +156,7 @@ We have a memory dump and a Keepass database for which we do not have the passwo
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/keepass1.webp)
+![](../src/blog/images/neuland-ctf-12-2023/keepass1.webp)
 
 <br>
 
@@ -164,7 +164,7 @@ Through educated guessing we are able to recognize the first letters of the pass
 
 <br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/keepass2.webp)
+![](../src/blog/images/neuland-ctf-12-2023/keepass2.webp)
 
 <br>
 

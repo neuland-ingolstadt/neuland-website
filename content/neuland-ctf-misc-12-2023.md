@@ -22,7 +22,7 @@ Download challenges: [Neuland CTF Repository](https://github.com/neuland-ingolst
 
 </br>
 
-![](../../src/blog/images/neuland-ctf-12-2023/sanity.webp)
+![](../src/blog/images/neuland-ctf-12-2023/sanity.webp)
 
 </br>
 
@@ -34,7 +34,7 @@ The flag is `nland{neuland-ctf-2023}`.
 *Open a lock with an instrument other than the proper key.
 Pick up a lock, pick, and tension wrench at the front and bring back the opened lock to the CTF orga to get the flag.*
 
-![](../../src/blog/images/neuland-ctf-12-2023/lockpicking.webp)
+![](../src/blog/images/neuland-ctf-12-2023/lockpicking.webp)
 
 </br>
 

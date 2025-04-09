@@ -22,8 +22,8 @@ interface Post {
 
 export async function getPosts() {
 	const { directories } = normalizePages({
-		list: await getPageMap('/posts'),
-		route: '/posts'
+		list: await getPageMap('/'),
+		route: '/'
 	})
 
 	return directories

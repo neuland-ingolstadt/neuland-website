@@ -26,7 +26,7 @@ Download challenges: [Neuland CTF Repository](https://github.com/neuland-ingolst
 
 We get a portable executable with the MD5 hash ***A97F6CA98E275F846150A4E1EC45FBD0***. A closer look in a PE editor and process viewer like [CFF Explorer](https://ntcore.com/?page_id=388) tells us the file is probably not packed or compressed. Strings can be identified, and in the ***IMAGE_SECTION_HEADER*** the raw data size roughly corresponds to the virtual data size. This should enable us to read the strings used in the program code without using a software reverse engineering framework like [Ghidra](https://ghidra-sre.org/). We can search for the string ***nland{*** in the Ascii representation under the Hex Editor tab to find the rest of the flag.
 
-![](../../src/blog/images/neuland-ctf-12-2023/login.webp)
+![](../src/blog/images/neuland-ctf-12-2023/login.webp)
 
 </br>
 
@@ -51,39 +51,39 @@ Client.
 To prevent reading the Flag by using a decompiler or trying to read it from source the executable is
 obscured.
 
-![](../../src/blog/images/neuland-ctf-12-2023/jonny_1.webp)
+![](../src/blog/images/neuland-ctf-12-2023/jonny_1.webp)
 
 After starting the executable you must enter a username and a password.
 
-![](../../src/blog/images/neuland-ctf-12-2023/jonny_2.webp)
+![](../src/blog/images/neuland-ctf-12-2023/jonny_2.webp)
 
 On a false login you must reenter username and password. There is actually no username and
 password which is correct implemented in the binary.
 You must bypass this check() function to get to the next step. Since this is just a Client which has no
 server side validation the user has full control over the binary and can change the binary execution
 
-![](../../src/blog/images/neuland-ctf-12-2023/jonny_3.webp)
+![](../src/blog/images/neuland-ctf-12-2023/jonny_3.webp)
 
 If (flag2) will check if the check() function returned true which is no possible without changing the
 value from false to true or use a decompiler such as [dnspy](https://github.com/0xd4d/dnSpy) which
 lets you easily jump into the Instruction even without passing the check. In the figure above you can
 use “Nächste Anweisung setzen” which means “Set next Instruction”. Sorry that it’s in german
 
-![](../../src/blog/images/neuland-ctf-12-2023/jonny_4.webp)
+![](../src/blog/images/neuland-ctf-12-2023/jonny_4.webp)
 
 After bypassing the check() function you must enter the secret key. The key will be initialized in the
 flag() function which is also checks If the key is valid. So you must read the key from memory. You
 can set up a break point at line 35 where the key is initialized and watch the local variables
 
-![](../../src/blog/images/neuland-ctf-12-2023/jonny_5.webp)
+![](../src/blog/images/neuland-ctf-12-2023/jonny_5.webp)
 
-![](../../src/blog/images/neuland-ctf-12-2023/jonny_6.webp)
+![](../src/blog/images/neuland-ctf-12-2023/jonny_6.webp)
 
 After entering a false key you can read the right key from memory as shown in this figure.
 The right Key is: ThisIsAReallyReallySecureKeyButYouCanReadItFromSourceSoItSucks
 It could be also possible to just jump into the if() which validates, if the key is correct.
 
-![](../../src/blog/images/neuland-ctf-12-2023/jonny_7.webp)
+![](../src/blog/images/neuland-ctf-12-2023/jonny_7.webp)
 
 After passing the correct key you get the Flag.
 
@@ -102,7 +102,7 @@ The flag is `nland{Kekw_Andi_C0P1UM_xD}`.
 
 To solve the task, we get a Java *jar* file that plays TicTacToe against us. The tasks indicate that, apart from winning and losing, there is another state that we have to reach to get the flag. We need to open the Java archive to take a closer look at the files. To do this, we can, for example, rename the file to a *ZIP* and then unzip it with 7ZIP. This gives us two *.class* files and the manifest. The *.class* files are not human-readable at the moment. To decompile them, you can use the Visual Studio Code Extension [“Decompiler”](https://github.com/tintinweb/vscode-decompiler) from tintinweb. The extension does exactly what it says: “Decompiles the $h\*! out of things”. IT decompiles the .class files into readable Java code. In the *TicTacToe$Board.class*, the game state *F* causes the flag to be displayed.
 
-![](../../src/blog/images/neuland-ctf-12-2023/decompiled_jar.webp)
+![](../src/blog/images/neuland-ctf-12-2023/decompiled_jar.webp)
 
 </br>
 
@@ -268,13 +268,13 @@ The flag is `nland{w0w_y0u_f0und_th3_g4lf_1_w4s_l00k1ng_for!}`.
 
 We received an Android Package Kit (APK) file to solve the task. After installing, you will be greeted with a page that asks you to enter a valid activation key. 
 
-![](../../src/blog/images/neuland-ctf-12-2023/flutter_app.webp)
+![](../src/blog/images/neuland-ctf-12-2023/flutter_app.webp)
 
 </br>
 
 You can also find out that the app was written with Flutter in the app's information. The internet tells us two things: a good Flutter decompiler has yet to be developed, and reverse engineering is complex. This is thanks, among other things, to the compiler optimization and the custom stack. There are a few ways to get there; the simplest is probably a mixture of the [reFlutter](https://github.com/Impact-I/reFlutter) project and decompiling with a standard APK tool like [jadx](https://github.com/skylot/jadx). This allows multiple strings to be extracted that look suspiciously like RegEx, the perfect tool to validate an activation key.
 
-![](../../src/blog/images/neuland-ctf-12-2023/flutter_code.webp)
+![](../src/blog/images/neuland-ctf-12-2023/flutter_code.webp)
 
 - *Part 1:* `^(-)$|^(([Pp]?[a-h](x[a-h])?([2-7]|[18]=?[QRBNqrbn]))|([KQRBNkqrbn][a-h ]?[1-8]?x?[a-h][1-8]))[+#]?` matches valid chess moves
 - *Part 2:* `([0-9])` single-digit numbers from 0 to 9
