@@ -19,6 +19,7 @@ export async function generateMetadata(props: { params: any }) {
 
 export async function generateStaticParams() {
 	const allTags = await getTags()
+	console.log(allTags)
 	return [...new Set(allTags)].map((tag) => ({ tag }))
 }
 
