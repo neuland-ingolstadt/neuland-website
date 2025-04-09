@@ -13,10 +13,10 @@ import './styles.css'
 
 // Define proper Props type for our page components
 export interface PageProps {
-	params: {
+	params: Promise<{
 		mdxPath: string[]
-	}
-	searchParams?: Record<string, string | string[]>
+	}>
+	searchParams?: Promise<Record<string, string | string[]>>
 }
 
 // Define metadata structure
@@ -126,7 +126,7 @@ export default async function Page(props: PageProps) {
 				)}
 			</div>
 
-			<MDXContent {...props} params={params} />
+			<MDXContent {...props} />
 		</>
 	)
 }

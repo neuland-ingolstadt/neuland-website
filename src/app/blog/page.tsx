@@ -19,7 +19,7 @@ export const metadata = {
 export default async function PostsPage({
 	searchParams
 }: {
-	searchParams: { [key: string]: string | string[] | undefined }
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
 	const tags = await getTags()
 	const posts = await getPosts()
@@ -30,7 +30,7 @@ export default async function PostsPage({
 		allTags[tag] += 1
 	}
 
-	const page = Number(searchParams.page || '1')
+	const page = Number((await searchParams).page || '1')
 	const postsPerPage = 9
 	const totalPages = Math.ceil(posts.length / postsPerPage)
 	const startIndex = (page - 1) * postsPerPage
