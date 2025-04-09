@@ -7,13 +7,20 @@ RUN bun install --frozen-lockfile
 FROM node:22-alpine AS builder
 WORKDIR /app
 
+# Install git and git-lfs to properly handle LFS files
+RUN apk add --no-cache git git-lfs
+
 ARG NEXT_PUBLIC_APTABASE_KEY
 ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_APTABASE_KEY=${NEXT_PUBLIC_APTABASE_KEY}
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 
 COPY --from=deps /app/node_modules ./node_modules
+
+# Copy the repository and fetch LFS files
 COPY . .
+RUN git lfs install
+RUN git lfs pull
 
 ENV NEXT_SHARP_PATH=/app/node_modules/sharp
 ENV NEXT_TELEMETRY_DISABLED=1
