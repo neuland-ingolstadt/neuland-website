@@ -48,7 +48,7 @@ export default function RootLayout({
 				<Providers>
 					<TerminalHeader />
 					<MatrixEffect />
-					<div className="container px-4 sm:px-12 mx-auto pt-6 relative z-10">
+					<div className="container px-4 md:px-12 xl:px-20 mx-auto pt-6 relative z-10">
 						{children}
 						<TerminalFooter />
 					</div>

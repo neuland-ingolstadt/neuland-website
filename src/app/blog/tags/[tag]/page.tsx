@@ -6,11 +6,18 @@ import {
 	BreadcrumbList,
 	BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
+import {
+	Pagination,
+	PaginationContent,
+	PaginationItem,
+	PaginationLink,
+	PaginationNext,
+	PaginationPrevious
+} from '@/components/ui/pagination'
 import Link from 'next/link'
 import { getPosts, getTags } from '../../get-posts'
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export async function generateMetadata(props: { params: any }) {
+export async function generateMetadata(props: { params: { tag: string } }) {
 	const params = await props.params
 	return {
 		title: `Posts Tagged with "${decodeURIComponent(params.tag)}"`
@@ -22,11 +29,35 @@ export async function generateStaticParams() {
 	return [...new Set(allTags)].map((tag) => ({ tag }))
 }
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export default async function TagPage(props: { params: any }) {
+export default async function TagPage(props: {
+	params: { tag: string }
+	searchParams: { [key: string]: string | string[] | undefined }
+}) {
 	const params = await props.params
+	const searchParams = await props.searchParams
 	const posts = await getPosts()
 	const decodedTag = decodeURIComponent(params.tag)
+
+	const taggedPosts = posts.filter((post) =>
+		post.frontMatter.tags.includes(decodedTag)
+	)
+
+	const page = Number(searchParams.page || '1')
+	const postsPerPage = 12
+	const totalPages = Math.ceil(taggedPosts.length / postsPerPage)
+	const startIndex = (page - 1) * postsPerPage
+	const endIndex = startIndex + postsPerPage
+	const paginatedPosts = taggedPosts.slice(startIndex, endIndex)
+
+	const generatePaginationItems = () => {
+		const items = []
+		for (let i = 1; i <= totalPages; i++) {
+			items.push(i)
+		}
+		return items
+	}
+
+	const paginationItems = generatePaginationItems()
 
 	return (
 		<>
@@ -56,18 +87,49 @@ export default async function TagPage(props: { params: any }) {
 				</BreadcrumbList>
 			</Breadcrumb>
 
-			<div className="mb-8">
+			<div className="mb-12">
 				<h1 className="text-3xl font-bold mb-2">#{decodedTag}</h1>
 				<p>Posts tagged with "{decodedTag}"</p>
 			</div>
 
-			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-				{posts
-					.filter((post) => post.frontMatter.tags.includes(decodedTag))
-					.map((post) => (
-						<PostCard key={post.route} post={post} />
-					))}
+			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+				{paginatedPosts.map((post) => (
+					<PostCard key={post.route} post={post} />
+				))}
 			</div>
+
+			{totalPages > 1 && (
+				<Pagination className="mt-12">
+					<PaginationContent>
+						{page > 1 && (
+							<PaginationItem>
+								<PaginationPrevious
+									href={`/blog/tags/${params.tag}?page=${page - 1}`}
+								/>
+							</PaginationItem>
+						)}
+
+						{paginationItems.map((item) => (
+							<PaginationItem key={`page-${item}`}>
+								<PaginationLink
+									href={`/blog/tags/${params.tag}?page=${item}`}
+									isActive={page === item}
+								>
+									{item}
+								</PaginationLink>
+							</PaginationItem>
+						))}
+
+						{page < totalPages && (
+							<PaginationItem>
+								<PaginationNext
+									href={`/blog/tags/${params.tag}?page=${page + 1}`}
+								/>
+							</PaginationItem>
+						)}
+					</PaginationContent>
+				</Pagination>
+			)}
 		</>
 	)
 }

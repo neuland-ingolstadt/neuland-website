@@ -76,9 +76,9 @@ export default async function Page(props: PageProps) {
 				</BreadcrumbList>
 			</Breadcrumb>
 
-			<div className="article-header mb-8 border-b border-terminal-window-border pb-6">
+			<div className="article-header  border-b border-terminal-window-border ">
 				{metadata?.title && (
-					<h1 className="text-3xl font-bold mb-4">{metadata.title}</h1>
+					<h1 className="text-3xl font-bold ">{metadata.title}</h1>
 				)}
 
 				<div className="flex flex-wrap items-center gap-4 text-sm text-terminal-text-muted mb-4">

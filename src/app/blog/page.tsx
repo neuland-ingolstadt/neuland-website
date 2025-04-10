@@ -1,9 +1,15 @@
 import { PostCard } from '@/components/blog/PostCard'
 import { Badge } from '@/components/ui/badge'
 import {
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbSeparator
+} from '@/components/ui/breadcrumb'
+import {
 	Pagination,
 	PaginationContent,
-	PaginationEllipsis,
 	PaginationItem,
 	PaginationLink,
 	PaginationNext,
@@ -31,7 +37,7 @@ export default async function PostsPage({
 	}
 
 	const page = Number((await searchParams).page || '1')
-	const postsPerPage = 9
+	const postsPerPage = 12
 	const totalPages = Math.ceil(posts.length / postsPerPage)
 	const startIndex = (page - 1) * postsPerPage
 	const endIndex = startIndex + postsPerPage
@@ -39,44 +45,34 @@ export default async function PostsPage({
 
 	const generatePaginationItems = () => {
 		const items = []
-
-		items.push(1)
-
-		let rangeStart = Math.max(2, page - 1)
-		let rangeEnd = Math.min(totalPages - 1, page + 1)
-
-		if (page <= 3) {
-			rangeStart = 2
-			rangeEnd = Math.min(4, totalPages - 1)
-		} else if (page >= totalPages - 2) {
-			rangeStart = Math.max(totalPages - 3, 2)
-			rangeEnd = totalPages - 1
-		}
-
-		if (rangeStart > 2) {
-			items.push('ellipsis-start')
-		}
-
-		for (let i = rangeStart; i <= rangeEnd; i++) {
+		// Generate all page numbers without ellipses
+		for (let i = 1; i <= totalPages; i++) {
 			items.push(i)
 		}
-
-		if (rangeEnd < totalPages - 1) {
-			items.push('ellipsis-end')
-		}
-
-		if (totalPages > 1) {
-			items.push(totalPages)
-		}
-
 		return items
 	}
 
 	const paginationItems = generatePaginationItems()
 
 	return (
-		<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-			<header className="mb-12">
+		<>
+			<Breadcrumb className="-ml-[1.625em] no-underline">
+				<BreadcrumbList className="flex items-center">
+					<BreadcrumbItem className="flex items-center">
+						<BreadcrumbLink asChild className="flex items-center">
+							<Link href="/" className="flex items-center">
+								root
+							</Link>
+						</BreadcrumbLink>
+					</BreadcrumbItem>
+					<BreadcrumbSeparator className="flex items-center mx-1" />
+					<BreadcrumbItem className="flex items-center">
+						<BreadcrumbLink className="flex items-center">Blog</BreadcrumbLink>
+					</BreadcrumbItem>
+				</BreadcrumbList>
+			</Breadcrumb>
+
+			<header className="mb-12 mt-2">
 				<h1 className="text-4xl font-bold text-terminal-highlight mb-6 font-mono">
 					{metadata.title}
 				</h1>
@@ -93,7 +89,7 @@ export default async function PostsPage({
 					))}
 				</div>
 			</header>
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
 				{paginatedPosts.map((post) => (
 					<PostCard key={post.route} post={post} />
 				))}
@@ -108,26 +104,16 @@ export default async function PostsPage({
 							</PaginationItem>
 						)}
 
-						{paginationItems.map((item, _index) => {
-							if (item === 'ellipsis-start' || item === 'ellipsis-end') {
-								return (
-									<PaginationItem key={`ellipsis-${item}`}>
-										<PaginationEllipsis />
-									</PaginationItem>
-								)
-							}
-
-							return (
-								<PaginationItem key={`page-${item}`}>
-									<PaginationLink
-										href={`/blog?page=${item}`}
-										isActive={page === item}
-									>
-										{item}
-									</PaginationLink>
-								</PaginationItem>
-							)
-						})}
+						{paginationItems.map((item) => (
+							<PaginationItem key={`page-${item}`}>
+								<PaginationLink
+									href={`/blog?page=${item}`}
+									isActive={page === item}
+								>
+									{item}
+								</PaginationLink>
+							</PaginationItem>
+						))}
 
 						{page < totalPages && (
 							<PaginationItem>
@@ -137,6 +123,6 @@ export default async function PostsPage({
 					</PaginationContent>
 				</Pagination>
 			)}
-		</div>
+		</>
 	)
 }
