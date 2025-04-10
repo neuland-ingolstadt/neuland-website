@@ -82,3 +82,68 @@ article a,
 	background-color: transparent !important;
 	color: var(--color-terminal-highlight) !important;
 }
+
+/* Fix for blog post cards to ensure consistent styling */
+.blog-card,
+a .blog-card,
+div.blog-card {
+	background-color: var(--color-terminal-window) !important;
+	border: 1px solid var(--color-terminal-window-border) !important;
+	border-radius: 0.5rem !important;
+	overflow: hidden !important;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	margin-bottom: 1rem !important;
+}
+
+.blog-card:hover,
+a:hover .blog-card,
+div.blog-card:hover {
+	border-color: var(--color-terminal-cyan) !important;
+}
+
+/* Fix heading colors in blog cards */
+.blog-card h2,
+a .blog-card h2,
+div.blog-card h2,
+.blog-card [class*="text-primary"],
+.blog-card .x\:text-primary-700,
+.blog-card .x\:text-primary-600,
+.blog-card .x\:prose h2 {
+	font-weight: bold !important;
+	color: var(--color-terminal-text) !important;
+	font-size: 1.2rem !important;
+}
+
+/* Fix for excessive padding in cards */
+.blog-card > div {
+	padding: 1rem !important;
+}
+
+/* Override Nextra's article wrapper padding */
+article.nx-mb-8,
+.nx-mb-8,
+.x\:mb-8,
+.x\:my-8,
+.x\:py-4,
+.nx-py-4 {
+	margin-bottom: 1rem !important;
+	margin-top: 1rem !important;
+	padding-top: 0.5rem !important;
+	padding-bottom: 0.5rem !important;
+}
+
+/* Fix spacing in blog entry list */
+.nx-space-y-4 > div,
+.x\:space-y-4 > div {
+	padding-top: 0 !important;
+	margin-top: 0.5rem !important;
+	margin-bottom: 0.5rem !important;
+}
+
+/* Remove Nextra article padding */
+.nx-article,
+article.nx-article,
+.x\:article {
+	padding: 0 !important;
+}

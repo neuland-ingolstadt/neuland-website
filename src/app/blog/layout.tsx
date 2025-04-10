@@ -1,4 +1,5 @@
 import { Layout } from 'nextra-theme-blog'
+import '@/styles/blog/nextra-overrides.css'
 
 export default async function RootLayout({
 	children

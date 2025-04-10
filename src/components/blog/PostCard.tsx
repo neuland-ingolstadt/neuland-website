@@ -19,9 +19,9 @@ export function PostCard({ post }: PostCardProps) {
 				key={post.frontMatter.title}
 				className="block group no-underline"
 			>
-				<div className="bg-terminal-window border border-terminal-window-border rounded-lg overflow-hidden group-hover:border-terminal-cyan transition-colors duration-300 flex flex-col h-full">
+				<div className="blog-card bg-terminal-window border border-terminal-window-border rounded-lg overflow-hidden group-hover:border-terminal-cyan transition-colors duration-300 flex flex-col h-full">
 					<div className="p-4 flex-grow">
-						<h2 className="text-lg font-bold mb-2 text-terminal-text line-clamp-2">
+						<h2 className="text-xl font-bold mb-2 text-terminal-text line-clamp-2">
 							{post.frontMatter.title}
 						</h2>
 						<div className="flex flex-col gap-1 text-md text-terminal-text/70 mb-3 ">

@@ -9,7 +9,6 @@ import {
 import moment from 'moment'
 import Link from 'next/link'
 import { generateStaticParamsFor, importPage } from 'nextra/pages'
-import './styles.css'
 
 // Define proper Props type for our page components
 export interface PageProps {
