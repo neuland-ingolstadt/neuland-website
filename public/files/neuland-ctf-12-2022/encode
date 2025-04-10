@@ -1,0 +1,39 @@
+      0 LOAD_CONST               1 ('')
+      2 STORE_FAST               1 (o)
+
+      4 SETUP_LOOP              56 (to 62)
+      6 LOAD_GLOBAL              0 (enumerate)
+      8 LOAD_FAST                0 (flag)
+     10 CALL_FUNCTION            1
+     12 GET_ITER
+>>   14 FOR_ITER                44 (to 60)
+     16 UNPACK_SEQUENCE          2
+     18 STORE_FAST               2 (i)
+     20 STORE_FAST               3 (b)
+
+     22 LOAD_GLOBAL              1 (ord)
+     24 LOAD_FAST                3 (b)
+     26 CALL_FUNCTION            1
+     28 STORE_FAST               3 (b)
+
+     30 LOAD_FAST                3 (b)
+     32 LOAD_CONST               2 (7)
+     34 BINARY_ADD
+     36 LOAD_FAST                2 (i)
+     38 BINARY_SUBTRACT
+     40 STORE_FAST               3 (b)
+
+     42 LOAD_GLOBAL              2 (chr)
+     44 LOAD_FAST                3 (b)
+     46 CALL_FUNCTION            1
+     48 STORE_FAST               4 (a)
+
+     50 LOAD_FAST                1 (o)
+     52 LOAD_FAST                4 (a)
+     54 INPLACE_ADD
+     56 STORE_FAST               1 (o)
+     58 JUMP_ABSOLUTE           14
+>>   60 POP_BLOCK
+
+>>   62 LOAD_FAST                1 (o)
+     64 RETURN_VALUE

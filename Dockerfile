@@ -4,7 +4,7 @@ WORKDIR /app
 COPY bun.lock package.json ./
 RUN bun install --frozen-lockfile 
 
-FROM node:22-alpine AS builder
+FROM node:23-alpine AS builder
 WORKDIR /app
 
 ARG NEXT_PUBLIC_APTABASE_KEY
@@ -21,7 +21,7 @@ RUN realpath .
 
 RUN npm run build
 
-FROM node:22-alpine AS runner
+FROM node:23-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production

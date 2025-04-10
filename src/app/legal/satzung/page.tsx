@@ -18,7 +18,6 @@ async function fetchSatzungContent() {
 				next: { revalidate: 3600 }
 			}
 		)
-		console.log('Response:', response)
 		if (!response.ok) {
 			throw new Error(`Failed to fetch Satzung content: ${response.status}`)
 		}

@@ -136,7 +136,7 @@ const GameOfLife: React.FC = () => {
 			for (let j = 0; j < grid[i].length; j++) {
 				const cell = grid[i][j]
 				if (cell.opacity > 0) {
-					ctx.fillStyle = `rgba(0, 99, 0, ${cell.opacity * 0.15})`
+					ctx.fillStyle = `rgba(0, 99, 0, ${cell.opacity * 0.16})`
 					ctx.fillRect(
 						j * cellSize + 2,
 						i * cellSize + 2,

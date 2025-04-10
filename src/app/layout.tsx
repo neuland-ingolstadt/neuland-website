@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Noto_Sans_Mono, Shantell_Sans } from 'next/font/google'
+import { Noto_Sans, Noto_Sans_Mono, Shantell_Sans } from 'next/font/google'
 
 import '../styles/index.css'
 
@@ -14,8 +14,14 @@ const overpassMono = Noto_Sans_Mono({
 	display: 'swap'
 })
 
-const shantellSans = Shantell_Sans({
+const notoSans = Noto_Sans({
 	variable: '--font-sans',
+	subsets: ['latin'],
+	display: 'swap'
+})
+
+const shantellSans = Shantell_Sans({
+	variable: '--font-fantasy',
 	subsets: ['latin'],
 	display: 'swap'
 })
@@ -37,12 +43,12 @@ export default function RootLayout({
 				<meta name="theme-color" content="#000000" />
 			</head>
 			<body
-				className={`${overpassMono.variable} ${shantellSans.variable} font-mono antialiased`}
+				className={`${overpassMono.variable} ${notoSans.variable} ${shantellSans.variable} font-mono antialiased`}
 			>
 				<Providers>
 					<TerminalHeader />
 					<MatrixEffect />
-					<div className="container px-4 sm:px-12 mx-auto pt-6 relative z-10">
+					<div className="container px-4 md:px-12 xl:px-20 mx-auto pt-6 relative z-10">
 						{children}
 						<TerminalFooter />
 					</div>

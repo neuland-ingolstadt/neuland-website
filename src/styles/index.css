@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 @plugin 'tailwindcss-animate';
 
 @theme {
@@ -42,6 +41,9 @@
 	--animate-cyberpunk: cyberpunk-glow 1.5s ease-in-out infinite;
 
 	--font-mono: var(--font-mono), Source Code Pro, monospace;
+	--font-fantasy: var(--font-fantasy), Shantell Sans, fantasy;
+	--font-sans:
+		var(--font-sans), "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
 	@keyframes cursor {
 		0%,
@@ -96,6 +98,8 @@
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
 	--font-mono: var(--font-mono);
+	--font-fantasy: var(--font-fantasy);
+	--font-sans: var(--font-sans);
 }
 
 /*
@@ -143,11 +147,12 @@
 	h5,
 	h6 {
 		@apply font-bold mb-4 text-terminal-cyan;
-		font-family: var(--font-mono);
+		font-family: var(--font-mono) !important;
 	}
 
 	h2 {
 		@apply text-xl sm:text-2xl relative;
+		font-family: var(--font-mono);
 	}
 
 	p {
