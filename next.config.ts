@@ -15,7 +15,6 @@ const withNextra = nextra({
 
 export default withNextra({
 	pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-
 	onDemandEntries: {
 		maxInactiveAge: 25 * 1000,
 		pagesBufferLength: 4

@@ -18,9 +18,8 @@ import Link from 'next/link'
 import { getPosts, getTags } from '../../get-posts'
 
 export async function generateMetadata(props: { params: { tag: string } }) {
-	const params = await props.params
 	return {
-		title: `Posts Tagged with "${decodeURIComponent(params.tag)}"`
+		title: `Posts Tagged with "${decodeURIComponent(props.params.tag)}"`
 	}
 }
 
@@ -29,12 +28,20 @@ export async function generateStaticParams() {
 	return [...new Set(allTags)].map((tag) => ({ tag }))
 }
 
-export default async function TagPage(props: {
-	params: { tag: string }
-	searchParams: { [key: string]: string | string[] | undefined }
-}) {
-	const params = await props.params
-	const searchParams = await props.searchParams
+// Update the component's type definition to match Next.js App Router expectations
+interface TagPageProps {
+	params: {
+		tag: string
+	}
+	searchParams?: {
+		[key: string]: string | string[] | undefined
+	}
+}
+
+export default async function TagPage({
+	params,
+	searchParams = {}
+}: TagPageProps) {
 	const posts = await getPosts()
 	const decodedTag = decodeURIComponent(params.tag)
 
