@@ -17,8 +17,8 @@ Das Highlight: Jede\*r gestaltete zwei eigene Projekte – eine Dose mit selbst 
 Du willst beim nächsten Mal dabei sein?
 Dann halte die Augen offen – es wird sicher nicht der letzte 3D-Druck Workshop gewesen sein!
 
-![1_4080-3072-max](public/assets/blog/neuland-3d-printing-workshop-2025-05-31/1_4080-3072-max.jpg)
-![2_3072-4080-max-2](public/assets/blog/neuland-3d-printing-workshop-2025-05-31/2_3072-4080-max-2.jpg)
-![3_4080-3072-max-3](public/assets/blog/neuland-3d-printing-workshop-2025-05-31/3_4080-3072-max-3.jpg)
-![4_3072-4080-max](public/assets/blog/neuland-3d-printing-workshop-2025-05-31/4_3072-4080-max.jpg)
-![5_4032-3024-max](public/assets/blog/neuland-3d-printing-workshop-2025-05-31/5_4032-3024-max.jpg)
+![1_4080-3072-max](public/assets/blog/neuland-3d-printing-workshop-2025-05-31/1_4080-3072-max.webp)
+![2_3072-4080-max-2](public/assets/blog/neuland-3d-printing-workshop-2025-05-31/2_3072-4080-max-2.webp)
+![3_4080-3072-max-3](public/assets/blog/neuland-3d-printing-workshop-2025-05-31/3_4080-3072-max-3.webp)
+![4_3072-4080-max](public/assets/blog/neuland-3d-printing-workshop-2025-05-31/4_3072-4080-max.webp)
+![5_4032-3024-max](public/assets/blog/neuland-3d-printing-workshop-2025-05-31/5_4032-3024-max.webp)
