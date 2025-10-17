@@ -1,4 +1,3 @@
-import { useId } from 'react'
 import AboutUsSection from '@/components/AboutUs/AboutUsSection'
 import BlogPreview from '@/components/blog/BlogPreview'
 import ClientIntro from '@/components/ClientIntro'
@@ -19,7 +18,8 @@ export default async function Index() {
 				<ProjectsShowcase />
 			</TerminalSection>
 			<AboutUsSection />
-			<TerminalSection title="Mitgliedschaft" headingLevel={2} id={useId()}>
+			{/* biome-ignore lint/correctness/useUniqueElementIds: This ID is required for deep linking. */}
+			<TerminalSection title="Mitgliedschaft" headingLevel={2} id="membership">
 				<TerminalMembership />
 			</TerminalSection>
 			<TerminalSection title="Sponsoring" headingLevel={2}>
