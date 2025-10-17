@@ -131,7 +131,7 @@ const TerminalHeader: React.FC = () => {
 			<button
 				type="button"
 				onClick={link.onClick}
-				className={`${className} relative group text-left`}
+				className={`${className} relative group text-left cursor-pointer`}
 			>
 				{link.name}
 				<span className="absolute -bottom-1 left-0 w-full h-0.5 bg-terminal-cyan transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100" />
