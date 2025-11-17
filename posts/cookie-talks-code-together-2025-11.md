@@ -60,9 +60,11 @@ Konfiguriert wird das Cluster via FluxCD und Git, was Änderungen an den Dienste
 Für Datensicherheit sorgt das verteilte Longhorn-Storage mit regelmäßigen Cloud-Backups via S3-Bucket.
 Anwendungen wie Authentik (SSO), NextCloud, Outline (Wiki), Neuland API, Neuland Next App, Neuland Website und mehr demonstrieren eindrucksvoll die Leistungsfähigkeit des Setups.
 
+An dieser Stelle soll auch noch einmal ein Dank an Hetzner gerichtet werden, die die Infrastruktur und auch das Event gesponsert haben!
+
 Da das Thema Kubernetes und Container-Orchestrierung im Publikum noch wenig verbreitet schien, könnten sich hier zukünftig Workshop-Formate anbieten.
 
-![Cookie Talks November 2025](/assets/blog/cookie-talks-code-together-2025-11/2025-11-06_cookie-talks_4.webp)
+![Cookie Talks November 2025](/assets/blog/cookie-talks-code-together-2025-11/2025-11-06_cookie-talks_4b.webp)
 
 ## code:together
 
