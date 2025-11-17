@@ -134,12 +134,12 @@ const NextAppShowcase = () => {
 						Neuland Next
 					</h2>
 					<p className="text-xl/loose text-terminal-text mb-6">
-						Deine inoffizielle <span className="font-bold">Campus App</span> für
-						die <span className="font-bold">TH Ingolstadt</span>
+						Deine <span className="font-bold">App</span> für die{' '}
+						<span className="font-bold">TH Ingolstadt</span>
 					</p>
 					<p className="text-lg text-terminal-text/80 max-w-3xl mx-auto">
-						Deine moderne Campus-App von Studierenden für Studierende.
-						Entwickelt mit Liebe zum Detail und vollständig Open Source.
+						Deine moderne Campus-App von Neuland Ingolstadt. Entwickelt mit
+						Liebe zum Detail und vollständig Open Source.
 					</p>
 				</motion.div>
 

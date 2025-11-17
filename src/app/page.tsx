@@ -18,7 +18,6 @@ export default async function Index() {
 				<ProjectsShowcase />
 			</TerminalSection>
 			<AboutUsSection />
-			{/* biome-ignore lint/correctness/useUniqueElementIds: This ID is required for deep linking. */}
 			<TerminalSection title="Mitgliedschaft" headingLevel={2} id="membership">
 				<TerminalMembership />
 			</TerminalSection>
