@@ -2,18 +2,14 @@
 title: "Cookie Talks und code:together im November 2025"
 authors: 
   - name: "Josias Erd"
-    link: ""
 date: 2025-11-16T20:00
-description: "Ein Abend gefüllt mit Cookies und Code."
+description: "Ein Abend gefüllt mit Vorträgen, Cookies und Code."
 tags:
   - code:together
   - Community
   - Cookie Talks
   - Homelab
-  - Verein
   - Kubernetes
-  - Hetzner
-  - November 2025
 ---
 
 Servus liebe Leserinnen und Leser,
