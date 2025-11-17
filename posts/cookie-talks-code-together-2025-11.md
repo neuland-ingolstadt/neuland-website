@@ -79,10 +79,9 @@ Das nächste Event "Cookie Talks & code:together" im Dezember ist nach dieser po
 Wir freuen uns, wieder viele bekannte und neue Gesichter zu sehen.
 Bringt gerne wieder eure Programmierprojekte mit oder freut euch einfach auf spannende Talks und Cookies.
 
-Und falls ihr selbst Lust auf einen Talk hasbt: Meldet euch! Ideen sind jederzeit willkommen.
+Und falls ihr selbst Lust auf einen Talk habt: Meldet euch! Ideen sind jederzeit willkommen.
 
 Und damit war es das auch schon von mir.
 Ich danke für's Lesen - wir sehen uns in drei Wochen!
 
 ![Cookie Talks November 2025](/assets/blog/cookie-talks-code-together-2025-11/2025-10-31_cookie-talks_0.webp)
-
