@@ -5,36 +5,36 @@ interface FeatureItemProps {
 	icon: JSX.Element
 	title: string
 	description: string
+	isLastInRow?: boolean
+	isLastRow?: boolean
 }
 
-const FeatureItem = memo(({ icon, title, description }: FeatureItemProps) => {
-	return (
-		<motion.div
-			initial={{ opacity: 0 }}
-			whileInView={{ opacity: 1 }}
-			transition={{ duration: 0.4 }}
-			viewport={{ once: true }}
-			className="rounded-2xl shadow-xl bg-gradient-to-br from-white/10 to-terminal-windowTitle/60 backdrop-blur-xl border border-terminal-text/15 p-4 flex flex-col items-center text-center group transition-transform duration-300 hover:shadow-2xl h-full"
-			style={{
-				background:
-					'linear-gradient(135deg, rgba(34,193,195,0.10) 0%, rgba(17,17,17,0.70) 100%)',
-				backdropFilter: 'blur(16px)',
-				WebkitBackdropFilter: 'blur(16px)'
-			}}
-		>
-			<div className="shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-terminal-cyan/10 border border-terminal-cyan/30 shadow-sm backdrop-blur-sm mb-3 group-hover:bg-terminal-cyan/20 transition-colors">
-				{icon}
-			</div>
-			<div className="flex-1 flex flex-col justify-center">
-				<p className="font-extrabold text-terminal-text text-base mb-2 drop-shadow-md">
-					{title}
-				</p>
-				<p className="text-sm text-terminal-text/90 leading-snug m-0 ">
-					{description}
-				</p>
-			</div>
-		</motion.div>
-	)
-})
+const FeatureItem = memo(
+	({ icon, title, description, isLastInRow, isLastRow }: FeatureItemProps) => {
+		return (
+			<motion.div
+				initial={{ opacity: 0 }}
+				whileInView={{ opacity: 1 }}
+				transition={{ duration: 0.4 }}
+				viewport={{ once: true }}
+				className={`p-6 flex flex-col h-full group transition-all duration-200 ${!isLastInRow ? 'border-r border-neutral-800' : ''} ${!isLastRow ? 'border-b border-neutral-800' : ''}`}
+			>
+				<div className="flex items-center gap-3 mb-3">
+					<div className="shrink-0 w-6 h-6 flex items-center justify-center text-terminal-cyan">
+						{icon}
+					</div>
+					<p className="font-semibold text-terminal-text text-base m-0">
+						{title}
+					</p>
+				</div>
+				<div className="flex-1 flex flex-col">
+					<p className="text-sm text-gray-400 leading-relaxed m-0">
+						{description}
+					</p>
+				</div>
+			</motion.div>
+		)
+	}
+)
 
 export default FeatureItem

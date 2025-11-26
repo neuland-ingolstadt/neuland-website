@@ -38,7 +38,6 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 	className = ''
 }) => {
 	const { trackEvent } = useAptabase()
-	const [activeGlow, setActiveGlow] = useState<ButtonColor | null>(null)
 	const [confetti, setConfetti] = useState<JSX.Element[]>([])
 	const [animationInProgress, setAnimationInProgress] = useState(false)
 	const [terminalState, setTerminalState] = useState<TerminalState>('on')
@@ -193,11 +192,9 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 				trackEvent('EasterEgg', {
 					name: 'terminalGlow'
 				})
-				setActiveGlow(color)
 				setConfetti(createConfetti())
 
 				setManagedTimeout(() => {
-					setActiveGlow(null)
 					setConfetti([])
 					setAnimationInProgress(false)
 				}, 3000)
@@ -220,7 +217,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 	return (
 		<div
 			ref={terminalRef}
-			className={`terminal-window ${activeGlow ? `terminal-glow-${activeGlow}` : ''} ${className}`}
+			className={`terminal-window ${className}`}
 			style={{
 				height: containerHeight ? `${containerHeight}px` : 'auto',
 				minHeight: containerHeight ? `${containerHeight}px` : 'auto',
@@ -231,7 +228,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 			}}
 		>
 			<StickyNote
-				message="Do not close the terminal!"
+				message="Fenster nicht schließen!"
 				visible={terminalState === 'on' && showStickyNote}
 			/>
 

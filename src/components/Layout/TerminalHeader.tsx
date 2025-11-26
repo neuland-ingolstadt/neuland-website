@@ -80,7 +80,7 @@ const TerminalHeader: React.FC = () => {
 		{ name: 'Blog', href: '/blog', isPage: true },
 		{
 			name: 'Login',
-			href: 'https://notes.neuland-ingolstadt.de',
+			href: 'https://sso.informatik.sexy',
 			isPage: false,
 			external: true
 		}
@@ -118,7 +118,7 @@ const TerminalHeader: React.FC = () => {
 			return (
 				<Link
 					href={link.href}
-					className={`${className} relative group`}
+					className={`${className} relative group no-underline`}
 					onClick={onClick}
 				>
 					{link.name}

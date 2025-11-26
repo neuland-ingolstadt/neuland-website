@@ -1,6 +1,6 @@
 'use client'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Code, Filter, Github, Terminal } from 'lucide-react'
+import { Code, Filter, Github } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import ProjectCard, {
 	type ProjectDetails
@@ -51,8 +51,7 @@ const ProjectsPage = () => {
 				className="max-w-6xl mx-auto mb-12"
 			>
 				<div className="flex items-center gap-3 mb-6">
-					<Terminal className="text-terminal-text" size={32} />
-					<h1 className="text-3xl md:text-4xl font-bold text-terminal-cyan font-mono">
+					<h1 className="text-3xl md:text-4xl font-bold  font-mono">
 						Unsere Projekte
 					</h1>
 				</div>
@@ -94,7 +93,7 @@ const ProjectsPage = () => {
 				<div className="flex flex-wrap gap-3">
 					<button
 						type="button"
-						className={`px-4 py-2 rounded-md font-mono border transition-all duration-200 ${
+						className={`px-4 py-2  border transition-all duration-200 ${
 							!activeTag
 								? 'border-terminal-cyan bg-terminal-cyan/80 text-black'
 								: 'border-terminal-text/30 text-terminal-text/70 hover:border-terminal-cyan hover:text-terminal-cyan'
@@ -107,7 +106,7 @@ const ProjectsPage = () => {
 						<button
 							type="button"
 							key={tag}
-							className={`px-4 py-2 rounded-md font-mono border transition-all duration-200 ${
+							className={`px-4 py-2 border transition-all duration-200 ${
 								activeTag === tag
 									? 'border-terminal-cyan bg-terminal-cyan/80 text-black'
 									: 'border-terminal-text/30 text-terminal-text/70 hover:border-terminal-cyan hover:text-terminal-cyan'

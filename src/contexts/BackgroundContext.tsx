@@ -18,7 +18,7 @@ export const BackgroundProvider: React.FC<{ children: React.ReactNode }> = ({
 	children
 }) => {
 	const [backgroundType, setBackgroundTypeState] =
-		useState<BackgroundType>('gameOfLife')
+		useState<BackgroundType>('simple')
 
 	useEffect(() => {
 		const savedType = localStorage.getItem(

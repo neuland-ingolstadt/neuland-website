@@ -1,5 +1,6 @@
 import { GithubIcon, InstagramIcon, LinkedinIcon } from 'lucide-react'
 import type React from 'react'
+import MastodonIcon from './mastodon-icon'
 
 const SocialLinks: React.FC = () => {
 	return (
@@ -42,6 +43,19 @@ const SocialLinks: React.FC = () => {
 							<InstagramIcon className="inline-block" size={16} />
 						</span>{' '}
 						instagram.com
+					</a>
+				</li>
+				<li className="mb-2">
+					<a
+						href="https://social.tchncs.de/@neuland"
+						rel="noreferrer noopener"
+						target="_blank"
+						className="text-terminal-text! group"
+					>
+						<span className="text-terminal-cyan transition-all duration-300 group-hover:text-white group-hover:animate-cyberpunk">
+							<MastodonIcon className="inline-block w-4 h-4 fill-current" />
+						</span>{' '}
+						mastodon.social
 					</a>
 				</li>
 			</ul>

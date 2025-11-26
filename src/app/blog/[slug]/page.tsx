@@ -3,7 +3,6 @@ import { format, parseISO } from 'date-fns'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import TerminalButton from '@/components/TerminalButton'
-import { Badge } from '@/components/ui/badge'
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -115,14 +114,11 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
 								<Link
 									key={tag}
 									href={`/blog/tags/${encodeURIComponent(tag.toLowerCase())}`}
-									className="no-underline"
+									className="no-underline group/tag"
 								>
-									<Badge
-										variant="outline"
-										className="text-xs px-3 py-1 rounded-full bg-terminal-text/10 text-terminal-text font-medium border border-terminal-text/30 shadow-sm backdrop-blur-sm hover:bg-terminal-cyan/10 cursor-pointer"
-									>
+									<span className="inline-block text-xs px-2.5 py-1 bg-neutral-900 text-gray-400 font-medium border border-neutral-800 group-hover/tag:border-neutral-700 group-hover/tag:text-white transition-colors duration-200">
 										{tag}
-									</Badge>
+									</span>
 								</Link>
 							))}
 						</div>

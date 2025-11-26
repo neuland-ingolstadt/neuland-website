@@ -21,7 +21,7 @@ export default async function Index() {
 			<TerminalSection title="Mitgliedschaft" headingLevel={2} id="membership">
 				<TerminalMembership />
 			</TerminalSection>
-			<TerminalSection title="Sponsoring" headingLevel={2}>
+			<TerminalSection title="Partner" headingLevel={2}>
 				<TerminalPartners />
 			</TerminalSection>
 			<TerminalSection title="Neuland Blog" headingLevel={2}>

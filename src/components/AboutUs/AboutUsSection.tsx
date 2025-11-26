@@ -1,82 +1,96 @@
 'use client'
+import { motion } from 'framer-motion'
+import { Lightbulb, Rocket, Users } from 'lucide-react'
 import type React from 'react'
 import TerminalSection from '@/components/Layout/TerminalSection'
-import { Card, CardContent } from '@/components/ui/card'
 
 const AboutUsSection: React.FC = () => {
+	const features = [
+		{
+			icon: <Rocket className="h-6 w-6 text-terminal-cyan" />,
+			title: 'Projekte & Wettbewerbe',
+			desc: 'Wir entwickeln innovative Projekte, nehmen an Wettbewerben teil und fördern Kreativität.'
+		},
+		{
+			icon: <Lightbulb className="h-6 w-6 text-terminal-cyan" />,
+			title: 'Veranstaltungen & Wissen',
+			desc: 'Wir organisieren Events rund um Informatik und Technik – offen für alle Fakultäten und Studiengänge.'
+		},
+		{
+			icon: <Users className="h-6 w-6 text-terminal-cyan" />,
+			title: 'Community & Networking',
+			desc: 'Lerne neue Leute kennen, vernetze dich und werde Teil einer aktiven, hilfsbereiten Studierenden-Community.'
+		}
+	]
+
 	return (
 		<TerminalSection title="Über uns" headingLevel={2}>
-			{/* Main intro card */}
-			<Card
-				className="rounded-2xl shadow-xl bg-gradient-to-br from-white/10 to-terminal-windowTitle/60 backdrop-blur-xl border border-terminal-text/15 pt-4  mb-4"
-				style={{
-					background:
-						'linear-gradient(135deg, rgba(34,193,195,0.10) 0%, rgba(17,17,17,0.70) 100%)',
-					backdropFilter: 'blur(16px)',
-					WebkitBackdropFilter: 'blur(16px)'
-				}}
+			{/* Unified container */}
+			<motion.div
+				initial={{ opacity: 0, y: 20 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.6 }}
+				viewport={{ once: true }}
+				className="relative bg-[#0b0b0b] border border-neutral-800 overflow-hidden"
 			>
-				<CardContent className="flex items-center gap-4">
-					<div>
-						<h3 className="text-xl font-extrabold text-terminal-text drop-shadow-md mb-2">
-							Gemeinschaft & Plattform
-						</h3>
-						<p className=" text-terminal-text/90 leading-relaxed m-0">
-							Wir bieten Studierenden eine{' '}
-							<span className="font-bold text-terminal-cyan">Plattform</span>{' '}
-							zum Austausch, zur{' '}
-							<span className="font-bold text-terminal-cyan">
-								Projektarbeit
-							</span>{' '}
-							und zur{' '}
-							<span className="font-bold text-terminal-cyan">
-								Wissensvermittlung
-							</span>
-							.
-						</p>
-					</div>
-				</CardContent>
-			</Card>
+				{/* Corner accent brackets */}
+				<div className="absolute top-0 left-0 w-12 h-12">
+					<div className="absolute top-0 left-0 w-6 h-px bg-terminal-cyan/30" />
+					<div className="absolute top-0 left-0 w-px h-6 bg-terminal-cyan/30" />
+				</div>
+				<div className="absolute top-0 right-0 w-12 h-12">
+					<div className="absolute top-0 right-0 w-6 h-px bg-terminal-cyan/30" />
+					<div className="absolute top-0 right-0 w-px h-6 bg-terminal-cyan/30" />
+				</div>
+				<div className="absolute bottom-0 left-0 w-12 h-12">
+					<div className="absolute bottom-0 left-0 w-6 h-px bg-terminal-cyan/30" />
+					<div className="absolute bottom-0 left-0 w-px h-6 bg-terminal-cyan/30" />
+				</div>
+				<div className="absolute bottom-0 right-0 w-12 h-12">
+					<div className="absolute bottom-0 right-0 w-6 h-px bg-terminal-cyan/30" />
+					<div className="absolute bottom-0 right-0 w-px h-6 bg-terminal-cyan/30" />
+				</div>
 
-			{/* Feature cards */}
-			<div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
-				{[
-					{
-						title: 'Projekte & Wettbewerbe',
-						desc: 'Wir entwickeln innovative Projekte, nehmen an Wettbewerben teil und fördern Kreativität.'
-					},
-					{
-						title: 'Veranstaltungen & Wissen',
-						desc: 'Wir organisieren Events rund um Informatik und Technik – offen für alle Fakultäten und Studiengänge.'
-					},
-					{
-						title: 'Community & Networking',
-						desc: 'Lerne neue Leute kennen, vernetze dich und werde Teil einer aktiven, hilfsbereiten Studierenden-Community.'
-					}
-				].map((feature) => (
-					<Card
-						key={feature.title}
-						className="flex flex-col justify-center items-start rounded-2xl shadow-xl bg-gradient-to-br from-white/10 to-terminal-windowTitle/60 backdrop-blur-xl border border-terminal-text/15 p-6 min-h-[160px] h-full"
-						style={{
-							background:
-								'linear-gradient(135deg, rgba(34,193,195,0.10) 0%, rgba(17,17,17,0.70) 100%)',
-							backdropFilter: 'blur(16px)',
-							WebkitBackdropFilter: 'blur(16px)'
-						}}
-					>
-						<CardContent className="flex items-start gap-3 p-0 grow">
-							<div>
-								<p className="font-semibold text-terminal-text mb-1 text-lg">
-									{feature.title}
-								</p>
-								<p className="text-terminal-text/80 text-sm m-0">
+				{/* Subtle inner glow */}
+				<div className="absolute inset-0 bg-gradient-to-b from-terminal-cyan/3 via-transparent to-transparent pointer-events-none" />
+
+				{/* Main intro section */}
+				<div className="p-6 border-b border-neutral-800 relative z-10">
+					<h3 className="text-xl font-semibold text-terminal-text mb-3">
+						Gemeinschaft & Plattform
+					</h3>
+					<p className="text-terminal-text/90 leading-relaxed m-0">
+						Wir bieten Studierenden eine Plattform zum Austausch, zur
+						Projektarbeit und zur Wissensvermittlung .
+					</p>
+				</div>
+
+				{/* Feature cards section */}
+				<div className="relative z-10">
+					<div className="grid grid-cols-1 md:grid-cols-3">
+						{features.map((feature, idx) => (
+							<motion.div
+								key={feature.title}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.5, delay: idx * 0.1 }}
+								viewport={{ once: true }}
+								className={`p-6 flex flex-col h-full group transition-all duration-200 ${idx < features.length - 1 ? 'border-r border-neutral-800' : ''}`}
+							>
+								<div className="flex items-center gap-3 mb-3">
+									<div className="shrink-0">{feature.icon}</div>
+									<p className="font-semibold text-terminal-text text-lg m-0">
+										{feature.title}
+									</p>
+								</div>
+								<p className="text-gray-400 text-sm leading-relaxed m-0">
 									{feature.desc}
 								</p>
-							</div>
-						</CardContent>
-					</Card>
-				))}
-			</div>
+							</motion.div>
+						))}
+					</div>
+				</div>
+			</motion.div>
 		</TerminalSection>
 	)
 }

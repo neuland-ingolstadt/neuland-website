@@ -146,9 +146,7 @@ export default async function TagPage({
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			<h1 className="mt-4 mb-2 text-3xl font-bold text-terminal-highlight font-mono">
-				#{displayTag}
-			</h1>
+			<h1 className="mt-4 mb-2 text-3xl font-bold ">#{displayTag}</h1>
 			<p className="mb-8 text-terminal-text/70">
 				{filteredPosts.length}{' '}
 				{filteredPosts.length === 1 ? 'Beitrag' : 'Beiträge'} gefunden

@@ -130,12 +130,11 @@ const NextAppShowcase = () => {
 					viewport={{ once: true }}
 					className="text-center mb-16"
 				>
-					<h2 className="text-4xl mb-3 font-bold bg-terminal-cyan  bg-clip-text text-transparent">
+					<h2 className="text-4xl mb-2 font-bold  bg-clip-text ">
 						Neuland Next
 					</h2>
-					<p className="text-xl/loose text-terminal-text mb-6">
-						Deine <span className="font-bold">App</span> für die{' '}
-						<span className="font-bold">TH Ingolstadt</span>
+					<p className="text-xl/loose b-6 text-terminal-cyan">
+						Deine App für die TH Ingolstadt
 					</p>
 					<p className="text-lg text-terminal-text/80 max-w-3xl mx-auto">
 						Deine moderne Campus-App von Neuland Ingolstadt. Entwickelt mit
@@ -180,22 +179,24 @@ const NextAppShowcase = () => {
 								<motion.button
 									key={idx}
 									onClick={() => setActiveIndex(idx)}
-									className="w-3 h-3 rounded-full bg-terminal-cyan/30 focus:outline-hidden"
+									className="w-3 bg-neutral-800 border border-neutral-700 focus:outline-none transition-all duration-200"
 									animate={{
-										scale: activeIndex === idx ? 1.4 : 1,
+										scale: activeIndex === idx ? 1.2 : 1,
 										backgroundColor:
 											activeIndex === idx
-												? 'rgba(30, 255, 45, 0.8)'
-												: 'rgba(208, 208, 208, 0.3)'
+												? 'rgb(30, 255, 45)'
+												: 'rgb(38, 38, 38)',
+										borderColor:
+											activeIndex === idx
+												? 'rgb(30, 255, 45)'
+												: 'rgb(64, 64, 64)'
 									}}
-									whileHover={{ scale: 1.2 }}
+									whileHover={{ scale: 1.1 }}
 									transition={{ duration: 0.2 }}
 									aria-label={`Show screenshot ${idx + 1}`}
 								/>
 							))}
 						</div>
-
-						<div className="w-40 h-1 bg-gradient-to-r from-transparent via-terminal-cyan/30 to-transparent rounded mx-auto mt-5 blur-xs" />
 					</motion.div>
 
 					{/* Content Section */}
@@ -205,78 +206,97 @@ const NextAppShowcase = () => {
 							whileInView={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.8, delay: 0.4 }}
 							viewport={{ once: true }}
+							className="relative bg-[#0b0b0b] border border-neutral-800 p-8 overflow-hidden"
 						>
-							<h3 className="text-2xl mb-6 font-bold relative pl-4 border-l-2 border-terminal-cyan">
-								Unser Flaggschiff-Projekt
-							</h3>
+							{/* Outer accent corners */}
+							<div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-terminal-cyan/30" />
+							<div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-terminal-cyan/30" />
+							<div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-terminal-cyan/30" />
+							<div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-terminal-cyan/30" />
 
-							<p className="mb-8 text-lg leading-relaxed">
-								Neuland Next ist mehr als nur eine App – es ist dein digitaler
-								Begleiter durch den Studienalltag an der THI. Alle wichtigen
-								Funktionen für deinen Campus-Alltag in einer App.
-							</p>
+							{/* Subtle background gradient */}
+							<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/2 via-transparent to-terminal-cyan/1 pointer-events-none" />
 
-							{/* Highlights */}
-							<div className="mb-8">
-								<h4 className="text-lg font-semibold mb-4 text-terminal-cyan">
-									Warum Neuland Next?
-								</h4>
-								<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-									{highlights.map((highlight, idx) => (
-										<motion.div
-											key={idx}
-											initial={{ opacity: 0, x: 20 }}
-											whileInView={{ opacity: 1, x: 0 }}
-											transition={{ duration: 0.4, delay: idx * 0.1 }}
-											viewport={{ once: true }}
-											className="flex items-center gap-3 text-sm"
-										>
-											<div className="text-terminal-cyan">{highlight.icon}</div>
-											<span className="text-terminal-text/90">
-												{highlight.text}
-											</span>
-										</motion.div>
-									))}
+							<div className="relative z-10">
+								<h3 className="text-2xl mb-3 font-semibold text-terminal-text">
+									Unser Flaggschiff-Projekt
+								</h3>
+
+								<p className="mb-8 text-base leading-relaxed text-gray-400">
+									Neuland Next ist mehr als nur eine App – es ist dein digitaler
+									Begleiter durch den Studienalltag an der THI. Alle wichtigen
+									Funktionen für deinen Campus-Alltag in einer App.
+								</p>
+
+								{/* Highlights */}
+								<div className="mb-8 pb-8 border-b border-neutral-800">
+									<h4 className="text-sm font-semibold mb-4 text-terminal-cyan uppercase tracking-wider">
+										Warum Neuland Next
+									</h4>
+									<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+										{highlights.map((highlight, idx) => (
+											<motion.div
+												key={idx}
+												initial={{ opacity: 0, x: 20 }}
+												whileInView={{ opacity: 1, x: 0 }}
+												transition={{ duration: 0.4, delay: idx * 0.1 }}
+												viewport={{ once: true }}
+												className="flex items-center gap-3 text-sm group"
+											>
+												<div className="text-gray-400 group-hover:text-terminal-cyan shrink-0 transition-colors duration-200">
+													{highlight.icon}
+												</div>
+												<span className="text-gray-400 group-hover:text-gray-300 transition-colors duration-200">
+													{highlight.text}
+												</span>
+											</motion.div>
+										))}
+									</div>
 								</div>
-							</div>
 
-							{/* Download Buttons */}
-							<div className="flex items-center flex-wrap gap-4 mb-6">
-								<a
-									href="https://apps.apple.com/app/neuland-next/id1617096811"
-									rel="noreferrer noopener"
-									target="_blank"
-									className="no-underline transition-transform hover:scale-105"
-								>
-									{/** biome-ignore lint/performance/noImgElement: TODO */}
-									<img
-										src="/assets/app_store_badge_de.svg"
-										alt="Apple App Store"
-										className="h-14"
-									/>
-								</a>
-								<a
-									href="https://play.google.com/store/apps/details?id=app.neuland"
-									rel="noreferrer noopener"
-									target="_blank"
-									className="no-underline transition-transform hover:scale-105"
-								>
-									{/** biome-ignore lint/performance/noImgElement: TODO */}
-									<img
-										src="/assets/play_store_badge_de.svg"
-										alt="Google Play Store"
-										className="h-14"
-									/>
-								</a>
-							</div>
+								{/* Download Section */}
+								<div className="mb-6">
+									<div className="text-xs font-semibold mb-4 text-terminal-cyan/80 uppercase tracking-wider">
+										Jetzt herunterladen
+									</div>
+									<div className="flex flex-col sm:flex-row gap-3 mb-6">
+										<a
+											href="https://apps.apple.com/app/neuland-next/id1617096811"
+											rel="noreferrer noopener"
+											target="_blank"
+											className="group relative inline-block transition-all no-underline"
+										>
+											{/** biome-ignore lint/performance/noImgElement: TODO */}
+											<img
+												src="/assets/app_store_badge_de.svg"
+												alt="Apple App Store"
+												className="h-12"
+											/>
+										</a>
+										<a
+											href="https://play.google.com/store/apps/details?id=app.neuland"
+											rel="noreferrer noopener"
+											target="_blank"
+											className="group relative inline-block transition-all no-underline"
+										>
+											{/** biome-ignore lint/performance/noImgElement: TODO */}
+											<img
+												src="/assets/play_store_badge_de.svg"
+												alt="Google Play Store"
+												className="h-12"
+											/>
+										</a>
+									</div>
+								</div>
 
-							<TerminalButton href="https://neuland.app">
-								<ArrowUpRight
-									size={16}
-									className="mr-2 group-hover:rotate-8 transition-transform duration-300"
-								/>
-								Mehr erfahren
-							</TerminalButton>
+								<TerminalButton href="https://neuland.app" dark>
+									<ArrowUpRight
+										size={16}
+										className="mr-2 group-hover:rotate-8 transition-transform duration-300"
+									/>
+									Mehr erfahren
+								</TerminalButton>
+							</div>
 						</motion.div>
 					</div>
 				</div>
@@ -292,23 +312,44 @@ const NextAppShowcase = () => {
 					<h3 className="text-2xl font-bold text-center mb-12">
 						Die Features auf einen Blick
 					</h3>
-					<div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-						{features.map((feature, idx) => (
-							<motion.div
-								key={idx}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.5, delay: idx * 0.1 }}
-								viewport={{ once: true }}
-								className="h-full"
-							>
-								<FeatureItem
-									icon={feature.icon}
-									title={feature.title}
-									description={feature.description}
-								/>
-							</motion.div>
-						))}
+					<div className="relative bg-[#0b0b0b] border border-neutral-800 overflow-hidden">
+						{/* Outer accent corners */}
+						<div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-terminal-cyan/30" />
+						<div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-terminal-cyan/30" />
+						<div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-terminal-cyan/30" />
+						<div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-terminal-cyan/30" />
+
+						{/* Subtle glow effect */}
+						<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none" />
+
+						<div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 relative z-10">
+							{features.map((feature, idx) => {
+								const cols = 4
+								const row = Math.floor(idx / cols)
+								const totalRows = Math.ceil(features.length / cols)
+								const isLastRow = row === totalRows - 1
+								const isLastInRow = (idx + 1) % cols === 0
+								const isLastItem = idx === features.length - 1
+								return (
+									<motion.div
+										key={idx}
+										initial={{ opacity: 0, y: 20 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.5, delay: idx * 0.1 }}
+										viewport={{ once: true }}
+										className="h-full"
+									>
+										<FeatureItem
+											icon={feature.icon}
+											title={feature.title}
+											description={feature.description}
+											isLastInRow={isLastInRow || isLastItem}
+											isLastRow={isLastRow}
+										/>
+									</motion.div>
+								)
+							})}
+						</div>
 					</div>
 				</motion.div>
 			</div>

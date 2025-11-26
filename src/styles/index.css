@@ -238,7 +238,8 @@
 		display: table;
 		overflow-x: auto;
 		max-width: 100%;
-		background: transparent; /* Remove the background blocking */
+		background: transparent;
+		/* Remove the background blocking */
 	}
 
 	article th,
@@ -250,11 +251,13 @@
 	}
 
 	article th {
-		@apply bg-terminal-window/50 text-terminal-text font-semibold; /* Semi-transparent background */
+		@apply bg-terminal-window/50 text-terminal-text font-semibold;
+		/* Semi-transparent background */
 	}
 
 	article tbody tr:hover {
-		@apply bg-terminal-window-border/20; /* Reduced opacity for hover */
+		@apply bg-terminal-window-border/20;
+		/* Reduced opacity for hover */
 	}
 }
 

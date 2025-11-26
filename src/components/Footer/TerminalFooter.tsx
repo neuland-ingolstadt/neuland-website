@@ -16,6 +16,7 @@ const TerminalFooter: React.FC = () => {
 		<div className="font-mono">
 			<div className="cols grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-terminal-window-border pt-6 my-8 text-terminal-text">
 				<TerminalLinks />
+
 				<SocialLinks />
 				<SettingsLinks />
 			</div>

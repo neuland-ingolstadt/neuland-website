@@ -136,7 +136,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 										{selectedEventIndex !== null && (
 											<div className="flex flex-col h-full">
 												<div className="flex-none">
-													<strong className="text-terminal-highlight text-xl break-words pr-4 max-w-full">
+													<strong className="text-terminal-lightGreen text-xl break-words pr-4 max-w-full">
 														{eventsData.events[selectedEventIndex].title}
 														{eventsData.events[selectedEventIndex].location && (
 															<span className="text-terminal-text/60 ml-2 break-all">
@@ -167,11 +167,10 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 																			1 && <br />}
 																</React.Fragment>
 															))}
-														{/* rrule removed in new API; no recurring text to display */}
 													</div>
 
 													<strong
-														className={cn('text-terminal-highlight text-lg', {
+														className={cn('text-terminal-lightGreen text-lg', {
 															hidden:
 																!eventsData.events[selectedEventIndex]
 																	.description
@@ -238,7 +237,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 													}
 												}}
 											>
-												<strong className="text-terminal-highlight text-[1.05rem]">
+												<strong className="text-terminal-lightGreen text-[1.05rem]">
 													{event.title}
 													{event.location && (
 														<span className="text-terminal-text/60 ml-2">

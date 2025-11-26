@@ -8,7 +8,7 @@ export const GlassBox = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
 		className={cn(
-			'rounded-2xl border border-terminal-text/15 shadow-xl bg-gradient-to-br from-white/10 to-terminal-windowTitle/60 backdrop-blur-xl transition-transform duration-300 relative overflow-hidden',
+			'border border-terminal-text/15 shadow-xl bg-gradient-to-br from-white/10 to-terminal-windowTitle/60 backdrop-blur-xl transition-transform duration-300 relative overflow-hidden',
 			className
 		)}
 		style={{
