@@ -11,7 +11,7 @@ interface TerminalButtonProps {
 }
 
 const baseStyles =
-	'inline-flex items-center justify-center gap-2 px-5 py-2.5 font-semibold border border-neutral-800 text-terminal-text transition-all duration-200 hover:border-neutral-700 focus:border-1 focus:border-terminal-cyan/30  no-underline'
+	'inline-flex items-center justify-center gap-2 px-5 py-2.5 font-semibold border border-terminal-window-border text-terminal-text transition-all duration-200 hover:border-sidebar-border/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan/30 no-underline'
 
 const TerminalButton: React.FC<TerminalButtonProps> = ({
 	children,
@@ -22,7 +22,7 @@ const TerminalButton: React.FC<TerminalButtonProps> = ({
 	className = '',
 	dark = false
 }) => {
-	const bgClass = dark ? 'bg-black' : 'bg-[#0b0b0b]'
+	const bgClass = dark ? 'bg-terminal-bg' : 'bg-terminal-window'
 	const styles = `${baseStyles} ${bgClass} ${className}`
 	const content = <span className="flex items-center gap-2">{children}</span>
 

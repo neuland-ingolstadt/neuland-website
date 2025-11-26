@@ -5,11 +5,11 @@ import TerminalButton from './terminal-button'
 
 const TerminalPartners: React.FC = () => {
 	// Check if current date is >= December 1st, 2025
-	const showPartners = new Date() >= new Date('2025-11-01')
+	const showPartners = new Date() >= new Date('2025-12-01')
 
 	return (
 		<div className="my-10 w-full">
-			<div className="relative bg-[#0b0b0b] border border-neutral-800 overflow-hidden">
+			<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
 				{/* Creative accent - top border highlight */}
 				<div className="absolute top-0 left-0 right-0 h-px bg-terminal-cyan/40" />
 
@@ -19,7 +19,7 @@ const TerminalPartners: React.FC = () => {
 				<div className="flex flex-col lg:flex-row relative z-10">
 					{/* Left Side - Text Content */}
 					<div
-						className={`${showPartners ? 'lg:w-3/5' : 'w-full'} flex flex-col md:flex-row border-b lg:border-b-0 ${showPartners ? 'lg:border-r' : ''} border-neutral-800`}
+						className={`${showPartners ? 'lg:w-3/5' : 'w-full'} flex flex-col md:flex-row border-b lg:border-b-0 ${showPartners ? 'lg:border-r' : ''} border-terminal-window-border`}
 					>
 						{/* Info Section */}
 						<motion.div
@@ -27,7 +27,7 @@ const TerminalPartners: React.FC = () => {
 							whileInView={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.5 }}
 							viewport={{ once: true }}
-							className="md:w-2/5 p-6 border-b md:border-b-0 md:border-r border-neutral-800"
+							className="md:w-2/5 p-6 border-b md:border-b-0 md:border-r border-terminal-window-border"
 						>
 							<div className="text-terminal-text/60 mb-4 font-mono text-sm">
 								$ cat sponsoring-info.txt
@@ -57,7 +57,7 @@ const TerminalPartners: React.FC = () => {
 									<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 										•
 									</span>
-									<p className="text-gray-400 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+									<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 										Direkter Zugang zu technikaffinen Studierenden
 									</p>
 								</div>
@@ -65,7 +65,7 @@ const TerminalPartners: React.FC = () => {
 									<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 										•
 									</span>
-									<p className="text-gray-400 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+									<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 										Sichtbarkeit bei Events und auf unseren digitalen
 										Plattformen
 									</p>
@@ -74,7 +74,7 @@ const TerminalPartners: React.FC = () => {
 									<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 										•
 									</span>
-									<p className="text-gray-400 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+									<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 										Möglichkeit zur Vorstellung von Technologien und
 										Fachvorträgen
 									</p>
@@ -132,7 +132,7 @@ const TerminalPartners: React.FC = () => {
 
 								{/* Fading subtitle - absolutely positioned so it doesn't affect layout */}
 								<div className="absolute -bottom-3 left-0 right-0 z-10 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover/logo:translate-y-0 pointer-events-none">
-									<p className="text-sm text-gray-400 text-center font-medium ">
+									<p className="text-sm text-terminal-text/70 text-center font-medium ">
 										Technische Hochschule Ingolstadt
 									</p>
 								</div>
@@ -141,7 +141,7 @@ const TerminalPartners: React.FC = () => {
 								href="https://www.explore.de"
 								target="_blank"
 								rel="noreferrer noopener"
-								className="relative p-6 border-t border-neutral-800 flex items-center justify-center h-full min-h-[120px] group/logo transition-all duration-300 overflow-hidden no-underline"
+								className="relative p-6 border-t border-terminal-window-border flex items-center justify-center h-full min-h-[120px] group/logo transition-all duration-300 overflow-hidden no-underline"
 							>
 								{/* Animated background on hover */}
 								<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/5 via-terminal-cyan/2 to-transparent opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300 pointer-events-none" />
@@ -164,7 +164,7 @@ const TerminalPartners: React.FC = () => {
 
 								{/* Fading subtitle - absolutely positioned so it doesn't affect layout */}
 								<div className="absolute -bottom-3 left-0 right-0 z-10 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover/logo:translate-y-0 pointer-events-none">
-									<p className="text-sm text-gray-400 text-center font-medium ">
+									<p className="text-sm text-terminal-text/70 text-center font-medium ">
 										Explore GmbH
 									</p>
 								</div>

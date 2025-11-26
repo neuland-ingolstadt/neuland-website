@@ -124,7 +124,7 @@ export default async function TagPage({
 	const displayTag = tag.charAt(0).toUpperCase() + tag.slice(1)
 
 	return (
-		<div className="mx-auto max-w-4xl">
+		<div className="mx-auto max-w-5xl">
 			<Breadcrumb>
 				<BreadcrumbList className="flex items-center">
 					<BreadcrumbItem className="flex items-center">
@@ -145,12 +145,12 @@ export default async function TagPage({
 					<BreadcrumbSeparator className="flex items-center mx-1" />
 					<BreadcrumbItem className="flex items-center">
 						<BreadcrumbLink className="flex items-center">
-							#{displayTag}
+							{displayTag}
 						</BreadcrumbLink>
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			<h1 className="mt-4 mb-2 text-3xl font-bold ">#{displayTag}</h1>
+			<h1 className="mt-4 mb-2 text-3xl font-bold ">{displayTag}</h1>
 			<p className="mb-8 text-terminal-text/70">
 				{filteredPosts.length}{' '}
 				{filteredPosts.length === 1 ? 'Beitrag' : 'Beiträge'} gefunden

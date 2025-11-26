@@ -14,7 +14,7 @@ export default function NotFound() {
 				className="w-full max-w-2xl"
 			>
 				{/* Main container */}
-				<div className="relative bg-[#0b0b0b] border border-neutral-800 overflow-hidden">
+				<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
 					{/* Corner accent brackets */}
 					<div className="absolute top-0 left-0 w-16 h-16">
 						<div className="absolute top-0 left-0 w-8 h-px bg-terminal-cyan/40" />
@@ -50,7 +50,7 @@ export default function NotFound() {
 									<span className="text-terminal-cyan">Error:</span> HTTP 404 -
 									Not Found
 								</div>
-								<div className="text-gray-400">
+								<div className="text-terminal-text/70">
 									<span className="text-terminal-cyan">Path:</span>{' '}
 									<span className="text-terminal-yellow">
 										{typeof window !== 'undefined'
@@ -58,7 +58,7 @@ export default function NotFound() {
 											: '/404'}
 									</span>
 								</div>
-								<div className="text-gray-400">
+								<div className="text-terminal-text/70">
 									<span className="text-terminal-cyan">Status:</span>{' '}
 									<span className="text-terminal-red">FAILED</span>
 								</div>
@@ -78,7 +78,7 @@ export default function NotFound() {
 							<h2 className="text-2xl md:text-3xl font-semibold text-terminal-text mb-3">
 								Page Not Found
 							</h2>
-							<p className="text-gray-400 leading-relaxed">
+							<p className="text-terminal-text/70 leading-relaxed">
 								Die angeforderte Seite existiert nicht oder wurde verschoben.
 								Bitte überprüfe die URL oder kehre zur Startseite zurück.
 							</p>
@@ -100,8 +100,8 @@ export default function NotFound() {
 						</div>
 
 						{/* Helpful links */}
-						<div className="mt-8 pt-8 border-t border-neutral-800">
-							<p className="text-sm text-gray-500 mb-3 font-mono">
+						<div className="mt-8 pt-8 border-t border-terminal-window-border">
+							<p className="text-sm text-terminal-text/60 mb-3 font-mono">
 								$ ls -la /helpful-links
 							</p>
 							<div className="flex flex-wrap gap-3">

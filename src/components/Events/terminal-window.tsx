@@ -120,7 +120,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 						width,
 						height,
 						opacity,
-						background: '#ddd',
+						background: 'var(--color-terminal-windowTitle)',
 						zIndex: 20,
 						animation: `flicker ${duration} step-end infinite ${delay}`
 					}}
@@ -223,7 +223,9 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 				minHeight: containerHeight ? `${containerHeight}px` : 'auto',
 				background: isTransparentBg ? 'transparent' : undefined,
 				position: 'relative',
-				border: isTransparentBg ? 'none' : '1px solid #333333',
+				border: isTransparentBg
+					? 'none'
+					: '1px solid var(--color-terminal-window-border)',
 				overflow: 'visible'
 			}}
 		>

@@ -6,7 +6,7 @@ import TerminalButton from './terminal-button'
 const TerminalMembership = () => {
 	return (
 		<div className="my-10 w-full">
-			<div className="relative bg-[#0b0b0b] border border-neutral-800 overflow-hidden">
+			<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
 				{/* Creative accent - top border highlight */}
 				<div className="absolute top-0 left-0 right-0 h-px bg-terminal-cyan/40" />
 
@@ -20,7 +20,7 @@ const TerminalMembership = () => {
 						whileInView={{ opacity: 1, x: 0 }}
 						transition={{ duration: 0.5 }}
 						viewport={{ once: true }}
-						className="lg:w-2/5 p-6 border-b lg:border-b-0 lg:border-r border-neutral-800"
+						className="lg:w-2/5 p-6 border-b lg:border-b-0 lg:border-r border-terminal-window-border"
 					>
 						<div className="text-terminal-text/60 mb-4 font-mono text-sm">
 							$ cat membership-fees.txt
@@ -63,7 +63,7 @@ const TerminalMembership = () => {
 								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
-								<p className="text-gray-400 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 									Teil eines aktiven studentischen Vereins mit regelmäßigen
 									Treffen und Austausch
 								</p>
@@ -72,7 +72,7 @@ const TerminalMembership = () => {
 								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
-								<p className="text-gray-400 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 									Gemeinsame Arbeit an Open-Source Projekten
 								</p>
 							</div>
@@ -80,7 +80,7 @@ const TerminalMembership = () => {
 								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
-								<p className="text-gray-400 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 									Exklusive Workshops, Hackathons und soziale Events mit
 									Gleichgesinnten
 								</p>
@@ -88,7 +88,12 @@ const TerminalMembership = () => {
 						</div>
 
 						<div className="pt-2 flex flex-wrap gap-3">
-							<TerminalButton href="https://join.neuland-ingolstadt.de/" dark>
+							<TerminalButton
+								href="https://join.neuland-ingolstadt.de/"
+								dark
+								target="_blank"
+								rel="noreferrer noopener"
+							>
 								<UserPlus
 									size={16}
 									className="mr-2 group-hover:rotate-8 transition-transform duration-300"

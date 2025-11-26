@@ -50,8 +50,8 @@ export function TagFilter({
 							key={tag}
 							className={`cursor-pointer ${
 								selectedTags.includes(tag)
-									? 'bg-terminal-cyan text-black'
-									: 'bg-terminal-window-border text-terminal-text'
+									? 'bg-terminal-cyan text-terminal-onAccent'
+									: 'bg-terminal-card text-terminal-text/80 border border-terminal-window-border'
 							}`}
 							onClick={() => toggleTag(tag)}
 						>

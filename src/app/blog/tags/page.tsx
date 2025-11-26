@@ -30,7 +30,7 @@ export default function TagsIndexPage() {
 	)
 
 	return (
-		<div className="mx-auto max-w-4xl mb-12">
+		<div className="mx-auto max-w-5xl mb-12">
 			<Breadcrumb>
 				<BreadcrumbList className="flex items-center">
 					<BreadcrumbItem className="flex items-center">
@@ -55,9 +55,7 @@ export default function TagsIndexPage() {
 				</BreadcrumbList>
 			</Breadcrumb>
 
-			<h1 className="mt-4 mb-2 text-3xl font-bold text-terminal-highlight ">
-				Blog Tags
-			</h1>
+			<h1 className="mt-4 mb-2 text-3xl font-bold ">Blog Tags</h1>
 			<p className="mb-8 text-terminal-text/70">
 				Durchsuche alle {sortedTags.length} Tags des Neuland Blogs
 			</p>
@@ -72,7 +70,7 @@ export default function TagsIndexPage() {
 							href={`/blog/tags/${encodeURIComponent(tag)}`}
 							className="group no-underline"
 						>
-							<div className="relative bg-[#0b0b0b] border border-neutral-800 p-5 flex items-center justify-between transition-all duration-200 hover:border-neutral-700 overflow-hidden">
+							<div className="relative bg-terminal-window border border-terminal-window-border p-5 flex items-center justify-between transition-all duration-200 hover:border-terminal-highlight/40 overflow-hidden">
 								{/* Subtle background effect */}
 								<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/1 via-transparent to-terminal-cyan/3 pointer-events-none" />
 
@@ -97,15 +95,15 @@ export default function TagsIndexPage() {
 								<div className="relative z-10 flex items-center flex-1 min-w-0">
 									<Badge
 										variant="outline"
-										className="text-sm py-0.5 px-2 mr-3 border-neutral-800 bg-neutral-800 text-gray-400 group-hover:border-neutral-700 transition-colors duration-200"
+										className="text-sm py-0.5 px-2 mr-3 border-terminal-window-border bg-terminal-card text-terminal-text/70 group-hover:border-terminal-highlight/40 transition-colors duration-200"
 									>
 										{displayTag}
 									</Badge>
-									<span className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-200">
+									<span className="text-terminal-text/70 text-sm group-hover:text-terminal-text transition-colors duration-200">
 										{count} {count === 1 ? 'Beitrag' : 'Beiträge'}
 									</span>
 								</div>
-								<span className="relative z-10 text-gray-500 group-hover:text-terminal-cyan text-xs transition-colors duration-200 flex items-center gap-1">
+								<span className="relative z-10 text-terminal-text/60 group-hover:text-terminal-cyan text-xs transition-colors duration-200 flex items-center gap-1">
 									View
 									<span className="inline-block transition-transform duration-200 group-hover:translate-x-1">
 										→

@@ -133,12 +133,13 @@ const NextAppShowcase = () => {
 					<h2 className="text-4xl mb-2 font-bold  bg-clip-text ">
 						Neuland Next
 					</h2>
-					<p className="text-xl/loose b-6 text-terminal-highlight">
+					<b className="text-xl/loose b-6 font-black ">
 						Deine App für die TH Ingolstadt
-					</p>
+					</b>
 					<p className="text-lg text-terminal-text/80 max-w-3xl mx-auto">
 						Deine moderne Campus-App von Neuland Ingolstadt. Entwickelt mit
-						Liebe zum Detail und vollständig Open Source.
+						Liebe zum Detail, vollständig Open Source und auf allen Geräten
+						verfügbar.
 					</p>
 				</motion.div>
 
@@ -179,17 +180,17 @@ const NextAppShowcase = () => {
 								<motion.button
 									key={idx}
 									onClick={() => setActiveIndex(idx)}
-									className="w-3 bg-neutral-800 border border-neutral-700 focus:outline-none transition-all duration-200"
+									className="w-3 bg-terminal-window border border-terminal-window-border focus:outline-none transition-all duration-200"
 									animate={{
 										scale: activeIndex === idx ? 1.2 : 1,
 										backgroundColor:
 											activeIndex === idx
-												? 'rgb(30, 255, 45)'
-												: 'rgb(38, 38, 38)',
+												? 'var(--color-terminal-lightGreen)'
+												: 'var(--color-terminal-window)',
 										borderColor:
 											activeIndex === idx
-												? 'rgb(30, 255, 45)'
-												: 'rgb(64, 64, 64)'
+												? 'var(--color-terminal-lightGreen)'
+												: 'var(--color-terminal-window-border)'
 									}}
 									whileHover={{ scale: 1.1 }}
 									transition={{ duration: 0.2 }}
@@ -206,7 +207,7 @@ const NextAppShowcase = () => {
 							whileInView={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.8, delay: 0.4 }}
 							viewport={{ once: true }}
-							className="relative bg-[#0b0b0b] border border-neutral-800 p-8 overflow-hidden"
+							className="relative bg-terminal-window border border-terminal-window-border p-8 overflow-hidden"
 						>
 							{/* Outer accent corners */}
 							<div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-terminal-cyan/30" />
@@ -222,14 +223,14 @@ const NextAppShowcase = () => {
 									Unser Flaggschiff-Projekt
 								</h3>
 
-								<p className="mb-8 text-base leading-relaxed text-gray-400">
+								<p className="mb-8 text-base leading-relaxed text-terminal-text/70">
 									Neuland Next ist mehr als nur eine App – es ist dein digitaler
 									Begleiter durch den Studienalltag an der THI. Alle wichtigen
 									Funktionen für deinen Campus-Alltag in einer App.
 								</p>
 
 								{/* Highlights */}
-								<div className="mb-8 pb-8 border-b border-neutral-800">
+								<div className="mb-8 pb-8 border-b border-terminal-window-border">
 									<h4 className="text-sm font-semibold mb-4 text-terminal-cyan uppercase tracking-wider">
 										Warum Neuland Next
 									</h4>
@@ -243,10 +244,10 @@ const NextAppShowcase = () => {
 												viewport={{ once: true }}
 												className="flex items-center gap-3 text-sm group"
 											>
-												<div className="text-gray-400 group-hover:text-terminal-cyan shrink-0 transition-colors duration-200">
+												<div className="text-terminal-text/70 group-hover:text-terminal-cyan shrink-0 transition-colors duration-200">
 													{highlight.icon}
 												</div>
-												<span className="text-gray-400 group-hover:text-gray-300 transition-colors duration-200">
+												<span className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-200">
 													{highlight.text}
 												</span>
 											</motion.div>
@@ -312,7 +313,7 @@ const NextAppShowcase = () => {
 					<h3 className="text-2xl font-bold text-center mb-12">
 						Die Features auf einen Blick
 					</h3>
-					<div className="relative bg-[#0b0b0b] border border-neutral-800 overflow-hidden">
+					<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
 						{/* Outer accent corners */}
 						<div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-terminal-cyan/30" />
 						<div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-terminal-cyan/30" />

@@ -59,7 +59,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.2 }}
-						className="fixed inset-0 bg-black/80 z-40"
+						className="fixed inset-0 bg-terminal-overlay z-40"
 						onClick={handleBackdropClick}
 						aria-hidden="true"
 					/>
@@ -91,19 +91,19 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 												<img
 													src={project.imageUrl}
 													alt={project.title}
-													className="w-full max-w-[420px] max-h-[320px] object-cover border border-neutral-800"
+													className="w-full max-w-[420px] max-h-[320px] object-cover border border-terminal-window-border"
 													loading="lazy"
 												/>
 												{project.tags && project.tags.length > 0 && (
 													<div className="mt-4 w-full">
-														<p className="text-sm mb-2 font-mono text-gray-500">
+														<p className="text-sm mb-2 font-mono text-terminal-text/60">
 															$ tags --list
 														</p>
 														<div className="flex flex-wrap gap-2">
 															{project.tags.map((tag) => (
 																<span
 																	key={tag}
-																	className="text-xs px-2.5 py-1 bg-neutral-800 text-gray-400 font-medium border border-neutral-800"
+																	className="text-xs px-2.5 py-1 bg-terminal-card text-terminal-text/70 font-medium border border-terminal-window-border"
 																>
 																	{tag}
 																</span>
@@ -126,15 +126,15 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 															text={
 																project.longDescription || project.description
 															}
-															className="text-gray-400"
+															className="text-terminal-text/70"
 															delay={1}
 															preventLayoutJumps
 														/>
 													</div>
 
 													{project.additionalInfo && (
-														<div className="mb-6 mt-4 border-l-2 border-neutral-800 pl-4">
-															<p className="text-sm text-gray-400">
+														<div className="mb-6 mt-4 border-l-2 border-terminal-window-border pl-4">
+															<p className="text-sm text-terminal-text/70">
 																{project.additionalInfo}
 															</p>
 														</div>
@@ -147,7 +147,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 															<div className="flex flex-row gap-8 mt-4">
 																{/* Links column */}
 																<div className="flex flex-col">
-																	<p className="text-sm mb-2 font-mono text-gray-500">
+																	<p className="text-sm mb-2 font-mono text-terminal-text/60">
 																		$ links --open
 																	</p>
 																	<div className="flex flex-wrap gap-3 items-center">
@@ -171,14 +171,14 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 																</div>
 																{/* Tags column */}
 																<div className="flex flex-col">
-																	<p className="text-sm mb-2 font-mono text-gray-500">
+																	<p className="text-sm mb-2 font-mono text-terminal-text/60">
 																		$ tags --list
 																	</p>
 																	<div className="flex flex-wrap gap-2">
 																		{project.tags.map((tag) => (
 																			<span
 																				key={tag}
-																				className="text-xs px-2.5 py-1 bg-neutral-800 text-gray-400 font-medium border border-neutral-800"
+																				className="text-xs px-2.5 py-1 bg-terminal-card text-terminal-text/70 font-medium border border-terminal-window-border"
 																			>
 																				{tag}
 																			</span>
@@ -188,7 +188,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 															</div>
 														) : (
 															<div className="mt-4">
-																<p className="text-sm mb-4 font-mono text-gray-500">
+																<p className="text-sm mb-4 font-mono text-terminal-text/60">
 																	$ links --open
 																</p>
 																<div className="flex flex-wrap gap-3 items-center">
@@ -216,10 +216,10 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 											) : (
 												<div className="animate-pulse flex space-x-4">
 													<div className="flex-1 space-y-4 py-1">
-														<div className="h-4 bg-neutral-800 rounded w-3/4" />
+														<div className="h-4 bg-terminal-card rounded w-3/4" />
 														<div className="space-y-2">
-															<div className="h-4 bg-neutral-800 rounded" />
-															<div className="h-4 bg-neutral-800 rounded w-5/6" />
+															<div className="h-4 bg-terminal-card rounded" />
+															<div className="h-4 bg-terminal-card rounded w-5/6" />
 														</div>
 													</div>
 												</div>

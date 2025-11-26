@@ -203,7 +203,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 												<div className="flex-none pt-3 pb-4">
 													<button
 														onClick={resetSelectedEvent}
-														className="text-terminal-text transition-colors px-2 py-1 text-sm inline-flex items-center font-bold group bg-black rounded-md border border-terminal-window-border hover:bg-terminal-window-border/30"
+														className="text-terminal-text transition-colors px-2 py-1 text-sm inline-flex items-center font-bold group bg-terminal-card rounded-md border border-terminal-window-border hover:bg-terminal-window-border/30"
 														type="button"
 													>
 														<LucideArrowBigLeft

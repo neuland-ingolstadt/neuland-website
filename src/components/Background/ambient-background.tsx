@@ -1,20 +1,74 @@
 'use client'
 import type React from 'react'
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { useBackground } from '@/contexts/BackgroundContext'
 
 const AmbientBackground: React.FC = () => {
-	// Create a limited number of animated lines that cycle through
-	// Each line will animate every few seconds with staggered delays
 	const gridSize = 70
+	const gridCols = 30
+	const gridRows = 20
+
+	const { crossesRotationToken } = useBackground()
+
+	const [rotationDeg, setRotationDeg] = useState(0)
+
+	// Seeded random function for consistent but random distribution
+	const seededRandom = (seed: number) => {
+		let currentSeed = seed
+		return () => {
+			currentSeed = (currentSeed * 9301 + 49297) % 233280
+			return currentSeed / 233280
+		}
+	}
+
+	const random = seededRandom(54321)
+
+	// Single line state - one line at a time
+	const [currentLine, setCurrentLine] = useState<{
+		type: 'horizontal' | 'vertical'
+		position: number
+		key: number
+	}>(() => {
+		const isHorizontal = random() < 0.5
+		return {
+			type: isHorizontal ? 'horizontal' : 'vertical',
+			position: isHorizontal
+				? (Math.floor(random() * (gridRows - 4)) + 2) * gridSize
+				: (Math.floor(random() * (gridCols - 4)) + 2) * gridSize,
+			key: 0
+		}
+	})
+
+	// Fixed timing: 3.5s movement + 8s pause = 11.5s total
+	const movementDuration = 3.5 // seconds
+	const fixedPause = 8 // seconds
+	const totalCycleTime = movementDuration + fixedPause
+
+	// Update to new random line after each cycle
+	useEffect(() => {
+		const interval = setInterval(() => {
+			const isHorizontal = random() < 0.5
+			setCurrentLine({
+				type: isHorizontal ? 'horizontal' : 'vertical',
+				position: isHorizontal
+					? (Math.floor(random() * (gridRows - 4)) + 2) * gridSize
+					: (Math.floor(random() * (gridCols - 4)) + 2) * gridSize,
+				key: Date.now()
+			})
+		}, totalCycleTime * 1000)
+
+		return () => clearInterval(interval)
+	}, [])
+
+	// Increment rotation angle by 90° on each trigger; hover-out does nothing
+	useEffect(() => {
+		if (!crossesRotationToken) return
+		setRotationDeg((prev) => prev + 90)
+	}, [crossesRotationToken])
 
 	// Generate random grid crossing points - using seeded random for consistency
 	const specialPoints = useMemo(() => {
-		// Use a simple seeded random function for consistent but random distribution
-		let seed = 12345
-		const seededRandom = () => {
-			seed = (seed * 9301 + 49297) % 233280
-			return seed / 233280
-		}
+		const random = seededRandom(12345)
 
 		// Calculate approximate grid dimensions (assuming typical viewport)
 		const gridCols = 30
@@ -22,8 +76,8 @@ const AmbientBackground: React.FC = () => {
 
 		return Array.from({ length: 20 }, (_, i) => {
 			// Random position within viewport bounds, aligned to grid
-			const col = Math.floor(seededRandom() * (gridCols - 4)) + 2
-			const row = Math.floor(seededRandom() * (gridRows - 4)) + 2
+			const col = Math.floor(random() * (gridCols - 4)) + 2
+			const row = Math.floor(random() * (gridRows - 4)) + 2
 
 			return {
 				x: col * gridSize,
@@ -34,7 +88,10 @@ const AmbientBackground: React.FC = () => {
 	}, [])
 
 	return (
-		<div className="fixed inset-0 -z-10 overflow-hidden bg-[#010101]">
+		<div
+			className="fixed inset-0 -z-10 overflow-hidden"
+			style={{ backgroundColor: 'var(--ambient-background)' }}
+		>
 			{/* Bottom Left */}
 			<div className="absolute bottom-0 left-0 w-32 h-32">
 				<div className="absolute bottom-0 left-0 w-20 h-0.5 bg-terminal-cyan/40" />
@@ -62,8 +119,8 @@ const AmbientBackground: React.FC = () => {
 				className="absolute inset-0"
 				style={{
 					backgroundImage: `
-						linear-gradient(rgba(156, 163, 175, 0.15) 1px, transparent 1px),
-						linear-gradient(90deg, rgba(156, 163, 175, 0.15) 1px, transparent 1px)
+						linear-gradient(var(--ambient-grid-line) 1px, transparent 1px),
+						linear-gradient(90deg, var(--ambient-grid-line) 1px, transparent 1px)
 					`,
 					backgroundSize: '70px 70px'
 				}}
@@ -77,37 +134,41 @@ const AmbientBackground: React.FC = () => {
 					style={{
 						left: `${point.x}px`,
 						top: `${point.y}px`,
-						transform: 'translate(-50%, -50%)'
+						transform: `translate(-50%, -50%) rotate(${rotationDeg}deg)`,
+						transition: 'transform 0.7s ease-out'
 					}}
 				>
 					{/* Thicker crossing point - center dot */}
-					<div className="absolute w-1.5 h-1.5 bg-gray-r00/50 -translate-x-1/2 -translate-y-1/2 rounded-full" />
+					<div className="absolute w-1.5 h-1.5 bg-terminal-text/15 -translate-x-1/2 -translate-y-1/2 rounded-full" />
 					{/* Horizontal line accent */}
-					<div className="absolute w-8 h-0.5 bg-gray-400/25 -translate-x-1/2 -translate-y-1/2" />
+					<div className="absolute w-8 h-0.5 bg-terminal-text/10 -translate-x-1/2 -translate-y-1/2" />
 					{/* Vertical line accent */}
-					<div className="absolute w-0.5 h-8 bg-gray-400/25 -translate-x-1/2 -translate-y-1/2" />
+					<div className="absolute w-0.5 h-8 bg-terminal-text/10 -translate-x-1/2 -translate-y-1/2" />
 				</div>
 			))}
 
-			{/* Animated horizontal grid line */}
-			<div
-				className="grid-line-horizontal"
-				style={{
-					top: `${5 * gridSize}px`,
-					animationDelay: '0s',
-					animationDuration: '8s'
-				}}
-			/>
-
-			{/* Animated vertical grid line */}
-			<div
-				className="grid-line-vertical"
-				style={{
-					left: `${5 * gridSize}px`,
-					animationDelay: '4s',
-					animationDuration: '8s'
-				}}
-			/>
+			{/* Single animated line - one at a time */}
+			{currentLine.type === 'horizontal' ? (
+				<div
+					key={currentLine.key}
+					className="grid-line-horizontal"
+					style={{
+						top: `${currentLine.position}px`,
+						animationDuration: `${movementDuration}s`,
+						animationIterationCount: '1'
+					}}
+				/>
+			) : (
+				<div
+					key={currentLine.key}
+					className="grid-line-vertical"
+					style={{
+						left: `${currentLine.position}px`,
+						animationDuration: `${movementDuration}s`,
+						animationIterationCount: '1'
+					}}
+				/>
+			)}
 		</div>
 	)
 }

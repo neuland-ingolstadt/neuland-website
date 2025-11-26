@@ -41,7 +41,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 	return (
 		<button
 			type="button"
-			className="h-full border border-neutral-800 bg-[#0b0b0b] cursor-pointer group relative overflow-hidden flex flex-col transition-all duration-200 hover:border-neutral-700 text-left w-full"
+			className="h-full border border-terminal-window-border bg-terminal-window cursor-pointer group relative overflow-hidden flex flex-col transition-all duration-200 hover:border-terminal-windowTitle text-left w-full"
 			onClick={onClick}
 			onKeyDown={handleKeyDown}
 		>
@@ -68,7 +68,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 
 			{/* Project Image */}
 			{project.imageUrl && (
-				<div className="w-full h-40 bg-[#0b0b0b] overflow-hidden relative">
+				<div className="w-full h-40 bg-terminal-window overflow-hidden relative">
 					{/** biome-ignore lint/performance/noImgElement: TODO */}
 					<img
 						src={project.imageUrl}
@@ -83,7 +83,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 				<div className="text-xl font-semibold flex items-center gap-2 text-terminal-text">
 					<Code
 						size={20}
-						className="text-gray-400 group-hover:text-terminal-cyan transition-colors duration-200"
+						className="text-terminal-text/70 group-hover:text-terminal-cyan transition-colors duration-200"
 					/>
 					{project.title}
 				</div>
@@ -93,7 +93,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 						{project.tags.map((tag, index) => (
 							<span
 								key={index}
-								className="text-xs px-2.5 py-1 bg-neutral-800 text-gray-400 font-medium border border-neutral-800"
+								className="text-xs px-2.5 py-1 bg-terminal-card text-terminal-text/70 font-medium border border-terminal-window-border"
 							>
 								{tag}
 							</span>
@@ -102,7 +102,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 				)}
 			</div>
 			<div className="pt-2 pb-4 px-5 grow overflow-auto">
-				<p className="text-base text-gray-400 mb-2 leading-relaxed">
+				<p className="text-base text-terminal-text/70 mb-2 leading-relaxed">
 					{project.description}
 				</p>
 			</div>
@@ -114,7 +114,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 							href={link.url}
 							target="_blank"
 							rel="noreferrer noopener"
-							className="inline-flex items-center gap-1 px-2.5 py-1 bg-black text-gray-400 font-medium hover:text-white hover:border-neutral-700 transition-colors border border-neutral-800 whitespace-nowrap max-w-full truncate no-underline text-xs"
+							className="inline-flex items-center gap-1 px-2.5 py-1 bg-terminal-card text-terminal-text/70 font-medium hover:text-terminal-text hover:border-terminal-highlight/40 transition-colors border border-terminal-window-border whitespace-nowrap max-w-full truncate no-underline text-xs"
 							onClick={handleLinkClick}
 						>
 							<ExternalLink size={12} className="mr-1" />
@@ -127,7 +127,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 			{/* Floating Details Button */}
 			<ChevronRight
 				size={24}
-				className="group-hover:translate-x-1 transition-transform absolute bottom-4 right-4 z-10 text-gray-400 group-hover:text-terminal-cyan"
+				className="group-hover:translate-x-1 transition-transform absolute bottom-4 right-4 z-10 text-terminal-text/70 group-hover:text-terminal-cyan"
 			/>
 		</button>
 	)

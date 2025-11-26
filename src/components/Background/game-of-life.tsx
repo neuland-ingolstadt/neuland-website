@@ -121,7 +121,29 @@ const GameOfLife: React.FC = () => {
 		width: number,
 		height: number
 	) => {
-		ctx.fillStyle = 'rgb(0, 4, 0)'
+		// Pick palette based on current theme (light / dark)
+		const root = document.documentElement
+		const explicitTheme = root.getAttribute('data-theme')
+		const prefersLight = window.matchMedia?.(
+			'(prefers-color-scheme: light)'
+		).matches
+
+		const mode =
+			explicitTheme === 'light'
+				? 'light'
+				: explicitTheme === 'dark'
+					? 'dark'
+					: prefersLight
+						? 'light'
+						: 'dark'
+
+		// Softer palettes for both modes
+		const bgColor = mode === 'light' ? 'rgb(247, 249, 247)' : 'rgb(4, 7, 4)'
+		const cellBase = mode === 'light' ? '16, 120, 88' : '0, 120, 70'
+		const shadowColor =
+			mode === 'light' ? 'rgba(16, 120, 88, 0.28)' : 'rgba(0, 120, 70, 0.45)'
+
+		ctx.fillStyle = bgColor
 		ctx.fillRect(0, 0, width, height)
 
 		const cellSize = cellSizeRef.current
@@ -129,14 +151,16 @@ const GameOfLife: React.FC = () => {
 
 		if (!grid.length) return
 
-		ctx.shadowColor = 'rgba(0, 124, 0, 0.7)'
+		ctx.shadowColor = shadowColor
 		ctx.shadowBlur = 6
 
 		for (let i = 0; i < grid.length; i++) {
 			for (let j = 0; j < grid[i].length; j++) {
 				const cell = grid[i][j]
 				if (cell.opacity > 0) {
-					ctx.fillStyle = `rgba(0, 99, 0, ${cell.opacity * 0.16})`
+					const alpha =
+						mode === 'light' ? cell.opacity * 0.08 : cell.opacity * 0.13
+					ctx.fillStyle = `rgba(${cellBase}, ${alpha})`
 					ctx.fillRect(
 						j * cellSize + 2,
 						i * cellSize + 2,

@@ -111,7 +111,7 @@ export default async function Home({
 	}
 
 	return (
-		<div className="mx-auto max-w-4xl">
+		<div className="mx-auto max-w-5xl">
 			<Breadcrumb>
 				<BreadcrumbList className="flex items-center">
 					<BreadcrumbItem className="flex items-center">
@@ -133,9 +133,7 @@ export default async function Home({
 			</Breadcrumb>
 
 			<div className="flex justify-between items-center mt-4 mb-8">
-				<h1 className="text-3xl font-bold text-terminal-highlight font-mono">
-					Neuland Blog
-				</h1>
+				<h1 className="text-3xl font-bold ">Neuland Blog</h1>
 				<div className="flex gap-2">
 					<TerminalButton
 						href="/feed"

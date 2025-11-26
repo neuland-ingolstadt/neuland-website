@@ -95,7 +95,7 @@ const ProjectsPage = () => {
 						type="button"
 						className={`px-4 py-2  border transition-all duration-200 ${
 							!activeTag
-								? 'border-terminal-cyan bg-terminal-cyan/80 text-black'
+								? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
 								: 'border-terminal-text/30 text-terminal-text/70 hover:border-terminal-cyan hover:text-terminal-cyan'
 						}`}
 						onClick={() => setActiveTag(null)}
@@ -108,7 +108,7 @@ const ProjectsPage = () => {
 							key={tag}
 							className={`px-4 py-2 border transition-all duration-200 ${
 								activeTag === tag
-									? 'border-terminal-cyan bg-terminal-cyan/80 text-black'
+									? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
 									: 'border-terminal-text/30 text-terminal-text/70 hover:border-terminal-cyan hover:text-terminal-cyan'
 							}`}
 							onClick={() => setActiveTag(tag)}

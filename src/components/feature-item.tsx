@@ -17,7 +17,9 @@ const FeatureItem = memo(
 				whileInView={{ opacity: 1 }}
 				transition={{ duration: 0.4 }}
 				viewport={{ once: true }}
-				className={`relative p-6 flex flex-col h-full group transition-all duration-300 overflow-hidden ${!isLastInRow ? 'border-r border-neutral-800' : ''} ${!isLastRow ? 'border-b border-neutral-800' : ''}`}
+				className={`relative p-6 flex flex-col h-full group transition-all duration-300 overflow-hidden ${!isLastInRow ? 'border-r border-terminal-window-border' : ''} ${
+					!isLastRow ? 'border-b border-terminal-window-border' : ''
+				}`}
 			>
 				{/* Animated background on hover */}
 				<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/5 via-terminal-cyan/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
@@ -37,7 +39,7 @@ const FeatureItem = memo(
 					</p>
 				</div>
 				<div className="relative z-10 flex-1 flex flex-col">
-					<p className="text-sm text-gray-400 group-hover:text-gray-300 leading-relaxed m-0 transition-colors duration-300">
+					<p className="text-sm text-terminal-text/70 group-hover:text-terminal-text leading-relaxed m-0 transition-colors duration-300">
 						{description}
 					</p>
 				</div>

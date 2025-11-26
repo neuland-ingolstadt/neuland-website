@@ -38,7 +38,7 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
 	if (!post) throw new Error(`Post not found for slug: ${slug}`)
 
 	return (
-		<div className="mx-auto max-w-4xl">
+		<div className="mx-auto max-w-5xl">
 			<Breadcrumb>
 				<BreadcrumbList className="flex items-center">
 					<BreadcrumbItem className="flex items-center">
@@ -116,7 +116,7 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
 									href={`/blog/tags/${encodeURIComponent(tag.toLowerCase())}`}
 									className="no-underline group/tag"
 								>
-									<span className="inline-block text-xs px-2.5 py-1 bg-neutral-900 text-gray-400 font-medium border border-neutral-800 group-hover/tag:border-neutral-700 group-hover/tag:text-white transition-colors duration-200">
+									<span className="inline-block text-xs px-2.5 py-1 bg-terminal-card text-terminal-text/70 font-medium border border-terminal-window-border group-hover/tag:border-terminal-highlight/40 group-hover/tag:text-terminal-text transition-colors duration-200">
 										{tag}
 									</span>
 								</Link>

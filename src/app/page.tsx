@@ -1,4 +1,4 @@
-import AboutUsSection from '@/components/AboutUs/AboutUsSection'
+import AboutUsSection from '@/components/AboutUs/about-us-section'
 import BlogPreview from '@/components/blog/blog-peview'
 import ClientIntro from '@/components/client-intro'
 import EventsSection from '@/components/Events/events-section'

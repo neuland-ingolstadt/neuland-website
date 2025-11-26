@@ -13,7 +13,7 @@ const SocialLinks: React.FC = () => {
 						target="_blank"
 						className="text-terminal-text! group"
 					>
-						<span className="text-terminal-cyan transition-all duration-300 group-hover:text-white group-hover:animate-cyberpunk">
+						<span className="text-terminal-cyan transition-all duration-300 group-hover:text-terminal-text group-hover:animate-cyberpunk">
 							<GithubIcon className="inline-block" size={16} />
 						</span>{' '}
 						github.com
@@ -26,7 +26,7 @@ const SocialLinks: React.FC = () => {
 						target="_blank"
 						className="text-terminal-text! group"
 					>
-						<span className="text-terminal-cyan transition-all duration-300 group-hover:text-white group-hover:animate-cyberpunk">
+						<span className="text-terminal-cyan transition-all duration-300 group-hover:text-terminal-text group-hover:animate-cyberpunk">
 							<LinkedinIcon className="inline-block" size={16} />
 						</span>{' '}
 						linkedin.com
@@ -39,7 +39,7 @@ const SocialLinks: React.FC = () => {
 						target="_blank"
 						className="text-terminal-text! group"
 					>
-						<span className="text-terminal-cyan transition-all duration-300 group-hover:text-white group-hover:animate-cyberpunk">
+						<span className="text-terminal-cyan transition-all duration-300 group-hover:text-terminal-text group-hover:animate-cyberpunk">
 							<InstagramIcon className="inline-block" size={16} />
 						</span>{' '}
 						instagram.com
@@ -52,7 +52,7 @@ const SocialLinks: React.FC = () => {
 						target="_blank"
 						className="text-terminal-text! group"
 					>
-						<span className="text-terminal-cyan transition-all duration-300 group-hover:text-white group-hover:animate-cyberpunk">
+						<span className="text-terminal-cyan transition-all duration-300 group-hover:text-terminal-text group-hover:animate-cyberpunk">
 							<MastodonIcon className="inline-block w-4 h-4 fill-current" />
 						</span>{' '}
 						mastodon.social

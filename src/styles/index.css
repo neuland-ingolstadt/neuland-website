@@ -1,4 +1,8 @@
 @import "tailwindcss";
+/*
+  ---break---
+*/
+@custom-variant dark ([data-theme="dark"] &);
 @plugin "tailwindcss-animate";
 
 @theme {
@@ -23,17 +27,31 @@
 	--color-accent: hsl(var(--accent));
 	--color-accent-foreground: hsl(var(--accent-foreground));
 
-	--color-terminal-bg: #000000;
-	--color-terminal-text: #ffffff;
-	--color-terminal-cyan: oklch(0.825 0.3281 142.83);
-	--color-terminal-highlight: oklch(0.8544 0.3379 142.83);
-	--color-terminal-darkGreen: #003300;
-	--color-terminal-muted: #006600;
-	--color-terminal-lightGreen: oklch(0.79 0.2935 142.83);
-	--color-terminal-mediumGreen: oklch(0.72 0.2837 142.83);
-	--color-terminal-window: #0b0b0b;
-	--color-terminal-window-border: #333333;
-	--color-terminal-windowTitle: #414141;
+	--color-terminal-bg: var(--terminal-bg, #000000);
+	--color-terminal-text: var(--terminal-text, #ffffff);
+	--color-terminal-cyan: var(--terminal-cyan, oklch(0.825 0.3281 142.83));
+	--color-terminal-highlight: var(
+		--terminal-highlight,
+		oklch(0.8544 0.3379 142.83)
+	);
+	--color-terminal-darkGreen: var(--terminal-darkGreen, #003300);
+	--color-terminal-muted: var(--terminal-mutedGreen, #006600);
+	--color-terminal-lightGreen: var(
+		--terminal-lightGreen,
+		oklch(0.79 0.2935 142.83)
+	);
+	--color-terminal-mediumGreen: var(
+		--terminal-mediumGreen,
+		oklch(0.72 0.2837 142.83)
+	);
+	--color-terminal-window: var(--terminal-window, #0b0b0b);
+	--color-terminal-window-border: var(--terminal-window-border, #333333);
+	--color-terminal-windowTitle: var(--terminal-window-title, #414141);
+	--color-terminal-overlay: var(--terminal-overlay, rgba(0, 0, 0, 0.85));
+	--color-terminal-card: var(--terminal-card, #101311);
+	--color-terminal-onAccent: var(--terminal-onAccent, #001a10);
+	--color-terminal-paper: var(--terminal-paper, #ffe44a);
+	--color-terminal-paper-text: var(--terminal-paper-text, #251d00);
 
 	--animate-cursor: cursor 1s infinite step-end;
 	--animate-typewriter: typewriter 2s steps(40) forwards;
@@ -41,7 +59,6 @@
 	--animate-cyberpunk: cyberpunk-glow 1.5s ease-in-out infinite;
 
 	--font-mono: var(--font-mono), Source Code Pro, monospace;
-	--font-fantasy: var(--font-fantasy), Shantell Sans, fantasy;
 	--font-sans:
 		var(--font-sans), "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
@@ -98,8 +115,155 @@
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
 	--font-mono: var(--font-mono);
-	--font-fantasy: var(--font-fantasy);
 	--font-sans: var(--font-sans);
+	--color-sidebar-ring: var(--sidebar-ring);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar: var(--sidebar);
+}
+
+:root {
+	color-scheme: dark;
+	--background: 150 9% 4%;
+	--foreground: 150 25% 95%;
+	--muted: 150 9% 12%;
+	--muted-foreground: 150 9% 70%;
+	--border: 150 7% 20%;
+	--input: var(--border);
+	--ring: 149 65% 52%;
+	--primary: 149 65% 52%;
+	--primary-foreground: 160 30% 12%;
+	--secondary: 150 9% 22%;
+	--secondary-foreground: 160 20% 94%;
+	--accent: 149 80% 55%;
+	--accent-foreground: 160 35% 12%;
+	--destructive: 0 70% 45%;
+	--destructive-foreground: 0 0% 98%;
+
+	--terminal-bg: #020302;
+	--terminal-text: #f6fff8;
+	--terminal-cyan: oklch(0.825 0.3281 142.83);
+	--terminal-highlight: oklch(0.8544 0.3379 142.83);
+	--terminal-darkGreen: #003300;
+	--terminal-mutedGreen: #0a4f2b;
+	--terminal-lightGreen: oklch(0.79 0.2935 142.83);
+	--terminal-mediumGreen: oklch(0.72 0.2837 142.83);
+	--terminal-window: #0b0b0b;
+	--terminal-window-border: #333333;
+	--terminal-window-title: #414141;
+	--terminal-overlay: rgba(0, 0, 0, 0.8);
+	--terminal-card: #101413;
+	--terminal-onAccent: #001f12;
+	--terminal-paper: #ffe44a;
+	--terminal-paper-text: #2a1f00;
+
+	--ambient-background: #010101;
+	--ambient-grid-line: rgba(156, 163, 175, 0.15);
+	--ambient-grid-highlight: rgba(74, 222, 128, 0.35);
+	--ambient-grid-cross: rgba(99, 255, 192, 0.35);
+	--ambient-grid-glow: rgba(74, 222, 128, 0.8);
+	--sidebar: hsl(0 0% 98%);
+	--sidebar-foreground: hsl(240 5.3% 26.1%);
+	--sidebar-primary: hsl(240 5.9% 10%);
+	--sidebar-primary-foreground: hsl(0 0% 98%);
+	--sidebar-accent: hsl(240 4.8% 95.9%);
+	--sidebar-accent-foreground: hsl(240 5.9% 10%);
+	--sidebar-border: hsl(220 13% 91%);
+	--sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+:root[data-theme="dark"] {
+	color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+	:root:not([data-theme]) {
+		color-scheme: light;
+		--background: 145 40% 97%;
+		--foreground: 155 24% 12%;
+		--muted: 145 26% 90%;
+		--muted-foreground: 150 20% 32%;
+		--border: 145 20% 82%;
+		--input: var(--border);
+		--ring: 149 45% 40%;
+		--primary: 150 55% 40%;
+		--primary-foreground: 140 50% 98%;
+		--secondary: 150 18% 86%;
+		--secondary-foreground: 150 28% 20%;
+		--accent: 150 55% 40%;
+		--accent-foreground: 140 40% 96%;
+		--destructive: 0 70% 40%;
+		--destructive-foreground: 0 0% 98%;
+
+		--terminal-bg: #f5f8f5;
+		--terminal-text: #0b1d14;
+		--terminal-cyan: oklch(0.72 0.24 142.83);
+		--terminal-highlight: oklch(0.64 0.2 142.83);
+		--terminal-darkGreen: #0a4a2e;
+		--terminal-mutedGreen: #1a6b40;
+		--terminal-lightGreen: #0d8f5c;
+		--terminal-mediumGreen: #0c6b46;
+		--terminal-window: #ffffff;
+		--terminal-window-border: #c7d3c8;
+		--terminal-window-title: #e3ede6;
+		--terminal-overlay: rgba(7, 24, 19, 0.55);
+		--terminal-card: #eff4ef;
+		--terminal-onAccent: #042011;
+		--terminal-paper: #ffe88c;
+		--terminal-paper-text: #3c3100;
+
+		--ambient-background: #fafafa;
+		--ambient-grid-line: rgba(13, 50, 36, 0.08);
+		--ambient-grid-highlight: rgba(19, 119, 75, 0.25);
+		--ambient-grid-cross: rgba(6, 89, 58, 0.35);
+		--ambient-grid-glow: rgba(25, 141, 94, 0.55);
+	}
+}
+
+:root[data-theme="light"] {
+	color-scheme: light;
+	--background: 145 40% 97%;
+	--foreground: 155 24% 12%;
+	--muted: 145 26% 90%;
+	--muted-foreground: 150 20% 32%;
+	--border: 145 20% 82%;
+	--input: var(--border);
+	--ring: 149 45% 40%;
+	--primary: 150 55% 40%;
+	--primary-foreground: 140 50% 98%;
+	--secondary: 150 18% 86%;
+	--secondary-foreground: 150 28% 20%;
+	--accent: 150 55% 40%;
+	--accent-foreground: 140 40% 96%;
+	--destructive: 0 70% 40%;
+	--destructive-foreground: 0 0% 98%;
+
+	--terminal-bg: #f5f8f5;
+	--terminal-text: #0b1d14;
+	--terminal-cyan: oklch(0.72 0.24 142.83);
+	--terminal-highlight: oklch(0.64 0.2 142.83);
+	--terminal-darkGreen: #0a4a2e;
+	--terminal-mutedGreen: #1a6b40;
+	--terminal-lightGreen: #0d8f5c;
+	--terminal-mediumGreen: #0c6b46;
+	--terminal-window: #ffffff;
+	--terminal-window-border: #c7d3c8;
+	--terminal-window-title: #e3ede6;
+	--terminal-overlay: rgba(7, 24, 19, 0.55);
+	--terminal-card: #eff4ef;
+	--terminal-onAccent: #042011;
+	--terminal-paper: #ffe88c;
+	--terminal-paper-text: #3c3100;
+
+	--ambient-background: #fafafa;
+	--ambient-grid-line: rgba(13, 50, 36, 0.08);
+	--ambient-grid-highlight: rgba(19, 119, 75, 0.25);
+	--ambient-grid-cross: rgba(6, 89, 58, 0.35);
+	--ambient-grid-glow: rgba(25, 141, 94, 0.55);
 }
 
 /*
@@ -140,8 +304,8 @@
 		position: relative;
 		overflow-x: hidden;
 		font-family: var(--font-mono);
-		background-color: #000000;
-		color: #ffffff;
+		background-color: var(--color-terminal-bg);
+		color: var(--color-terminal-text);
 		word-wrap: break-word;
 		overflow-wrap: break-word;
 	}
@@ -261,14 +425,30 @@
 	}
 }
 
+/*
+  ---break---
+*/
+
+.dark {
+	--sidebar: hsl(240 5.9% 10%);
+	--sidebar-foreground: hsl(240 4.8% 95.9%);
+	--sidebar-primary: hsl(224.3 76.3% 48%);
+	--sidebar-primary-foreground: hsl(0 0% 100%);
+	--sidebar-accent: hsl(240 3.7% 15.9%);
+	--sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+	--sidebar-border: hsl(240 3.7% 15.9%);
+	--sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+/*
+  ---break---
+*/
+
 @layer base {
 	* {
-		@apply border-border;
+		@apply border-border outline-ring/50;
 	}
-
 	body {
 		@apply bg-background text-foreground;
-		background-color: #000000;
-		color: #ffffff;
 	}
 }
