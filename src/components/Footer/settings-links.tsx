@@ -9,20 +9,6 @@ const SettingsLinks: React.FC = () => {
 	return (
 		<nav>
 			<ul>
-				<li className="mb-2">
-					<a
-						href="https://github.com/neuland-ingolstadt/neuland-website"
-						rel="noreferrer noopener"
-						target="_blank"
-						className="group no-underline text-terminal-text font-mono"
-					>
-						<span className="mr-2.5">$</span>
-						<span className="text-terminal-cyan">git</span>&nbsp;
-						<span className="text-terminal-cyan">clone</span>
-						&nbsp;neuland-website
-					</a>
-				</li>
-
 				<li className="mt-3 flex items-center text-terminal-text">
 					<button
 						type="button"
@@ -42,6 +28,19 @@ const SettingsLinks: React.FC = () => {
 							</>
 						)}
 					</button>
+				</li>
+				<li className="mb-2">
+					<a
+						href="https://github.com/neuland-ingolstadt/neuland-website"
+						rel="noreferrer noopener"
+						target="_blank"
+						className="group no-underline text-terminal-text font-mono"
+					>
+						<span className="mr-2.5">$</span>
+						<span className="text-terminal-cyan">git</span>&nbsp;
+						<span className="text-terminal-cyan">clone</span>
+						&nbsp;neuland-website
+					</a>
 				</li>
 
 				<li className="mt-3">
