@@ -290,7 +290,12 @@ const NextAppShowcase = () => {
 									</div>
 								</div>
 
-								<TerminalButton href="https://neuland.app" dark>
+								<TerminalButton
+									href="https://neuland.app"
+									dark
+									target="_blank"
+									rel="noreferrer noopener"
+								>
 									<ArrowUpRight
 										size={16}
 										className="mr-2 group-hover:rotate-8 transition-transform duration-300"

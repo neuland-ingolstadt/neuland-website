@@ -169,7 +169,11 @@ const ProjectsPage = () => {
 							Sieh dir unsere Projekte auf GitHub an!
 						</span>
 					</div>
-					<TerminalButton href="https://github.com/neuland-ingolstadt">
+					<TerminalButton
+						href="https://github.com/neuland-ingolstadt"
+						target="_blank"
+						rel="noreferrer noopener"
+					>
 						<Github
 							size={16}
 							className="mr-2 group-hover:rotate-8 transition-transform duration-300"
