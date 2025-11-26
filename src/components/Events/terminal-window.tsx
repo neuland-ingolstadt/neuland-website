@@ -217,13 +217,13 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 	return (
 		<div
 			ref={terminalRef}
-			className={`terminal-window ${className}`}
+			className={`terminal-window ${className} `}
 			style={{
 				height: containerHeight ? `${containerHeight}px` : 'auto',
 				minHeight: containerHeight ? `${containerHeight}px` : 'auto',
 				background: isTransparentBg ? 'transparent' : undefined,
 				position: 'relative',
-				border: isTransparentBg ? 'none' : undefined,
+				border: isTransparentBg ? 'none' : '1px solid #333333',
 				overflow: 'visible'
 			}}
 		>

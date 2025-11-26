@@ -14,7 +14,7 @@ const StickyNote: React.FC<StickyNoteProps> = ({
 	if (!visible) return null
 
 	return (
-		<div className="group absolute sm:top-9 sm:-right-4 sm:rotate-6 bottom-[-30px] right-0 rotate-3 z-10 pointer-events-auto w-[120px] h-[110px] bg-[#ffe44a] shadow-md overflow-hidden">
+		<div className="group absolute sm:top-9 sm:-right-4 sm:rotate-6 bottom-[-30px] right-0 rotate-3 z-10 pointer-events-auto w-[120px] h-[110px] bg-[#ffe44a] shadow-md overflow-hidden rounded-sm">
 			<div className="absolute -bottom-4 -right-4 w-12 h-12 bg-white/30 shadow-inner transform rotate-45" />
 
 			<div className="relative p-3 text-center text-black leading-tight font-semibold  mt-1.5 font-fantasy">

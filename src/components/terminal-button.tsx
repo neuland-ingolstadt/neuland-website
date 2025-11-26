@@ -22,7 +22,7 @@ const TerminalButton: React.FC<TerminalButtonProps> = ({
 	className = '',
 	dark = false
 }) => {
-	const bgClass = dark ? 'bg-black' : 'bg-neutral-900'
+	const bgClass = dark ? 'bg-black' : 'bg-[#0b0b0b]'
 	const styles = `${baseStyles} ${bgClass} ${className}`
 	const content = <span className="flex items-center gap-2">{children}</span>
 

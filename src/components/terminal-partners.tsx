@@ -120,12 +120,22 @@ const TerminalPartners: React.FC = () => {
 									<div className="absolute top-0 left-0 w-px h-4 bg-terminal-cyan/40" />
 								</div>
 
-								{/** biome-ignore lint/performance/noImgElement: TODO */}
-								<img
-									src="/assets/thi.webp"
-									alt="THI Partner"
-									className="relative z-10 max-w-full max-h-28 object-contain transition-all duration-300"
-								/>
+								{/* Logo container that moves up on hover */}
+								<div className="relative z-10 flex items-center justify-center transition-transform duration-300 group-hover/logo:-translate-y-3">
+									{/** biome-ignore lint/performance/noImgElement: TODO */}
+									<img
+										src="/assets/thi.webp"
+										alt="THI Partner"
+										className="max-w-full max-h-28 object-contain"
+									/>
+								</div>
+
+								{/* Fading subtitle - absolutely positioned so it doesn't affect layout */}
+								<div className="absolute -bottom-3 left-0 right-0 z-10 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover/logo:translate-y-0 pointer-events-none">
+									<p className="text-sm text-gray-400 text-center font-medium ">
+										Technische Hochschule Ingolstadt
+									</p>
+								</div>
 							</a>
 							<a
 								href="https://www.explore.de"
@@ -142,12 +152,22 @@ const TerminalPartners: React.FC = () => {
 									<div className="absolute top-0 left-0 w-px h-4 bg-terminal-cyan/40" />
 								</div>
 
-								{/** biome-ignore lint/performance/noImgElement: TODO */}
-								<img
-									src="/assets/exp.webp"
-									alt="EXP Partner"
-									className="relative z-10 max-w-full max-h-14 object-contain transition-all duration-300"
-								/>
+								{/* Logo container that moves up on hover */}
+								<div className="relative z-10 flex items-center justify-center transition-transform duration-300 group-hover/logo:-translate-y-3">
+									{/** biome-ignore lint/performance/noImgElement: TODO */}
+									<img
+										src="/assets/exp.webp"
+										alt="EXP Partner"
+										className="max-w-full max-h-14 object-contain"
+									/>
+								</div>
+
+								{/* Fading subtitle - absolutely positioned so it doesn't affect layout */}
+								<div className="absolute -bottom-3 left-0 right-0 z-10 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover/logo:translate-y-0 pointer-events-none">
+									<p className="text-sm text-gray-400 text-center font-medium ">
+										Explore GmbH
+									</p>
+								</div>
 							</a>
 						</motion.div>
 					)}

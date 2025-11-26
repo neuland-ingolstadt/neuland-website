@@ -1,7 +1,7 @@
 'use client'
 import type React from 'react'
-import SocialLinks from '@/components/Footer/cocial-links'
 import SettingsLinks from '@/components/Footer/settings-links'
+import SocialLinks from '@/components/Footer/social-links'
 import TerminalLinks from '@/components/Footer/terminal-links'
 
 const TerminalFooter: React.FC = () => {
