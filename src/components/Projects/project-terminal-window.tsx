@@ -1,6 +1,6 @@
 import type React from 'react'
 import { memo, useCallback, useMemo, useState } from 'react'
-import TerminalActionButton from '../Events/TerminalActionButton'
+import TerminalActionButton from '../Events/terminalaction-button'
 
 interface SimpleTerminalWindowProps {
 	title: string

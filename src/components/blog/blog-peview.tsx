@@ -11,8 +11,8 @@ import {
 	CarouselNext,
 	CarouselPrevious
 } from '@/components/ui/carousel'
-import TerminalButton from '../TerminalButton'
-import BlogPostCard from './BlogPostCard'
+import TerminalButton from '../terminal-button'
+import BlogPostCard from './blog-post-card'
 
 const BlogPreview = () => {
 	const posts = useMemo(

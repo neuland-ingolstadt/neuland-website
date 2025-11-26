@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { Mail, Zap } from 'lucide-react'
-import TerminalButton from './TerminalButton'
+import TerminalButton from './terminal-button'
 
 const TerminalPartners: React.FC = () => {
 	// Check if current date is >= December 1st, 2025
@@ -109,26 +109,44 @@ const TerminalPartners: React.FC = () => {
 								href="https://www.thi.de"
 								target="_blank"
 								rel="noreferrer noopener"
-								className="p-6 flex items-center justify-center h-full min-h-[120px] group/logo transition-all duration-200 hover:bg-neutral-800/30 no-underline"
+								className="relative p-6 flex items-center justify-center h-full min-h-[120px] group/logo transition-all duration-300 overflow-hidden no-underline"
 							>
+								{/* Animated background on hover */}
+								<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/5 via-terminal-cyan/2 to-transparent opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+								{/* Special accent - corner bracket on hover */}
+								<div className="absolute top-0 left-0 w-8 h-8 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300">
+									<div className="absolute top-0 left-0 w-4 h-px bg-terminal-cyan/40" />
+									<div className="absolute top-0 left-0 w-px h-4 bg-terminal-cyan/40" />
+								</div>
+
 								{/** biome-ignore lint/performance/noImgElement: TODO */}
 								<img
 									src="/assets/thi.webp"
 									alt="THI Partner"
-									className="max-w-full max-h-28 object-contain transition-all duration-200 group-hover/logo:scale-105 group-hover/logo:opacity-90"
+									className="relative z-10 max-w-full max-h-28 object-contain transition-all duration-300"
 								/>
 							</a>
 							<a
 								href="https://www.explore.de"
 								target="_blank"
 								rel="noreferrer noopener"
-								className="p-6 border-t border-neutral-800 flex items-center justify-center h-full min-h-[120px] group/logo transition-all duration-200 hover:bg-neutral-800/30 no-underline"
+								className="relative p-6 border-t border-neutral-800 flex items-center justify-center h-full min-h-[120px] group/logo transition-all duration-300 overflow-hidden no-underline"
 							>
+								{/* Animated background on hover */}
+								<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/5 via-terminal-cyan/2 to-transparent opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+								{/* Special accent - corner bracket on hover */}
+								<div className="absolute top-0 left-0 w-8 h-8 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300">
+									<div className="absolute top-0 left-0 w-4 h-px bg-terminal-cyan/40" />
+									<div className="absolute top-0 left-0 w-px h-4 bg-terminal-cyan/40" />
+								</div>
+
 								{/** biome-ignore lint/performance/noImgElement: TODO */}
 								<img
 									src="/assets/exp.webp"
 									alt="EXP Partner"
-									className="max-w-full max-h-14 object-contain transition-all duration-200 group-hover/logo:scale-105 group-hover/logo:opacity-90"
+									className="relative z-10 max-w-full max-h-14 object-contain transition-all duration-300"
 								/>
 							</a>
 						</motion.div>

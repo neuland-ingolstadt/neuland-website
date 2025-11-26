@@ -7,10 +7,10 @@ import rehypeStringify from 'rehype-stringify'
 import remarkGfm from 'remark-gfm'
 import { parseMarkdownSections } from '@/utils/markdownParser'
 import rehypeCustomLists from '@/utils/rehypeCustomLists'
-import TerminalSection from '../Layout/TerminalSection'
+import TerminalSection from '../Layout/terminal-section'
 import type { TocItem } from '../types/TocTypes'
-import TocButton from './TocButton'
-import TocModal from './TocModal'
+import TocButton from './toc-button'
+import TocModal from './toc-modal'
 
 export interface MarkdownDocument {
 	content: string

@@ -1,8 +1,8 @@
 'use client'
 import type React from 'react'
 import { useBackground } from '@/contexts/BackgroundContext'
-import AmbientBackground from './AmbientBackground'
-import GameOfLife from './GameOfLife'
+import AmbientBackground from './ambient-background'
+import GameOfLife from './game-of-life'
 
 const MatrixEffect: React.FC = () => {
 	const { backgroundType } = useBackground()

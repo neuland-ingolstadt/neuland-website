@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import { Lightbulb, Rocket, Users } from 'lucide-react'
 import type React from 'react'
-import TerminalSection from '@/components/Layout/TerminalSection'
+import TerminalSection from '@/components/Layout/terminal-section'
 
 const AboutUsSection: React.FC = () => {
 	const features = [

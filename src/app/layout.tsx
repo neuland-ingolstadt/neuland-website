@@ -3,9 +3,9 @@ import { Noto_Sans, Noto_Sans_Mono, Shantell_Sans } from 'next/font/google'
 
 import '../styles/index.css'
 
-import MatrixEffect from '@/components/Background/PageBackground'
-import TerminalFooter from '@/components/Footer/TerminalFooter'
-import TerminalHeader from '@/components/Layout/TerminalHeader'
+import MatrixEffect from '@/components/Background/page-background'
+import TerminalFooter from '@/components/Footer/terminal-footer'
+import TerminalHeader from '@/components/Layout/terminal-header'
 import Providers from '@/components/Provider'
 
 const overpassMono = Noto_Sans_Mono({

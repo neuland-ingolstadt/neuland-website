@@ -1,7 +1,7 @@
 import { allPosts } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
 import Link from 'next/link'
-import { PostCard } from '@/components/blog/PostCard'
+import { PostCard } from '@/components/blog/post-card'
 import {
 	Breadcrumb,
 	BreadcrumbItem,

@@ -148,27 +148,27 @@
 
 	/* Add specific heading styles for articles */
 	article h1 {
-		@apply text-3xl font-bold mb-4 text-terminal-cyan font-mono;
+		@apply text-3xl font-bold mb-4 text-terminal-lightGreen;
 	}
 
 	article h2 {
-		@apply text-2xl font-bold mt-12 pb-2 text-terminal-cyan font-mono;
+		@apply text-2xl font-bold mt-12 pb-2 text-terminal-lightGreen;
 	}
 
 	article h3 {
-		@apply text-xl font-bold mt-10 pb-2 text-terminal-cyan font-mono;
+		@apply text-xl font-bold mt-10 pb-2 text-terminal-lightGreen;
 	}
 
 	article h4 {
-		@apply text-lg font-bold mt-8 pb-2 text-terminal-cyan font-mono;
+		@apply text-lg font-bold mt-8 pb-2 text-terminal-lightGreen;
 	}
 
 	article h5 {
-		@apply text-base font-bold mt-8 pb-2 text-terminal-cyan font-mono;
+		@apply text-base font-bold mt-8 pb-2 text-terminal-lightGreen;
 	}
 
 	article h6 {
-		@apply text-sm font-bold mt-6 pb-2 text-terminal-cyan font-mono;
+		@apply text-sm font-bold mt-6 pb-2 text-terminal-lightGreen;
 	}
 
 	p {

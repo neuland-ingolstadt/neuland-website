@@ -4,9 +4,9 @@ import { Code, Filter, Github } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import ProjectCard, {
 	type ProjectDetails
-} from '@/components/Projects/ProjectCard'
-import ProjectDetailModal from '@/components/Projects/ProjectDetailModal'
-import TerminalButton from '@/components/TerminalButton'
+} from '@/components/Projects/project-card'
+import ProjectDetailModal from '@/components/Projects/project-detail-modal'
+import TerminalButton from '@/components/terminal-button'
 import projectsData from '@/data/projects.json'
 
 const uniqueTags = (projectsData as ProjectDetails[]).reduce((acc, project) => {

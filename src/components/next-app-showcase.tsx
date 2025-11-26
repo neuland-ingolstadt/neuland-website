@@ -16,8 +16,8 @@ import {
 	Zap
 } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import FeatureItem from './FeatureItem'
-import TerminalButton from './TerminalButton'
+import FeatureItem from './feature-item'
+import TerminalButton from './terminal-button'
 
 const NextAppShowcase = () => {
 	const phoneRef = useRef<HTMLDivElement>(null)
@@ -133,7 +133,7 @@ const NextAppShowcase = () => {
 					<h2 className="text-4xl mb-2 font-bold  bg-clip-text ">
 						Neuland Next
 					</h2>
-					<p className="text-xl/loose b-6 text-terminal-cyan">
+					<p className="text-xl/loose b-6 text-terminal-highlight">
 						Deine App für die TH Ingolstadt
 					</p>
 					<p className="text-lg text-terminal-text/80 max-w-3xl mx-auto">

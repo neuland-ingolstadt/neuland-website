@@ -2,7 +2,7 @@ import { allPosts } from 'contentlayer/generated'
 import { format, parseISO } from 'date-fns'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-import TerminalButton from '@/components/TerminalButton'
+import TerminalButton from '@/components/terminal-button'
 import {
 	Breadcrumb,
 	BreadcrumbItem,

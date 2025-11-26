@@ -1,14 +1,14 @@
 'use client'
 import { CalendarIcon, LucideArrowBigLeft } from 'lucide-react'
 import React, { useCallback, useRef, useState } from 'react'
-import TerminalTypeWriter from '@/components/Events/TerminalTypeWriter'
-import TerminalWindow from '@/components/Events/TerminalWindow'
-import TerminalSection from '@/components/Layout/TerminalSection'
-import TerminalButton from '@/components/TerminalButton'
-import TerminalList from '@/components/TerminalList'
+import TerminalTypeWriter from '@/components/Events/terminal-type-writer'
+import TerminalWindow from '@/components/Events/terminal-window'
+import TerminalSection from '@/components/Layout/terminal-section'
+import TerminalButton from '@/components/terminal-button'
+import TerminalList from '@/components/terminal-list'
 import { cn } from '@/lib/utils'
 import type { fetchEvents } from '@/services/events'
-import CalendarModal from './CalendarModal'
+import CalendarModal from './calendar-modal'
 
 interface TerminalEventsProps {
 	initialData?: Awaited<ReturnType<typeof fetchEvents>>

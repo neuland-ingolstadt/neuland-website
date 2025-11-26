@@ -1,12 +1,12 @@
 import AboutUsSection from '@/components/AboutUs/AboutUsSection'
-import BlogPreview from '@/components/blog/BlogPreview'
-import ClientIntro from '@/components/ClientIntro'
-import EventsSection from '@/components/Events/EventsSection'
-import TerminalSection from '@/components/Layout/TerminalSection'
-import NextAppShowcase from '@/components/NextAppShowcase'
-import ProjectsShowcase from '@/components/Projects/ProjectsShowcase'
-import TerminalMembership from '@/components/TerminalMembership'
-import TerminalPartners from '@/components/TerminalPartners'
+import BlogPreview from '@/components/blog/blog-peview'
+import ClientIntro from '@/components/client-intro'
+import EventsSection from '@/components/Events/events-section'
+import TerminalSection from '@/components/Layout/terminal-section'
+import NextAppShowcase from '@/components/next-app-showcase'
+import ProjectsShowcase from '@/components/Projects/projects-showcase'
+import TerminalMembership from '@/components/terminal-membership'
+import TerminalPartners from '@/components/terminal-partners'
 
 export default async function Index() {
 	return (

@@ -3,10 +3,10 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import type React from 'react'
 import { memo, useCallback, useEffect, useState } from 'react'
-import TerminalButton from '../TerminalButton'
-import TypewriterText from '../TypewriterText'
-import type { ProjectDetails } from './ProjectCard'
-import ProjectTerminalWindow from './ProjectTerminalWindow'
+import TerminalButton from '../terminal-button'
+import TypewriterText from '../typewriter-text'
+import type { ProjectDetails } from './project-card'
+import ProjectTerminalWindow from './project-terminal-window'
 
 interface ProjectDetailModalProps {
 	project: ProjectDetails | null

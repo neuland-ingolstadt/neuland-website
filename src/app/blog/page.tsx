@@ -2,8 +2,8 @@ import { allPosts } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
 import { RssIcon, TagIcon } from 'lucide-react'
 import Link from 'next/link'
-import { PostCard } from '@/components/blog/PostCard'
-import TerminalButton from '@/components/TerminalButton'
+import { PostCard } from '@/components/blog/post-card'
+import TerminalButton from '@/components/terminal-button'
 import {
 	Breadcrumb,
 	BreadcrumbItem,

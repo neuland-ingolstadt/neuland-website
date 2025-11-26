@@ -3,9 +3,9 @@ import { motion } from 'framer-motion'
 import type React from 'react'
 import { memo, useCallback, useMemo, useState } from 'react'
 import projectsData from '@/data/projects.json'
-import TerminalButton from '../TerminalButton'
-import ProjectCard, { type ProjectDetails } from './ProjectCard'
-import ProjectDetailModal from './ProjectDetailModal'
+import TerminalButton from '../terminal-button'
+import ProjectCard, { type ProjectDetails } from './project-card'
+import ProjectDetailModal from './project-detail-modal'
 
 const ProjectsShowcase: React.FC = () => {
 	const [selectedProject, setSelectedProject] = useState<ProjectDetails | null>(

@@ -1,5 +1,5 @@
 import type React from 'react'
-import TerminalActionButton from './TerminalActionButton'
+import TerminalActionButton from './terminalaction-button'
 
 type ButtonColor = 'red' | 'yellow' | 'green'
 

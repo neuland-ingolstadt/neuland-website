@@ -1,4 +1,4 @@
-import TypewriterText from '@/components/TypewriterText'
+import TypewriterText from '@/components/typewriter-text'
 
 export default function ClientIntro() {
 	return (

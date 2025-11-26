@@ -3,8 +3,8 @@ import {
 	HydrationBoundary,
 	QueryClient
 } from '@tanstack/react-query'
-import { getEventsData } from './EventsLoader'
-import TerminalEvents from './TerminalEvents'
+import { getEventsData } from './events-loader'
+import TerminalEvents from './terminal-events'
 
 export default async function EventsSection() {
 	const queryClient = new QueryClient()

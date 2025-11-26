@@ -72,7 +72,7 @@ export default function TagsIndexPage() {
 							href={`/blog/tags/${encodeURIComponent(tag)}`}
 							className="group no-underline"
 						>
-							<div className="relative bg-neutral-900 border border-neutral-800 p-5 flex items-center justify-between transition-all duration-200 hover:border-neutral-700 overflow-hidden">
+							<div className="relative bg-[#0b0b0b] border border-neutral-800 p-5 flex items-center justify-between transition-all duration-200 hover:border-neutral-700 overflow-hidden">
 								{/* Subtle background effect */}
 								<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/1 via-transparent to-terminal-cyan/3 pointer-events-none" />
 

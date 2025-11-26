@@ -1,8 +1,8 @@
 'use client'
 import type React from 'react'
-import SettingsLinks from '@/components/Footer/SettingsLinks'
-import SocialLinks from '@/components/Footer/SocialLinks'
-import TerminalLinks from '@/components/Footer/TerminalLinks'
+import SocialLinks from '@/components/Footer/cocial-links'
+import SettingsLinks from '@/components/Footer/settings-links'
+import TerminalLinks from '@/components/Footer/terminal-links'
 
 const TerminalFooter: React.FC = () => {
 	const currentYear = new Date().getFullYear()
