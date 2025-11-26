@@ -23,10 +23,14 @@ export default async function TagPage({
 	params,
 	searchParams
 }: {
-	params: { tag: string }
-	searchParams: { [key: string]: string | string[] | undefined }
+	params: Promise<{ tag: string }> | { tag: string }
+	searchParams:
+		| Promise<{ [key: string]: string | string[] | undefined }>
+		| { [key: string]: string | string[] | undefined }
 }) {
-	const tag = decodeURIComponent(await params.tag)
+	const resolvedParams = await params
+	const resolvedSearchParams = await searchParams
+	const tag = decodeURIComponent(resolvedParams.tag)
 
 	// Filter posts by tag (case insensitive comparison)
 	const filteredPosts = allPosts
@@ -37,7 +41,7 @@ export default async function TagPage({
 
 	// Pagination logic
 	const POSTS_PER_PAGE = 12
-	const currentPage = Number(await searchParams.page) || 1
+	const currentPage = Number(resolvedSearchParams.page) || 1
 	const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE)
 
 	const paginatedPosts = filteredPosts.slice(

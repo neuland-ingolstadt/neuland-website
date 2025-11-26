@@ -154,7 +154,7 @@ const TerminalHeader: React.FC = () => {
 						<div className="logo">
 							{/** biome-ignore lint/performance/noImgElement: TODO */}
 							<img
-								src="/assets/logo_dark.svg"
+								src="/assets/logo_dark_slim.svg"
 								alt="Neuland Ingolstadt e.V."
 								className="h-10"
 							/>
