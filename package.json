@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
+		"prebuild": "npm run generate",
     "generate": "contentlayer2 build",
     "start": "next start",
     "lint": "biome lint",

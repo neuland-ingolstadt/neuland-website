@@ -73,11 +73,12 @@ const LocaleToggle: React.FC<{ variant?: 'desktop' | 'mobile' }> = ({
 	const pathname = usePathname()
 	const persistLocalePreference = useCallback((targetLocale: 'de' | 'en') => {
 		if (typeof window !== 'undefined' && 'cookieStore' in window) {
+			const expires = Date.now() + ONE_YEAR * 1000
 			void window.cookieStore.set({
 				name: LOCALE_COOKIE,
 				value: targetLocale,
 				path: '/',
-				maxAge: ONE_YEAR
+				expires
 			})
 			return
 		}
@@ -134,6 +135,7 @@ const MobileSidebar: React.FC<{
 	}[]
 	isActivePath: (path: string | undefined) => boolean
 }> = ({ navLinks, isActivePath }) => {
+	const { dictionary } = useI18n()
 	const { isMobile, setOpenMobile } = useSidebar()
 
 	const handleNavigation = () => {
