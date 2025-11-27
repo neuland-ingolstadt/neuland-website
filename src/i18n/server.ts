@@ -38,13 +38,15 @@ const parseAcceptLanguage = (value: string | null): Locale | null => {
 	return null
 }
 
-export const getRequestLocale = (): Locale => {
-	const cookieLocale = cookies().get(LOCALE_COOKIE)?.value
+export const getRequestLocale = async (): Promise<Locale> => {
+	const cookieStore = await cookies()
+	const cookieLocale = cookieStore.get(LOCALE_COOKIE)?.value
 	if (isSupportedLocale(cookieLocale)) {
 		return cookieLocale
 	}
 
-	const acceptLanguage = headers().get('accept-language')
+	const headersList = await headers()
+	const acceptLanguage = headersList.get('accept-language')
 	const detected = parseAcceptLanguage(acceptLanguage)
 
 	return detected ?? DEFAULT_LOCALE

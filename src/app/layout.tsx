@@ -24,7 +24,7 @@ const notoSans = Noto_Sans({
 })
 
 export async function generateMetadata(): Promise<Metadata> {
-	const locale = getRequestLocale()
+	const locale = await getRequestLocale()
 	const dictionary = getDictionary(locale)
 
 	return {
@@ -62,12 +62,12 @@ const themeScript = `
   })();
 `
 
-export default function RootLayout({
+export default async function RootLayout({
 	children
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	const locale = getRequestLocale()
+	const locale = await getRequestLocale()
 	const dictionary = getDictionary(locale)
 
 	const jsonLd = {

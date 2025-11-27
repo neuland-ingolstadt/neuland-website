@@ -11,7 +11,8 @@ import { getRequestLocale } from '@/i18n/server'
 import { getDictionary } from '@/i18n/translations'
 
 export default async function Index() {
-	const dictionary = getDictionary(getRequestLocale())
+	const locale = await getRequestLocale()
+	const dictionary = getDictionary(locale)
 
 	return (
 		<>
