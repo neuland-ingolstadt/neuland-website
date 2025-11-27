@@ -2,8 +2,7 @@ import { allPosts } from 'contentlayer/generated'
 import { format, parseISO } from 'date-fns'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-import TerminalButton from '@/components/TerminalButton'
-import { Badge } from '@/components/ui/badge'
+import TerminalButton from '@/components/terminal-button'
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -39,7 +38,7 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
 	if (!post) throw new Error(`Post not found for slug: ${slug}`)
 
 	return (
-		<div className="mx-auto max-w-4xl">
+		<div className="mx-auto max-w-5xl">
 			<Breadcrumb>
 				<BreadcrumbList className="flex items-center">
 					<BreadcrumbItem className="flex items-center">
@@ -115,14 +114,11 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
 								<Link
 									key={tag}
 									href={`/blog/tags/${encodeURIComponent(tag.toLowerCase())}`}
-									className="no-underline"
+									className="no-underline group/tag"
 								>
-									<Badge
-										variant="outline"
-										className="text-xs px-3 py-1 rounded-full bg-terminal-text/10 text-terminal-text font-medium border border-terminal-text/30 shadow-sm backdrop-blur-sm hover:bg-terminal-cyan/10 cursor-pointer"
-									>
+									<span className="inline-block text-xs px-2.5 py-1 bg-terminal-card text-terminal-text/70 font-medium border border-terminal-window-border group-hover/tag:border-terminal-highlight/40 group-hover/tag:text-terminal-text transition-colors duration-200">
 										{tag}
-									</Badge>
+									</span>
 								</Link>
 							))}
 						</div>

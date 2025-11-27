@@ -1,12 +1,12 @@
 'use client'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Code, Filter, Github, Terminal } from 'lucide-react'
+import { Code, Filter, Github } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { useMemo, useState } from 'react'
 import ProjectCard, {
 	type ProjectDetails
-} from '@/components/Projects/ProjectCard'
-import ProjectDetailModal from '@/components/Projects/ProjectDetailModal'
-import TerminalButton from '@/components/TerminalButton'
+} from '@/components/Projects/project-card'
+import TerminalButton from '@/components/terminal-button'
 import projectsData from '@/data/projects.json'
 
 const uniqueTags = (projectsData as ProjectDetails[]).reduce((acc, project) => {
@@ -17,10 +17,7 @@ const uniqueTags = (projectsData as ProjectDetails[]).reduce((acc, project) => {
 }, new Set<string>())
 
 const ProjectsPage = () => {
-	const [selectedProject, setSelectedProject] = useState<ProjectDetails | null>(
-		null
-	)
-	const [isModalOpen, setIsModalOpen] = useState(false)
+	const router = useRouter()
 	const [activeTag, setActiveTag] = useState<string | null>(null)
 
 	const filteredProjects = useMemo(() => {
@@ -32,13 +29,7 @@ const ProjectsPage = () => {
 	}, [activeTag])
 
 	const openProjectDetails = (project: ProjectDetails) => {
-		setSelectedProject(project)
-		setIsModalOpen(true)
-	}
-
-	const closeProjectDetails = () => {
-		setIsModalOpen(false)
-		setTimeout(() => setSelectedProject(null), 300)
+		router.push(`/projects/${project.id}`)
 	}
 
 	return (
@@ -51,8 +42,7 @@ const ProjectsPage = () => {
 				className="max-w-6xl mx-auto mb-12"
 			>
 				<div className="flex items-center gap-3 mb-6">
-					<Terminal className="text-terminal-text" size={32} />
-					<h1 className="text-3xl md:text-4xl font-bold text-terminal-cyan font-mono">
+					<h1 className="text-3xl md:text-4xl font-bold  font-mono">
 						Unsere Projekte
 					</h1>
 				</div>
@@ -94,9 +84,9 @@ const ProjectsPage = () => {
 				<div className="flex flex-wrap gap-3">
 					<button
 						type="button"
-						className={`px-4 py-2 rounded-md font-mono border transition-all duration-200 ${
+						className={`px-4 py-2  border transition-all duration-200 ${
 							!activeTag
-								? 'border-terminal-cyan bg-terminal-cyan/80 text-black'
+								? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
 								: 'border-terminal-text/30 text-terminal-text/70 hover:border-terminal-cyan hover:text-terminal-cyan'
 						}`}
 						onClick={() => setActiveTag(null)}
@@ -107,9 +97,9 @@ const ProjectsPage = () => {
 						<button
 							type="button"
 							key={tag}
-							className={`px-4 py-2 rounded-md font-mono border transition-all duration-200 ${
+							className={`px-4 py-2 border transition-all duration-200 ${
 								activeTag === tag
-									? 'border-terminal-cyan bg-terminal-cyan/80 text-black'
+									? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
 									: 'border-terminal-text/30 text-terminal-text/70 hover:border-terminal-cyan hover:text-terminal-cyan'
 							}`}
 							onClick={() => setActiveTag(tag)}
@@ -170,7 +160,11 @@ const ProjectsPage = () => {
 							Sieh dir unsere Projekte auf GitHub an!
 						</span>
 					</div>
-					<TerminalButton href="https://github.com/neuland-ingolstadt">
+					<TerminalButton
+						href="https://github.com/neuland-ingolstadt"
+						target="_blank"
+						rel="noreferrer noopener"
+					>
 						<Github
 							size={16}
 							className="mr-2 group-hover:rotate-8 transition-transform duration-300"
@@ -179,13 +173,6 @@ const ProjectsPage = () => {
 					</TerminalButton>
 				</div>
 			</motion.div>
-
-			{/* Modal */}
-			<ProjectDetailModal
-				project={selectedProject}
-				isOpen={isModalOpen}
-				onClose={closeProjectDetails}
-			/>
 		</div>
 	)
 }

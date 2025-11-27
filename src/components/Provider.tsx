@@ -11,7 +11,7 @@ import {
 } from '@tanstack/react-query'
 import { useState } from 'react'
 import { BackgroundProvider } from '@/contexts/BackgroundContext'
-import RouteTracker from './Layout/RouteTracker'
+import RouteTracker from './Layout/route-tracker'
 
 function makeQueryClient() {
 	return new QueryClient({

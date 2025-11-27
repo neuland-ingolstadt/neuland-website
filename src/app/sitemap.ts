@@ -1,5 +1,7 @@
 import { allPosts } from 'contentlayer/generated'
 import type { MetadataRoute } from 'next'
+import type { ProjectDetails } from '@/components/Projects/project-card'
+import projectsData from '@/data/projects.json'
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	const baseUrl = 'https://neuland-ingolstadt.de'
@@ -52,5 +54,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		priority: 0.5
 	}))
 
-	return [...staticPages, ...blogPosts]
+	// Project pages
+	const projectPages = (projectsData as ProjectDetails[]).map((project) => ({
+		url: `${baseUrl}/projects/${project.id}`,
+		lastModified: new Date(),
+		changeFrequency: 'monthly' as const,
+		priority: 0.6
+	}))
+
+	return [...staticPages, ...blogPosts, ...projectPages]
 }

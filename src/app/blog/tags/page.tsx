@@ -8,7 +8,6 @@ import {
 	BreadcrumbList,
 	BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
-import GlassBox from '@/components/ui/GlassBox'
 
 export default function TagsIndexPage() {
 	// Get all unique tags and count how many posts use each tag
@@ -31,7 +30,7 @@ export default function TagsIndexPage() {
 	)
 
 	return (
-		<div className="mx-auto max-w-4xl mb-12">
+		<div className="mx-auto max-w-5xl mb-12">
 			<Breadcrumb>
 				<BreadcrumbList className="flex items-center">
 					<BreadcrumbItem className="flex items-center">
@@ -56,14 +55,12 @@ export default function TagsIndexPage() {
 				</BreadcrumbList>
 			</Breadcrumb>
 
-			<h1 className="mt-4 mb-4 text-3xl font-bold text-terminal-highlight font-mono">
-				Blog Tags
-			</h1>
+			<h1 className="mt-4 mb-2 text-3xl font-bold ">Blog Tags</h1>
 			<p className="mb-8 text-terminal-text/70">
 				Durchsuche alle {sortedTags.length} Tags des Neuland Blogs
 			</p>
 
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
 				{sortedTags.map(([tag, count]) => {
 					const displayTag = tag.charAt(0).toUpperCase() + tag.slice(1)
 
@@ -73,22 +70,46 @@ export default function TagsIndexPage() {
 							href={`/blog/tags/${encodeURIComponent(tag)}`}
 							className="group no-underline"
 						>
-							<GlassBox className="flex items-center justify-between p-4 group-hover:border-terminal-cyan transition-colors duration-300">
-								<div className="flex items-center">
-									<Badge variant="outline" className="text-sm py-0.5 px-2 mr-3">
+							<div className="relative bg-terminal-window border border-terminal-window-border p-5 flex items-center justify-between transition-all duration-200 hover:border-terminal-highlight/40 overflow-hidden">
+								{/* Subtle background effect */}
+								<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/1 via-transparent to-terminal-cyan/3 pointer-events-none" />
+
+								{/* Corner accent brackets */}
+								<div className="absolute top-0 left-0 w-8 h-8">
+									<div className="absolute top-0 left-0 w-4 h-px bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 transition-colors duration-200" />
+									<div className="absolute top-0 left-0 w-px h-4 bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 transition-colors duration-200" />
+								</div>
+								<div className="absolute top-0 right-0 w-8 h-8">
+									<div className="absolute top-0 right-0 w-4 h-px bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 transition-colors duration-200" />
+									<div className="absolute top-0 right-0 w-px h-4 bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 transition-colors duration-200" />
+								</div>
+								<div className="absolute bottom-0 left-0 w-8 h-8">
+									<div className="absolute bottom-0 left-0 w-4 h-px bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 transition-colors duration-200" />
+									<div className="absolute bottom-0 left-0 w-px h-4 bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 transition-colors duration-200" />
+								</div>
+								<div className="absolute bottom-0 right-0 w-8 h-8">
+									<div className="absolute bottom-0 right-0 w-4 h-px bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 transition-colors duration-200" />
+									<div className="absolute bottom-0 right-0 w-px h-4 bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 transition-colors duration-200" />
+								</div>
+
+								<div className="relative z-10 flex items-center flex-1 min-w-0">
+									<Badge
+										variant="outline"
+										className="text-sm py-0.5 px-2 mr-3 border-terminal-window-border bg-terminal-card text-terminal-text/70 group-hover:border-terminal-highlight/40 transition-colors duration-200"
+									>
 										{displayTag}
 									</Badge>
-									<span className="text-terminal-text/70 text-sm">
+									<span className="text-terminal-text/70 text-sm group-hover:text-terminal-text transition-colors duration-200">
 										{count} {count === 1 ? 'Beitrag' : 'Beiträge'}
 									</span>
 								</div>
-								<span className="text-terminal-text/50 group-hover:text-terminal-cyan text-xs font-mono">
-									View{' '}
-									<span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5">
+								<span className="relative z-10 text-terminal-text/60 group-hover:text-terminal-cyan text-xs transition-colors duration-200 flex items-center gap-1">
+									View
+									<span className="inline-block transition-transform duration-200 group-hover:translate-x-1">
 										→
 									</span>
 								</span>
-							</GlassBox>
+							</div>
 						</Link>
 					)
 				})}

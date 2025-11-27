@@ -1,7 +1,7 @@
 import { allPosts } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
 import Link from 'next/link'
-import { PostCard } from '@/components/blog/PostCard'
+import { PostCard } from '@/components/blog/post-card'
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -23,10 +23,14 @@ export default async function TagPage({
 	params,
 	searchParams
 }: {
-	params: { tag: string }
-	searchParams: { [key: string]: string | string[] | undefined }
+	params: Promise<{ tag: string }> | { tag: string }
+	searchParams:
+		| Promise<{ [key: string]: string | string[] | undefined }>
+		| { [key: string]: string | string[] | undefined }
 }) {
-	const tag = decodeURIComponent(await params.tag)
+	const resolvedParams = await params
+	const resolvedSearchParams = await searchParams
+	const tag = decodeURIComponent(resolvedParams.tag)
 
 	// Filter posts by tag (case insensitive comparison)
 	const filteredPosts = allPosts
@@ -37,7 +41,7 @@ export default async function TagPage({
 
 	// Pagination logic
 	const POSTS_PER_PAGE = 12
-	const currentPage = Number(await searchParams.page) || 1
+	const currentPage = Number(resolvedSearchParams.page) || 1
 	const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE)
 
 	const paginatedPosts = filteredPosts.slice(
@@ -120,7 +124,7 @@ export default async function TagPage({
 	const displayTag = tag.charAt(0).toUpperCase() + tag.slice(1)
 
 	return (
-		<div className="mx-auto max-w-4xl">
+		<div className="mx-auto max-w-5xl">
 			<Breadcrumb>
 				<BreadcrumbList className="flex items-center">
 					<BreadcrumbItem className="flex items-center">
@@ -141,14 +145,12 @@ export default async function TagPage({
 					<BreadcrumbSeparator className="flex items-center mx-1" />
 					<BreadcrumbItem className="flex items-center">
 						<BreadcrumbLink className="flex items-center">
-							#{displayTag}
+							{displayTag}
 						</BreadcrumbLink>
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			<h1 className="mt-4 mb-2 text-3xl font-bold text-terminal-highlight font-mono">
-				#{displayTag}
-			</h1>
+			<h1 className="mt-4 mb-2 text-3xl font-bold ">{displayTag}</h1>
 			<p className="mb-8 text-terminal-text/70">
 				{filteredPosts.length}{' '}
 				{filteredPosts.length === 1 ? 'Beitrag' : 'Beiträge'} gefunden

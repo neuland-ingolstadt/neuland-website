@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Noto_Sans, Noto_Sans_Mono, Shantell_Sans } from 'next/font/google'
+import { Noto_Sans, Noto_Sans_Mono } from 'next/font/google'
 
 import '../styles/index.css'
 
-import MatrixEffect from '@/components/Background/PageBackground'
-import TerminalFooter from '@/components/Footer/TerminalFooter'
-import TerminalHeader from '@/components/Layout/TerminalHeader'
+import MatrixEffect from '@/components/Background/page-background'
+import TerminalFooter from '@/components/Footer/terminal-footer'
+import TerminalHeader from '@/components/Layout/terminal-header'
 import Providers from '@/components/Provider'
 
 const overpassMono = Noto_Sans_Mono({
@@ -16,12 +16,6 @@ const overpassMono = Noto_Sans_Mono({
 
 const notoSans = Noto_Sans({
 	variable: '--font-sans',
-	subsets: ['latin'],
-	display: 'swap'
-})
-
-const shantellSans = Shantell_Sans({
-	variable: '--font-fantasy',
 	subsets: ['latin'],
 	display: 'swap'
 })
@@ -71,17 +65,50 @@ const jsonLd = {
 	foundingDate: '2021'
 }
 
+const themeScript = `
+  (function() {
+    try {
+      var storageKey = 'neuland-theme';
+      var mode = window.localStorage.getItem(storageKey);
+      var root = document.documentElement;
+
+      if (mode === 'light' || mode === 'dark') {
+        root.setAttribute('data-theme', mode);
+      } else {
+        root.removeAttribute('data-theme');
+      }
+    } catch (e) {
+      // Fail silently – default to system preference via CSS
+    }
+  })();
+`
+
 export default function RootLayout({
 	children
 }: Readonly<{
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="de" className="dark" suppressHydrationWarning>
+		<html lang="de" suppressHydrationWarning>
 			<head>
-				<meta name="theme-color" content="#000000" />
+				<meta name="color-scheme" content="dark light" />
+				<meta
+					name="theme-color"
+					content="#020302"
+					media="(prefers-color-scheme: dark)"
+				/>
+				<meta
+					name="theme-color"
+					content="#f5f8f5"
+					media="(prefers-color-scheme: light)"
+				/>
 				<link rel="me" href="https://social.tchncs.de/@neuland" />
 				<meta name="fediverse:creator" content="@neuland@social.tchncs.de" />
+				<script
+					// Ensure the correct theme is applied before React hydration to avoid flashes
+					// biome-ignore lint/security/noDangerouslySetInnerHtml: ok
+					dangerouslySetInnerHTML={{ __html: themeScript }}
+				/>
 				<script
 					type="application/ld+json"
 					// biome-ignore lint/security/noDangerouslySetInnerHtml: ok
@@ -92,7 +119,7 @@ export default function RootLayout({
 			</head>
 
 			<body
-				className={`${overpassMono.variable} ${notoSans.variable} ${shantellSans.variable} font-sans antialiased`}
+				className={`${overpassMono.variable} ${notoSans.variable} font-sans antialiased`}
 			>
 				<Providers>
 					<TerminalHeader />

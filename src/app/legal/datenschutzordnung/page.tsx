@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import FetchErrorMessage from '@/components/Markdown/FetchErrorMessage'
-import MarkdownContent from '@/components/Markdown/MarkdownContent'
+import FetchErrorMessage from '@/components/Markdown/fetch-error-message'
+import MarkdownContent from '@/components/Markdown/markdown-content'
 import {
 	Breadcrumb,
 	BreadcrumbItem,

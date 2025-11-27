@@ -1,12 +1,12 @@
-import AboutUsSection from '@/components/AboutUs/AboutUsSection'
-import BlogPreview from '@/components/blog/BlogPreview'
-import ClientIntro from '@/components/ClientIntro'
-import EventsSection from '@/components/Events/EventsSection'
-import TerminalSection from '@/components/Layout/TerminalSection'
-import NextAppShowcase from '@/components/NextAppShowcase'
-import ProjectsShowcase from '@/components/Projects/ProjectsShowcase'
-import TerminalMembership from '@/components/TerminalMembership'
-import TerminalPartners from '@/components/TerminalPartners'
+import AboutUsSection from '@/components/AboutUs/about-us-section'
+import BlogPreview from '@/components/blog/blog-peview'
+import ClientIntro from '@/components/client-intro'
+import EventsSection from '@/components/Events/events-section'
+import TerminalSection from '@/components/Layout/terminal-section'
+import NextAppShowcase from '@/components/next-app-showcase'
+import ProjectsShowcase from '@/components/Projects/projects-showcase'
+import TerminalMembership from '@/components/terminal-membership'
+import TerminalPartners from '@/components/terminal-partners'
 
 export default async function Index() {
 	return (
@@ -21,7 +21,7 @@ export default async function Index() {
 			<TerminalSection title="Mitgliedschaft" headingLevel={2} id="membership">
 				<TerminalMembership />
 			</TerminalSection>
-			<TerminalSection title="Sponsoring" headingLevel={2}>
+			<TerminalSection title="Partner" headingLevel={2}>
 				<TerminalPartners />
 			</TerminalSection>
 			<TerminalSection title="Neuland Blog" headingLevel={2}>
