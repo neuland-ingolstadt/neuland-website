@@ -7,24 +7,32 @@ import NextAppShowcase from '@/components/next-app-showcase'
 import ProjectsShowcase from '@/components/Projects/projects-showcase'
 import TerminalMembership from '@/components/terminal-membership'
 import TerminalPartners from '@/components/terminal-partners'
+import { getRequestLocale } from '@/i18n/server'
+import { getDictionary } from '@/i18n/translations'
 
 export default async function Index() {
+	const dictionary = getDictionary(getRequestLocale())
+
 	return (
 		<>
 			<ClientIntro />
 			<EventsSection />
 			<NextAppShowcase />
-			<TerminalSection title="Auszug aus unseren Projekten" headingLevel={2}>
+			<TerminalSection title={dictionary.sections.projects} headingLevel={2}>
 				<ProjectsShowcase />
 			</TerminalSection>
 			<AboutUsSection />
-			<TerminalSection title="Mitgliedschaft" headingLevel={2} id="membership">
+			<TerminalSection
+				title={dictionary.sections.membership}
+				headingLevel={2}
+				id="membership"
+			>
 				<TerminalMembership />
 			</TerminalSection>
-			<TerminalSection title="Partner" headingLevel={2}>
+			<TerminalSection title={dictionary.sections.partners} headingLevel={2}>
 				<TerminalPartners />
 			</TerminalSection>
-			<TerminalSection title="Neuland Blog" headingLevel={2}>
+			<TerminalSection title={dictionary.sections.blog} headingLevel={2}>
 				<BlogPreview />
 			</TerminalSection>
 		</>

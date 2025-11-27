@@ -2,9 +2,15 @@
 
 import type React from 'react'
 import { useBackground } from '@/contexts/BackgroundContext'
+import { useI18n } from '@/i18n/provider'
 
 const SettingsLinks: React.FC = () => {
 	const { backgroundType, toggleBackgroundType } = useBackground()
+	const { dictionary } = useI18n()
+	const backgroundLabel =
+		backgroundType === 'gameOfLife'
+			? dictionary.settings.hideBackground
+			: dictionary.settings.showBackground
 
 	return (
 		<nav>
@@ -16,17 +22,7 @@ const SettingsLinks: React.FC = () => {
 						className="inline-flex items-center gap-1 border-none bg-transparent p-0 text-terminal-text font-mono cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-terminal-cyan/70"
 					>
 						<span className="mr-1 group-hover:animate-cyberpunk">$</span>
-						{backgroundType === 'gameOfLife' ? (
-							<>
-								<span className="text-terminal-cyan">hide</span>
-								<span>&nbsp;game of life</span>
-							</>
-						) : (
-							<>
-								<span className="text-terminal-cyan">show</span>
-								<span>&nbsp;game of life</span>
-							</>
-						)}
+						<span className="text-terminal-cyan">{backgroundLabel}</span>
 					</button>
 				</li>
 				<li className="my-3 group">
@@ -37,9 +33,7 @@ const SettingsLinks: React.FC = () => {
 						className="group  text-terminal-text font-mono"
 					>
 						<span className="mr-2.5 group-hover:animate-cyberpunk">$</span>
-						<span className="text-terminal-cyan">git</span>&nbsp;
-						<span className="text-terminal-cyan">clone</span>
-						&nbsp;neuland-website
+						<span className="text-terminal-cyan">{dictionary.settings.repoCommand}</span>
 					</a>
 				</li>
 
@@ -51,8 +45,9 @@ const SettingsLinks: React.FC = () => {
 						className="inline-flex items-center gap-1 text-terminal-text group"
 					>
 						<span className="mr-1 group-hover:animate-cyberpunk">$</span>
-						<span className="text-terminal-cyan">curl</span>
-						<span>&nbsp;status.neuland.app</span>
+						<span className="text-terminal-cyan">
+							{dictionary.settings.statusCommand}
+						</span>
 					</a>
 				</li>
 			</ul>

@@ -4,7 +4,7 @@ import { Menu } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import type React from 'react'
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import {
 	Sidebar,
 	SidebarContent,
@@ -23,20 +23,11 @@ import { useBackground } from '@/contexts/BackgroundContext'
 import NeulandLogo from './neuland-logo'
 import ThemeToggle, { ThemeToggleMobile } from './theme-toggle'
 
-const navLinks = [
-	{
-		name: 'Mitglied werden',
-		href: '/#membership',
-		external: false
-	},
-	{ name: 'Projekte', href: '/projects', external: false },
-	{ name: 'Blog', href: '/blog', external: false },
-	{
-		name: 'Login',
-		href: 'https://sso.informatik.sexy',
-		external: true
-	}
-]
+import { useI18n } from '@/i18n/provider'
+import { buildLocalizedPath, stripLocaleFromPath } from '@/i18n/routing'
+import { LOCALE_COOKIE } from '@/i18n/config'
+
+const ONE_YEAR = 60 * 60 * 24 * 365
 
 interface NavLinkProps {
 	link: {
@@ -74,8 +65,75 @@ const DesktopNavLink: React.FC<NavLinkProps> = ({ link, className }) => {
 	)
 }
 
-const MobileSidebar: React.FC = () => {
+const LocaleToggle: React.FC<{ variant?: 'desktop' | 'mobile' }> = ({
+	variant = 'desktop'
+}) => {
+	const { locale, dictionary } = useI18n()
+	const router = useRouter()
 	const pathname = usePathname()
+	const persistLocalePreference = useCallback((targetLocale: 'de' | 'en') => {
+		if (typeof window !== 'undefined' && 'cookieStore' in window) {
+			void window.cookieStore.set({
+				name: LOCALE_COOKIE,
+				value: targetLocale,
+				path: '/',
+				maxAge: ONE_YEAR
+			})
+			return
+		}
+		// biome-ignore lint/suspicious/noDocumentCookie: CookieStore fallback for older browsers
+		document.cookie = `${LOCALE_COOKIE}=${targetLocale}; path=/; max-age=${ONE_YEAR}; SameSite=Lax`
+	}, [])
+
+	const handleLocaleChange = (targetLocale: 'de' | 'en') => {
+		if (targetLocale === locale) return
+		const normalizedPath = stripLocaleFromPath(pathname || '/')
+		const nextPath = buildLocalizedPath(normalizedPath || '/', targetLocale)
+
+		persistLocalePreference(targetLocale)
+		router.push(nextPath)
+	}
+
+	return (
+		<div
+			className={`flex ${variant === 'mobile' ? 'flex-row items-center justify-between' : 'flex-col items-end'} gap-1`}
+			title={dictionary.header.localeOverrideHint}
+		>
+			<span className="text-[0.65rem] uppercase tracking-[0.18em] text-terminal-text/70">
+				{dictionary.header.localeLabel}
+			</span>
+			<div className="inline-flex items-center rounded border border-terminal-window-border/70 bg-terminal-bg/40 p-0.5">
+				{(['de', 'en'] as const).map((entry) => (
+					<button
+						key={entry}
+						type="button"
+						onClick={() => handleLocaleChange(entry)}
+						className={`px-2 py-1 text-xs font-semibold transition-colors ${
+							locale === entry
+								? 'bg-terminal-cyan/20 text-terminal-cyan'
+								: 'text-terminal-text/70 hover:text-terminal-cyan'
+						}`}
+						aria-pressed={locale === entry}
+					>
+						{entry === 'de'
+							? dictionary.header.localeOptions.de
+							: dictionary.header.localeOptions.en}
+					</button>
+				))}
+			</div>
+		</div>
+	)
+}
+
+const MobileSidebar: React.FC<{
+	navLinks: {
+		name: string
+		href: string
+		external?: boolean
+		activePath?: string
+	}[]
+	isActivePath: (path: string | undefined) => boolean
+}> = ({ navLinks, isActivePath }) => {
 	const { isMobile, setOpenMobile } = useSidebar()
 
 	const handleNavigation = () => {
@@ -104,7 +162,7 @@ const MobileSidebar: React.FC = () => {
 										isActive={
 											item.href.startsWith('http')
 												? false
-												: pathname === item.href.replace('/#membership', '/')
+												: isActivePath(item.activePath ?? item.href)
 										}
 										size="lg"
 										className="no-underline font-mono text-base text-terminal-text/80 hover:bg-terminal-window/30 hover:text-terminal-cyan data-[active=true]:bg-terminal-window/60 data-[active=true]:text-terminal-cyan data-[active=true]:font-semibold"
@@ -131,13 +189,14 @@ const MobileSidebar: React.FC = () => {
 				</SidebarGroup>
 			</SidebarContent>
 
-			<SidebarFooter className="border-t border-terminal-window-border/70 bg-terminal-bg/95 px-4 py-3">
+			<SidebarFooter className="border-t border-terminal-window-border/70 bg-terminal-bg/95 px-4 py-3 space-y-3">
 				<div className="flex items-center justify-between gap-4 text-xs text-terminal-text/60">
 					<span className="uppercase tracking-[0.18em] text-[0.65rem] text-terminal-text/70">
-						Theme
+						{dictionary.header.themeLabel}
 					</span>
 					<ThemeToggleMobile />
 				</div>
+				<LocaleToggle variant="mobile" />
 			</SidebarFooter>
 		</Sidebar>
 	)
@@ -174,8 +233,61 @@ const MobileSidebarTrigger: React.FC = () => {
 const TerminalHeader: React.FC = () => {
 	const headerRef = useRef<HTMLElement>(null)
 	const navigate = useRouter()
+	const pathname = usePathname()
 	const isJune = new Date().getMonth() === 5
 	const { triggerCrossesRotation } = useBackground()
+	const { dictionary, locale } = useI18n()
+	const normalizedPathname = stripLocaleFromPath(pathname || '/')
+
+	const navLinks = useMemo(
+		() => [
+			{
+				name: dictionary.header.membership,
+				href: '/#membership',
+				external: false,
+				activePath: '/'
+			},
+			{
+				name: dictionary.header.projects,
+				href: '/projects',
+				external: false,
+				activePath: '/projects'
+			},
+			{
+				name: dictionary.header.blog,
+				href: '/blog',
+				external: false,
+				activePath: '/blog'
+			},
+			{
+				name: dictionary.header.login,
+				href: 'https://sso.informatik.sexy',
+				external: true
+			}
+		],
+		[dictionary.header.blog, dictionary.header.login, dictionary.header.membership, dictionary.header.projects]
+	)
+
+	const localizeHref = (href: string) => {
+		if (href.startsWith('http')) return href
+		const [pathPart, hashPart] = href.split('#')
+		const localizedPath = buildLocalizedPath(pathPart || '/', locale)
+		return hashPart ? `${localizedPath}#${hashPart}` : localizedPath
+	}
+
+	const renderLinks = navLinks.map((link) => ({
+		...link,
+		href: link.external ? link.href : localizeHref(link.href)
+	}))
+
+	const isActivePath = (path?: string) => {
+		if (!path) return false
+		if (path.includes('#')) {
+			const [basePath] = path.split('#')
+			return normalizedPathname === basePath
+		}
+		return normalizedPathname === path
+	}
 
 	// Dynamically set --navbar-height on the document root for robust layout
 	useEffect(() => {
@@ -195,7 +307,7 @@ const TerminalHeader: React.FC = () => {
 
 	const handleHomeClick = (e: React.MouseEvent) => {
 		e.preventDefault()
-		navigate.replace('/')
+		navigate.replace(buildLocalizedPath('/', locale))
 	}
 
 	return (
@@ -230,13 +342,14 @@ const TerminalHeader: React.FC = () => {
 
 					{/* Desktop Navigation */}
 					<nav className="hidden items-center gap-6 md:flex">
-						{navLinks.map((link) => (
+						{renderLinks.map((link) => (
 							<DesktopNavLink
 								key={link.name}
 								link={link}
 								className="tracking-wider text-terminal-text transition-colors hover:text-terminal-cyan"
 							/>
 						))}
+						<LocaleToggle />
 						<ThemeToggle />
 					</nav>
 
@@ -249,7 +362,7 @@ const TerminalHeader: React.FC = () => {
 
 			{/* Mobile sidebar (bottom sheet style) */}
 			<div className="md:hidden">
-				<MobileSidebar />
+				<MobileSidebar navLinks={renderLinks} isActivePath={isActivePath} />
 			</div>
 		</SidebarProvider>
 	)

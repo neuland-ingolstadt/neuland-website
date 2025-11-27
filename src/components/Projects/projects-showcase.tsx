@@ -4,18 +4,21 @@ import { useRouter } from 'next/navigation'
 import type React from 'react'
 import { memo, useCallback, useMemo } from 'react'
 import projectsData from '@/data/projects.json'
+import { useI18n } from '@/i18n/provider'
+import { buildLocalizedPath } from '@/i18n/routing'
 import TerminalButton from '../terminal-button'
 import ProjectCard, { type ProjectDetails } from './project-card'
 
 const ProjectsShowcase: React.FC = () => {
 	const router = useRouter()
+	const { dictionary, locale } = useI18n()
 	const memoizedProjects = useMemo(() => projectsData.slice(0, 3), [])
 
 	const openProjectDetails = useCallback(
 		(project: ProjectDetails) => {
-			router.push(`/projects/${project.id}`)
+			router.push(buildLocalizedPath(`/projects/${project.id}`, locale))
 		},
-		[router]
+		[locale, router]
 	)
 
 	return (
@@ -29,7 +32,7 @@ const ProjectsShowcase: React.FC = () => {
 				className="mb-8"
 			>
 				<p className="text-sm opacity-80 mb-4 font-mono">
-					$ projects --list | grep featured
+					{dictionary.projectsShowcase.command}
 				</p>
 			</motion.div>
 
@@ -44,17 +47,19 @@ const ProjectsShowcase: React.FC = () => {
 			</div>
 			<div className="flex justify-between items-center w-full mb-8">
 				<div className="font-mono text-sm opacity-80">
-					<span className="text-terminal-cyan">$</span> curl{' '}
+					<span className="text-terminal-cyan">$</span> {dictionary.projectsShowcase.repoPrefix}{' '}
 					<a
 						href="https://github.com/neuland-ingolstadt"
 						target="_blank"
 						rel="noreferrer noopener"
 						className="text-terminal-cyan"
 					>
-						github.com/neuland-ingolstadt
+						{dictionary.projectsShowcase.repoLabel}
 					</a>
 				</div>
-				<TerminalButton href="/projects">Alle Projekte anzeigen</TerminalButton>
+				<TerminalButton href={buildLocalizedPath('/projects', locale)}>
+					{dictionary.projectsShowcase.viewAll}
+				</TerminalButton>
 			</div>
 		</div>
 	)

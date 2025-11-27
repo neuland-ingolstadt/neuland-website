@@ -7,6 +7,9 @@ import MatrixEffect from '@/components/Background/page-background'
 import TerminalFooter from '@/components/Footer/terminal-footer'
 import TerminalHeader from '@/components/Layout/terminal-header'
 import Providers from '@/components/Provider'
+import { I18nProvider } from '@/i18n/provider'
+import { getRequestLocale } from '@/i18n/server'
+import { getDictionary } from '@/i18n/translations'
 
 const overpassMono = Noto_Sans_Mono({
 	variable: '--font-mono',
@@ -20,49 +23,25 @@ const notoSans = Noto_Sans({
 	display: 'swap'
 })
 
-export const metadata: Metadata = {
-	title: 'Neuland Ingolstadt e.V.',
-	description:
-		'Der Informatik-Verein deines Vertrauens. Von Studierenden für Studierende und alle, die sich für Informatik begeistern können.',
-	alternates: {
-		types: {
-			'application/rss+xml': [
-				{ url: '/feed', title: 'Neuland Ingolstadt Blog RSS Feed' }
-			]
+export async function generateMetadata(): Promise<Metadata> {
+	const locale = getRequestLocale()
+	const dictionary = getDictionary(locale)
+
+	return {
+		title: dictionary.meta.title,
+		description: dictionary.meta.description,
+		alternates: {
+			languages: {
+				de: '/',
+				en: '/en'
+			},
+			types: {
+				'application/rss+xml': [
+					{ url: '/feed', title: 'Neuland Ingolstadt Blog RSS Feed' }
+				]
+			}
 		}
 	}
-}
-
-const jsonLd = {
-	'@context': 'https://schema.org',
-	'@type': 'NGO',
-	'@id': 'https://neuland-ingolstadt.de/',
-	name: 'Neuland Ingolstadt e.V.',
-	url: 'https://neuland-ingolstadt.de/',
-	description:
-		'Der studentische Verein für alle informatikbegeisterten Studierenden der TH Ingolstadt. Wir bieten einen Raum für Kreativität, Technologie, Bildung und Gemeinschaft.',
-	address: {
-		'@type': 'PostalAddress',
-		streetAddress: 'Esplanade 10',
-		addressLocality: 'Ingolstadt',
-		postalCode: '85049',
-		addressCountry: 'DE'
-	},
-	contactPoint: {
-		'@type': 'ContactPoint',
-		email: 'info@neuland-ingolstadt.de',
-		contactType: 'Customer Service',
-		availableLanguage: ['German', 'English']
-	},
-	sameAs: [
-		'https://instagram.com/neuland_ingolstadt',
-		'https://facebook.com/neulandingolstadt',
-		'https://github.com/neuland-ingolstadt',
-		'https://linkedin.com/company/neuland-ingolstadt',
-		'https://thi.de/studium/studentisches-leben/studentische-vereine-an-der-thi/neuland-ingolstadt-e-v/',
-		'https://neuland.app'
-	],
-	foundingDate: '2021'
 }
 
 const themeScript = `
@@ -88,8 +67,42 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
+	const locale = getRequestLocale()
+	const dictionary = getDictionary(locale)
+
+	const jsonLd = {
+		'@context': 'https://schema.org',
+		'@type': 'NGO',
+		'@id': 'https://neuland-ingolstadt.de/',
+		name: 'Neuland Ingolstadt e.V.',
+		url: 'https://neuland-ingolstadt.de/',
+		description: dictionary.meta.description,
+		address: {
+			'@type': 'PostalAddress',
+			streetAddress: 'Esplanade 10',
+			addressLocality: 'Ingolstadt',
+			postalCode: '85049',
+			addressCountry: 'DE'
+		},
+		contactPoint: {
+			'@type': 'ContactPoint',
+			email: 'info@neuland-ingolstadt.de',
+			contactType: 'Customer Service',
+			availableLanguage: ['German', 'English']
+		},
+		sameAs: [
+			'https://instagram.com/neuland_ingolstadt',
+			'https://facebook.com/neulandingolstadt',
+			'https://github.com/neuland-ingolstadt',
+			'https://linkedin.com/company/neuland-ingolstadt',
+			'https://thi.de/studium/studentisches-leben/studentische-vereine-an-der-thi/neuland-ingolstadt-e-v/',
+			'https://neuland.app'
+		],
+		foundingDate: '2021'
+	}
+
 	return (
-		<html lang="de" suppressHydrationWarning>
+		<html lang={locale} suppressHydrationWarning>
 			<head>
 				<meta name="color-scheme" content="dark light" />
 				<meta
@@ -121,14 +134,16 @@ export default function RootLayout({
 			<body
 				className={`${overpassMono.variable} ${notoSans.variable} font-sans antialiased`}
 			>
-				<Providers>
-					<TerminalHeader />
-					<MatrixEffect />
-					<div className="container px-4 md:px-12 xl:px-20 mx-auto pt-6 relative z-10">
-						{children}
-						<TerminalFooter />
-					</div>
-				</Providers>
+				<I18nProvider locale={locale}>
+					<Providers>
+						<TerminalHeader />
+						<MatrixEffect />
+						<div className="container px-4 md:px-12 xl:px-20 mx-auto pt-6 relative z-10">
+							{children}
+							<TerminalFooter />
+						</div>
+					</Providers>
+				</I18nProvider>
 			</body>
 		</html>
 	)

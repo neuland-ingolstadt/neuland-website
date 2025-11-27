@@ -16,11 +16,33 @@ import {
 	Zap
 } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { useI18n } from '@/i18n/provider'
 import FeatureItem from './feature-item'
 import TerminalButton from './terminal-button'
 
+const featureIconComponents = [
+	Calendar,
+	Calendar,
+	Users,
+	ForkKnife,
+	MapPin,
+	BookOpen,
+	Globe,
+	Bell
+] as const
+
+const highlightIconComponents = [
+	Shield,
+	Zap,
+	GithubIcon,
+	TrendingUp,
+	Globe,
+	Laptop
+] as const
+
 const NextAppShowcase = () => {
 	const phoneRef = useRef<HTMLDivElement>(null)
+	const { dictionary } = useI18n()
 	const [activeIndex, setActiveIndex] = useState(0)
 	const screenshots = [
 		'/assets/neuland-next/next_1.webp',
@@ -65,59 +87,21 @@ const NextAppShowcase = () => {
 		}
 	}
 
-	const features = [
-		{
-			icon: <Calendar className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Stundenplan & Prüfungen',
-			description: 'Dein persönlicher Stundenplan und alle Prüfungen'
-		},
-		{
-			icon: <Calendar className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Kalender & Events',
-			description: 'Alle wichtigen Semesterdaten und Campus-Events'
-		},
-		{
-			icon: <Users className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Profil',
-			description: 'Prüfe deine Noten oder dein Druckguthaben'
-		},
-		{
-			icon: <ForkKnife className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Mensa',
-			description: 'Alle Speisepläne mit Preisen, Allergenen und Nährwerten'
-		},
-		{
-			icon: <MapPin className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Campus-Karte',
-			description:
-				'Finde freie Räume, erkunde Gebäude oder nutze smarte Vorschläge'
-		},
-		{
-			icon: <BookOpen className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Bibliothek',
-			description: 'Nutze deinen virtuellen Bibliotheks Code zum Ausleihen'
-		},
-		{
-			icon: <Globe className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Quick Links',
-			description: 'Alle wichtigen Uni-Plattformen wie Moodle oder Primuss'
-		},
-		{
-			icon: <Bell className="h-5 w-5 text-terminal-cyan" />,
-			title: 'THI News',
-			description: 'Bleibe informiert mit den neuesten Nachrichten der THI'
+	const features = dictionary.nextApp.features.map((feature, idx) => {
+		const Icon = featureIconComponents[idx % featureIconComponents.length]
+		return {
+			...feature,
+			icon: <Icon className="h-5 w-5 text-terminal-cyan" />
 		}
-	]
+	})
 
-	const highlights = [
-		{ icon: <Shield className="h-4 w-4" />, text: 'Maximaler Datenschutz' },
-
-		{ icon: <Zap className="h-4 w-4" />, text: 'Blitzschnelle Performance' },
-		{ icon: <GithubIcon className="h-4 w-4" />, text: '100% Open Source' },
-		{ icon: <TrendingUp className="h-4 w-4" />, text: 'Regelmäßige Updates' },
-		{ icon: <Globe className="h-4 w-4" />, text: 'Offline-fähig' },
-		{ icon: <Laptop className="h-4 w-4" />, text: 'Auch als Web App' }
-	]
+	const highlights = dictionary.nextApp.highlights.map((text, idx) => {
+		const Icon = highlightIconComponents[idx % highlightIconComponents.length]
+		return {
+			icon: <Icon className="h-4 w-4" />,
+			text
+		}
+	})
 
 	return (
 		<div className="w-full pt-12 pb-16 relative">
@@ -131,15 +115,13 @@ const NextAppShowcase = () => {
 					className="text-center mb-16"
 				>
 					<h2 className="text-4xl mb-2 font-bold  bg-clip-text ">
-						Neuland Next
+						{dictionary.nextApp.headline}
 					</h2>
 					<b className="text-xl/loose b-6 font-black ">
-						Deine App für die TH Ingolstadt
+						{dictionary.nextApp.tagline}
 					</b>
 					<p className="text-lg text-terminal-text/80 max-w-3xl mx-auto">
-						Deine moderne Campus-App von Neuland Ingolstadt. Entwickelt mit
-						Liebe zum Detail, vollständig Open Source und auf allen Geräten
-						verfügbar.
+						{dictionary.nextApp.description}
 					</p>
 				</motion.div>
 
@@ -220,19 +202,17 @@ const NextAppShowcase = () => {
 
 							<div className="relative z-10">
 								<h3 className="text-2xl mb-3 font-semibold text-terminal-text">
-									Unser Flaggschiff-Projekt
+									{dictionary.nextApp.bodyTitle}
 								</h3>
 
 								<p className="mb-8 text-base leading-relaxed text-terminal-text/70">
-									Neuland Next ist mehr als nur eine App – es ist dein digitaler
-									Begleiter durch den Studienalltag an der THI. Alle wichtigen
-									Funktionen für deinen Campus-Alltag in einer App.
+									{dictionary.nextApp.bodyText}
 								</p>
 
 								{/* Highlights */}
 								<div className="mb-8 pb-8 border-b border-terminal-window-border">
 									<h4 className="text-sm font-semibold mb-4 text-terminal-cyan uppercase tracking-wider">
-										Warum Neuland Next
+										{dictionary.nextApp.highlightTitle}
 									</h4>
 									<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 										{highlights.map((highlight, idx) => (
@@ -258,7 +238,7 @@ const NextAppShowcase = () => {
 								{/* Download Section */}
 								<div className="mb-6">
 									<div className="text-xs font-semibold mb-4 text-terminal-cyan/80 uppercase tracking-wider">
-										Jetzt herunterladen
+										{dictionary.nextApp.downloadLabel}
 									</div>
 									<div className="flex flex-col sm:flex-row gap-3 mb-6">
 										<a
@@ -300,7 +280,7 @@ const NextAppShowcase = () => {
 										size={16}
 										className="mr-2 group-hover:rotate-8 transition-transform duration-300"
 									/>
-									Mehr erfahren
+									{dictionary.nextApp.ctaLabel}
 								</TerminalButton>
 							</div>
 						</motion.div>
@@ -316,7 +296,7 @@ const NextAppShowcase = () => {
 					className="mb-16 hidden lg:block"
 				>
 					<h3 className="text-2xl font-bold text-center mb-12">
-						Die Features auf einen Blick
+						{dictionary.nextApp.featuresHeading}
 					</h3>
 					<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
 						{/* Outer accent corners */}

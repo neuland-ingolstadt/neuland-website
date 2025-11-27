@@ -2,10 +2,13 @@
 import { motion } from 'framer-motion'
 import { Mail, Zap } from 'lucide-react'
 import TerminalButton from './terminal-button'
+import { useI18n } from '@/i18n/provider'
 
 const TerminalPartners: React.FC = () => {
 	// Check if current date is >= December 1st, 2025
 	const showPartners = new Date() >= new Date('2025-12-01')
+	const { dictionary } = useI18n()
+	const partnerMail = `mailto:info@neuland-ingolstadt.de?subject=${encodeURIComponent(dictionary.partners.ctaSubject)}`
 
 	return (
 		<div className="my-10 w-full">
@@ -28,12 +31,10 @@ const TerminalPartners: React.FC = () => {
 						}`}
 					>
 						<div className="text-terminal-text/60 mb-4 font-mono text-sm">
-							$ cat sponsoring-info.txt
+							{dictionary.partners.commandLabel}
 						</div>
 						<div className="text-terminal-text">
-							<p className="font-medium">
-								Jetzt Partner werden und unseren Verein unterstützen!
-							</p>
+							<p className="font-medium">{dictionary.partners.intro}</p>
 						</div>
 					</motion.div>
 
@@ -51,49 +52,32 @@ const TerminalPartners: React.FC = () => {
 					>
 						<h4 className="text-xl font-semibold flex items-center">
 							<Zap size={18} className="text-terminal-cyan mr-2" />
-							Gemeinsam erreichen wir:
+							{dictionary.partners.heading}
 						</h4>
 
 						<div className="space-y-3">
-							<div className="flex items-start group">
-								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
-									•
-								</span>
-								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
-									Spannende Events, Hackathons und Workshops, die Studierende
-									begeistern
-								</p>
-							</div>
-							<div className="flex items-start group">
-								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
-									•
-								</span>
-								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
-									Innovative Projekte und Karriereerfolge durch echte
-									Praxisbezüge
-								</p>
-							</div>
-							<div className="flex items-start group">
-								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
-									•
-								</span>
-								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
-									Eine lebendige Tech-Community, die Theorie und Praxis
-									zusammenbringt
-								</p>
-							</div>
+							{dictionary.partners.bullets.map((bullet) => (
+								<div className="flex items-start group" key={bullet}>
+									<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
+										•
+									</span>
+									<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+										{bullet}
+									</p>
+								</div>
+							))}
 						</div>
 
 						<div className="pt-2">
 							<TerminalButton
-								href="mailto:info@neuland-ingolstadt.de?subject=Anfrage%20zur%20Partnerschaft"
+								href={partnerMail}
 								dark
 							>
 								<Mail
 									size={16}
 									className="mr-2 group-hover:rotate-8 transition-transform duration-300"
 								/>
-								Partner werden
+								{dictionary.partners.ctaLabel}
 							</TerminalButton>
 						</div>
 					</motion.div>

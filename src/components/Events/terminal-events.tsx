@@ -7,6 +7,7 @@ import TerminalSection from '@/components/Layout/terminal-section'
 import TerminalButton from '@/components/terminal-button'
 import TerminalList from '@/components/terminal-list'
 import { cn } from '@/lib/utils'
+import { useI18n } from '@/i18n/provider'
 import type { fetchEvents } from '@/services/events'
 import CalendarModal from './calendar-modal'
 
@@ -19,6 +20,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 	initialData,
 	error: serverError
 }) => {
+	const { dictionary } = useI18n()
 	const eventsData = initialData || {
 		semester: `SS ${new Date().getFullYear()}`,
 		events: []
@@ -62,8 +64,8 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 
 	return (
 		<TerminalSection
-			title="Unsere Veranstaltungen"
-			subtitle={`Events im ${eventsData?.semester || `SS ${new Date().getFullYear()}`}`}
+			title={dictionary.events.title}
+			subtitle={`${dictionary.events.subtitlePrefix} ${eventsData?.semester || `SS ${new Date().getFullYear()}`}`}
 			headingLevel={2}
 		>
 			<div className="max-w-5xl mx-auto justify-start mt-10 mb-8 relative overflow-visible min-h-[200px] font-mono">
@@ -80,9 +82,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 						<TerminalList>
 							{error ? (
 								<div className="p-4 text-terminal-lightGreen">
-									<p className="text-md mb-2">
-										Oh nein! Beim Abrufen der Events ist etwas schiefgelaufen.
-									</p>
+									<p className="text-md mb-2">{dictionary.events.errorTitle}</p>
 									<p className="text-sm text-terminal-lightGreen/60">
 										{typeof error === 'object' &&
 										error !== null &&
@@ -90,24 +90,21 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 											? (error as { message: string }).message
 											: typeof error === 'string'
 												? error
-												: 'Unbekannter Fehler'}
+												: dictionary.events.unknownError}
 									</p>
 									<p className="text-sm mt-4 text-terminal-text/70">
-										Unsere Serverwartungsmannschaft macht gerade wohl
-										Kaffeepause.
+										{dictionary.events.errorBody}
 										<br />
-										Bitte versuche es später noch einmal!
+										{dictionary.events.maintenanceHelp}
 									</p>
 								</div>
 							) : !eventsData?.events || eventsData.events.length === 0 ? (
 								<div className="p-4 text-terminal-text font-bold">
 									<p className="text-md mb-3">
-										Danke für eure Teilnahme an den über 20 Events in diesem
-										Semester! 🎉
+										{dictionary.events.emptyTitle}
 									</p>
 									<p className="text-sm mb-3 text-terminal-text/80">
-										Wir arbeiten bereits an spannenden neuen Events für das
-										kommende Semester.
+										{dictionary.events.emptyBody}
 										<br />
 										<span className="text-terminal-highlight">$</span>{' '}
 										./prepare_ctf.sh --season WS25/26 --hype-level=MAXIMUM
@@ -176,7 +173,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 																	.description
 														})}
 													>
-														Details
+														{dictionary.events.detailsLabel}
 													</strong>
 												</div>
 
@@ -210,7 +207,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 															size={16}
 															className="mr-1 group-hover:text-terminal-highlight transition-colors"
 														/>
-														Alle Events
+														{dictionary.events.allEvents}
 													</button>
 												</div>
 											</div>
@@ -276,7 +273,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 							size={16}
 							className="mr-2 group-hover:rotate-8 transition-transform duration-300"
 						/>
-						Events abonnieren
+						{dictionary.events.subscribeCta}
 					</TerminalButton>
 				</div>
 

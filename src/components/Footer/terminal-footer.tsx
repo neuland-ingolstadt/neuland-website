@@ -3,6 +3,7 @@ import type React from 'react'
 import SettingsLinks from '@/components/Footer/settings-links'
 import SocialLinks from '@/components/Footer/social-links'
 import TerminalLinks from '@/components/Footer/terminal-links'
+import { useI18n } from '@/i18n/provider'
 
 const TerminalFooter: React.FC = () => {
 	const currentYear = new Date().getFullYear()
@@ -11,6 +12,7 @@ const TerminalFooter: React.FC = () => {
 		typeof fullCommitHash === 'string' && fullCommitHash !== 'development'
 			? fullCommitHash.substring(0, 7) // Display only the first 7 characters of the hash
 			: fullCommitHash
+	const { t } = useI18n()
 
 	return (
 		<div className="font-mono">
@@ -23,7 +25,8 @@ const TerminalFooter: React.FC = () => {
 			<div className="text-center text-terminal-text/50 text-sm pt-2 pb-8">
 				© {currentYear} Neuland Ingolstadt e.V.
 				<div className="text-xs text-terminal-text/30 mt-1 font-mono">
-					Build: <span title="Git commit hash">{commitHash}</span>
+					{t('footer.buildLabel')}:{' '}
+					<span title="Git commit hash">{commitHash}</span>
 				</div>
 			</div>
 		</div>

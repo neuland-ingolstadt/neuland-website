@@ -3,28 +3,22 @@ import { motion } from 'framer-motion'
 import { Lightbulb, Rocket, Users } from 'lucide-react'
 import type React from 'react'
 import TerminalSection from '@/components/Layout/terminal-section'
+import { useI18n } from '@/i18n/provider'
+
+const aboutIcons = [Rocket, Lightbulb, Users] as const
 
 const AboutUsSection: React.FC = () => {
-	const features = [
-		{
-			icon: <Rocket className="h-6 w-6 text-terminal-cyan" />,
-			title: 'Projekte & Wettbewerbe',
-			desc: 'Wir entwickeln innovative Projekte, nehmen an Wettbewerben teil und fördern Kreativität.'
-		},
-		{
-			icon: <Lightbulb className="h-6 w-6 text-terminal-cyan" />,
-			title: 'Veranstaltungen & Wissen',
-			desc: 'Wir organisieren Events rund um Informatik und Technik – offen für alle Fakultäten und Studiengänge.'
-		},
-		{
-			icon: <Users className="h-6 w-6 text-terminal-cyan" />,
-			title: 'Community & Networking',
-			desc: 'Lerne neue Leute kennen, vernetze dich und werde Teil einer aktiven, hilfsbereiten Studierenden-Community.'
+	const { dictionary } = useI18n()
+	const features = dictionary.about.features.map((feature, idx) => {
+		const Icon = aboutIcons[idx % aboutIcons.length]
+		return {
+			...feature,
+			icon: <Icon className="h-6 w-6 text-terminal-cyan" />
 		}
-	]
+	})
 
 	return (
-		<TerminalSection title="Über uns" headingLevel={2}>
+		<TerminalSection title={dictionary.about.title} headingLevel={2}>
 			{/* Unified container */}
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
@@ -57,11 +51,10 @@ const AboutUsSection: React.FC = () => {
 				{/* Main intro section */}
 				<div className="p-6 border-b border-terminal-window-border relative z-10">
 					<h3 className="text-xl font-semibold text-terminal-text mb-3">
-						Gemeinschaft & Plattform
+						{dictionary.about.introHeading}
 					</h3>
 					<p className="text-terminal-text/90 leading-relaxed m-0">
-						Wir bieten Studierenden eine Plattform zum Austausch, zur
-						Projektarbeit und zur Wissensvermittlung .
+						{dictionary.about.introBody}
 					</p>
 				</div>
 
