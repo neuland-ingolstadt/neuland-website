@@ -1,9 +1,9 @@
 'use client'
 import { AnimatePresence, motion, type Variants } from 'framer-motion'
 import {
-	ArrowUpRight,
-	Bell,
-	BookOpen,
+        ArrowUpRight,
+        Bell,
+        BookOpen,
 	Calendar,
 	ForkKnife,
 	GithubIcon,
@@ -12,17 +12,19 @@ import {
 	MapPin,
 	Shield,
 	TrendingUp,
-	Users,
-	Zap
+        Users,
+        Zap
 } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import FeatureItem from './feature-item'
 import TerminalButton from './terminal-button'
+import { useTranslations } from '@/contexts/I18nContext'
 
 const NextAppShowcase = () => {
-	const phoneRef = useRef<HTMLDivElement>(null)
-	const [activeIndex, setActiveIndex] = useState(0)
-	const screenshots = [
+        const { translate: t } = useTranslations()
+        const phoneRef = useRef<HTMLDivElement>(null)
+        const [activeIndex, setActiveIndex] = useState(0)
+        const screenshots = [
 		'/assets/neuland-next/next_1.webp',
 		'/assets/neuland-next/next_2.webp',
 		'/assets/neuland-next/next_4.webp',
@@ -45,10 +47,10 @@ const NextAppShowcase = () => {
 		})
 	}, [screenshots])
 
-	const imageVariants = {
-		initial: {
-			opacity: 0
-		},
+        const imageVariants = {
+                initial: {
+                        opacity: 0
+                },
 		animate: {
 			opacity: 1,
 			transition: {
@@ -63,61 +65,60 @@ const NextAppShowcase = () => {
 				ease: 'easeInOut'
 			}
 		}
-	}
+        }
 
-	const features = [
-		{
-			icon: <Calendar className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Stundenplan & Prüfungen',
-			description: 'Dein persönlicher Stundenplan und alle Prüfungen'
-		},
-		{
-			icon: <Calendar className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Kalender & Events',
-			description: 'Alle wichtigen Semesterdaten und Campus-Events'
-		},
-		{
-			icon: <Users className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Profil',
-			description: 'Prüfe deine Noten oder dein Druckguthaben'
-		},
-		{
-			icon: <ForkKnife className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Mensa',
-			description: 'Alle Speisepläne mit Preisen, Allergenen und Nährwerten'
-		},
-		{
-			icon: <MapPin className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Campus-Karte',
-			description:
-				'Finde freie Räume, erkunde Gebäude oder nutze smarte Vorschläge'
-		},
-		{
-			icon: <BookOpen className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Bibliothek',
-			description: 'Nutze deinen virtuellen Bibliotheks Code zum Ausleihen'
-		},
-		{
-			icon: <Globe className="h-5 w-5 text-terminal-cyan" />,
-			title: 'Quick Links',
-			description: 'Alle wichtigen Uni-Plattformen wie Moodle oder Primuss'
-		},
-		{
-			icon: <Bell className="h-5 w-5 text-terminal-cyan" />,
-			title: 'THI News',
-			description: 'Bleibe informiert mit den neuesten Nachrichten der THI'
-		}
-	]
+        const features = [
+                {
+                        icon: <Calendar className="h-5 w-5 text-terminal-cyan" />,
+                        title: t('next.features.schedule'),
+                        description: t('next.features.scheduleDesc')
+                },
+                {
+                        icon: <Calendar className="h-5 w-5 text-terminal-cyan" />,
+                        title: t('next.features.calendar'),
+                        description: t('next.features.calendarDesc')
+                },
+                {
+                        icon: <Users className="h-5 w-5 text-terminal-cyan" />,
+                        title: t('next.features.profile'),
+                        description: t('next.features.profileDesc')
+                },
+                {
+                        icon: <ForkKnife className="h-5 w-5 text-terminal-cyan" />,
+                        title: t('next.features.canteen'),
+                        description: t('next.features.canteenDesc')
+                },
+                {
+                        icon: <MapPin className="h-5 w-5 text-terminal-cyan" />,
+                        title: t('next.features.map'),
+                        description: t('next.features.mapDesc')
+                },
+                {
+                        icon: <BookOpen className="h-5 w-5 text-terminal-cyan" />,
+                        title: t('next.features.library'),
+                        description: t('next.features.libraryDesc')
+                },
+                {
+                        icon: <Globe className="h-5 w-5 text-terminal-cyan" />,
+                        title: t('next.features.links'),
+                        description: t('next.features.linksDesc')
+                },
+                {
+                        icon: <Bell className="h-5 w-5 text-terminal-cyan" />,
+                        title: t('next.features.news'),
+                        description: t('next.features.newsDesc')
+                }
+        ]
 
-	const highlights = [
-		{ icon: <Shield className="h-4 w-4" />, text: 'Maximaler Datenschutz' },
+        const highlights = [
+                { icon: <Shield className="h-4 w-4" />, text: t('next.highlights.privacy') },
 
-		{ icon: <Zap className="h-4 w-4" />, text: 'Blitzschnelle Performance' },
-		{ icon: <GithubIcon className="h-4 w-4" />, text: '100% Open Source' },
-		{ icon: <TrendingUp className="h-4 w-4" />, text: 'Regelmäßige Updates' },
-		{ icon: <Globe className="h-4 w-4" />, text: 'Offline-fähig' },
-		{ icon: <Laptop className="h-4 w-4" />, text: 'Auch als Web App' }
-	]
+                { icon: <Zap className="h-4 w-4" />, text: t('next.highlights.performance') },
+                { icon: <GithubIcon className="h-4 w-4" />, text: t('next.highlights.oss') },
+                { icon: <TrendingUp className="h-4 w-4" />, text: t('next.highlights.updates') },
+                { icon: <Globe className="h-4 w-4" />, text: t('next.highlights.offline') },
+                { icon: <Laptop className="h-4 w-4" />, text: t('next.highlights.web') }
+        ]
 
 	return (
 		<div className="w-full pt-12 pb-16 relative">
@@ -127,21 +128,19 @@ const NextAppShowcase = () => {
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6 }}
-					viewport={{ once: true }}
-					className="text-center mb-16"
-				>
-					<h2 className="text-4xl mb-2 font-bold  bg-clip-text ">
-						Neuland Next
-					</h2>
-					<b className="text-xl/loose b-6 font-black ">
-						Deine App für die TH Ingolstadt
-					</b>
-					<p className="text-lg text-terminal-text/80 max-w-3xl mx-auto">
-						Deine moderne Campus-App von Neuland Ingolstadt. Entwickelt mit
-						Liebe zum Detail, vollständig Open Source und auf allen Geräten
-						verfügbar.
-					</p>
-				</motion.div>
+                                        viewport={{ once: true }}
+                                        className="text-center mb-16"
+                                >
+                                        <h2 className="text-4xl mb-2 font-bold  bg-clip-text ">
+                                                {t('next.heading')}
+                                        </h2>
+                                        <b className="text-xl/loose b-6 font-black ">
+                                                {t('next.subheading')}
+                                        </b>
+                                        <p className="text-lg text-terminal-text/80 max-w-3xl mx-auto">
+                                                {t('next.description')}
+                                        </p>
+                                </motion.div>
 
 				{/* Main Content Grid */}
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
@@ -218,22 +217,20 @@ const NextAppShowcase = () => {
 							{/* Subtle background gradient */}
 							<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/2 via-transparent to-terminal-cyan/1 pointer-events-none" />
 
-							<div className="relative z-10">
-								<h3 className="text-2xl mb-3 font-semibold text-terminal-text">
-									Unser Flaggschiff-Projekt
-								</h3>
+                                                        <div className="relative z-10">
+                                                                <h3 className="text-2xl mb-3 font-semibold text-terminal-text">
+                                                                        {t('next.flagshipTitle')}
+                                                                </h3>
 
-								<p className="mb-8 text-base leading-relaxed text-terminal-text/70">
-									Neuland Next ist mehr als nur eine App – es ist dein digitaler
-									Begleiter durch den Studienalltag an der THI. Alle wichtigen
-									Funktionen für deinen Campus-Alltag in einer App.
-								</p>
+                                                                <p className="mb-8 text-base leading-relaxed text-terminal-text/70">
+                                                                        {t('next.flagshipBody')}
+                                                                </p>
 
 								{/* Highlights */}
-								<div className="mb-8 pb-8 border-b border-terminal-window-border">
-									<h4 className="text-sm font-semibold mb-4 text-terminal-cyan uppercase tracking-wider">
-										Warum Neuland Next
-									</h4>
+                                                                <div className="mb-8 pb-8 border-b border-terminal-window-border">
+                                                                        <h4 className="text-sm font-semibold mb-4 text-terminal-cyan uppercase tracking-wider">
+                                                                                {t('next.why')}
+                                                                        </h4>
 									<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 										{highlights.map((highlight, idx) => (
 											<motion.div
@@ -256,10 +253,10 @@ const NextAppShowcase = () => {
 								</div>
 
 								{/* Download Section */}
-								<div className="mb-6">
-									<div className="text-xs font-semibold mb-4 text-terminal-cyan/80 uppercase tracking-wider">
-										Jetzt herunterladen
-									</div>
+                                                                <div className="mb-6">
+                                                                        <div className="text-xs font-semibold mb-4 text-terminal-cyan/80 uppercase tracking-wider">
+                                                                                {t('next.download')}
+                                                                        </div>
 									<div className="flex flex-col sm:flex-row gap-3 mb-6">
 										<a
 											href="https://apps.apple.com/app/neuland-next/id1617096811"
@@ -294,16 +291,16 @@ const NextAppShowcase = () => {
 									href="https://neuland.app"
 									dark
 									target="_blank"
-									rel="noreferrer noopener"
-								>
-									<ArrowUpRight
-										size={16}
-										className="mr-2 group-hover:rotate-8 transition-transform duration-300"
-									/>
-									Mehr erfahren
-								</TerminalButton>
-							</div>
-						</motion.div>
+                                                                        rel="noreferrer noopener"
+                                                                >
+                                                                        <ArrowUpRight
+                                                                                size={16}
+                                                                                className="mr-2 group-hover:rotate-8 transition-transform duration-300"
+                                                                        />
+                                                                        {t('next.cta')}
+                                                                </TerminalButton>
+                                                        </div>
+                                                </motion.div>
 					</div>
 				</div>
 
@@ -311,13 +308,13 @@ const NextAppShowcase = () => {
 				<motion.div
 					initial={{ opacity: 0, y: 30 }}
 					whileInView={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
-					className="mb-16 hidden lg:block"
-				>
-					<h3 className="text-2xl font-bold text-center mb-12">
-						Die Features auf einen Blick
-					</h3>
+                                        transition={{ duration: 0.8 }}
+                                        viewport={{ once: true }}
+                                        className="mb-16 hidden lg:block"
+                                >
+                                        <h3 className="text-2xl font-bold text-center mb-12">
+                                                {t('next.featuresHeading')}
+                                        </h3>
 					<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
 						{/* Outer accent corners */}
 						<div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-terminal-cyan/30" />

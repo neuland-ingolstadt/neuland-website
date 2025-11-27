@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "membership": "Become a member",
+    "projects": "Projects",
+    "blog": "Blog",
+    "login": "Login",
+    "language": "Language",
+    "german": "German",
+    "english": "English"
+  },
+  "home": {
+    "intro": "The student-run club for everyone at TH Ingolstadt who loves computer science.",
+    "projectsTitle": "A selection of our projects",
+    "membershipTitle": "Membership",
+    "partnersTitle": "Partners",
+    "blogTitle": "Neuland Blog"
+  },
+  "events": {
+    "title": "Our events",
+    "semester": "Events in {{semester}}",
+    "errorHeading": "Oh no! Something went wrong while fetching the events.",
+    "errorDetails": "Our server maintenance crew is probably on a coffee break right now.",
+    "errorRetry": "Please try again later!",
+    "emptyHeading": "Thanks for joining more than 20 events this semester! 🎉",
+    "emptyBody": "We are already working on exciting new events for the upcoming term.",
+    "emptyCommand": "./prepare_ctf.sh --season WS25/26 --hype-level=MAXIMUM",
+    "details": "Details",
+    "calendarCta": "Subscribe to calendar",
+    "downloadIcs": "Download .ics",
+    "close": "Close",
+    "icalDescription": "Add all upcoming events to your calendar",
+    "share": "Share calendar",
+    "icalTitle": "ical-subscribe.sh --import-events",
+    "icalBody": "You can add every Neuland event to your calendar via an iCal subscription.",
+    "steps": "Copy the URL|Open your calendar app|Create a new iCal subscription|Events will stay in sync automatically"
+  },
+  "about": {
+    "title": "About us",
+    "introTitle": "Community & platform",
+    "introBody": "We provide students with a place to connect, work on projects and share knowledge.",
+    "featureProjects": "Projects & competitions",
+    "featureProjectsDesc": "We build innovative projects, join competitions and encourage creativity.",
+    "featureKnowledge": "Events & knowledge",
+    "featureKnowledgeDesc": "We host events about computer science and tech – open to every faculty and degree program.",
+    "featureCommunity": "Community & networking",
+    "featureCommunityDesc": "Meet new people, make connections and become part of a helpful student community."
+  },
+  "next": {
+    "heading": "Neuland Next",
+    "subheading": "Your app for TH Ingolstadt",
+    "description": "Your modern campus app from Neuland Ingolstadt. Crafted with attention to detail, fully open source and available on every device.",
+    "cta": "Open the app",
+    "flagshipTitle": "Our flagship project",
+    "flagshipBody": "Neuland Next is more than just an app – it is your digital companion throughout student life at THI. All essential campus features in one place.",
+    "why": "Why Neuland Next",
+    "download": "Download now",
+    "featuresHeading": "Features at a glance",
+    "features": {
+      "schedule": "Schedule & exams",
+      "scheduleDesc": "Your personal timetable and all exams",
+      "calendar": "Calendar & events",
+      "calendarDesc": "All important semester dates and campus events",
+      "profile": "Profile",
+      "profileDesc": "Check your grades or printing balance",
+      "canteen": "Cafeteria",
+      "canteenDesc": "All menus with prices, allergens and nutrition facts",
+      "map": "Campus map",
+      "mapDesc": "Find free rooms, explore buildings or use smart suggestions",
+      "library": "Library",
+      "libraryDesc": "Use your virtual library code to borrow items",
+      "links": "Quick links",
+      "linksDesc": "All essential university platforms like Moodle or Primuss",
+      "news": "THI news",
+      "newsDesc": "Stay up to date with the latest news from THI"
+    },
+    "highlights": {
+      "privacy": "Maximum privacy",
+      "performance": "Lightning-fast performance",
+      "oss": "100% open source",
+      "updates": "Frequent updates",
+      "offline": "Works offline",
+      "web": "Also available as a web app"
+    }
+  },
+  "membership": {
+    "feesTitle": "$ cat membership-fees.txt",
+    "students": "Students:",
+    "studentsPrice": "5€ / year",
+    "external": "External:",
+    "externalPrice": "20€ / year",
+    "benefitsTitle": "Your benefits:",
+    "benefitCommunity": "Part of an active student club with regular meetups and exchange",
+    "benefitProjects": "Work together on open-source projects",
+    "benefitEvents": "Exclusive workshops, hackathons and social events with like-minded people",
+    "join": "Join now",
+    "email": "Send email"
+  },
+  "projects": {
+    "title": "Our projects",
+    "description": "Discover our collection of creative, technical and community-driven projects. From web apps to cybersecurity initiatives.",
+    "count": "{{count}} project{{suffix}} found",
+    "filterLabel": "Filter by technology:",
+    "all": "All projects",
+    "empty": "No projects found for this filter.",
+    "github": "Check out our projects on GitHub!",
+    "more": "Learn more"
+  }
+}

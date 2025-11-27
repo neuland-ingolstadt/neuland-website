@@ -7,6 +7,7 @@ import MatrixEffect from '@/components/Background/page-background'
 import TerminalFooter from '@/components/Footer/terminal-footer'
 import TerminalHeader from '@/components/Layout/terminal-header'
 import Providers from '@/components/Provider'
+import { getLocale } from '@/lib/i18n/server'
 
 const overpassMono = Noto_Sans_Mono({
 	variable: '--font-mono',
@@ -84,13 +85,14 @@ const themeScript = `
 `
 
 export default function RootLayout({
-	children
+        children
 }: Readonly<{
-	children: React.ReactNode
+        children: React.ReactNode
 }>) {
-	return (
-		<html lang="de" suppressHydrationWarning>
-			<head>
+        const locale = getLocale()
+        return (
+                <html lang={locale} suppressHydrationWarning>
+                        <head>
 				<meta name="color-scheme" content="dark light" />
 				<meta
 					name="theme-color"
@@ -121,9 +123,9 @@ export default function RootLayout({
 			<body
 				className={`${overpassMono.variable} ${notoSans.variable} font-sans antialiased`}
 			>
-				<Providers>
-					<TerminalHeader />
-					<MatrixEffect />
+                                <Providers locale={locale}>
+                                        <TerminalHeader />
+                                        <MatrixEffect />
 					<div className="container px-4 md:px-12 xl:px-20 mx-auto pt-6 relative z-10">
 						{children}
 						<TerminalFooter />

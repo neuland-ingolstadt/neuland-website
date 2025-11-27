@@ -3,14 +3,16 @@
 import { AptabaseProvider } from '@aptabase/react'
 // Since QueryClientProvider relies on useContext under the hood, we have to put 'use client' on top
 import {
-	type DehydratedState,
-	HydrationBoundary,
-	isServer,
-	QueryClient,
-	QueryClientProvider
+        type DehydratedState,
+        HydrationBoundary,
+        isServer,
+        QueryClient,
+        QueryClientProvider
 } from '@tanstack/react-query'
 import { useState } from 'react'
 import { BackgroundProvider } from '@/contexts/BackgroundContext'
+import { I18nProvider } from '@/contexts/I18nContext'
+import type { Locale } from '@/lib/i18n/config'
 import RouteTracker from './Layout/route-tracker'
 
 function makeQueryClient() {
@@ -44,11 +46,13 @@ function getQueryClient() {
 }
 
 export default function Providers({
-	children,
-	dehydratedState
+        children,
+        dehydratedState,
+        locale
 }: {
-	children: React.ReactNode
-	dehydratedState?: DehydratedState
+        children: React.ReactNode
+        dehydratedState?: DehydratedState
+        locale?: Locale
 }) {
 	// In React 18, we need to use useState here to create a new query client
 	// on the server for each request, to avoid sharing state between users.
@@ -56,21 +60,23 @@ export default function Providers({
 	// prevent it from being shared between requests.
 	const [queryClient] = useState(() => getQueryClient())
 	const APTABASE_KEY = process.env.NEXT_PUBLIC_APTABASE_KEY ?? ''
-	return (
-		<BackgroundProvider>
-			<AptabaseProvider
-				appKey={APTABASE_KEY}
-				options={{
-					host: 'https://analytics.neuland.app'
-				}}
-			>
-				<QueryClientProvider client={queryClient}>
-					<HydrationBoundary state={dehydratedState}>
-						{children}
-						<RouteTracker />
-					</HydrationBoundary>
-				</QueryClientProvider>
-			</AptabaseProvider>
-		</BackgroundProvider>
-	)
+        return (
+                <BackgroundProvider>
+                        <AptabaseProvider
+                                appKey={APTABASE_KEY}
+                                options={{
+                                        host: 'https://analytics.neuland.app'
+                                }}
+                        >
+                                <QueryClientProvider client={queryClient}>
+                                        <I18nProvider initialLocale={locale}>
+                                                <HydrationBoundary state={dehydratedState}>
+                                                        {children}
+                                                        <RouteTracker />
+                                                </HydrationBoundary>
+                                        </I18nProvider>
+                                </QueryClientProvider>
+                        </AptabaseProvider>
+                </BackgroundProvider>
+        )
 }

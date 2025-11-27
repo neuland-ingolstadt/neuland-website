@@ -1,6 +1,6 @@
 'use client'
 
-import { Menu } from 'lucide-react'
+import { Globe2, Menu } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import type React from 'react'
@@ -14,34 +14,20 @@ import {
 	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
-	SidebarMenuItem,
-	SidebarProvider,
-	useSidebar
+        SidebarMenuItem,
+        SidebarProvider,
+        useSidebar
 } from '@/components/ui/sidebar'
 import { useBackground } from '@/contexts/BackgroundContext'
+import { useTranslations } from '@/contexts/I18nContext'
 
 import NeulandLogo from './neuland-logo'
 import ThemeToggle, { ThemeToggleMobile } from './theme-toggle'
 
-const navLinks = [
-	{
-		name: 'Mitglied werden',
-		href: '/#membership',
-		external: false
-	},
-	{ name: 'Projekte', href: '/projects', external: false },
-	{ name: 'Blog', href: '/blog', external: false },
-	{
-		name: 'Login',
-		href: 'https://sso.informatik.sexy',
-		external: true
-	}
-]
-
 interface NavLinkProps {
-	link: {
-		name: string
-		href: string
+        link: {
+                name: string
+                href: string
 		external?: boolean
 	}
 	className?: string
@@ -75,14 +61,32 @@ const DesktopNavLink: React.FC<NavLinkProps> = ({ link, className }) => {
 }
 
 const MobileSidebar: React.FC = () => {
-	const pathname = usePathname()
-	const { isMobile, setOpenMobile } = useSidebar()
+        const pathname = usePathname()
+        const { isMobile, setOpenMobile } = useSidebar()
+        const { translate: t, locale, setLocale } = useTranslations()
 
-	const handleNavigation = () => {
-		if (isMobile) {
-			setOpenMobile(false)
-		}
-	}
+        const handleNavigation = () => {
+                if (isMobile) {
+                        setOpenMobile(false)
+                }
+        }
+
+        const navLinks = [
+                {
+                        name: t('nav.membership'),
+                        href: '/#membership',
+                        external: false
+                },
+                { name: t('nav.projects'), href: '/projects', external: false },
+                { name: t('nav.blog'), href: '/blog', external: false },
+                {
+                        name: t('nav.login'),
+                        href: 'https://sso.informatik.sexy',
+                        external: true
+                }
+        ]
+
+        const toggleLocale = () => setLocale(locale === 'de' ? 'en' : 'de')
 
 	return (
 		<Sidebar variant="sidebar" side="bottom">
@@ -129,18 +133,31 @@ const MobileSidebar: React.FC = () => {
 						</SidebarMenu>
 					</SidebarGroupContent>
 				</SidebarGroup>
-			</SidebarContent>
+                        </SidebarContent>
 
-			<SidebarFooter className="border-t border-terminal-window-border/70 bg-terminal-bg/95 px-4 py-3">
-				<div className="flex items-center justify-between gap-4 text-xs text-terminal-text/60">
-					<span className="uppercase tracking-[0.18em] text-[0.65rem] text-terminal-text/70">
-						Theme
-					</span>
-					<ThemeToggleMobile />
-				</div>
-			</SidebarFooter>
-		</Sidebar>
-	)
+                        <SidebarFooter className="border-t border-terminal-window-border/70 bg-terminal-bg/95 px-4 py-3">
+                                <div className="flex items-center justify-between gap-4 text-xs text-terminal-text/60">
+                                        <span className="uppercase tracking-[0.18em] text-[0.65rem] text-terminal-text/70">
+                                                Theme
+                                        </span>
+                                        <ThemeToggleMobile />
+                                </div>
+                                <div className="mt-3 flex items-center justify-between gap-4 text-xs text-terminal-text/60">
+                                        <span className="uppercase tracking-[0.18em] text-[0.65rem] text-terminal-text/70">
+                                                {t('nav.language')}
+                                        </span>
+                                        <button
+                                                type="button"
+                                                onClick={toggleLocale}
+                                                className="inline-flex items-center gap-1 rounded-md border border-terminal-window-border/70 px-2 py-1 text-terminal-text hover:text-terminal-cyan hover:border-terminal-cyan transition-colors"
+                                        >
+                                                <Globe2 className="h-4 w-4" />
+                                                <span className="font-semibold">{locale === 'de' ? 'DE' : 'EN'}</span>
+                                        </button>
+                                </div>
+                        </SidebarFooter>
+                </Sidebar>
+        )
 }
 
 const MobileSidebarTrigger: React.FC = () => {
@@ -172,14 +189,30 @@ const MobileSidebarTrigger: React.FC = () => {
 }
 
 const TerminalHeader: React.FC = () => {
-	const headerRef = useRef<HTMLElement>(null)
-	const navigate = useRouter()
-	const isJune = new Date().getMonth() === 5
-	const { triggerCrossesRotation } = useBackground()
+        const headerRef = useRef<HTMLElement>(null)
+        const navigate = useRouter()
+        const isJune = new Date().getMonth() === 5
+        const { triggerCrossesRotation } = useBackground()
+        const { translate: t, locale, setLocale } = useTranslations()
 
-	// Dynamically set --navbar-height on the document root for robust layout
-	useEffect(() => {
-		const setNavbarHeight = () => {
+        const navLinks = [
+                {
+                        name: t('nav.membership'),
+                        href: '/#membership',
+                        external: false
+                },
+                { name: t('nav.projects'), href: '/projects', external: false },
+                { name: t('nav.blog'), href: '/blog', external: false },
+                {
+                        name: t('nav.login'),
+                        href: 'https://sso.informatik.sexy',
+                        external: true
+                }
+        ]
+
+        // Dynamically set --navbar-height on the document root for robust layout
+        useEffect(() => {
+                const setNavbarHeight = () => {
 			if (headerRef.current) {
 				const height = headerRef.current.getBoundingClientRect().height
 				document.documentElement.style.setProperty(
@@ -193,14 +226,16 @@ const TerminalHeader: React.FC = () => {
 		return () => window.removeEventListener('resize', setNavbarHeight)
 	}, [])
 
-	const handleHomeClick = (e: React.MouseEvent) => {
-		e.preventDefault()
-		navigate.replace('/')
-	}
+        const handleHomeClick = (e: React.MouseEvent) => {
+                e.preventDefault()
+                navigate.replace('/')
+        }
 
-	return (
-		<SidebarProvider>
-			<header
+        const toggleLocale = () => setLocale(locale === 'de' ? 'en' : 'de')
+
+        return (
+                <SidebarProvider>
+                        <header
 				ref={headerRef}
 				className="terminal-nav fixed top-0 left-0 right-0 z-50 border-b border-terminal-window-border/80 bg-terminal-bg/80 py-3 backdrop-blur-md"
 			>
@@ -229,16 +264,24 @@ const TerminalHeader: React.FC = () => {
 					</div>
 
 					{/* Desktop Navigation */}
-					<nav className="hidden items-center gap-6 md:flex">
-						{navLinks.map((link) => (
-							<DesktopNavLink
-								key={link.name}
-								link={link}
-								className="tracking-wider text-terminal-text transition-colors hover:text-terminal-cyan"
-							/>
-						))}
-						<ThemeToggle />
-					</nav>
+                                        <nav className="hidden items-center gap-6 md:flex">
+                                                {navLinks.map((link) => (
+                                                        <DesktopNavLink
+                                                                key={link.name}
+                                                                link={link}
+                                                                className="tracking-wider text-terminal-text transition-colors hover:text-terminal-cyan"
+                                                        />
+                                                ))}
+                                                <button
+                                                        type="button"
+                                                        onClick={toggleLocale}
+                                                        className="flex items-center gap-2 rounded-md border border-terminal-window-border/70 px-3 py-1.5 text-sm font-semibold text-terminal-text transition-colors hover:border-terminal-cyan hover:text-terminal-cyan"
+                                                >
+                                                        <Globe2 className="h-4 w-4" />
+                                                        <span>{locale === 'de' ? t('nav.german') : t('nav.english')}</span>
+                                                </button>
+                                                <ThemeToggle />
+                                        </nav>
 
 					{/* Mobile Menu Button (Sidebar trigger) */}
 					<div className="flex items-center md:hidden">

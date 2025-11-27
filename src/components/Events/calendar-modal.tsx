@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Check, Copy, X } from 'lucide-react'
 import type React from 'react'
 import { useCallback, useEffect, useState } from 'react'
+import { useTranslations } from '@/contexts/I18nContext'
 
 interface CalendarModalProps {
 	isOpen: boolean
@@ -12,10 +13,11 @@ interface CalendarModalProps {
 
 const CalendarModal: React.FC<CalendarModalProps> = ({
 	isOpen,
-	onClose,
-	icalUrl
+        onClose,
+        icalUrl
 }) => {
-	const [copied, setCopied] = useState(false)
+        const { translate: t } = useTranslations()
+        const [copied, setCopied] = useState(false)
 
 	const copyToClipboard = useCallback(() => {
 		navigator.clipboard.writeText(icalUrl).then(() => {
@@ -84,8 +86,8 @@ const CalendarModal: React.FC<CalendarModalProps> = ({
 							}}
 							role="dialog"
 							aria-modal="true"
-							aria-labelledby="calendar-modal-title"
-						>
+                                                        aria-labelledby="calendar-modal-title"
+                                                >
 							{/* Corner accent brackets */}
 							<div className="absolute top-0 left-0 w-12 h-12">
 								<div className="absolute top-0 left-0 w-6 h-px bg-terminal-cyan/30" />
@@ -109,41 +111,40 @@ const CalendarModal: React.FC<CalendarModalProps> = ({
 
 							{/* Header */}
 							<div className="relative z-10 bg-terminal-card border-b border-terminal-window-border px-4 py-3 flex items-center">
-								<div
-									id="calendar-modal-title"
-									className="flex-1 text-center text-sm font-semibold text-terminal-text"
-								>
-									ical-subscribe.sh --import-events
-								</div>
-								<button
-									onClick={onClose}
-									className="ml-4 p-1 text-terminal-text/70 hover:text-terminal-text transition-colors duration-200"
-									aria-label="Schließen"
-									type="button"
-								>
-									<X size={18} />
+                                                                <div
+                                                                        id="calendar-modal-title"
+                                                                        className="flex-1 text-center text-sm font-semibold text-terminal-text"
+                                                                >
+                                                                        {t('events.icalTitle')}
+                                                                </div>
+                                                                <button
+                                                                        onClick={onClose}
+                                                                        className="ml-4 p-1 text-terminal-text/70 hover:text-terminal-text transition-colors duration-200"
+                                                                        aria-label={t('events.close')}
+                                                                        type="button"
+                                                                >
+                                                                        <X size={18} />
 								</button>
 							</div>
 
-							{/* Content */}
-							<div className="p-6 relative z-10">
-								<p className="mb-6 leading-relaxed">
-									Du kannst alle Neuland Events in deinen Kalender als iCal
-									Abonnement hinzufügen.
-								</p>
+                                                        {/* Content */}
+                                                        <div className="p-6 relative z-10">
+                                                                <p className="mb-6 leading-relaxed">
+                                                                        {t('events.icalBody')}
+                                                                </p>
 
 								<div className="bg-terminal-card p-3 border border-terminal-window-border mb-6 font-mono text-xs relative group">
 									<div className="flex items-center justify-between">
 										<span className="break-all pr-2 w-[calc(100%-30px)] text-terminal-text/70">
 											{icalUrl}
 										</span>
-										<button
-											onClick={copyToClipboard}
-											className="shrink-0 ml-1 text-terminal-text/70 hover:text-terminal-cyan transition-colors duration-200"
-											aria-label="URL kopieren"
-											title="URL kopieren"
-											type="button"
-										>
+                                                                                <button
+                                                                                        onClick={copyToClipboard}
+                                                                                        className="shrink-0 ml-1 text-terminal-text/70 hover:text-terminal-cyan transition-colors duration-200"
+                                                                                        aria-label={t('events.share')}
+                                                                                        title={t('events.share')}
+                                                                                        type="button"
+                                                                                >
 											{copied ? (
 												<Check size={16} className="text-terminal-cyan" />
 											) : (
@@ -151,19 +152,20 @@ const CalendarModal: React.FC<CalendarModalProps> = ({
 											)}
 										</button>
 									</div>
-								</div>
+                                                                </div>
 
-								<h3 className="text-lg text-terminal-cyan mb-3 font-semibold">
-									So gehts:
-								</h3>
-								<ul className="list-disc list-inside space-y-2 mb-0 text-terminal-text/70">
-									<li>Kopiere die URL</li>
-									<li>Öffne deine Kalender App</li>
-									<li>Erstelle ein neues iCal Abonnement</li>
-									<li>Die Events werden automatisch aktualisiert</li>
-								</ul>
-							</div>
-						</div>
+                                                                <h3 className="text-lg text-terminal-cyan mb-3 font-semibold">
+                                                                        {t('events.details')}
+                                                                </h3>
+                                                                <ul className="list-disc list-inside space-y-2 mb-0 text-terminal-text/70">
+                                                                        {t('events.steps')
+                                                                                .split('|')
+                                                                                .map((step, index) => (
+                                                                                        <li key={index}>{step}</li>
+                                                                                ))}
+                                                                </ul>
+                                                        </div>
+                                                </div>
 					</motion.div>
 				</>
 			)}

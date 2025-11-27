@@ -4,10 +4,11 @@ import { Code, Filter, Github } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useMemo, useState } from 'react'
 import ProjectCard, {
-	type ProjectDetails
+        type ProjectDetails
 } from '@/components/Projects/project-card'
 import TerminalButton from '@/components/terminal-button'
 import projectsData from '@/data/projects.json'
+import { useTranslations } from '@/contexts/I18nContext'
 
 const uniqueTags = (projectsData as ProjectDetails[]).reduce((acc, project) => {
 	project.tags?.forEach((tag) => {
@@ -17,8 +18,9 @@ const uniqueTags = (projectsData as ProjectDetails[]).reduce((acc, project) => {
 }, new Set<string>())
 
 const ProjectsPage = () => {
-	const router = useRouter()
-	const [activeTag, setActiveTag] = useState<string | null>(null)
+        const router = useRouter()
+        const { translate: t } = useTranslations()
+        const [activeTag, setActiveTag] = useState<string | null>(null)
 
 	const filteredProjects = useMemo(() => {
 		if (!activeTag) return projectsData
@@ -39,60 +41,60 @@ const ProjectsPage = () => {
 				initial={{ opacity: 0, y: -20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6 }}
-				className="max-w-6xl mx-auto mb-12"
-			>
-				<div className="flex items-center gap-3 mb-6">
-					<h1 className="text-3xl md:text-4xl font-bold  font-mono">
-						Unsere Projekte
-					</h1>
-				</div>
+                                className="max-w-6xl mx-auto mb-12"
+                        >
+                                <div className="flex items-center gap-3 mb-6">
+                                        <h1 className="text-3xl md:text-4xl font-bold  font-mono">
+                                                {t('projects.title')}
+                                        </h1>
+                                </div>
 
-				<motion.p
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ duration: 0.6, delay: 0.2 }}
-					className="text-lg text-terminal-text/80 font-mono max-w-3xl"
-				>
-					Entdecke unsere Sammlung kreativer, technischer und
-					gemeinschaftsgetriebener Projekte. Von Webanwendungen bis hin zu
-					Cybersecurity-Initiativen.
-				</motion.p>
+                                <motion.p
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                        className="text-lg text-terminal-text/80 font-mono max-w-3xl"
+                                >
+                                        {t('projects.description')}
+                                </motion.p>
 
-				<motion.div
-					initial={{ opacity: 0, y: 10 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.6, delay: 0.4 }}
-					className="flex items-center gap-2 mt-6 text-sm text-terminal-text/60 font-mono"
-				>
-					<Code size={16} />
-					<span>
-						{filteredProjects.length} Projekt
-						{filteredProjects.length !== 1 ? 'e' : ''} gefunden
-					</span>
-				</motion.div>
-			</motion.div>
+                                <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.6, delay: 0.4 }}
+                                        className="flex items-center gap-2 mt-6 text-sm text-terminal-text/60 font-mono"
+                                >
+                                        <Code size={16} />
+                                        <span>
+                                                {t('projects.count', {
+                                                        count: filteredProjects.length,
+                                                        suffix: filteredProjects.length !== 1 ? 'e' : ''
+                                                })}
+                                        </span>
+                                </motion.div>
+                        </motion.div>
 
 			{/* Filter Section */}
 			<div className="max-w-6xl mx-auto mb-8">
-				<div className="flex items-center gap-3 mb-4">
-					<Filter size={20} className="text-terminal-cyan" />
-					<span className="text-terminal-text/80 font-mono">
-						Filter nach Technologie:
-					</span>
-				</div>
+                                <div className="flex items-center gap-3 mb-4">
+                                        <Filter size={20} className="text-terminal-cyan" />
+                                        <span className="text-terminal-text/80 font-mono">
+                                                {t('projects.filterLabel')}
+                                        </span>
+                                </div>
 
 				<div className="flex flex-wrap gap-3">
 					<button
 						type="button"
-						className={`px-4 py-2  border transition-all duration-200 ${
-							!activeTag
-								? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
-								: 'border-terminal-text/30 text-terminal-text/70 hover:border-terminal-cyan hover:text-terminal-cyan'
-						}`}
-						onClick={() => setActiveTag(null)}
-					>
-						Alle Projekte
-					</button>
+                                                className={`px-4 py-2  border transition-all duration-200 ${
+                                                        !activeTag
+                                                                ? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
+                                                                : 'border-terminal-text/30 text-terminal-text/70 hover:border-terminal-cyan hover:text-terminal-cyan'
+                                                }`}
+                                                onClick={() => setActiveTag(null)}
+                                        >
+                                                {t('projects.all')}
+                                        </button>
 					{[...uniqueTags].map((tag) => (
 						<button
 							type="button"
@@ -134,17 +136,17 @@ const ProjectsPage = () => {
 
 				{/* Empty State */}
 				{filteredProjects.length === 0 && (
-					<motion.div
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						className="text-center py-12"
-					>
-						<Code size={48} className="text-terminal-text/40 mx-auto mb-4" />
-						<p className="text-terminal-text/60 font-mono">
-							Keine Projekte gefunden für diesen Filter.
-						</p>
-					</motion.div>
-				)}
+                                        <motion.div
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                className="text-center py-12"
+                                        >
+                                                <Code size={48} className="text-terminal-text/40 mx-auto mb-4" />
+                                                <p className="text-terminal-text/60 font-mono">
+                                                        {t('projects.empty')}
+                                                </p>
+                                        </motion.div>
+                                )}
 			</div>
 
 			{/* Footer Section */}
@@ -155,24 +157,24 @@ const ProjectsPage = () => {
 				className="max-w-6xl mx-auto mt-16 pt-8 border-t border-terminal-text/20"
 			>
 				<div className="text-center">
-					<div className="flex items-center justify-center gap-2 mb-4">
-						<span className="text-terminal-text/80 font-mono">
-							Sieh dir unsere Projekte auf GitHub an!
-						</span>
-					</div>
-					<TerminalButton
-						href="https://github.com/neuland-ingolstadt"
-						target="_blank"
-						rel="noreferrer noopener"
-					>
-						<Github
-							size={16}
-							className="mr-2 group-hover:rotate-8 transition-transform duration-300"
-						/>
-						Mehr erfahren
-					</TerminalButton>
-				</div>
-			</motion.div>
+                                        <div className="flex items-center justify-center gap-2 mb-4">
+                                                <span className="text-terminal-text/80 font-mono">
+                                                        {t('projects.github')}
+                                                </span>
+                                        </div>
+                                        <TerminalButton
+                                                href="https://github.com/neuland-ingolstadt"
+                                                target="_blank"
+                                                rel="noreferrer noopener"
+                                        >
+                                                <Github
+                                                        size={16}
+                                                        className="mr-2 group-hover:rotate-8 transition-transform duration-300"
+                                                />
+                                                {t('projects.more')}
+                                        </TerminalButton>
+                                </div>
+                        </motion.div>
 		</div>
 	)
 }

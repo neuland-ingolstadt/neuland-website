@@ -3,28 +3,30 @@ import { motion } from 'framer-motion'
 import { Lightbulb, Rocket, Users } from 'lucide-react'
 import type React from 'react'
 import TerminalSection from '@/components/Layout/terminal-section'
+import { useTranslations } from '@/contexts/I18nContext'
 
 const AboutUsSection: React.FC = () => {
-	const features = [
-		{
-			icon: <Rocket className="h-6 w-6 text-terminal-cyan" />,
-			title: 'Projekte & Wettbewerbe',
-			desc: 'Wir entwickeln innovative Projekte, nehmen an Wettbewerben teil und fördern Kreativität.'
-		},
-		{
-			icon: <Lightbulb className="h-6 w-6 text-terminal-cyan" />,
-			title: 'Veranstaltungen & Wissen',
-			desc: 'Wir organisieren Events rund um Informatik und Technik – offen für alle Fakultäten und Studiengänge.'
-		},
-		{
-			icon: <Users className="h-6 w-6 text-terminal-cyan" />,
-			title: 'Community & Networking',
-			desc: 'Lerne neue Leute kennen, vernetze dich und werde Teil einer aktiven, hilfsbereiten Studierenden-Community.'
-		}
-	]
+        const { translate: t } = useTranslations()
+        const features = [
+                {
+                        icon: <Rocket className="h-6 w-6 text-terminal-cyan" />,
+                        title: t('about.featureProjects'),
+                        desc: t('about.featureProjectsDesc')
+                },
+                {
+                        icon: <Lightbulb className="h-6 w-6 text-terminal-cyan" />,
+                        title: t('about.featureKnowledge'),
+                        desc: t('about.featureKnowledgeDesc')
+                },
+                {
+                        icon: <Users className="h-6 w-6 text-terminal-cyan" />,
+                        title: t('about.featureCommunity'),
+                        desc: t('about.featureCommunityDesc')
+                }
+        ]
 
-	return (
-		<TerminalSection title="Über uns" headingLevel={2}>
+        return (
+                <TerminalSection title={t('about.title')} headingLevel={2}>
 			{/* Unified container */}
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
@@ -55,15 +57,14 @@ const AboutUsSection: React.FC = () => {
 				<div className="absolute inset-0 bg-gradient-to-b from-terminal-cyan/3 via-transparent to-transparent pointer-events-none" />
 
 				{/* Main intro section */}
-				<div className="p-6 border-b border-terminal-window-border relative z-10">
-					<h3 className="text-xl font-semibold text-terminal-text mb-3">
-						Gemeinschaft & Plattform
-					</h3>
-					<p className="text-terminal-text/90 leading-relaxed m-0">
-						Wir bieten Studierenden eine Plattform zum Austausch, zur
-						Projektarbeit und zur Wissensvermittlung .
-					</p>
-				</div>
+                                <div className="p-6 border-b border-terminal-window-border relative z-10">
+                                        <h3 className="text-xl font-semibold text-terminal-text mb-3">
+                                                {t('about.introTitle')}
+                                        </h3>
+                                        <p className="text-terminal-text/90 leading-relaxed m-0">
+                                                {t('about.introBody')}
+                                        </p>
+                                </div>
 
 				{/* Feature cards section */}
 				<div className="relative z-10">

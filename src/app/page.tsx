@@ -7,26 +7,32 @@ import NextAppShowcase from '@/components/next-app-showcase'
 import ProjectsShowcase from '@/components/Projects/projects-showcase'
 import TerminalMembership from '@/components/terminal-membership'
 import TerminalPartners from '@/components/terminal-partners'
+import { getTranslator } from '@/lib/i18n/server'
 
 export default async function Index() {
-	return (
-		<>
-			<ClientIntro />
-			<EventsSection />
-			<NextAppShowcase />
-			<TerminalSection title="Auszug aus unseren Projekten" headingLevel={2}>
-				<ProjectsShowcase />
-			</TerminalSection>
-			<AboutUsSection />
-			<TerminalSection title="Mitgliedschaft" headingLevel={2} id="membership">
-				<TerminalMembership />
-			</TerminalSection>
-			<TerminalSection title="Partner" headingLevel={2}>
-				<TerminalPartners />
-			</TerminalSection>
-			<TerminalSection title="Neuland Blog" headingLevel={2}>
-				<BlogPreview />
-			</TerminalSection>
-		</>
-	)
+        const t = getTranslator()
+        return (
+                <>
+                        <ClientIntro />
+                        <EventsSection />
+                        <NextAppShowcase />
+                        <TerminalSection title={t.translate('home.projectsTitle') as string} headingLevel={2}>
+                                <ProjectsShowcase />
+                        </TerminalSection>
+                        <AboutUsSection />
+                        <TerminalSection
+                                title={t.translate('home.membershipTitle') as string}
+                                headingLevel={2}
+                                id="membership"
+                        >
+                                <TerminalMembership />
+                        </TerminalSection>
+                        <TerminalSection title={t.translate('home.partnersTitle') as string} headingLevel={2}>
+                                <TerminalPartners />
+                        </TerminalSection>
+                        <TerminalSection title={t.translate('home.blogTitle') as string} headingLevel={2}>
+                                <BlogPreview />
+                        </TerminalSection>
+                </>
+        )
 }

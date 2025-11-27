@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "membership": "Mitglied werden",
+    "projects": "Projekte",
+    "blog": "Blog",
+    "login": "Login",
+    "language": "Sprache",
+    "german": "Deutsch",
+    "english": "Englisch"
+  },
+  "home": {
+    "intro": "Der studentische Verein für alle informatikbegeisterten Studierenden der TH Ingolstadt.",
+    "projectsTitle": "Auszug aus unseren Projekten",
+    "membershipTitle": "Mitgliedschaft",
+    "partnersTitle": "Partner",
+    "blogTitle": "Neuland Blog"
+  },
+  "events": {
+    "title": "Unsere Veranstaltungen",
+    "semester": "Events im {{semester}}",
+    "errorHeading": "Oh nein! Beim Abrufen der Events ist etwas schiefgelaufen.",
+    "errorDetails": "Unsere Serverwartungsmannschaft macht gerade wohl Kaffeepause.",
+    "errorRetry": "Bitte versuche es später noch einmal!",
+    "emptyHeading": "Danke für eure Teilnahme an den über 20 Events in diesem Semester! 🎉",
+    "emptyBody": "Wir arbeiten bereits an spannenden neuen Events für das kommende Semester.",
+    "emptyCommand": "./prepare_ctf.sh --season WS25/26 --hype-level=MAXIMUM",
+    "details": "Details",
+    "calendarCta": "Kalender abonnieren",
+    "downloadIcs": ".ics herunterladen",
+    "close": "Schließen",
+    "icalDescription": "Füge alle kommenden Events zu deinem Kalender hinzu",
+    "share": "Kalender teilen",
+    "icalTitle": "ical-subscribe.sh --import-events",
+    "icalBody": "Du kannst alle Neuland Events in deinen Kalender als iCal Abonnement hinzufügen.",
+    "steps": "Kopiere die URL|Öffne deine Kalender App|Erstelle ein neues iCal Abonnement|Die Events werden automatisch aktualisiert"
+  },
+  "about": {
+    "title": "Über uns",
+    "introTitle": "Gemeinschaft & Plattform",
+    "introBody": "Wir bieten Studierenden eine Plattform zum Austausch, zur Projektarbeit und zur Wissensvermittlung .",
+    "featureProjects": "Projekte & Wettbewerbe",
+    "featureProjectsDesc": "Wir entwickeln innovative Projekte, nehmen an Wettbewerben teil und fördern Kreativität.",
+    "featureKnowledge": "Veranstaltungen & Wissen",
+    "featureKnowledgeDesc": "Wir organisieren Events rund um Informatik und Technik – offen für alle Fakultäten und Studiengänge.",
+    "featureCommunity": "Community & Networking",
+    "featureCommunityDesc": "Lerne neue Leute kennen, vernetze dich und werde Teil einer aktiven, hilfsbereiten Studierenden-Community."
+  },
+  "next": {
+    "heading": "Neuland Next",
+    "subheading": "Deine App für die TH Ingolstadt",
+    "description": "Deine moderne Campus-App von Neuland Ingolstadt. Entwickelt mit Liebe zum Detail, vollständig Open Source und auf allen Geräten verfügbar.",
+    "cta": "Zur App",
+    "flagshipTitle": "Unser Flaggschiff-Projekt",
+    "flagshipBody": "Neuland Next ist mehr als nur eine App – es ist dein digitaler Begleiter durch den Studienalltag an der THI. Alle wichtigen Funktionen für deinen Campus-Alltag in einer App.",
+    "why": "Warum Neuland Next",
+    "download": "Jetzt herunterladen",
+    "featuresHeading": "Die Features auf einen Blick",
+    "features": {
+      "schedule": "Stundenplan & Prüfungen",
+      "scheduleDesc": "Dein persönlicher Stundenplan und alle Prüfungen",
+      "calendar": "Kalender & Events",
+      "calendarDesc": "Alle wichtigen Semesterdaten und Campus-Events",
+      "profile": "Profil",
+      "profileDesc": "Prüfe deine Noten oder dein Druckguthaben",
+      "canteen": "Mensa",
+      "canteenDesc": "Alle Speisepläne mit Preisen, Allergenen und Nährwerten",
+      "map": "Campus-Karte",
+      "mapDesc": "Finde freie Räume, erkunde Gebäude oder nutze smarte Vorschläge",
+      "library": "Bibliothek",
+      "libraryDesc": "Nutze deinen virtuellen Bibliotheks Code zum Ausleihen",
+      "links": "Quick Links",
+      "linksDesc": "Alle wichtigen Uni-Plattformen wie Moodle oder Primuss",
+      "news": "THI News",
+      "newsDesc": "Bleibe informiert mit den neuesten Nachrichten der THI"
+    },
+    "highlights": {
+      "privacy": "Maximaler Datenschutz",
+      "performance": "Blitzschnelle Performance",
+      "oss": "100% Open Source",
+      "updates": "Regelmäßige Updates",
+      "offline": "Offline-fähig",
+      "web": "Auch als Web App"
+    }
+  },
+  "membership": {
+    "feesTitle": "$ cat membership-fees.txt",
+    "students": "Studierende:",
+    "studentsPrice": "5€ / Jahr",
+    "external": "Externe:",
+    "externalPrice": "20€ / Jahr",
+    "benefitsTitle": "Deine Vorteile:",
+    "benefitCommunity": "Teil eines aktiven studentischen Vereins mit regelmäßigen Treffen und Austausch",
+    "benefitProjects": "Gemeinsame Arbeit an Open-Source Projekten",
+    "benefitEvents": "Exklusive Workshops, Hackathons und soziale Events mit Gleichgesinnten",
+    "join": "Mitglied werden",
+    "email": "E-Mail schreiben"
+  },
+  "projects": {
+    "title": "Unsere Projekte",
+    "description": "Entdecke unsere Sammlung kreativer, technischer und gemeinschaftsgetriebener Projekte. Von Webanwendungen bis hin zu Cybersecurity-Initiativen.",
+    "count": "{{count}} Projekt{{suffix}} gefunden",
+    "filterLabel": "Filter nach Technologie:",
+    "all": "Alle Projekte",
+    "empty": "Keine Projekte gefunden für diesen Filter.",
+    "github": "Sieh dir unsere Projekte auf GitHub an!",
+    "more": "Mehr erfahren"
+  }
+}

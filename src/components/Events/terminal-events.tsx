@@ -8,6 +8,7 @@ import TerminalButton from '@/components/terminal-button'
 import TerminalList from '@/components/terminal-list'
 import { cn } from '@/lib/utils'
 import type { fetchEvents } from '@/services/events'
+import { useTranslations } from '@/contexts/I18nContext'
 import CalendarModal from './calendar-modal'
 
 interface TerminalEventsProps {
@@ -16,13 +17,14 @@ interface TerminalEventsProps {
 }
 
 const TerminalEvents: React.FC<TerminalEventsProps> = ({
-	initialData,
-	error: serverError
+        initialData,
+        error: serverError
 }) => {
-	const eventsData = initialData || {
-		semester: `SS ${new Date().getFullYear()}`,
-		events: []
-	}
+        const { translate: t } = useTranslations()
+        const eventsData = initialData || {
+                semester: `SS ${new Date().getFullYear()}`,
+                events: []
+        }
 	const error = serverError
 
 	const [selectedEventIndex, setSelectedEventIndex] = useState<number | null>(
@@ -60,12 +62,14 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 		setIsCalModalOpen(false)
 	}, [])
 
-	return (
-		<TerminalSection
-			title="Unsere Veranstaltungen"
-			subtitle={`Events im ${eventsData?.semester || `SS ${new Date().getFullYear()}`}`}
-			headingLevel={2}
-		>
+        return (
+                <TerminalSection
+                        title={t('events.title')}
+                        subtitle={t('events.semester', {
+                                semester: eventsData?.semester || `SS ${new Date().getFullYear()}`
+                        })}
+                        headingLevel={2}
+                >
 			<div className="max-w-5xl mx-auto justify-start mt-10 mb-8 relative overflow-visible min-h-[200px] font-mono">
 				<TerminalWindow
 					title={`eventsData.sh --semester '${eventsData?.semester || `SS ${new Date().getFullYear()}`}'`}
@@ -79,41 +83,38 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 					>
 						<TerminalList>
 							{error ? (
-								<div className="p-4 text-terminal-lightGreen">
-									<p className="text-md mb-2">
-										Oh nein! Beim Abrufen der Events ist etwas schiefgelaufen.
-									</p>
-									<p className="text-sm text-terminal-lightGreen/60">
-										{typeof error === 'object' &&
+                                                                <div className="p-4 text-terminal-lightGreen">
+                                                                        <p className="text-md mb-2">
+                                                                                {t('events.errorHeading')}
+                                                                        </p>
+                                                                        <p className="text-sm text-terminal-lightGreen/60">
+                                                                                {typeof error === 'object' &&
 										error !== null &&
 										'message' in error
 											? (error as { message: string }).message
-											: typeof error === 'string'
-												? error
-												: 'Unbekannter Fehler'}
-									</p>
-									<p className="text-sm mt-4 text-terminal-text/70">
-										Unsere Serverwartungsmannschaft macht gerade wohl
-										Kaffeepause.
-										<br />
-										Bitte versuche es später noch einmal!
-									</p>
-								</div>
-							) : !eventsData?.events || eventsData.events.length === 0 ? (
-								<div className="p-4 text-terminal-text font-bold">
-									<p className="text-md mb-3">
-										Danke für eure Teilnahme an den über 20 Events in diesem
-										Semester! 🎉
-									</p>
-									<p className="text-sm mb-3 text-terminal-text/80">
-										Wir arbeiten bereits an spannenden neuen Events für das
-										kommende Semester.
-										<br />
-										<span className="text-terminal-highlight">$</span>{' '}
-										./prepare_ctf.sh --season WS25/26 --hype-level=MAXIMUM
-									</p>
-								</div>
-							) : (
+                                                                                        : typeof error === 'string'
+                                                                                                ? error
+                                                                                                : 'Unknown error'}
+                                                                        </p>
+                                                                        <p className="text-sm mt-4 text-terminal-text/70">
+                                                                                {t('events.errorDetails')}
+                                                                                <br />
+                                                                                {t('events.errorRetry')}
+                                                                        </p>
+                                                                </div>
+                                                        ) : !eventsData?.events || eventsData.events.length === 0 ? (
+                                                                <div className="p-4 text-terminal-text font-bold">
+                                                                        <p className="text-md mb-3">
+                                                                                {t('events.emptyHeading')}
+                                                                        </p>
+                                                                        <p className="text-sm mb-3 text-terminal-text/80">
+                                                                                {t('events.emptyBody')}
+                                                                                <br />
+                                                                                <span className="text-terminal-highlight">$</span>{' '}
+                                                                                {t('events.emptyCommand')}
+                                                                        </p>
+                                                                </div>
+                                                        ) : (
 								<div
 									ref={containerRef}
 									className="min-h-[250px] h-auto relative"
@@ -169,16 +170,16 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 															))}
 													</div>
 
-													<strong
-														className={cn('text-terminal-lightGreen text-lg', {
-															hidden:
-																!eventsData.events[selectedEventIndex]
-																	.description
-														})}
-													>
-														Details
-													</strong>
-												</div>
+                                                                                                        <strong
+                                                                                                                className={cn('text-terminal-lightGreen text-lg', {
+                                                                                                                        hidden:
+                                                                                                                                !eventsData.events[selectedEventIndex]
+                                                                                                                                        .description
+                                                                                                                })}
+                                                                                                        >
+                                                                                                                {t('events.details')}
+                                                                                                        </strong>
+                                                                                                </div>
 
 												<div
 													className="overflow-y-auto overflow-x-hidden pr-4 max-w-full flex-1"
@@ -203,17 +204,17 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 												<div className="flex-none pt-3 pb-4">
 													<button
 														onClick={resetSelectedEvent}
-														className="text-terminal-text transition-colors px-2 py-1 text-sm inline-flex items-center font-bold group bg-terminal-card border border-terminal-window-border hover:bg-terminal-window-border/30"
-														type="button"
-													>
-														<LucideArrowBigLeft
-															size={16}
-															className="mr-1 group-hover:text-terminal-highlight transition-colors"
-														/>
-														Alle Events
-													</button>
-												</div>
-											</div>
+                                                                                                className="text-terminal-text transition-colors px-2 py-1 text-sm inline-flex items-center font-bold group bg-terminal-card border border-terminal-window-border hover:bg-terminal-window-border/30"
+                                                                                                type="button"
+                                                                                        >
+                                                                                                <LucideArrowBigLeft
+                                                                                                        size={16}
+                                                                                                        className="mr-1 group-hover:text-terminal-highlight transition-colors"
+                                                                                                />
+                                                                                                {t('events.title')}
+                                                                                        </button>
+                                                                                </div>
+                                                                        </div>
 										)}
 									</div>
 
@@ -268,17 +269,17 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 							)}
 						</TerminalList>
 					</div>
-				</TerminalWindow>
+                                </TerminalWindow>
 
-				<div className="flex sm:justify-end -mt-4 ">
-					<TerminalButton onClick={openCalModal}>
-						<CalendarIcon
-							size={16}
-							className="mr-2 group-hover:rotate-8 transition-transform duration-300"
-						/>
-						Events abonnieren
-					</TerminalButton>
-				</div>
+                                <div className="flex sm:justify-end -mt-4 ">
+                                        <TerminalButton onClick={openCalModal}>
+                                                <CalendarIcon
+                                                        size={16}
+                                                        className="mr-2 group-hover:rotate-8 transition-transform duration-300"
+                                                />
+                                                {t('events.calendarCta')}
+                                        </TerminalButton>
+                                </div>
 
 				<CalendarModal
 					isOpen={isCalModalOpen}
