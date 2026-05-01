@@ -8,5 +8,15 @@ export default withContentlayer(withNextIntl({
 	experimental: {
 		webpackMemoryOptimizations: true
 	},
-	reactCompiler: true
+	reactCompiler: true,
+	async redirects() {
+		return [
+			{
+				source: '/:path*',
+				has: [{ type: 'host', value: 'cloud.informatik.sexy' }],
+				destination: 'https://cloud.neuland.ing/:path*',
+				permanent: true
+			}
+		]
+	}
 }))
