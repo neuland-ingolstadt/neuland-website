@@ -149,6 +149,7 @@
         "events": "Events",
         "projects": "Projekte",
         "blog": "Blog",
+        "donate": "Spenden",
         "login": "Login"
     },
     "Footer": {
@@ -268,5 +269,13 @@
             "title": "der Satzung",
             "breadcrumb": "Satzung"
         }
+    },
+    "Donation": {
+        "title": "Unterstütze Neuland",
+        "description": "Wir freuen uns über jede Spende. Vielen Dank!",
+        "bankConnection": "Bankverbindung",
+        "recipient": "Empfänger",
+        "iban": "IBAN",
+        "bic": "BIC"
     }
 }

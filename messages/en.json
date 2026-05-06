@@ -149,6 +149,7 @@
         "events": "Events",
         "projects": "Projects",
         "blog": "Blog",
+        "donate": "Donate",
         "login": "Login"
     },
     "Footer": {
@@ -268,5 +269,13 @@
             "title": "the Bylaws",
             "breadcrumb": "Bylaws"
         }
+    },
+    "Donation": {
+        "title": "Support Neuland",
+        "description": "We appreciate every donation. Thank you!",
+        "bankConnection": "Bank Details",
+        "recipient": "Recipient",
+        "iban": "IBAN",
+        "bic": "BIC"
     }
 }
