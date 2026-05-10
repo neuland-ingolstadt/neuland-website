@@ -31,7 +31,7 @@ const TerminalMembership = () => {
 									Studierende:
 								</span>
 								<span className="text-terminal-text ml-2 font-bold font-mono text-lg">
-									5€ / Jahr
+									10€ / Jahr
 								</span>
 							</div>
 							<div className="flex items-center justify-between">
