@@ -34,7 +34,7 @@ const TerminalMembership = () => {
 									{t('pricing.students')}:
 								</span>
 								<span className="text-terminal-text ml-2 font-bold font-mono text-lg">
-									5€ / {t('pricing.year')}
+									10€ / {t('pricing.year')}
 								</span>
 							</div>
 							<div className="flex items-center justify-between">
