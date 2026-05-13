@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Mail, Zap } from 'lucide-react'
+import { Heart, Mail, Zap } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import TerminalButton from './terminal-button'
 
@@ -81,7 +81,7 @@ const TerminalPartners: React.FC = () => {
 							</div>
 						</div>
 
-						<div className="pt-2">
+						<div className="pt-2 flex flex-wrap gap-3">
 							<TerminalButton
 								href="mailto:info@neuland-ingolstadt.de?subject=Anfrage%20zur%20Partnerschaft"
 								dark
@@ -91,6 +91,14 @@ const TerminalPartners: React.FC = () => {
 									className="mr-2 group-hover:rotate-8 transition-transform duration-300"
 								/>
 								{t('features.becomePartner')}
+							</TerminalButton>
+
+							<TerminalButton href="/donation" dark>
+								<Heart
+									size={16}
+									className="mr-2 text-terminal-cyan fill-terminal-cyan/10"
+								/>
+								{t('features.donate')}
 							</TerminalButton>
 						</div>
 					</motion.div>

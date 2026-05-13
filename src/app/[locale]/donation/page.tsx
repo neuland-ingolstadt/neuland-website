@@ -1,43 +1,8 @@
 'use client'
 
-import { Check, Copy, CreditCard } from 'lucide-react'
+import { CreditCard } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
-
-function CopyField({ label, value }: { label: string; value: string }) {
-	const [copied, setCopied] = useState(false)
-
-	const handleCopy = () => {
-		navigator.clipboard.writeText(value.replace(/\s/g, ''))
-		setCopied(true)
-		setTimeout(() => setCopied(false), 2000)
-	}
-
-	return (
-		<div className="flex flex-col gap-2">
-			<p className="text-[10px] font-mono text-terminal-text/50 uppercase tracking-widest m-0">
-				/ {label}
-			</p>
-			<div className="flex items-center justify-between border border-terminal-text/20 px-4 py-3 hover:border-terminal-cyan/40 transition-colors duration-200">
-				<code className="text-sm font-mono text-terminal-text truncate mr-2">
-					{value}
-				</code>
-				<button
-					type="button"
-					onClick={handleCopy}
-					className="shrink-0 text-terminal-text/40 hover:text-terminal-cyan transition-colors"
-					aria-label="Copy to clipboard"
-				>
-					{copied ? (
-						<Check size={16} className="text-terminal-cyan" />
-					) : (
-						<Copy size={16} />
-					)}
-				</button>
-			</div>
-		</div>
-	)
-}
+import { TerminalCopyField } from '@/components/ui/terminal-copy-field'
 
 export default function DonationPage() {
 	const t = useTranslations('Donation')
@@ -54,13 +19,13 @@ export default function DonationPage() {
 				</p>
 			</section>
 
-			{/* Bankverbindung Card */}
+			{/* Bank information card */}
 			<div className="relative border border-terminal-text/20 bg-terminal-window p-8 max-w-lg mx-auto w-full">
-				{/* Grüne Eck-Akzente */}
-				<div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-terminal-cyan/30" />
-				<div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-terminal-cyan/30" />
-				<div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-terminal-cyan/30" />
-				<div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-terminal-cyan/30" />
+				{/* Green corner details */}
+				<div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-terminal-cyan/30 pointer-events-none" />
+				<div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-terminal-cyan/30 pointer-events-none" />
+				<div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-terminal-cyan/30 pointer-events-none" />
+				<div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-terminal-cyan/30 pointer-events-none" />
 
 				<div className="flex items-center gap-3 mb-8">
 					<CreditCard size={20} className="text-terminal-cyan" />
@@ -68,9 +33,16 @@ export default function DonationPage() {
 				</div>
 
 				<div className="flex flex-col gap-5">
-					<CopyField label={t('recipient')} value="Neuland Ingolstadt e.V." />
-					<CopyField label={t('iban')} value="DE64 7215 0000 0054 2668 04" />
-					<CopyField label={t('bic')} value="BYLADEM1ING" />
+					<TerminalCopyField
+						label={t('recipient')}
+						value="Neuland Ingolstadt e.V."
+					/>
+					<TerminalCopyField
+						label="IBAN"
+						value="DE64 7215 0000 0054 2668 04"
+						removeSpaces
+					/>
+					<TerminalCopyField label="BIC" value="BYLADEM1ING" removeSpaces />
 				</div>
 			</div>
 		</div>

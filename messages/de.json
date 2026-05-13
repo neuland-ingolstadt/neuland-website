@@ -125,7 +125,8 @@
                 "line1": "Spannende Events, Hackathons und Workshops, die Studierende begeistern",
                 "line2": "Innovative Projekte und Karriereerfolge durch echte Praxisbezüge",
                 "line3": "Eine lebendige Tech-Community, die Theorie und Praxis zusammenbringt",
-                "becomePartner": "Partner werden"
+                "becomePartner": "Partner werden",
+                "donate": "Spenden"
             }
         },
         "blogSection": {
@@ -274,8 +275,6 @@
         "title": "Unterstütze Neuland",
         "description": "Wir freuen uns über jede Spende. Vielen Dank!",
         "bankConnection": "Bankverbindung",
-        "recipient": "Empfänger",
-        "iban": "IBAN",
-        "bic": "BIC"
+        "recipient": "Empfänger"
     }
 }

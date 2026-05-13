@@ -125,7 +125,8 @@
                 "line1": "Exciting events, hackathons, and workshops that inspire students",
                 "line2": "Innovative projects and career success through real-world practical relevance",
                 "line3": "A vibrant tech community that brings theory and practice together",
-                "becomePartner": "Become a partner"
+                "becomePartner": "Become a partner",
+                "donate": "Donate"
             }
         },
         "blogSection": {
@@ -274,8 +275,6 @@
         "title": "Support Neuland",
         "description": "We appreciate every donation. Thank you!",
         "bankConnection": "Bank Details",
-        "recipient": "Recipient",
-        "iban": "IBAN",
-        "bic": "BIC"
+        "recipient": "Recipient"
     }
 }
