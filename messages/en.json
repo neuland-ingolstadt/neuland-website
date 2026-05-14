@@ -125,7 +125,8 @@
                 "line1": "Exciting events, hackathons, and workshops that inspire students",
                 "line2": "Innovative projects and career success through real-world practical relevance",
                 "line3": "A vibrant tech community that brings theory and practice together",
-                "becomePartner": "Become a partner"
+                "becomePartner": "Become a partner",
+                "donate": "Donate"
             }
         },
         "blogSection": {
@@ -149,6 +150,7 @@
         "events": "Events",
         "projects": "Projects",
         "blog": "Blog",
+        "donate": "Donate",
         "login": "Login"
     },
     "Footer": {
@@ -268,5 +270,14 @@
             "title": "the Bylaws",
             "breadcrumb": "Bylaws"
         }
+    },
+    "Donation": {
+        "title": "Support Neuland",
+        "description": "We appreciate every donation. You're supporting the Neuland Next App, our Tech Talks, Workshops, Events and much more that makes Neuland what it is. Thank you for being part of it!",
+        "bankConnection": "Bank Details",
+        "recipient": "Recipient",
+        "disclaimer": "Neuland Ingolstadt e.V. is an officially recognized non-profit organization. Donations are tax-deductible – we are happy to provide a donation receipt upon request, provided no consideration was rendered in return.",
+        "receiptRequest": "Request a receipt:",
+        "receiptSubject": "Donation%20Receipt%20Request"
     }
 }

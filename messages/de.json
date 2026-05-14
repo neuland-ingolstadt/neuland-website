@@ -125,7 +125,8 @@
                 "line1": "Spannende Events, Hackathons und Workshops, die Studierende begeistern",
                 "line2": "Innovative Projekte und Karriereerfolge durch echte Praxisbezüge",
                 "line3": "Eine lebendige Tech-Community, die Theorie und Praxis zusammenbringt",
-                "becomePartner": "Partner werden"
+                "becomePartner": "Partner werden",
+                "donate": "Spenden"
             }
         },
         "blogSection": {
@@ -149,6 +150,7 @@
         "events": "Events",
         "projects": "Projekte",
         "blog": "Blog",
+        "donate": "Spenden",
         "login": "Login"
     },
     "Footer": {
@@ -268,5 +270,14 @@
             "title": "der Satzung",
             "breadcrumb": "Satzung"
         }
+    },
+    "Donation": {
+        "title": "Unterstütze Neuland",
+        "description": "Wir freuen uns über jede Spende. Ihr unterstützt damit die Neuland Next App, unsere Tech-Talks, Workshops, Events und vieles mehr, was Neuland ausmacht. Danke, dass ihr dabei seid!",
+        "bankConnection": "Bankverbindung",
+        "recipient": "Empfänger",
+        "disclaimer": "Neuland Ingolstadt e.V. ist ein offiziell anerkannter gemeinnütziger Verein. Spenden sind steuerlich absetzbar – wir stellen auf Anfrage gerne eine Spendenquittung aus, sofern keine Gegenleistung erbracht wurde.",
+        "receiptRequest": "Quittung anfordern:",
+        "receiptSubject": "Anfrage%20Spendenquittung"
     }
 }
