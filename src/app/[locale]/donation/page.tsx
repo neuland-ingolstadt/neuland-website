@@ -1,6 +1,6 @@
 'use client'
 
-import { CreditCard } from 'lucide-react'
+import { CreditCard, ExternalLink } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { TerminalCopyField } from '@/components/ui/terminal-copy-field'
 
@@ -45,6 +45,28 @@ export default function DonationPage() {
 					<TerminalCopyField label="BIC" value="BYLADEM1ING" removeSpaces />
 				</div>
 			</div>
+
+			{/* Disclaimer & donation receipt info */}
+			<section className="mt-12 max-w-lg mx-auto w-full font-mono">
+				<div className="p-4 border border-terminal-text/10 bg-terminal-text/5 text-xs text-terminal-text/70 leading-relaxed">
+					<p className="mb-3">
+						<span className="text-terminal-cyan font-bold">NOTICE</span>
+						<span className="text-terminal-cyan/50 mr-2">:</span>
+						{t('disclaimer')}
+					</p>
+
+					<div className="flex flex-wrap items-center gap-2 pt-3 border-t border-terminal-text/10">
+						<span className="text-terminal-text/40">{t('receiptRequest')}</span>
+						<a
+							href={`mailto:info@neuland-ingolstadt.de?subject=${t('receiptSubject')}`}
+							className="text-terminal-cyan hover:opacity-70 transition-opacity flex items-center gap-1"
+						>
+							info@neuland-ingolstadt.de
+							<ExternalLink size={12} />
+						</a>
+					</div>
+				</div>
+			</section>
 		</div>
 	)
 }

@@ -273,8 +273,11 @@
     },
     "Donation": {
         "title": "Support Neuland",
-        "description": "We appreciate every donation. Thank you!",
+        "description": "We appreciate every donation. You're supporting the Neuland Next App, our Tech Talks, Workshops, Events and much more that makes Neuland what it is. Thank you for being part of it!",
         "bankConnection": "Bank Details",
-        "recipient": "Recipient"
+        "recipient": "Recipient",
+        "disclaimer": "Neuland Ingolstadt e.V. is an officially recognized non-profit organization. Donations are tax-deductible – we are happy to provide a donation receipt upon request, provided no consideration was rendered in return.",
+        "receiptRequest": "Request a receipt:",
+        "receiptSubject": "Donation%20Receipt%20Request"
     }
 }

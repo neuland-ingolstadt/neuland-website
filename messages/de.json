@@ -273,8 +273,11 @@
     },
     "Donation": {
         "title": "Unterstütze Neuland",
-        "description": "Wir freuen uns über jede Spende. Vielen Dank!",
+        "description": "Wir freuen uns über jede Spende. Ihr unterstützt damit die Neuland Next App, unsere Tech-Talks, Workshops, Events und vieles mehr, was Neuland ausmacht. Danke, dass ihr dabei seid!",
         "bankConnection": "Bankverbindung",
-        "recipient": "Empfänger"
+        "recipient": "Empfänger",
+        "disclaimer": "Neuland Ingolstadt e.V. ist ein offiziell anerkannter gemeinnütziger Verein. Spenden sind steuerlich absetzbar – wir stellen auf Anfrage gerne eine Spendenquittung aus, sofern keine Gegenleistung erbracht wurde.",
+        "receiptRequest": "Quittung anfordern:",
+        "receiptSubject": "Anfrage%20Spendenquittung"
     }
 }
