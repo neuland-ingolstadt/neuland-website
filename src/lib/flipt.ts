@@ -3,17 +3,17 @@ import 'server-only'
 import { FliptClient } from '@flipt-io/flipt'
 
 const namespace = process.env.FLIPT_NAMESPACE ?? 'neuland-website'
-const environment = process.env.FLIPT_ENVIRONMENT ?? 'production'
 
 function getFliptClient() {
 	const url = process.env.FLIPT_URL ?? 'http://localhost:8080'
 	const token = process.env.FLIPT_CLIENT_TOKEN
+	const environment = process.env.FLIPT_ENVIRONMENT
 
 	return new FliptClient({
 		url,
 		headers: {
 			...(token ? { Authorization: `Bearer ${token}` } : {}),
-			'X-Flipt-Environment': environment
+			...(environment ? { 'X-Flipt-Environment': environment } : {})
 		}
 	})
 }
