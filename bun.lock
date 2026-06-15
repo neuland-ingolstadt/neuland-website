@@ -6,7 +6,8 @@
       "name": "neuland-website",
       "dependencies": {
         "@aptabase/react": "^0.4.0",
-        "@flipt-io/flipt": "^1.5.0",
+        "@openfeature/flipt-provider": "^0.1.4",
+        "@openfeature/server-sdk": "^1.21.0",
         "@radix-ui/react-dialog": "^1.1.15",
         "@radix-ui/react-dropdown-menu": "^2.1.16",
         "@radix-ui/react-separator": "^1.1.8",
@@ -306,6 +307,12 @@
     "@nodelib/fs.stat": ["@nodelib/fs.stat@2.0.5", "", {}, "sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A=="],
 
     "@nodelib/fs.walk": ["@nodelib/fs.walk@1.2.8", "", { "dependencies": { "@nodelib/fs.scandir": "2.1.5", "fastq": "^1.6.0" } }, "sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg=="],
+
+    "@openfeature/core": ["@openfeature/core@1.10.0", "", {}, "sha512-C3ynxtPYhe5qVJgQIqCNxZXeRXo4t1Eo86uiROr8+sD6F2OjEJGIp6VOGxz+r6jkad2s8Br9BnUJOvskhai/3A=="],
+
+    "@openfeature/flipt-provider": ["@openfeature/flipt-provider@0.1.4", "", { "peerDependencies": { "@flipt-io/flipt": "^1.2.0", "@openfeature/server-sdk": "^1.13.0" } }, "sha512-wvGp/2AsA6qL89XNrC1RAAZAJCO0buEygRasf8rYTTRKNESbVNtv1rxQk5dZ3z2YR8RncPFCXTMTGioegG8n1g=="],
+
+    "@openfeature/server-sdk": ["@openfeature/server-sdk@1.21.0", "", { "peerDependencies": { "@openfeature/core": "^1.10.0" } }, "sha512-ZBVAiyMeN+dxurcXGJlvuOpYg9X7V923MVCI5dq/kE/5o8ys7MCOPhW44e4PS+XABHzSRTw44hcgWez93xwifw=="],
 
     "@opentelemetry/api": ["@opentelemetry/api@1.9.0", "", {}, "sha512-3giAOQvZiH5F9bMlMiv8+GSPMeqg0dbaeo58/0SlA9sxSqZhnUtxzX9/2FzyhS9sWQf5S0GJE0AKBrFqjpeYcg=="],
 
