@@ -184,9 +184,14 @@ const MobileSidebarTrigger: React.FC = () => {
 	)
 }
 
-const TerminalHeader: React.FC = () => {
+interface TerminalHeaderProps {
+	isPrideThemeEnabled?: boolean
+}
+
+const TerminalHeader: React.FC<TerminalHeaderProps> = ({
+	isPrideThemeEnabled = false
+}) => {
 	const headerRef = useRef<HTMLElement>(null)
-	const isJune = new Date().getMonth() === 5
 	const { triggerCrossesRotation } = useBackground()
 
 	// Dynamically set --navbar-height on the document root for robust layout
@@ -224,7 +229,7 @@ const TerminalHeader: React.FC = () => {
 								<NeulandLogo className="h-10 text-terminal-text" />
 							</div>
 						</Link>
-						{isJune && (
+						{isPrideThemeEnabled && (
 							<div className="mt-1 flex h-0.5 w-full overflow-hidden rounded">
 								<div className="h-full w-1/6 bg-red-500" />
 								<div className="h-full w-1/6 bg-orange-500" />

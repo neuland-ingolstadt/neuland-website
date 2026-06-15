@@ -12,6 +12,7 @@ import TerminalFooter from '@/components/Footer/terminal-footer'
 import TerminalHeader from '@/components/Layout/terminal-header'
 import Providers from '@/components/Provider'
 import { routing } from '@/i18n/routing'
+import { isPrideThemeEnabled } from '@/lib/feature-flags'
 
 const overpassMono = Noto_Sans_Mono({
 	variable: '--font-mono',
@@ -110,6 +111,7 @@ export default async function RootLayout({
 	}
 
 	const messages = await getMessages()
+	const prideThemeEnabled = await isPrideThemeEnabled()
 
 	return (
 		<html lang={locale} suppressHydrationWarning>
@@ -145,7 +147,7 @@ export default async function RootLayout({
 				className={`${overpassMono.variable} ${notoSans.variable} font-sans antialiased`}
 			>
 				<Providers locale={locale} messages={messages}>
-					<TerminalHeader />
+					<TerminalHeader isPrideThemeEnabled={prideThemeEnabled} />
 					<MatrixEffect />
 					<div className="container px-4 md:px-12 xl:px-20 mx-auto pt-6 relative z-10">
 						{children}
