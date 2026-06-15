@@ -49,12 +49,14 @@ export default function Providers({
 	children,
 	dehydratedState,
 	locale,
-	messages
+	messages,
+	timeZone
 }: {
 	children: React.ReactNode
 	dehydratedState?: DehydratedState
 	locale: string
 	messages: AbstractIntlMessages
+	timeZone: string
 }) {
 	// In React 18, we need to use useState here to create a new query client
 	// on the server for each request, to avoid sharing state between users.
@@ -72,7 +74,11 @@ export default function Providers({
 			>
 				<QueryClientProvider client={queryClient}>
 					<HydrationBoundary state={dehydratedState}>
-						<NextIntlClientProvider locale={locale} messages={messages}>
+						<NextIntlClientProvider
+							locale={locale}
+							messages={messages}
+							timeZone={timeZone}
+						>
 							{children}
 						</NextIntlClientProvider>
 						<RouteTracker />

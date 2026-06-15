@@ -7,3 +7,5 @@ export const routing = defineRouting({
 	// Used when no locale matches
 	defaultLocale: 'en'
 })
+
+export const timeZone = 'Europe/Berlin'
