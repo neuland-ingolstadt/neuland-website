@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "biome lint",
     "fmt": "biome check --fix",
-    "fmt:unsafe": "biome check --fix --unsafe"
+    "fmt:unsafe": "biome check --fix --unsafe",
+    "ci:biome": "biome ci ."
   },
   "dependencies": {
     "@aptabase/react": "^0.4.0",

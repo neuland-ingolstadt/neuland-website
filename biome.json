@@ -10,6 +10,18 @@
 		"ignoreUnknown": false,
 		"includes": ["src/**/*"]
 	},
+	"overrides": [
+		{
+			"includes": ["**/*icon*.svg"],
+			"linter": {
+				"rules": {
+					"a11y": {
+						"noSvgWithoutTitle": "off"
+					}
+				}
+			}
+		}
+	],
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab"
