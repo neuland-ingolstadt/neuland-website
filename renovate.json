@@ -1,7 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "enabledManagers": ["dockerfile", "github-actions"],
+  "extends": [
+    "config:recommended",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "enabledManagers": ["bun-version", "dockerfile", "github-actions"],
   "labels": ["dependencies"],
   "packageRules": [
     {
@@ -11,8 +15,16 @@
       "schedule": ["before 6am on monday"]
     },
     {
-      "description": "Group Dockerfile base image updates",
+      "description": "Group Bun runtime updates across .bun-version and Dockerfile",
+      "matchManagers": ["bun-version", "dockerfile"],
+      "matchPackageNames": ["bun", "oven/bun"],
+      "groupName": "bun",
+      "schedule": ["before 6am on monday"]
+    },
+    {
+      "description": "Group other Dockerfile base image updates",
       "matchManagers": ["dockerfile"],
+      "matchPackageNames": ["!oven/bun"],
       "groupName": "docker",
       "schedule": ["before 6am on monday"]
     }
