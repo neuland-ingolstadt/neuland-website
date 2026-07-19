@@ -55,12 +55,8 @@
 	{
 		"id": "ersti-hilfe",
 		"title": "Ersti-Hilfe-Kit",
-		"description": "Dein Campus. Dein Studium. Deine Veranstaltungen. Alles auf einen Blick!",
+		"description": "Eine Webseite für Erstsemester mit Infos zum Studienstart – inzwischen eingestellt.",
 		"links": [
-			{
-				"label": "Web",
-				"url": "https://ersti.neuland.app/"
-			},
 			{
 				"label": "GitHub",
 				"url": "https://github.com/neuland-ingolstadt/orientierungsphase"
@@ -68,8 +64,8 @@
 		],
 		"imageUrl": "/assets/ersti-kit.webp",
 		"tags": ["Next.js", "Web", "StudVer"],
-		"longDescription": "Das Ersti-Hilfe-Kit ist eine Webseite speziell für Erstsemester an der THI. Hier finden neue Studierende alle wichtigen Informationen zum Studienstart, zur Orientierung auf dem Campus und in der Stadt.",
-		"additionalInfo": "Das Projekt wurde mit Next.js umgesetzt, mit einem Fokus auf Benutzerfreundlichkeit und ansprechendes Design."
+		"longDescription": "Das Ersti-Hilfe-Kit war eine Webseite speziell für Erstsemester an der THI. Hier fanden neue Studierende alle wichtigen Informationen zum Studienstart, zur Orientierung auf dem Campus und in der Stadt.",
+		"additionalInfo": "Das Projekt wurde mit Next.js umgesetzt und ist kein aktives Projekt mehr."
 	},
 
 	{
