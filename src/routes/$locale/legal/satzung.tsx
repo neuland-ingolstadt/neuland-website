@@ -22,7 +22,7 @@ function Satzung() {
 	const t = useTranslations('Legal.Bylaws')
 
 	return (
-		<div className="pt-20">
+		<div>
 			<Breadcrumb className="mb-6">
 				<BreadcrumbList>
 					<BreadcrumbItem>

@@ -129,6 +129,7 @@
 
 :root {
 	color-scheme: dark;
+	--navbar-height: 4.5rem;
 	--background: 150 9% 4%;
 	--foreground: 150 25% 95%;
 	--muted: 150 9% 12%;

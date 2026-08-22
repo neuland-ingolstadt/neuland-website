@@ -21,7 +21,7 @@ function Datenschutz() {
 	const t = useTranslations('Legal.WebsitePrivacy')
 
 	return (
-		<div className="pt-20">
+		<div>
 			<Breadcrumb className="mb-6">
 				<BreadcrumbList>
 					<BreadcrumbItem>

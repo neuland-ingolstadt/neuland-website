@@ -30,7 +30,7 @@ function LocaleLayout() {
 		<>
 			<TerminalHeader isPrideThemeEnabled={prideThemeEnabled} />
 			<MatrixEffect />
-			<div className="container px-4 md:px-12 xl:px-20 mx-auto pt-6 relative z-10">
+			<div className="container px-4 md:px-12 xl:px-20 mx-auto pt-[calc(var(--navbar-height,4.5rem)+1.5rem)] relative z-10">
 				<Outlet />
 				<TerminalFooter />
 			</div>

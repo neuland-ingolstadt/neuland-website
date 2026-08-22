@@ -5,7 +5,7 @@ export default function ClientIntro() {
 	const t = useTranslations('Home.clientIntro')
 
 	return (
-		<div className={'pt-20'}>
+		<div>
 			<TypewriterText
 				text={t('typewriter')}
 				className="text-terminal-text/90 mb-12 font-mono text-xl font-semibold"

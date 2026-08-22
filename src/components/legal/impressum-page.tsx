@@ -16,7 +16,7 @@ export default function Impressum() {
 	const t = useTranslations('Legal.LegalNotice')
 
 	return (
-		<div className="pt-20 pb-12">
+		<div className="pb-12">
 			<div className="max-w-4xl mx-auto px-4">
 				<Breadcrumb className="mb-8">
 					<BreadcrumbList>
