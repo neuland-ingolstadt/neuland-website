@@ -1,7 +1,7 @@
 'use client'
 import type { Post } from 'contentlayer/generated'
+import { format, parseISO } from 'date-fns'
 import { ChevronRight } from 'lucide-react'
-import moment from 'moment'
 import { memo } from 'react'
 import { Link } from '@/i18n/navigation'
 
@@ -10,7 +10,9 @@ type PostCardProps = {
 }
 
 export const PostCard = memo(function PostCard({ post }: PostCardProps) {
-	const formattedDate = post.date ? moment(post.date).format('DD.MM.YYYY') : ''
+	const formattedDate = post.date
+		? format(parseISO(post.date), 'dd.MM.yyyy')
+		: ''
 
 	return (
 		<Link

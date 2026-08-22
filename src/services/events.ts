@@ -1,9 +1,7 @@
-import moment from 'moment'
-import 'moment/locale/de'
-import 'moment-timezone'
+import { getMonth, getYear, isValid } from 'date-fns'
+import { formatInTimeZone, toZonedTime } from 'date-fns-tz'
 
-moment.tz.setDefault('Europe/Berlin')
-moment.locale('de')
+const EVENT_TIMEZONE = 'Europe/Berlin'
 
 export interface Event {
 	id: number
@@ -22,21 +20,34 @@ export interface Event {
 	isInternal: boolean
 }
 
-function getDateStr(startDate: moment.Moment, event: PublicEventResponse) {
-	if (!startDate.isValid()) {
+function getDateStr(startUtc: Date, event: PublicEventResponse) {
+	if (!isValid(startUtc)) {
 		return 'tbd'
 	}
 
-	const localStartDate = startDate.tz('Europe/Berlin')
-	const formattedStart = localStartDate.format('DD.MM.YYYY, HH:mm')
+	const formattedStart = formatInTimeZone(
+		startUtc,
+		EVENT_TIMEZONE,
+		'dd.MM.yyyy, HH:mm'
+	)
 
 	let dateStr = formattedStart
 	if (event.end_date_time) {
-		const endDate = moment(event.end_date_time).tz('Europe/Berlin')
-		if (localStartDate.isSame(endDate, 'day')) {
-			dateStr += ` - ${endDate.format('HH:mm')}`
+		const endUtc = new Date(event.end_date_time)
+		if (!isValid(endUtc)) {
+			return dateStr
+		}
+
+		const startDay = formatInTimeZone(startUtc, EVENT_TIMEZONE, 'yyyy-MM-dd')
+		const endDay = formatInTimeZone(endUtc, EVENT_TIMEZONE, 'yyyy-MM-dd')
+		if (startDay === endDay) {
+			dateStr += ` - ${formatInTimeZone(endUtc, EVENT_TIMEZONE, 'HH:mm')}`
 		} else {
-			dateStr += ` - ${endDate.format('DD.MM.YYYY, HH:mm')}`
+			dateStr += ` - ${formatInTimeZone(
+				endUtc,
+				EVENT_TIMEZONE,
+				'dd.MM.yyyy, HH:mm'
+			)}`
 		}
 	}
 
@@ -66,9 +77,9 @@ export type PublicEventResponse = {
 	is_internal: boolean
 }
 
-function getSemesterFromDate(date: moment.Moment): string {
-	const year = date.year()
-	const month = date.month() + 1
+function getSemesterFromDate(date: Date): string {
+	const year = getYear(date)
+	const month = getMonth(date) + 1
 
 	if (month >= 4 && month <= 9) {
 		return `SS ${year}`
@@ -95,29 +106,27 @@ function sortEventsAscending(a: Event, b: Event) {
 }
 
 function toEvent(event: PublicEventResponse): Event {
-	const startDate = moment(event.start_date_time).tz('Europe/Berlin')
-	const endDate = event.end_date_time
-		? moment(event.end_date_time).tz('Europe/Berlin')
-		: null
+	const startUtc = new Date(event.start_date_time)
+	const endUtc = event.end_date_time ? new Date(event.end_date_time) : null
 	const titleDe = event.title_de || event.title_en || 'Untitled event'
 	const titleEn = event.title_en || event.title_de || 'Untitled event'
 	const descriptionDe = event.description_de || event.description_en || ''
 	const descriptionEn = event.description_en || event.description_de || ''
-	const nextOccurrence = startDate.isValid() ? startDate.toISOString() : ''
+	const nextOccurrence = isValid(startUtc) ? startUtc.toISOString() : ''
 
 	return {
 		id: event.id,
 		title: titleDe,
 		titleDe,
 		titleEn,
-		date: getDateStr(startDate, event),
+		date: getDateStr(startUtc, event),
 		location: event.location || '',
 		description: descriptionDe,
 		descriptionDe,
 		descriptionEn,
 		nextOccurrence,
 		startDateTime: event.start_date_time,
-		endDateTime: endDate?.isValid() ? endDate.toISOString() : null,
+		endDateTime: endUtc && isValid(endUtc) ? endUtc.toISOString() : null,
 		eventUrl: event.event_url || null,
 		isInternal: event.is_internal
 	}
@@ -162,10 +171,11 @@ export const fetchAllEvents = async (): Promise<{
 		})
 		let semester: string
 		if (nextUpcomingEvent?.nextOccurrence) {
-			const firstEventDate = moment(nextUpcomingEvent.nextOccurrence)
-			semester = getSemesterFromDate(firstEventDate)
+			semester = getSemesterFromDate(
+				toZonedTime(new Date(nextUpcomingEvent.nextOccurrence), EVENT_TIMEZONE)
+			)
 		} else {
-			semester = getSemesterFromDate(moment())
+			semester = getSemesterFromDate(toZonedTime(new Date(), EVENT_TIMEZONE))
 		}
 
 		const result = {
