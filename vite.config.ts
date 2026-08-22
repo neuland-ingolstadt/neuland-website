@@ -9,7 +9,13 @@ export default defineConfig({
 	plugins: [
 		tsConfigPaths({ projects: ['./tsconfig.json'] }),
 		tailwindcss(),
-		tanstackStart(),
+		tanstackStart({
+			server: {
+				build: {
+					inlineCss: true
+				}
+			}
+		}),
 		nitro({ preset: 'node-server' }),
 		viteReact({
 			babel: {
