@@ -120,7 +120,7 @@
 	{
 		"id": "neuland-website",
 		"title": "Neuland Website",
-		"description": "Die Hauptlandingpage für den Neuland-Verein, entwickelt mit Next.js und Tailwind CSS.",
+		"description": "Die Hauptlandingpage für den Neuland-Verein, entwickelt mit Tanstack Router und Tailwind CSS.",
 		"links": [
 			{
 				"label": "Demo",
@@ -131,10 +131,10 @@
 				"url": "https://github.com/neuland-ingolstadt/neuland-website"
 			}
 		],
-		"tags": ["Next.js", "TypeScript"],
+		"tags": ["Tanstack", "Vite", "TypeScript"],
 		"imageUrl": "/assets/website-blog.webp",
 		"longDescription": "Die Website dient als Showcase für unsere Projekte und bietet Informationen über den Verein und seine Veranstaltungen. Sie nutzt einen Retro-Terminal-Stil, um unsere Werte effektiv zu präsentieren und versteckte Features zu integrieren, um die Attraktivität zu steigern.",
-		"additionalInfo": "Die Website wurde mit Next.js und Tailwind CSS entwickelt und bietet eine moderne, responsive Benutzeroberfläche mit Analytics-Integration."
+		"additionalInfo": "Die Website wurde mit Tanstack Router und Vite entwickelt und bietet eine moderne, responsive Benutzeroberfläche mit Analytics-Integration."
 	},
 	{
 		"id": "aoc-leaderboard",

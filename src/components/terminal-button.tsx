@@ -50,7 +50,6 @@ const TerminalButton: React.FC<TerminalButtonProps> = ({
 			)
 		}
 
-		// Use Next.js Link for internal links
 		return (
 			<Link
 				href={href}

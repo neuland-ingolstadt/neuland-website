@@ -15,7 +15,7 @@ import {
 	type Locale,
 	resolveLocale
 } from '@/i18n/routing'
-import appCss from '@/styles/index.css?url'
+import '@/styles/index.css'
 
 const themeScript = `
   (function() {
@@ -33,6 +33,16 @@ const themeScript = `
       // Fail silently – default to system preference via CSS
     }
   })();
+`
+
+const criticalCss = `
+  html{background:#020302;color-scheme:dark}
+  @media (prefers-color-scheme:light){
+    html:not([data-theme]){background:#f5f8f5;color-scheme:light}
+  }
+  html[data-theme="light"]{background:#f5f8f5;color-scheme:light}
+  html[data-theme="dark"]{background:#020302;color-scheme:dark}
+  body{margin:0;min-height:100%}
 `
 
 function localeFromPathname(pathname: string): Locale {
@@ -65,7 +75,6 @@ export const Route = createRootRoute({
 			{ name: 'fediverse:creator', content: '@neuland@social.tchncs.de' }
 		],
 		links: [
-			{ rel: 'stylesheet', href: appCss },
 			{ rel: 'me', href: 'https://social.tchncs.de/@neuland' },
 			{ rel: 'icon', href: '/favicon.ico', sizes: 'any' },
 			{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
@@ -121,12 +130,16 @@ function RootComponent(): ReactNode {
 	return (
 		<html lang={locale} suppressHydrationWarning>
 			<head>
-				<HeadContent />
+				<style
+					// biome-ignore lint/security/noDangerouslySetInnerHtml: critical CSS before paint
+					dangerouslySetInnerHTML={{ __html: criticalCss }}
+				/>
 				<script
 					// Ensure the correct theme is applied before React hydration to avoid flashes
 					// biome-ignore lint/security/noDangerouslySetInnerHtml: ok
 					dangerouslySetInnerHTML={{ __html: themeScript }}
 				/>
+				<HeadContent />
 				<script
 					type="application/ld+json"
 					// biome-ignore lint/security/noDangerouslySetInnerHtml: ok
