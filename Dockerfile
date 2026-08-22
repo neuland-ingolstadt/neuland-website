@@ -1,4 +1,7 @@
-FROM oven/bun:1.3.14 AS deps
+# syntax=docker/dockerfile:1
+
+ARG BUN_VERSION
+FROM oven/bun:${BUN_VERSION}-alpine AS deps
 WORKDIR /app
 
 COPY bun.lock package.json ./
