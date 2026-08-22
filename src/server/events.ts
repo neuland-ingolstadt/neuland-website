@@ -18,13 +18,22 @@ export const getEventDetail = createServerFn()
 		}
 
 		const request = getRequest()
-		const host =
+		const rawHost =
 			request.headers.get('x-forwarded-host') ?? request.headers.get('host')
+		const host = rawHost?.split(',')[0]?.trim().toLowerCase()
+		const allowedHost =
+			host &&
+			(host === 'neuland-ingolstadt.de' ||
+				host === 'www.neuland-ingolstadt.de' ||
+				host.startsWith('localhost:') ||
+				host === 'localhost')
+				? host
+				: null
 		const protocol =
 			request.headers.get('x-forwarded-proto') ??
-			(host?.includes('localhost') ? 'http' : 'https')
-		const origin = host
-			? `${protocol}://${host}`
+			(allowedHost?.includes('localhost') ? 'http' : 'https')
+		const origin = allowedHost
+			? `${protocol}://${allowedHost}`
 			: 'https://neuland-ingolstadt.de'
 
 		return {

@@ -15,7 +15,11 @@ function parseAcceptLanguage(header: string | undefined): Locale | null {
 		.split(',')
 		.map((part) => {
 			const [tag, q] = part.trim().split(';q=')
-			return { tag: tag.trim().toLowerCase(), q: q ? Number(q) : 1 }
+			const quality = q ? Number(q) : 1
+			return {
+				tag: tag.trim().toLowerCase(),
+				q: Number.isFinite(quality) ? quality : 0
+			}
 		})
 		.sort((a, b) => b.q - a.q)
 

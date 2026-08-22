@@ -10,6 +10,15 @@ type SitemapEntry = {
 	priority: number
 }
 
+function escapeXml(value: string): string {
+	return value
+		.replaceAll('&', '&amp;')
+		.replaceAll('<', '&lt;')
+		.replaceAll('>', '&gt;')
+		.replaceAll('"', '&quot;')
+		.replaceAll("'", '&apos;')
+}
+
 function buildSitemap(): string {
 	const baseUrl = 'https://neuland-ingolstadt.de'
 	const now = new Date().toISOString()
@@ -85,9 +94,9 @@ function buildSitemap(): string {
 ${entries
 	.map(
 		(entry) => `  <url>
-    <loc>${entry.url}</loc>
-    <lastmod>${entry.lastModified}</lastmod>
-    <changefreq>${entry.changeFrequency}</changefreq>
+    <loc>${escapeXml(entry.url)}</loc>
+    <lastmod>${escapeXml(entry.lastModified)}</lastmod>
+    <changefreq>${escapeXml(entry.changeFrequency)}</changefreq>
     <priority>${entry.priority}</priority>
   </url>`
 	)
