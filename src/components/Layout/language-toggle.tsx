@@ -1,8 +1,6 @@
 'use client'
 
 import { Check, Globe } from 'lucide-react'
-import { useLocale } from 'next-intl'
-
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -11,6 +9,7 @@ import {
 	DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { usePathname, useRouter } from '@/i18n/navigation'
+import { useLocale } from '@/i18n/react'
 
 export default function LanguageToggle() {
 	const locale = useLocale()

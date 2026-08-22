@@ -1,27 +1,12 @@
-import {
-	dehydrate,
-	HydrationBoundary,
-	QueryClient
-} from '@tanstack/react-query'
-import { getEventsData } from './events-loader'
+import type { Event } from '@/services/events'
 import TerminalEvents from './terminal-events'
 
-export default async function EventsSection() {
-	const queryClient = new QueryClient()
-	const eventsData = await getEventsData()
-
-	await queryClient.prefetchQuery({
-		queryKey: ['eventsData'],
-		queryFn: () => eventsData.events,
-		staleTime: 5 * 60 * 1000
-	})
-
-	return (
-		<HydrationBoundary state={dehydrate(queryClient)}>
-			<TerminalEvents
-				initialData={eventsData.events}
-				error={eventsData.error}
-			/>
-		</HydrationBoundary>
-	)
+export default function EventsSection({
+	eventsData,
+	error
+}: {
+	eventsData: { semester: string; events: Event[] }
+	error: string | null
+}) {
+	return <TerminalEvents initialData={eventsData} error={error} />
 }

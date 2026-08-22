@@ -1,8 +1,7 @@
 'use client'
 
+import { useLocation } from '@tanstack/react-router'
 import { Menu } from 'lucide-react'
-import { usePathname } from 'next/navigation'
-import { useTranslations } from 'next-intl'
 import type React from 'react'
 import { useEffect, useRef } from 'react'
 import {
@@ -20,6 +19,7 @@ import {
 } from '@/components/ui/sidebar'
 import { useBackground } from '@/contexts/BackgroundContext'
 import { Link } from '@/i18n/navigation'
+import { useTranslations } from '@/i18n/react'
 import LanguageToggle from './language-toggle'
 import NeulandLogo from './neuland-logo'
 import ThemeToggle, { ThemeToggleMobile } from './theme-toggle'
@@ -83,7 +83,7 @@ const DesktopNavLink: React.FC<NavLinkProps> = ({ link, className }) => {
 }
 
 const MobileSidebar: React.FC = () => {
-	const pathname = usePathname()
+	const pathname = useLocation({ select: (location) => location.pathname })
 	const { isMobile, setOpenMobile } = useSidebar()
 
 	const handleNavigation = () => {

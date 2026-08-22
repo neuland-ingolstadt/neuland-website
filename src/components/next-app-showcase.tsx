@@ -15,8 +15,8 @@ import {
 	Users,
 	Zap
 } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { useTranslations } from '@/i18n/react'
 import FeatureItem from './feature-item'
 import TerminalButton from './terminal-button'
 
@@ -162,7 +162,6 @@ const NextAppShowcase = () => {
 							style={{ willChange: 'transform' }}
 						>
 							<AnimatePresence mode="sync">
-								{/** biome-ignore lint/performance/noImgElement: TODO */}
 								<motion.img
 									key={activeIndex}
 									src={screenshots[activeIndex]}
@@ -268,7 +267,6 @@ const NextAppShowcase = () => {
 											target="_blank"
 											className="group relative inline-block transition-all no-underline"
 										>
-											{/** biome-ignore lint/performance/noImgElement: TODO */}
 											<img
 												src="/assets/app_store_badge_de.svg"
 												alt="Apple App Store"
@@ -281,7 +279,6 @@ const NextAppShowcase = () => {
 											target="_blank"
 											className="group relative inline-block transition-all no-underline"
 										>
-											{/** biome-ignore lint/performance/noImgElement: TODO */}
 											<img
 												src="/assets/play_store_badge_de.svg"
 												alt="Google Play Store"

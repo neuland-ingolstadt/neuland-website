@@ -6,7 +6,7 @@ import TerminalLinks from '@/components/Footer/terminal-links'
 
 const TerminalFooter: React.FC = () => {
 	const currentYear = new Date().getFullYear()
-	const fullCommitHash = process.env.NEXT_PUBLIC_COMMIT_HASH || 'development'
+	const fullCommitHash = import.meta.env.VITE_COMMIT_HASH || 'development'
 	const commitHash =
 		typeof fullCommitHash === 'string' && fullCommitHash !== 'development'
 			? fullCommitHash.substring(0, 7) // Display only the first 7 characters of the hash

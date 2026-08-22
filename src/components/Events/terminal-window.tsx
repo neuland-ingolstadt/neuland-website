@@ -1,10 +1,9 @@
 'use client'
 
+import { useAptabase } from '@aptabase/react'
 import type React from 'react'
 import { type JSX, useCallback, useEffect, useRef, useState } from 'react'
-import '../../styles/animations.css'
-import { useAptabase } from '@aptabase/react'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/i18n/react'
 import StickyNote from './sticky-note'
 import TerminalWindowButtons from './terminal-window-buttons'
 

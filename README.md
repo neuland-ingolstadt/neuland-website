@@ -2,13 +2,13 @@
 
 <div align="center">
 
-![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js)
+![TanStack Start](https://img.shields.io/badge/TanStack%20Start-black?style=for-the-badge&logo=react)
 ![React](https://img.shields.io/badge/React-black?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-black?style=for-the-badge&logo=typescript)
 ![Bun](https://img.shields.io/badge/Bun-black?style=for-the-badge&logo=bun)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-black?style=for-the-badge&logo=tailwindcss)
 
-**A stylish, modern, and open-source website for Neuland Ingolstadt e.V. – built with Next.js, React, and Bun.**
+**A stylish, modern, and open-source website for Neuland Ingolstadt e.V. – built with TanStack Start, React, and Bun.**
 
 [🚀 Quick Start](#-quick-start) • [📋 Features](#-features) • [📦 Technology Stack](#-technology-stack) • [🤝 Contributing](#-contributing)
 
@@ -82,10 +82,10 @@ The site will be available at [http://localhost:3000](http://localhost:3000)
 
 | Component      | Technology                | Purpose                                 |
 |---------------|---------------------------|-----------------------------------------|
-| **Frontend**  | Next.js, React, TypeScript| Modern web app with SSR & SSG           |
-| **Styling**   | Tailwind CSS, CSS Modules | Responsive, utility-first styling        |
-| **Bundler**   | Bun                       | Fast JS runtime and package manager      |
-| **Markdown**  | Contentlayer, MDX         | Blog content and static site generation  |
+| **Frontend**  | TanStack Start, React, TypeScript | Full-stack React app with SSR & file-based routing |
+| **Styling**   | Tailwind CSS              | Responsive, utility-first styling        |
+| **Runtime**   | Nitro, Bun                | Universal server deployment & fast package manager |
+| **Markdown**  | Contentlayer              | Blog content pipeline                    |
 | **UI**        | Custom Components         | Reusable, accessible UI elements         |
 
 ---

@@ -1,10 +1,10 @@
 'use client'
 import { motion } from 'framer-motion'
-import { useTranslations } from 'next-intl'
 import type React from 'react'
 import { memo, useCallback, useMemo } from 'react'
 import projectsData from '@/data/projects.json'
 import { useRouter } from '@/i18n/navigation'
+import { useTranslations } from '@/i18n/react'
 import TerminalButton from '../terminal-button'
 import ProjectCard, { type ProjectDetails } from './project-card'
 

@@ -1,9 +1,9 @@
 import { useAptabase } from '@aptabase/react'
-import { usePathname } from 'next/navigation'
+import { useLocation } from '@tanstack/react-router'
 import { useEffect } from 'react'
 
 const RouteTracker = () => {
-	const pathname = usePathname()
+	const pathname = useLocation({ select: (location) => location.pathname })
 	const { trackEvent } = useAptabase()
 
 	useEffect(() => {

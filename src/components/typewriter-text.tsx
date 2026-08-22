@@ -1,6 +1,5 @@
-'use client'
 import type React from 'react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useEffectEvent, useRef, useState } from 'react'
 
 interface TypewriterTextProps {
 	text: string
@@ -15,48 +14,21 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
 	className = '',
 	preventLayoutJumps = false
 }) => {
-	const [displayText, setDisplayText] = useState('')
-	const [showCursor, setShowCursor] = useState(true)
-	const [isComplete, setIsComplete] = useState(false)
+	// SSR + first paint show the full text so the hero isn't blank before JS runs.
+	const [displayText, setDisplayText] = useState(text)
+	const [showCursor, setShowCursor] = useState(false)
 	const textRef = useRef<HTMLDivElement>(null)
 	const indexRef = useRef(0)
-	const intervalRef = useRef<NodeJS.Timeout | null>(null)
+	const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				if (entries[0].isIntersecting && !isComplete) {
-					startTyping()
-				}
-			},
-			{
-				threshold: 0.1
-			}
-		)
-
-		if (textRef.current) {
-			observer.observe(textRef.current)
-		}
-
-		return () => {
-			if (textRef.current) {
-				observer.unobserve(textRef.current)
-			}
-			// Clean up any existing interval on unmount
-			if (intervalRef.current) {
-				clearInterval(intervalRef.current)
-			}
-		}
-	}, [isComplete])
-
-	const startTyping = () => {
-		// Clear any existing interval to prevent multiple typing sequences
+	const startTyping = useEffectEvent(() => {
 		if (intervalRef.current) {
 			clearInterval(intervalRef.current)
 		}
 
 		indexRef.current = 0
 		setDisplayText('')
+		setShowCursor(true)
 
 		intervalRef.current = setInterval(() => {
 			if (indexRef.current < text.length) {
@@ -67,24 +39,57 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
 					clearInterval(intervalRef.current)
 					intervalRef.current = null
 				}
-				setIsComplete(true)
-				setTimeout(() => setShowCursor(false), 1000)
+				window.setTimeout(() => setShowCursor(false), 1000)
 			}
 		}, delay)
-	}
+	})
+
+	useEffect(() => {
+		const node = textRef.current
+		if (!node) return
+
+		let started = false
+		const start = () => {
+			if (started) return
+			started = true
+			startTyping()
+		}
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				if (entries[0]?.isIntersecting) {
+					start()
+					observer.disconnect()
+				}
+			},
+			{ threshold: 0.1 }
+		)
+
+		observer.observe(node)
+
+		// Fallback if IntersectionObserver never fires (some embedded browsers).
+		const fallback = window.setTimeout(start, 800)
+
+		return () => {
+			observer.disconnect()
+			window.clearTimeout(fallback)
+			if (intervalRef.current) {
+				clearInterval(intervalRef.current)
+			}
+		}
+	}, [text, delay])
+
+	const cursor = showCursor ? (
+		<span className="inline-block w-2 h-4 bg-terminal-text ml-1 animate-cursor" />
+	) : null
 
 	if (preventLayoutJumps) {
 		return (
 			<div ref={textRef} className={`${className} relative`}>
-				{/* Invisible text to reserve space */}
 				<span className="invisible">{text}</span>
-
-				{/* Visible animated text with positioned cursor */}
 				<div className="absolute top-0 left-0 w-full">
 					<span>{displayText}</span>
-					{showCursor && (
-						<span className="inline-block w-2 h-4 bg-terminal-text ml-1 animate-cursor" />
-					)}
+					{cursor}
 				</div>
 			</div>
 		)
@@ -93,9 +98,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
 	return (
 		<div ref={textRef} className={className}>
 			<span>{displayText}</span>
-			{showCursor && (
-				<span className="inline-block w-2 h-4 bg-terminal-text ml-1 animate-cursor" />
-			)}
+			{cursor}
 		</div>
 	)
 }

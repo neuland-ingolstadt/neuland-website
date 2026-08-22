@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { Mail, UserPlus, Zap } from 'lucide-react'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/i18n/react'
 import TerminalButton from './terminal-button'
 
 const TerminalMembership = () => {

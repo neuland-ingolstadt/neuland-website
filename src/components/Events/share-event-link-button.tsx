@@ -1,9 +1,9 @@
 'use client'
 
 import { Check, Link2 } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import TerminalButton from '@/components/terminal-button'
+import { useTranslations } from '@/i18n/react'
 
 interface ShareEventLinkButtonProps {
 	url: string

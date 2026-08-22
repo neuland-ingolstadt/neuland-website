@@ -1,6 +1,6 @@
-import { useTranslations } from 'next-intl'
 import type React from 'react'
 import { Link } from '@/i18n/navigation'
+import { useTranslations } from '@/i18n/react'
 
 const TerminalLinks: React.FC = () => {
 	const t = useTranslations('Footer')
