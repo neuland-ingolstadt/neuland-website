@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { Heart, Mail, Zap } from 'lucide-react'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/i18n/react'
 import TerminalButton from './terminal-button'
 
 const TerminalPartners: React.FC = () => {
@@ -129,7 +129,6 @@ const TerminalPartners: React.FC = () => {
 
 								{/* Logo container that moves up on hover */}
 								<div className="relative z-10 flex items-center justify-center transition-transform duration-300 group-hover/logo:-translate-y-3">
-									{/** biome-ignore lint/performance/noImgElement: TODO */}
 									<img
 										src="/assets/thi.webp"
 										alt="THI Partner"
@@ -161,7 +160,6 @@ const TerminalPartners: React.FC = () => {
 
 								{/* Logo container that moves up on hover */}
 								<div className="relative z-10 flex items-center justify-center transition-transform duration-300 group-hover/logo:-translate-y-3">
-									{/** biome-ignore lint/performance/noImgElement: TODO */}
 									<img
 										src="/assets/exp.webp"
 										alt="EXP Partner"

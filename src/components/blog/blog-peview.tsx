@@ -3,7 +3,6 @@
 import { allPosts } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
 import { motion } from 'framer-motion'
-import { useTranslations } from 'next-intl'
 import { memo, useMemo } from 'react'
 import {
 	Carousel,
@@ -12,6 +11,7 @@ import {
 	CarouselNext,
 	CarouselPrevious
 } from '@/components/ui/carousel'
+import { useTranslations } from '@/i18n/react'
 import TerminalButton from '../terminal-button'
 import BlogPostCard from './blog-post-card'
 

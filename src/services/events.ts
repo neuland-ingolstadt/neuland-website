@@ -44,7 +44,8 @@ function getDateStr(startDate: moment.Moment, event: PublicEventResponse) {
 }
 
 const API_URL =
-	process.env.NEXT_PUBLIC_API_URL ??
+	import.meta.env.VITE_API_URL ??
+	process.env.API_URL ??
 	'https://cl.neuland-ingolstadt.de/api/ical/4/events'
 
 let cachedAllEvents: { semester: string; events: Event[] } | null = null
@@ -137,8 +138,7 @@ export const fetchAllEvents = async (): Promise<{
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${process.env.CL_API_KEY}`
-			},
-			next: { revalidate: 300 }
+			}
 		})
 
 		if (!response.ok) {

@@ -1,9 +1,9 @@
 'use client'
 import { motion } from 'framer-motion'
 import { Lightbulb, Rocket, Users } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 import type React from 'react'
 import TerminalSection from '@/components/Layout/terminal-section'
+import { useTranslations } from '@/i18n/react'
 
 const AboutUsSection: React.FC = () => {
 	const t = useTranslations('Home.aboutUsSection')

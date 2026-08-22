@@ -8,7 +8,7 @@
 
 	"files": {
 		"ignoreUnknown": false,
-		"includes": ["src/**/*"]
+		"includes": ["src/**/*", "!src/routeTree.gen.ts"]
 	},
 	"overrides": [
 		{

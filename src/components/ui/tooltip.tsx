@@ -1,8 +1,8 @@
 'use client'
 
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
-import { useTranslations } from 'next-intl'
 import * as React from 'react'
+import { useTranslations } from '@/i18n/react'
 import { cn } from '@/lib/utils'
 
 const TooltipProvider = TooltipPrimitive.Provider

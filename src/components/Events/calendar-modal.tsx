@@ -1,10 +1,10 @@
 'use client'
 import { AnimatePresence, motion } from 'framer-motion'
 import { X } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 import type React from 'react'
 import { useCallback, useEffect } from 'react'
 import { TerminalCopyField } from '@/components/ui/terminal-copy-field'
+import { useTranslations } from '@/i18n/react'
 
 interface CalendarModalProps {
 	isOpen: boolean

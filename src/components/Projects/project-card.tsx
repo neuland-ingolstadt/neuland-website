@@ -69,7 +69,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 			{/* Project Image */}
 			{project.imageUrl && (
 				<div className="w-full h-40 bg-terminal-window overflow-hidden relative">
-					{/** biome-ignore lint/performance/noImgElement: TODO */}
 					<img
 						src={project.imageUrl}
 						alt={project.title}

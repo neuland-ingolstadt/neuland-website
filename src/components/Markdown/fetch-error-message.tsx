@@ -1,5 +1,5 @@
-import { useTranslations } from 'next-intl'
 import type React from 'react'
+import { useTranslations } from '@/i18n/react'
 
 interface FetchErrorMessageProps {
 	title: string

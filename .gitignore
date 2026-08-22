@@ -24,5 +24,7 @@ src/static/content
 *.sw?
 
 .next
+.output
+node_modules/.nitro
 tsconfig.tsbuildinfo
 .contentlayer

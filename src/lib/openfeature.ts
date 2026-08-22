@@ -1,5 +1,3 @@
-import 'server-only'
-
 import { FliptProvider } from '@openfeature/flipt-provider'
 import { OpenFeature } from '@openfeature/server-sdk'
 
@@ -8,8 +6,12 @@ const namespace = process.env.FLIPT_NAMESPACE ?? 'neuland-website'
 let providerReady: Promise<void> | undefined
 
 async function ensureProvider() {
+	const url = process.env.FLIPT_URL
+	if (!url) {
+		return false
+	}
+
 	if (!providerReady) {
-		const url = process.env.FLIPT_URL ?? 'http://localhost:8080'
 		const token = process.env.FLIPT_CLIENT_TOKEN
 
 		const provider = new FliptProvider(namespace, {
@@ -21,6 +23,7 @@ async function ensureProvider() {
 	}
 
 	await providerReady
+	return true
 }
 
 export async function evaluateBooleanFlag(
@@ -29,7 +32,11 @@ export async function evaluateBooleanFlag(
 	defaultValue = false
 ): Promise<boolean> {
 	try {
-		await ensureProvider()
+		const ready = await ensureProvider()
+		if (!ready) {
+			return defaultValue
+		}
+
 		const client = OpenFeature.getClient()
 
 		return await client.getBooleanValue(flagKey, defaultValue, {

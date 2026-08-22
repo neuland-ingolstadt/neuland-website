@@ -1,10 +1,10 @@
 'use client'
 
 import { ArrowUpRight, Clock3, Filter, Lock, Unlock } from 'lucide-react'
-import { useLocale, useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 import TerminalButton from '@/components/terminal-button'
 import { InternalOnlyTooltip } from '@/components/ui/tooltip'
+import { useLocale, useTranslations } from '@/i18n/react'
 import {
 	formatEventDateRange,
 	getLocalizedEventDescription,
