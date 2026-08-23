@@ -37,7 +37,7 @@
     "date-fns": "4.4.0",
     "date-fns-tz": "3.2.0",
     "embla-carousel-react": "8.6.0",
-    "framer-motion": "12.43.0",
+    "motion": "12.43.0",
     "graphql": "16.14.2",
     "intl-messageformat": "11.2.14",
     "lucide-react": "0.577.0",
