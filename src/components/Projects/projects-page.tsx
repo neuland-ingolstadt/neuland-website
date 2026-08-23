@@ -35,25 +35,23 @@ const ProjectsPage = () => {
 	}
 
 	return (
-		<div className="min-h-screen py-18 px-4 md:px-8">
+		<div>
 			{/* Header Section */}
 			<motion.div
 				initial={{ opacity: 0, y: -20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6 }}
-				className="max-w-6xl mx-auto mb-12"
+				className="max-w-6xl mx-auto mb-8"
 			>
-				<div className="flex items-center gap-3 mb-6">
-					<h1 className="text-3xl md:text-4xl font-bold  font-mono">
-						{t('title')}
-					</h1>
-				</div>
+				<h1 className="text-3xl md:text-4xl font-bold font-mono">
+					{t('title')}
+				</h1>
 
 				<motion.p
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ duration: 0.6, delay: 0.2 }}
-					className="text-lg text-terminal-text/80 font-mono max-w-3xl"
+					className="mt-3 text-lg text-terminal-text/80 font-mono max-w-3xl"
 				>
 					{t('subtitle')}
 				</motion.p>
@@ -62,7 +60,7 @@ const ProjectsPage = () => {
 					initial={{ opacity: 0, y: 10 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 0.4 }}
-					className="flex items-center gap-2 mt-6 text-sm text-terminal-text/60 font-mono"
+					className="flex items-center gap-2 mt-4 text-sm text-terminal-text/60 font-mono"
 				>
 					<Code size={16} />
 					<span>
