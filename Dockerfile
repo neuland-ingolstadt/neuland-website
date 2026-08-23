@@ -7,7 +7,7 @@ WORKDIR /app
 COPY bun.lock package.json ./
 RUN bun install --frozen-lockfile
 
-FROM node:24-alpine AS builder
+FROM node:24.19.0-alpine@sha256:d32cdf619f63fe0471182d08996dd516c6275bb5fd31ae06e55a570bd9e1ad43 AS builder
 WORKDIR /app
 
 ARG VITE_APTABASE_KEY
@@ -23,7 +23,7 @@ COPY . .
 RUN npx contentlayer2 build
 RUN npm run build
 
-FROM node:24-alpine AS runner
+FROM node:24.19.0-alpine@sha256:d32cdf619f63fe0471182d08996dd516c6275bb5fd31ae06e55a570bd9e1ad43 AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
