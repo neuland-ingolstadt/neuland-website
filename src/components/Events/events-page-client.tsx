@@ -99,8 +99,7 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 	}, [initialData.events, timeFilter, visibilityFilter])
 
 	return (
-		<div className="min-h-screen py-18 px-4 md:px-8">
-			<div className="max-w-6xl mx-auto">
+		<div className="max-w-6xl mx-auto">
 				<div className="mb-8">
 					<h1 className="text-3xl md:text-4xl font-bold font-mono">
 						{t('title')}
@@ -258,7 +257,6 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 						})}
 					</div>
 				)}
-			</div>
 		</div>
 	)
 }

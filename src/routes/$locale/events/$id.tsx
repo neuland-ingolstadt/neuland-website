@@ -70,8 +70,7 @@ function EventDetailPage() {
 	const description = getLocalizedEventDescription(event, locale)
 
 	return (
-		<div className="min-h-screen py-18 px-4 md:px-8">
-			<div className="mx-auto max-w-5xl">
+		<div className="mx-auto max-w-5xl">
 				<Breadcrumb>
 					<BreadcrumbList className="flex items-center">
 						<BreadcrumbItem className="flex items-center">
@@ -173,7 +172,6 @@ function EventDetailPage() {
 						</div>
 					</div>
 				</div>
-			</div>
 		</div>
 	)
 }
