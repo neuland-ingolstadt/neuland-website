@@ -1,5 +1,5 @@
-import { AnimatePresence, motion } from 'framer-motion'
 import { Code, Filter, Github } from 'lucide-react'
+import { AnimatePresence, motion } from 'motion/react'
 import { useMemo, useState } from 'react'
 import ProjectCard, {
 	type ProjectDetails

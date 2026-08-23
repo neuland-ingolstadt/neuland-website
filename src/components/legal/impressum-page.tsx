@@ -1,6 +1,6 @@
 'use client'
-import { motion } from 'framer-motion'
 import { Mail, MapPin, Phone, Scale, Users } from 'lucide-react'
+import { motion } from 'motion/react'
 import {
 	Breadcrumb,
 	BreadcrumbItem,

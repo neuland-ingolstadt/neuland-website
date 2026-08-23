@@ -1,6 +1,6 @@
 'use client'
-import { motion } from 'framer-motion'
 import { Heart, Mail, Zap } from 'lucide-react'
+import { motion } from 'motion/react'
 import { useTranslations } from '@/i18n/react'
 import TerminalButton from './terminal-button'
 

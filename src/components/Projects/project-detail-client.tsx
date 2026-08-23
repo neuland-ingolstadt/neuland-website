@@ -1,6 +1,6 @@
 'use client'
-import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowUpRight, Code, ExternalLink } from 'lucide-react'
+import { motion } from 'motion/react'
 import type { ProjectDetails } from '@/components/Projects/project-card'
 import TerminalButton from '@/components/terminal-button'
 import {

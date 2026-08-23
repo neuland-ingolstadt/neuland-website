@@ -1,6 +1,6 @@
 'use client'
-import { AnimatePresence, motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
+import { AnimatePresence, motion } from 'motion/react'
 import type React from 'react'
 import { memo, useCallback, useEffect, useState } from 'react'
 import TerminalButton from '../terminal-button'

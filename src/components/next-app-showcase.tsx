@@ -1,5 +1,4 @@
 'use client'
-import { AnimatePresence, motion, type Variants } from 'framer-motion'
 import {
 	ArrowUpRight,
 	Bell,
@@ -15,6 +14,7 @@ import {
 	Users,
 	Zap
 } from 'lucide-react'
+import { AnimatePresence, motion, type Variants } from 'motion/react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useTranslations } from '@/i18n/react'
 import FeatureItem from './feature-item'

@@ -1,7 +1,7 @@
 'use client'
 import { useLocation } from '@tanstack/react-router'
-import { motion } from 'framer-motion'
 import { ArrowLeft, Terminal } from 'lucide-react'
+import { motion } from 'motion/react'
 import TerminalButton from '@/components/terminal-button'
 import { Link } from '@/i18n/navigation'
 import { useTranslations } from '@/i18n/react'

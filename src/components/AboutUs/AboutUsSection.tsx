@@ -1,6 +1,6 @@
 'use client'
-import { motion } from 'framer-motion'
 import { Lightbulb, Rocket, Users } from 'lucide-react'
+import { motion } from 'motion/react'
 import type React from 'react'
 import TerminalSection from '@/components/Layout/terminal-section'
 
