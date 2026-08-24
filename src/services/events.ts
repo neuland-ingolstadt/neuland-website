@@ -20,7 +20,7 @@ export interface Event {
 	isInternal: boolean
 }
 
-function getDateStr(startUtc: Date, event: PublicEventResponse) {
+function getDateStr(startUtc: Date, event: MyEventResponse) {
 	if (!isValid(startUtc)) {
 		return 'tbd'
 	}
@@ -54,27 +54,67 @@ function getDateStr(startUtc: Date, event: PublicEventResponse) {
 	return dateStr
 }
 
-const API_URL =
-	import.meta.env.VITE_API_URL ??
-	process.env.API_URL ??
-	'https://cl.neuland-ingolstadt.de/api/ical/4/events'
+const DEFAULT_EVENTS_API_URL =
+	'https://cl.neuland-ingolstadt.de/api/v1/my-events'
+
+function resolveEventsApiUrl(): string {
+	const configured = import.meta.env.VITE_API_URL ?? process.env.API_URL ?? ''
+	if (!configured) {
+		return DEFAULT_EVENTS_API_URL
+	}
+
+	try {
+		const url = new URL(configured)
+		if (
+			url.pathname.includes('/api/ical/') ||
+			url.pathname === '/' ||
+			url.pathname === '' ||
+			url.pathname === '/api' ||
+			url.pathname === '/api/'
+		) {
+			url.pathname = '/api/v1/my-events'
+			url.search = ''
+			return url.toString()
+		}
+	} catch {
+		return configured
+	}
+
+	return configured
+}
+
+const API_URL = resolveEventsApiUrl()
 
 let cachedAllEvents: { semester: string; events: Event[] } | null = null
 let allEventsCacheTimestamp = 0
 const CACHE_TTL = 300000
 
-export type PublicEventResponse = {
+export type MyEventResponse = {
+	created_at?: string
 	description_de?: string | null
 	description_en?: string | null
 	end_date_time?: string | null
 	event_url?: string | null
+	host_only: boolean
 	id: number
 	location?: string | null
 	organizer_id: number
+	publish_app?: boolean
+	publish_in_ical?: boolean
+	publish_newsletter?: boolean
+	publish_web?: boolean
 	start_date_time: string
 	title_de: string
 	title_en: string
-	is_internal: boolean
+	updated_at?: string
+}
+
+function isEventInternal(event: MyEventResponse): boolean {
+	if (event.host_only) {
+		return true
+	}
+
+	return !(event.publish_app || event.publish_newsletter)
 }
 
 function getSemesterFromDate(date: Date): string {
@@ -105,7 +145,7 @@ function sortEventsAscending(a: Event, b: Event) {
 	return dateA.getTime() - dateB.getTime()
 }
 
-function toEvent(event: PublicEventResponse): Event {
+function toEvent(event: MyEventResponse): Event {
 	const startUtc = new Date(event.start_date_time)
 	const endUtc = event.end_date_time ? new Date(event.end_date_time) : null
 	const titleDe = event.title_de || event.title_en || 'Untitled event'
@@ -128,7 +168,7 @@ function toEvent(event: PublicEventResponse): Event {
 		startDateTime: event.start_date_time,
 		endDateTime: endUtc && isValid(endUtc) ? endUtc.toISOString() : null,
 		eventUrl: event.event_url || null,
-		isInternal: event.is_internal
+		isInternal: isEventInternal(event)
 	}
 }
 
@@ -161,7 +201,8 @@ export const fetchAllEvents = async (): Promise<{
 			throw new Error('Invalid events response format')
 		}
 
-		const events = (responseData as PublicEventResponse[])
+		const events = (responseData as MyEventResponse[])
+			.filter((event) => !event.host_only)
 			.map((event) => toEvent(event))
 			.sort(sortEventsAscending)
 
