@@ -38,7 +38,7 @@ const useNavigation = () => {
 		{ name: t('blog'), href: '/blog', external: false },
 		{
 			name: t('login'),
-			href: 'https://auth.neuland.ing',
+			href: 'https://connect.neuland.ing',
 			external: true
 		}
 	]
