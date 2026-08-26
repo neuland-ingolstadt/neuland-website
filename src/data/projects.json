@@ -55,7 +55,7 @@
 	{
 		"id": "neuland-connect",
 		"title": "Neuland Connect",
-		"description": "Mitgliederportal für Self-Service-Zugang zur GitHub-Organisation und zum Discord-Server.",
+		"description": "Das zentrale Mitgliederportal für Events, Ressourcen und Self-Service-Zugang zu GitHub und Discord.",
 		"links": [
 			{
 				"label": "Portal",
@@ -67,7 +67,7 @@
 			}
 		],
 		"tags": ["Tanstack", "TypeScript", "Authentik"],
-		"longDescription": "Authentik-Login, GitHub-Org-Onboarding, GitHub-Teams und Discord-Rollen. Keine eigene Nutzerdatenbank; Authentik ist die Quelle der Wahrheit.",
+		"longDescription": "Neuland Connect ist der zentrale Hub für Vereinsmitglieder. Hinter dem Authentik-Login finden sich Events, Ressourcen und weitere Vereinsangebote sowie Self-Service für den Zugang zur GitHub-Organisation und zum Discord-Server.",
 		"additionalInfo": "Das Portal wurde mit TanStack Router und TypeScript entwickelt und integriert Authentik, die GitHub- und die Discord-API für das Onboarding von Vereinsmitgliedern."
 	},
 	{
