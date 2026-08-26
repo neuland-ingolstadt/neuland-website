@@ -53,6 +53,24 @@
 		"additionalInfo": "Das System wurde mit Rust für die Backend-Logik und Next.js für das Frontend entwickelt, mit besonderem Fokus auf Sicherheit und Benutzerfreundlichkeit."
 	},
 	{
+		"id": "neuland-connect",
+		"title": "Neuland Connect",
+		"description": "Mitgliederportal für Self-Service-Zugang zur GitHub-Organisation und zum Discord-Server.",
+		"links": [
+			{
+				"label": "Portal",
+				"url": "https://connect.neuland.ing"
+			},
+			{
+				"label": "GitHub",
+				"url": "https://github.com/neuland-ingolstadt/neuland-connect"
+			}
+		],
+		"tags": ["Tanstack", "TypeScript", "Authentik"],
+		"longDescription": "Authentik-Login, GitHub-Org-Onboarding, GitHub-Teams und Discord-Rollen. Keine eigene Nutzerdatenbank; Authentik ist die Quelle der Wahrheit.",
+		"additionalInfo": "Das Portal wurde mit TanStack Router und TypeScript entwickelt und integriert Authentik, die GitHub- und die Discord-API für das Onboarding von Vereinsmitgliedern."
+	},
+	{
 		"id": "ersti-hilfe",
 		"title": "Ersti-Hilfe-Kit",
 		"description": "Eine Webseite für Erstsemester mit Infos zum Studienstart – inzwischen eingestellt.",
