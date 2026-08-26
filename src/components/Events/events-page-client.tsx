@@ -17,7 +17,7 @@ type VisibilityFilter = 'all' | 'public' | 'internal'
 type TimeFilter = 'all' | 'upcoming' | 'past'
 
 interface EventsPageClientProps {
-	initialData: Awaited<ReturnType<typeof fetchAllEvents>>
+	initialData: Omit<Awaited<ReturnType<typeof fetchAllEvents>>, 'error'>
 	error?: string | null
 }
 

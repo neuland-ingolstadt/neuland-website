@@ -14,7 +14,7 @@ import type { fetchEvents } from '@/services/events'
 import CalendarModal from './calendar-modal'
 
 interface TerminalEventsProps {
-	initialData?: Awaited<ReturnType<typeof fetchEvents>>
+	initialData?: Omit<Awaited<ReturnType<typeof fetchEvents>>, 'error'>
 	error?: string | null
 }
 

@@ -85,9 +85,25 @@ function resolveEventsApiUrl(): string {
 
 const API_URL = resolveEventsApiUrl()
 
-let cachedAllEvents: { semester: string; events: Event[] } | null = null
+type EventsData = {
+	semester: string
+	events: Event[]
+}
+
+let cachedAllEvents: EventsData | null = null
 let allEventsCacheTimestamp = 0
 const CACHE_TTL = 300000
+const FETCH_TIMEOUT_MS = 8_000
+
+function emptyEventsFallback(errorMessage: string): EventsData & {
+	error: string
+} {
+	return {
+		semester: getSemesterFromDate(toZonedTime(new Date(), EVENT_TIMEZONE)),
+		events: [],
+		error: errorMessage
+	}
+}
 
 export type MyEventResponse = {
 	created_at?: string
@@ -172,13 +188,12 @@ function toEvent(event: MyEventResponse): Event {
 	}
 }
 
-export const fetchAllEvents = async (): Promise<{
-	semester: string
-	events: Event[]
-}> => {
+export const fetchAllEvents = async (): Promise<
+	EventsData & { error: string | null }
+> => {
 	const now = Date.now()
 	if (cachedAllEvents && now - allEventsCacheTimestamp < CACHE_TTL) {
-		return cachedAllEvents
+		return { ...cachedAllEvents, error: null }
 	}
 
 	try {
@@ -187,7 +202,8 @@ export const fetchAllEvents = async (): Promise<{
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${process.env.CL_API_KEY}`
-			}
+			},
+			signal: AbortSignal.timeout(FETCH_TIMEOUT_MS)
 		})
 
 		if (!response.ok) {
@@ -227,17 +243,24 @@ export const fetchAllEvents = async (): Promise<{
 		cachedAllEvents = result
 		allEventsCacheTimestamp = now
 
-		return result
+		return { ...result, error: null }
 	} catch (error) {
+		const message =
+			error instanceof Error ? error.message : 'Failed to fetch events'
 		console.error('Error fetching events:', error)
-		throw error
+
+		// Prefer stale cache over failing SSR / taking down pages that depend on events.
+		if (cachedAllEvents) {
+			return { ...cachedAllEvents, error: null }
+		}
+
+		return emptyEventsFallback(message)
 	}
 }
 
-export const fetchEvents = async (): Promise<{
-	semester: string
-	events: Event[]
-}> => {
+export const fetchEvents = async (): Promise<
+	EventsData & { error: string | null }
+> => {
 	const allEvents = await fetchAllEvents()
 	const now = new Date()
 	const events = allEvents.events.filter((event) => {
@@ -247,6 +270,7 @@ export const fetchEvents = async (): Promise<{
 
 	return {
 		semester: allEvents.semester,
-		events
+		events,
+		error: allEvents.error
 	}
 }

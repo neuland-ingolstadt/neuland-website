@@ -2,9 +2,15 @@ import { createServerFn } from '@tanstack/react-start'
 import { getRequest } from '@tanstack/react-start/server'
 import { fetchAllEvents, fetchEvents } from '@/services/events'
 
-export const getAllEvents = createServerFn().handler(() => fetchAllEvents())
+export const getAllEvents = createServerFn().handler(async () => {
+	const { error, ...eventsData } = await fetchAllEvents()
+	return { ...eventsData, error }
+})
 
-export const getUpcomingEvents = createServerFn().handler(() => fetchEvents())
+export const getUpcomingEvents = createServerFn().handler(async () => {
+	const { error, ...eventsData } = await fetchEvents()
+	return { ...eventsData, error }
+})
 
 export const getEventDetail = createServerFn()
 	.validator((input: { eventId: number; locale: string }) => input)
