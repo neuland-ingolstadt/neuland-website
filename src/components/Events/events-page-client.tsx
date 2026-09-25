@@ -104,9 +104,7 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 				<h1 className="text-3xl md:text-4xl font-bold font-mono">
 					{t('title')}
 				</h1>
-				<p className="mt-3 text-terminal-text/80 font-mono max-w-3xl">
-					{t('subtitle')}
-				</p>
+				<p className="mt-3 text-terminal-text/80 max-w-3xl">{t('subtitle')}</p>
 				<p className="mt-4 text-sm text-terminal-text/60 font-mono">
 					{t('eventsFound', { count: filteredEvents.length })}
 				</p>

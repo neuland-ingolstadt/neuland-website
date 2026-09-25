@@ -12,7 +12,7 @@ interface TerminalButtonProps {
 }
 
 const baseStyles =
-	'inline-flex items-center justify-center gap-2 px-5 py-2.5 font-semibold border border-terminal-window-border text-terminal-text transition-all duration-200 hover:border-sidebar-border/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan/30 no-underline'
+	'inline-flex items-center justify-center gap-2 px-5 py-2.5 font-mono font-semibold border border-terminal-window-border text-terminal-text transition-all duration-200 hover:border-sidebar-border/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan/30 no-underline'
 
 const TerminalButton: React.FC<TerminalButtonProps> = ({
 	children,

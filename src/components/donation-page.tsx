@@ -14,7 +14,7 @@ export default function DonationPage() {
 				<h1 className="text-4xl md:text-5xl font-bold mb-4 font-mono">
 					{t('title')}
 				</h1>
-				<p className="text-lg text-terminal-text/80 font-mono max-w-2xl mx-auto">
+				<p className="text-lg text-terminal-text/80 max-w-2xl mx-auto">
 					{t('description')}
 				</p>
 			</section>
@@ -47,10 +47,12 @@ export default function DonationPage() {
 			</div>
 
 			{/* Disclaimer & donation receipt info */}
-			<section className="mt-12 max-w-lg mx-auto w-full font-mono">
+			<section className="mt-12 max-w-lg mx-auto w-full">
 				<div className="p-4 border border-terminal-text/10 bg-terminal-text/5 text-xs text-terminal-text/70 leading-relaxed">
 					<p className="mb-3">
-						<span className="text-terminal-cyan font-bold">NOTICE</span>
+						<span className="text-terminal-cyan font-mono font-semibold">
+							NOTICE
+						</span>
 						<span className="text-terminal-cyan/50 mr-2">:</span>
 						{t('disclaimer')}
 					</p>

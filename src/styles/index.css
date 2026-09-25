@@ -1,5 +1,7 @@
-@import "@fontsource-variable/noto-sans";
-@import "@fontsource-variable/noto-sans-mono";
+@import "@fontsource-variable/ibm-plex-sans/wght.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+@import "@fontsource/ibm-plex-mono/700.css";
 @import "tailwindcss";
 @import "./animations.css";
 
@@ -59,11 +61,10 @@
 
 	--animate-cyberpunk: cyberpunk-glow 1.5s ease-in-out infinite;
 
-	--font-mono: "Noto Sans Mono Variable", "Source Code Pro", monospace;
+	--font-mono: "IBM Plex Mono", ui-monospace, monospace;
 	--font-sans:
-		"Noto Sans Variable", system-ui, -apple-system, BlinkMacSystemFont,
-		"Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-		"Helvetica Neue", sans-serif;
+		"IBM Plex Sans Variable", "IBM Plex Sans", system-ui, -apple-system,
+		BlinkMacSystemFont, "Segoe UI", sans-serif;
 
 	@keyframes cursor {
 		0%,
@@ -287,10 +288,6 @@
 }
 
 @layer utilities {
-	body {
-		font-family: var(--font-mono);
-	}
-
 	html {
 		@apply scroll-smooth;
 	}
@@ -302,14 +299,31 @@
 	}
 
 	body {
-		@apply bg-terminal-bg text-terminal-text font-mono;
+		@apply bg-terminal-bg text-terminal-text font-sans;
 		position: relative;
 		overflow-x: hidden;
-		font-family: var(--font-mono);
+		font-family: var(--font-sans);
 		background-color: var(--color-terminal-bg);
 		color: var(--color-terminal-text);
 		word-wrap: break-word;
 		overflow-wrap: break-word;
+	}
+
+	/* IBM Plex Mono SemiBold for short tech UI accents */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-mono font-semibold;
+	}
+
+	button,
+	[type="button"],
+	[type="submit"],
+	[type="reset"] {
+		@apply font-mono font-semibold;
 	}
 
 	/* Add specific heading styles for articles */
@@ -379,7 +393,7 @@
 
 	/* Style for inline code */
 	article :not(pre) > code {
-		@apply bg-terminal-window-border/80 text-terminal-text px-0.5 rounded font-mono;
+		@apply bg-terminal-window-border/80 text-terminal-text px-0.5 rounded font-mono font-normal;
 		word-wrap: break-word;
 		overflow-wrap: break-word;
 	}
@@ -391,7 +405,7 @@
 	}
 
 	article pre code {
-		@apply p-0 border-none rounded-none text-sm font-mono;
+		@apply p-0 border-none rounded-none text-sm font-mono font-normal;
 		/* Reset inline styles */
 		white-space: pre-wrap;
 		word-wrap: break-word;

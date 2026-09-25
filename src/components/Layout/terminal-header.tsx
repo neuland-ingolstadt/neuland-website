@@ -247,7 +247,7 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 							<DesktopNavLink
 								key={link.name}
 								link={link}
-								className="tracking-wider text-terminal-text transition-colors hover:text-terminal-cyan"
+								className="tracking-wider text-terminal-text font-mono font-semibold transition-colors hover:text-terminal-cyan"
 							/>
 						))}
 						<ThemeToggle />

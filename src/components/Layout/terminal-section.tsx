@@ -72,9 +72,7 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 			>
 				{title}
 			</h2>
-			{subtitle && (
-				<p className="text-md opacity-90 -mt-2 mb-6 font-mono">{subtitle}</p>
-			)}
+			{subtitle && <p className="text-md opacity-90 -mt-2 mb-6">{subtitle}</p>}
 			<div
 				className={`${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
 				style={{ overflow: 'visible' }} // Add explicit overflow visible here

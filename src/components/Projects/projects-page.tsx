@@ -51,7 +51,7 @@ const ProjectsPage = () => {
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ duration: 0.6, delay: 0.2 }}
-					className="mt-3 text-lg text-terminal-text/80 font-mono max-w-3xl"
+					className="mt-3 text-lg text-terminal-text/80 max-w-3xl"
 				>
 					{t('subtitle')}
 				</motion.p>
