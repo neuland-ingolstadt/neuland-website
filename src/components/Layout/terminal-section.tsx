@@ -68,7 +68,7 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 			ref={sectionRef}
 		>
 			<h2
-				className={`${getTitleClass()} font-bold mb-4 font-mono flex items-center`}
+				className={`${getTitleClass()} font-normal mb-4 font-mono flex items-center tracking-tight`}
 			>
 				{title}
 			</h2>

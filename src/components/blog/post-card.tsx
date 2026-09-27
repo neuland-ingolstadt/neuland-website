@@ -43,7 +43,7 @@ export const PostCard = memo(function PostCard({ post }: PostCardProps) {
 			<div className="p-6 flex flex-col gap-3 relative z-10">
 				<div className="flex items-start justify-between gap-3">
 					<div className="flex-1 min-w-0">
-						<div className="text-lg font-semibold flex items-center gap-2 text-terminal-text mb-2">
+						<div className="text-lg font-normal flex items-center gap-2 text-terminal-text mb-2">
 							{post.title}
 						</div>
 						{formattedDate && (

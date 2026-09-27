@@ -49,7 +49,7 @@ const TerminalPartners: React.FC = () => {
 								: 'md:w-3/5'
 						}`}
 					>
-						<h4 className="text-xl font-semibold flex items-center">
+						<h4 className="text-xl font-normal flex items-center">
 							<Zap size={18} className="text-terminal-cyan mr-2" />
 							{t('features.title')}
 						</h4>

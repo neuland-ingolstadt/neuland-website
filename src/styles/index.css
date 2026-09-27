@@ -32,20 +32,20 @@
 
 	--color-terminal-bg: var(--terminal-bg, #000000);
 	--color-terminal-text: var(--terminal-text, #ffffff);
-	--color-terminal-cyan: var(--terminal-cyan, oklch(0.825 0.3281 142.83));
+	--color-terminal-cyan: var(--terminal-cyan, oklch(0.857 0.265 148.5));
 	--color-terminal-highlight: var(
 		--terminal-highlight,
-		oklch(0.8544 0.3379 142.83)
+		oklch(0.885 0.255 150.2)
 	);
 	--color-terminal-darkGreen: var(--terminal-darkGreen, #003300);
 	--color-terminal-muted: var(--terminal-mutedGreen, #006600);
 	--color-terminal-lightGreen: var(
 		--terminal-lightGreen,
-		oklch(0.79 0.2935 142.83)
+		oklch(0.82 0.245 148.2)
 	);
 	--color-terminal-mediumGreen: var(
 		--terminal-mediumGreen,
-		oklch(0.72 0.2837 142.83)
+		oklch(0.745 0.23 147.8)
 	);
 	--color-terminal-window: var(--terminal-window, #0b0b0b);
 	--color-terminal-window-border: var(--terminal-window-border, #333333);
@@ -87,17 +87,17 @@
 		0%,
 		100% {
 			filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8))
-				drop-shadow(0 0 3px rgba(74, 222, 128, 0.8));
+				drop-shadow(0 0 3px rgba(52, 242, 134, 0.8));
 		}
 
 		33% {
 			filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9))
-				drop-shadow(0 0 6px rgba(34, 197, 94, 0.9));
+				drop-shadow(0 0 6px rgba(36, 255, 138, 0.75));
 		}
 
 		66% {
 			filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7))
-				drop-shadow(0 0 6px rgba(21, 128, 61, 0.7));
+				drop-shadow(0 0 6px rgba(30, 200, 110, 0.7));
 		}
 	}
 }
@@ -137,24 +137,25 @@
 	--muted-foreground: 150 9% 70%;
 	--border: 150 7% 20%;
 	--input: var(--border);
-	--ring: 149 65% 52%;
-	--primary: 149 65% 52%;
+	--ring: 148 82% 54%;
+	--primary: 148 82% 54%;
 	--primary-foreground: 160 30% 12%;
 	--secondary: 150 9% 22%;
 	--secondary-foreground: 160 20% 94%;
-	--accent: 149 80% 55%;
+	--accent: 148 88% 56%;
 	--accent-foreground: 160 35% 12%;
 	--destructive: 0 70% 45%;
 	--destructive-foreground: 0 0% 98%;
 
 	--terminal-bg: #020302;
 	--terminal-text: #f6fff8;
-	--terminal-cyan: oklch(0.825 0.3281 142.83);
-	--terminal-highlight: oklch(0.8544 0.3379 142.83);
+	/* ~60% toward #24ff8a — brighter mint, slightly less punchy chroma */
+	--terminal-cyan: oklch(0.857 0.265 148.5);
+	--terminal-highlight: oklch(0.885 0.255 150.2);
 	--terminal-darkGreen: #003300;
 	--terminal-mutedGreen: #0a4f2b;
-	--terminal-lightGreen: oklch(0.79 0.2935 142.83);
-	--terminal-mediumGreen: oklch(0.72 0.2837 142.83);
+	--terminal-lightGreen: oklch(0.82 0.245 148.2);
+	--terminal-mediumGreen: oklch(0.745 0.23 147.8);
 	--terminal-window: #0b0b0b;
 	--terminal-window-border: #333333;
 	--terminal-window-title: #414141;
@@ -166,9 +167,9 @@
 
 	--ambient-background: #010101;
 	--ambient-grid-line: rgba(156, 163, 175, 0.09);
-	--ambient-grid-highlight: rgba(74, 222, 128, 0.28);
-	--ambient-grid-cross: rgba(99, 255, 192, 0.25);
-	--ambient-grid-glow: rgba(74, 222, 128, 0.8);
+	--ambient-grid-highlight: rgba(52, 242, 134, 0.28);
+	--ambient-grid-cross: rgba(70, 255, 170, 0.25);
+	--ambient-grid-glow: rgba(52, 242, 134, 0.8);
 	--sidebar: hsl(0 0% 98%);
 	--sidebar-foreground: hsl(240 5.3% 26.1%);
 	--sidebar-primary: hsl(240 5.9% 10%);
@@ -309,46 +310,46 @@
 		overflow-wrap: break-word;
 	}
 
-	/* IBM Plex Mono SemiBold for short tech UI accents */
+	/* IBM Plex Mono — use loaded weights only (400/600/700); 500 synthesizes poorly on mobile */
 	h1,
 	h2,
 	h3,
 	h4,
 	h5,
 	h6 {
-		@apply font-mono font-semibold;
+		@apply font-mono font-normal;
 	}
 
 	button,
 	[type="button"],
 	[type="submit"],
 	[type="reset"] {
-		@apply font-mono font-semibold;
+		@apply font-mono font-normal;
 	}
 
 	/* Add specific heading styles for articles */
 	article h1 {
-		@apply text-3xl font-bold mb-4 text-terminal-lightGreen;
+		@apply text-3xl font-normal mb-4 text-terminal-lightGreen;
 	}
 
 	article h2 {
-		@apply text-2xl font-bold mt-12 pb-2 text-terminal-lightGreen;
+		@apply text-2xl font-normal mt-12 pb-2 text-terminal-lightGreen;
 	}
 
 	article h3 {
-		@apply text-xl font-bold mt-10 pb-2 text-terminal-lightGreen;
+		@apply text-xl font-normal mt-10 pb-2 text-terminal-lightGreen;
 	}
 
 	article h4 {
-		@apply text-lg font-bold mt-8 pb-2 text-terminal-lightGreen;
+		@apply text-lg font-normal mt-8 pb-2 text-terminal-lightGreen;
 	}
 
 	article h5 {
-		@apply text-base font-bold mt-8 pb-2 text-terminal-lightGreen;
+		@apply text-base font-normal mt-8 pb-2 text-terminal-lightGreen;
 	}
 
 	article h6 {
-		@apply text-sm font-bold mt-6 pb-2 text-terminal-lightGreen;
+		@apply text-sm font-normal mt-6 pb-2 text-terminal-lightGreen;
 	}
 
 	p {
@@ -431,7 +432,7 @@
 	}
 
 	article th {
-		@apply bg-terminal-window/50 text-terminal-text font-semibold;
+		@apply bg-terminal-window/50 text-terminal-text font-normal;
 		/* Semi-transparent background */
 	}
 

@@ -137,10 +137,12 @@ const NextAppShowcase = () => {
 					viewport={{ once: true }}
 					className="text-center mb-16"
 				>
-					<h2 className="text-4xl mb-2 font-bold  bg-clip-text ">
+					<h2 className="text-3xl sm:text-4xl mb-2 font-normal tracking-tight">
 						{t('hero.title')}
 					</h2>
-					<b className="text-xl/loose b-6 font-black ">{t('hero.subtitle')}</b>
+					<p className="text-lg sm:text-xl/loose mb-6 font-sans font-normal text-terminal-text/90">
+						{t('hero.subtitle')}
+					</p>
 					<p className="text-lg text-terminal-text/80 max-w-3xl mx-auto">
 						{t('hero.introduction')}
 					</p>
@@ -221,7 +223,7 @@ const NextAppShowcase = () => {
 							<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/2 via-transparent to-terminal-cyan/1 pointer-events-none" />
 
 							<div className="relative z-10">
-								<h3 className="text-2xl mb-3 font-semibold text-terminal-text">
+								<h3 className="text-xl sm:text-2xl mb-3 font-normal text-terminal-text tracking-tight">
 									{t('container.title')}
 								</h3>
 
@@ -231,7 +233,7 @@ const NextAppShowcase = () => {
 
 								{/* Highlights */}
 								<div className="mb-8 pb-8 border-b border-terminal-window-border">
-									<h4 className="text-sm font-semibold mb-4 text-terminal-cyan uppercase tracking-wider">
+									<h4 className="text-sm font-normal mb-4 text-terminal-cyan uppercase tracking-wider">
 										{t('container.whyNeulandNext')}
 									</h4>
 									<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -257,7 +259,7 @@ const NextAppShowcase = () => {
 
 								{/* Download Section */}
 								<div className="mb-6">
-									<div className="text-xs font-semibold mb-4 text-terminal-cyan/80 uppercase tracking-wider">
+									<div className="text-xs font-normal mb-4 text-terminal-cyan/80 uppercase tracking-wider">
 										{t('container.download')}
 									</div>
 									<div className="flex flex-col sm:flex-row gap-3 mb-6">
@@ -313,7 +315,7 @@ const NextAppShowcase = () => {
 					viewport={{ once: true }}
 					className="mb-16 hidden lg:block"
 				>
-					<h3 className="text-2xl font-bold text-center mb-12">
+					<h3 className="text-xl sm:text-2xl font-normal text-center mb-12 tracking-tight">
 						{t('features.title')}
 					</h3>
 					<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">

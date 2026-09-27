@@ -101,7 +101,7 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 	return (
 		<div className="max-w-6xl mx-auto">
 			<div className="mb-8">
-				<h1 className="text-3xl md:text-4xl font-bold font-mono">
+				<h1 className="text-3xl md:text-4xl font-normal font-mono">
 					{t('title')}
 				</h1>
 				<p className="mt-3 text-terminal-text/80 max-w-3xl">{t('subtitle')}</p>
@@ -191,7 +191,7 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 
 								<div className="relative z-10 h-full flex flex-col">
 									<div className="flex items-start justify-between gap-3">
-										<h2 className="text-2xl font-semibold text-terminal-lightGreen leading-tight ">
+										<h2 className="text-2xl font-normal text-terminal-lightGreen leading-tight ">
 											{title}
 										</h2>
 										<div className="shrink-0">

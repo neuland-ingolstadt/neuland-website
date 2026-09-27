@@ -307,7 +307,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 						onButtonClick={handleButtonClick}
 						animationInProgress={animationInProgress}
 					/>
-					<div className="ml-4 flex-1 text-center text-sm opacity-90 font-semibold">
+					<div className="ml-4 flex-1 text-center text-sm opacity-90 font-normal">
 						{title}
 					</div>
 				</div>

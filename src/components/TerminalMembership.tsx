@@ -30,7 +30,7 @@ const TerminalMembership = () => {
 								<span className="text-terminal-highlight font-medium">
 									Studierende:
 								</span>
-								<span className="text-terminal-text ml-2 font-bold font-mono text-lg">
+								<span className="text-terminal-text ml-2 font-normal font-mono text-lg">
 									10€ / Jahr
 								</span>
 							</div>
@@ -38,7 +38,7 @@ const TerminalMembership = () => {
 								<span className="text-terminal-highlight font-medium">
 									Externe:
 								</span>
-								<span className="text-terminal-text ml-2 font-bold font-mono text-lg">
+								<span className="text-terminal-text ml-2 font-normal font-mono text-lg">
 									20€ / Jahr
 								</span>
 							</div>
@@ -53,7 +53,7 @@ const TerminalMembership = () => {
 						viewport={{ once: true }}
 						className="md:w-3/5 p-6 space-y-5"
 					>
-						<h4 className="text-xl font-semibold flex items-center">
+						<h4 className="text-xl font-normal flex items-center">
 							<Zap size={18} className="text-terminal-cyan mr-2" />
 							Deine Vorteile:
 						</h4>

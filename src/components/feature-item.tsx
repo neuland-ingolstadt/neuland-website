@@ -29,7 +29,7 @@ const FeatureItem = memo(
 					<div className="shrink-0 w-6 h-6 flex items-center justify-center text-terminal-cyan group-hover:text-terminal-cyan transition-colors duration-300">
 						{icon}
 					</div>
-					<p className="font-semibold text-terminal-text text-base m-0 group-hover:text-terminal-text transition-colors duration-300">
+					<p className="font-normal text-terminal-text text-base m-0 group-hover:text-terminal-text transition-colors duration-300">
 						{title}
 					</p>
 				</div>

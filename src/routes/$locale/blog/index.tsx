@@ -171,7 +171,7 @@ function BlogPage() {
 			</Breadcrumb>
 
 			<div className="mt-4 mb-8 flex items-center justify-between">
-				<h1 className="text-3xl font-bold ">Neuland Blog</h1>
+				<h1 className="text-3xl font-normal ">Neuland Blog</h1>
 				<div className="flex gap-2">
 					<TerminalButton
 						href="/feed"

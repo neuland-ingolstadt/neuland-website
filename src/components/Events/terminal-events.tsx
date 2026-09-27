@@ -30,7 +30,7 @@ const InternalBadge = React.forwardRef<
 		<span
 			ref={ref}
 			className={cn(
-				'inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.08em] text-terminal-text/80',
+				'inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.6rem] font-normal uppercase tracking-[0.08em] text-terminal-text/80',
 				className
 			)}
 			{...props}
@@ -132,7 +132,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 									</p>
 								</div>
 							) : !eventsData?.events || eventsData.events.length === 0 ? (
-								<div className="p-4 text-terminal-text font-bold">
+								<div className="p-4 text-terminal-text font-normal">
 									<p className="text-md mb-3">
 										{t('noEventsToDisplayMessageLine1')}
 									</p>
@@ -251,7 +251,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 													<div className="flex flex-wrap gap-2">
 														<button
 															onClick={resetSelectedEvent}
-															className="text-terminal-text transition-colors px-2 py-1 text-sm inline-flex items-center font-bold group bg-terminal-card border border-terminal-window-border hover:bg-terminal-window-border/30"
+															className="text-terminal-text transition-colors px-2 py-1 text-sm inline-flex items-center font-normal group bg-terminal-card border border-terminal-window-border hover:bg-terminal-window-border/30"
 															type="button"
 														>
 															<LucideArrowBigLeft
@@ -262,7 +262,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 														</button>
 														<TerminalButton
 															href={`/events/${eventsData.events[selectedEventIndex].id}`}
-															className="px-2 py-1 text-sm font-bold"
+															className="px-2 py-1 text-sm font-normal"
 														>
 															{t('openEventDetails')}
 															<ArrowUpRight size={14} />

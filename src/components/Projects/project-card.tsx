@@ -79,7 +79,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 			)}
 
 			<div className="p-5 pb-2 flex flex-col items-start gap-2">
-				<div className="text-xl font-semibold flex items-center gap-2 text-terminal-text">
+				<div className="text-xl font-normal flex items-center gap-2 text-terminal-text">
 					<Code
 						size={20}
 						className="text-terminal-text/70 group-hover:text-terminal-cyan transition-colors duration-200"

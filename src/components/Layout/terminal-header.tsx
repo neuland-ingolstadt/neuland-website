@@ -117,7 +117,7 @@ const MobileSidebar: React.FC = () => {
 												: pathname === item.href.replace('/#membership', '/')
 										}
 										size="lg"
-										className="no-underline font-mono text-base text-terminal-text/80 hover:bg-terminal-window/30 hover:text-terminal-cyan data-[active=true]:bg-terminal-window/60 data-[active=true]:text-terminal-cyan data-[active=true]:font-semibold"
+										className="no-underline font-mono text-base font-normal text-terminal-text/80 hover:bg-terminal-window/30 hover:text-terminal-cyan data-[active=true]:bg-terminal-window/60 data-[active=true]:text-terminal-cyan"
 									>
 										{item.external ? (
 											<a
@@ -247,7 +247,7 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 							<DesktopNavLink
 								key={link.name}
 								link={link}
-								className="tracking-wider text-terminal-text font-mono font-semibold transition-colors hover:text-terminal-cyan"
+								className="tracking-wider text-terminal-text font-mono font-normal transition-colors hover:text-terminal-cyan"
 							/>
 						))}
 						<ThemeToggle />

@@ -8,7 +8,7 @@ export default function ClientIntro() {
 		<div>
 			<TypewriterText
 				text={t('typewriter')}
-				className="text-terminal-text/90 mb-12 font-mono text-xl font-semibold"
+				className="text-terminal-text/80 mb-8 sm:mb-12 font-mono text-base sm:text-lg md:text-xl font-normal tracking-tight leading-relaxed"
 				delay={25}
 				preventLayoutJumps={true}
 			/>

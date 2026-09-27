@@ -59,7 +59,7 @@ const AboutUsSection: React.FC = () => {
 
 				{/* Main intro section */}
 				<div className="p-6 border-b border-terminal-window-border relative z-10">
-					<h3 className="text-xl font-semibold text-terminal-text mb-3">
+					<h3 className="text-xl font-normal text-terminal-text mb-3">
 						{t('container.title')}
 					</h3>
 					<p className="text-terminal-text/90 leading-relaxed m-0">
@@ -91,7 +91,7 @@ const AboutUsSection: React.FC = () => {
 								<div className="relative z-10">
 									<div className="flex items-center gap-3 mb-3">
 										<div className="shrink-0">{feature.icon}</div>
-										<p className="m-0 text-lg font-semibold text-terminal-text">
+										<p className="m-0 text-lg font-normal text-terminal-text">
 											{feature.title}
 										</p>
 									</div>
