@@ -1,5 +1,11 @@
 import type React from 'react'
-import { useEffect, useEffectEvent, useLayoutEffect, useRef, useState } from 'react'
+import {
+	useEffect,
+	useEffectEvent,
+	useLayoutEffect,
+	useRef,
+	useState
+} from 'react'
 
 interface TypewriterTextProps {
 	text: string
