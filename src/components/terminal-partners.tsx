@@ -3,6 +3,7 @@ import { Heart, Mail, Zap } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useTranslations } from '@/i18n/react'
 import TerminalButton from './terminal-button'
+import ThiLogo from './thi-logo'
 
 const TerminalPartners: React.FC = () => {
 	// Check if current date is >= December 1st, 2025
@@ -129,11 +130,7 @@ const TerminalPartners: React.FC = () => {
 
 								{/* Logo container that moves up on hover */}
 								<div className="relative z-10 flex items-center justify-center transition-transform duration-300 group-hover/logo:-translate-y-3">
-									<img
-										src="/assets/thi.webp"
-										alt="THI Partner"
-										className="max-w-full max-h-28 object-contain"
-									/>
+									<ThiLogo className="w-full max-w-[280px] h-auto text-terminal-text" />
 								</div>
 
 								{/* Fading subtitle - absolutely positioned so it doesn't affect layout */}
