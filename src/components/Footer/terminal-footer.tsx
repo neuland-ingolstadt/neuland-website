@@ -20,9 +20,9 @@ const TerminalFooter: React.FC = () => {
 				<SocialLinks />
 				<SettingsLinks />
 			</div>
-			<div className="text-center text-terminal-text/50 text-sm pt-2 pb-8">
+			<div className="text-center text-terminal-text/70 text-sm pt-2 pb-8">
 				© {currentYear} Neuland Ingolstadt e.V.
-				<div className="text-xs text-terminal-text/30 mt-1 font-mono">
+				<div className="text-xs text-terminal-text/70 mt-1 font-mono">
 					Build: <span title="Git commit hash">{commitHash}</span>
 				</div>
 			</div>

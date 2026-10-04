@@ -9,13 +9,7 @@ const TerminalMembership = () => {
 
 	return (
 		<div className="my-10 w-full">
-			<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
-				{/* Creative accent - top border highlight */}
-				<div className="absolute top-0 left-0 right-0 h-px bg-terminal-cyan/40" />
-
-				{/* Subtle inner glow with radial effect */}
-				<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/4 via-transparent to-terminal-cyan/2 pointer-events-none" />
-
+			<div className="relative bg-terminal-card border border-terminal-cyan/60 rounded-md overflow-hidden">
 				<div className="flex flex-col lg:flex-row relative z-10">
 					{/* Pricing Section */}
 					<motion.div
@@ -25,7 +19,7 @@ const TerminalMembership = () => {
 						viewport={{ once: true }}
 						className="lg:w-2/5 p-6 border-b lg:border-b-0 lg:border-r border-terminal-window-border"
 					>
-						<div className="text-terminal-text/60 mb-4 font-mono text-sm">
+						<div className="text-terminal-text/80 mb-4 font-mono text-sm">
 							$ cat membership-fees.txt
 						</div>
 						<div className="flex flex-col gap-5">
@@ -56,7 +50,7 @@ const TerminalMembership = () => {
 						viewport={{ once: true }}
 						className="md:w-3/5 p-6 space-y-5"
 					>
-						<h4 className="text-xl font-normal flex items-center">
+						<h4 className="text-xl font-bold font-mono flex items-center">
 							<Zap size={18} className="text-terminal-cyan mr-2" />
 							{t('benefits.title')}:
 						</h4>
@@ -66,7 +60,7 @@ const TerminalMembership = () => {
 								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
-								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+								<p className="text-terminal-text/85 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 									{t('benefits.line1')}
 								</p>
 							</div>
@@ -74,7 +68,7 @@ const TerminalMembership = () => {
 								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
-								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+								<p className="text-terminal-text/85 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 									{t('benefits.line2')}
 								</p>
 							</div>
@@ -82,7 +76,7 @@ const TerminalMembership = () => {
 								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
-								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+								<p className="text-terminal-text/85 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 									{t('benefits.line3')}
 								</p>
 							</div>
@@ -91,7 +85,7 @@ const TerminalMembership = () => {
 						<div className="pt-2 flex flex-wrap gap-3">
 							<TerminalButton
 								href="https://join.neuland-ingolstadt.de/"
-								dark
+								primary
 								target="_blank"
 								rel="noreferrer noopener"
 							>

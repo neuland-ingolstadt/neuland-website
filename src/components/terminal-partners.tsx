@@ -12,13 +12,7 @@ const TerminalPartners: React.FC = () => {
 
 	return (
 		<div className="my-10 w-full">
-			<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
-				{/* Creative accent - top border highlight */}
-				<div className="absolute top-0 left-0 right-0 h-px bg-terminal-cyan/40" />
-
-				{/* Subtle inner glow */}
-				<div className="absolute inset-0 bg-gradient-to-b from-terminal-cyan/3 via-transparent to-transparent pointer-events-none" />
-
+			<div className="relative bg-terminal-card border border-terminal-cyan/60 rounded-md overflow-hidden">
 				<div className="flex flex-col lg:flex-row relative z-10">
 					{/* Info Section */}
 					<motion.div
@@ -30,7 +24,7 @@ const TerminalPartners: React.FC = () => {
 							showPartners ? 'lg:w-1/3 lg:border-r' : 'lg:w-2/5 lg:border-r'
 						}`}
 					>
-						<div className="text-terminal-text/60 mb-4 font-mono text-sm">
+						<div className="text-terminal-text/80 mb-4 font-mono text-sm">
 							$ cat sponsoring-info.txt
 						</div>
 						<div className="text-terminal-text">
@@ -50,7 +44,7 @@ const TerminalPartners: React.FC = () => {
 								: 'md:w-3/5'
 						}`}
 					>
-						<h4 className="text-xl font-normal flex items-center">
+						<h4 className="text-xl font-bold font-mono flex items-center">
 							<Zap size={18} className="text-terminal-cyan mr-2" />
 							{t('features.title')}
 						</h4>
@@ -60,7 +54,7 @@ const TerminalPartners: React.FC = () => {
 								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
-								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+								<p className="text-terminal-text/85 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 									{t('features.line1')}
 								</p>
 							</div>
@@ -68,7 +62,7 @@ const TerminalPartners: React.FC = () => {
 								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
-								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+								<p className="text-terminal-text/85 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 									{t('features.line2')}
 								</p>
 							</div>
@@ -76,7 +70,7 @@ const TerminalPartners: React.FC = () => {
 								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
-								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+								<p className="text-terminal-text/85 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 									{t('features.line3')}
 								</p>
 							</div>
@@ -119,15 +113,6 @@ const TerminalPartners: React.FC = () => {
 								rel="noreferrer noopener"
 								className="relative p-6 flex items-center justify-center min-h-[120px] flex-1 group/logo transition-all duration-300 overflow-hidden no-underline"
 							>
-								{/* Animated background on hover */}
-								<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/5 via-terminal-cyan/2 to-transparent opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-								{/* Special accent - corner bracket on hover */}
-								<div className="absolute top-0 left-0 w-8 h-8 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300">
-									<div className="absolute top-0 left-0 w-4 h-px bg-terminal-cyan/40" />
-									<div className="absolute top-0 left-0 w-px h-4 bg-terminal-cyan/40" />
-								</div>
-
 								{/* Logo container that moves up on hover */}
 								<div className="relative z-10 flex items-center justify-center transition-transform duration-300 group-hover/logo:-translate-y-3">
 									<ThiLogo className="w-full max-w-[280px] h-auto text-terminal-text" />
@@ -135,7 +120,7 @@ const TerminalPartners: React.FC = () => {
 
 								{/* Fading subtitle - absolutely positioned so it doesn't affect layout */}
 								<div className="absolute -bottom-3 left-0 right-0 z-10 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover/logo:translate-y-0 pointer-events-none">
-									<p className="text-sm text-terminal-text/70 text-center font-medium ">
+									<p className="text-sm text-terminal-text/85 text-center font-medium ">
 										Technische Hochschule Ingolstadt
 									</p>
 								</div>
@@ -146,15 +131,6 @@ const TerminalPartners: React.FC = () => {
 								rel="noreferrer noopener"
 								className="relative p-6 border-l md:border-l-0 md:border-t border-terminal-window-border flex items-center justify-center min-h-[120px] flex-1 group/logo transition-all duration-300 overflow-hidden no-underline"
 							>
-								{/* Animated background on hover */}
-								<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/5 via-terminal-cyan/2 to-transparent opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-								{/* Special accent - corner bracket on hover */}
-								<div className="absolute top-0 left-0 w-8 h-8 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300">
-									<div className="absolute top-0 left-0 w-4 h-px bg-terminal-cyan/40" />
-									<div className="absolute top-0 left-0 w-px h-4 bg-terminal-cyan/40" />
-								</div>
-
 								{/* Logo container that moves up on hover */}
 								<div className="relative z-10 flex items-center justify-center transition-transform duration-300 group-hover/logo:-translate-y-3">
 									<img
@@ -166,7 +142,7 @@ const TerminalPartners: React.FC = () => {
 
 								{/* Fading subtitle - absolutely positioned so it doesn't affect layout */}
 								<div className="absolute -bottom-3 left-0 right-0 z-10 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover/logo:translate-y-0 pointer-events-none">
-									<p className="text-sm text-terminal-text/70 text-center font-medium ">
+									<p className="text-sm text-terminal-text/85 text-center font-medium ">
 										EXP Software GmbH
 									</p>
 								</div>

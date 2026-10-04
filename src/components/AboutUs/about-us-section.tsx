@@ -34,32 +34,11 @@ const AboutUsSection: React.FC = () => {
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6 }}
 				viewport={{ once: true }}
-				className="relative bg-terminal-window border border-terminal-window-border overflow-hidden"
+				className="relative bg-terminal-card border border-terminal-cyan/60 rounded-md overflow-hidden"
 			>
-				{/* Corner accent brackets */}
-				<div className="absolute top-0 left-0 w-12 h-12">
-					<div className="absolute top-0 left-0 w-6 h-px bg-terminal-cyan/30" />
-					<div className="absolute top-0 left-0 w-px h-6 bg-terminal-cyan/30" />
-				</div>
-				<div className="absolute top-0 right-0 w-12 h-12">
-					<div className="absolute top-0 right-0 w-6 h-px bg-terminal-cyan/30" />
-					<div className="absolute top-0 right-0 w-px h-6 bg-terminal-cyan/30" />
-				</div>
-				<div className="absolute bottom-0 left-0 w-12 h-12">
-					<div className="absolute bottom-0 left-0 w-6 h-px bg-terminal-cyan/30" />
-					<div className="absolute bottom-0 left-0 w-px h-6 bg-terminal-cyan/30" />
-				</div>
-				<div className="absolute bottom-0 right-0 w-12 h-12">
-					<div className="absolute bottom-0 right-0 w-6 h-px bg-terminal-cyan/30" />
-					<div className="absolute bottom-0 right-0 w-px h-6 bg-terminal-cyan/30" />
-				</div>
-
-				{/* Subtle inner glow */}
-				<div className="absolute inset-0 bg-gradient-to-b from-terminal-cyan/3 via-transparent to-transparent pointer-events-none" />
-
 				{/* Main intro section */}
 				<div className="p-6 border-b border-terminal-window-border relative z-10">
-					<h3 className="text-xl font-normal text-terminal-text mb-3">
+					<h3 className="text-xl font-bold font-mono text-terminal-text mb-3">
 						{t('container.title')}
 					</h3>
 					<p className="text-terminal-text/90 leading-relaxed m-0">
@@ -79,23 +58,14 @@ const AboutUsSection: React.FC = () => {
 								viewport={{ once: true }}
 								className={`relative p-6 flex flex-col h-full group ${idx < features.length - 1 ? 'border-r border-terminal-window-border' : ''}`}
 							>
-								{/* Hover background accent, similar to NextAppShowcase feature items */}
-								<div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-terminal-cyan/1 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-								{/* Top-left corner accessory */}
-								<div className="pointer-events-none absolute top-0 left-0 w-8 h-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-									<div className="absolute top-0 left-0 w-4 h-px bg-terminal-cyan/40" />
-									<div className="absolute top-0 left-0 w-px h-4 bg-terminal-cyan/40" />
-								</div>
-
 								<div className="relative z-10">
 									<div className="flex items-center gap-3 mb-3">
 										<div className="shrink-0">{feature.icon}</div>
-										<p className="m-0 text-lg font-normal text-terminal-text">
+										<p className="m-0 text-lg font-bold font-mono text-terminal-text">
 											{feature.title}
 										</p>
 									</div>
-									<p className="m-0 text-sm leading-relaxed text-terminal-text/70">
+									<p className="m-0 text-sm leading-relaxed text-terminal-text/85">
 										{feature.desc}
 									</p>
 								</div>

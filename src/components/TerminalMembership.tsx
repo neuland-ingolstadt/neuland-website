@@ -22,7 +22,7 @@ const TerminalMembership = () => {
 						viewport={{ once: true }}
 						className="lg:w-2/5 p-6 border-b lg:border-b-0 lg:border-r border-terminal-window-border"
 					>
-						<div className="text-terminal-text/60 mb-4 font-mono text-sm">
+						<div className="text-terminal-text/80 mb-4 font-mono text-sm">
 							$ cat membership-fees.txt
 						</div>
 						<div className="flex flex-col gap-5">
@@ -63,7 +63,7 @@ const TerminalMembership = () => {
 								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
-								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+								<p className="text-terminal-text/85 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 									Teil eines aktiven studentischen Vereins mit regelmäßigen
 									Treffen und Austausch
 								</p>
@@ -72,7 +72,7 @@ const TerminalMembership = () => {
 								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
-								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+								<p className="text-terminal-text/85 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 									Gemeinsame Arbeit an Open-Source Projekten
 								</p>
 							</div>
@@ -80,7 +80,7 @@ const TerminalMembership = () => {
 								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
-								<p className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-300 mb-0">
+								<p className="text-terminal-text/85 group-hover:text-terminal-text transition-colors duration-300 mb-0">
 									Exklusive Workshops, Hackathons und soziale Events mit
 									Gleichgesinnten
 								</p>

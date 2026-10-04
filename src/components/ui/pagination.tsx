@@ -63,7 +63,7 @@ function PaginationLink({
 				sizeClasses[size],
 				isActive
 					? 'border border-terminal-cyan/40 bg-terminal-card text-terminal-cyan hover:border-terminal-cyan/60 hover:bg-terminal-card'
-					: 'border border-terminal-window-border bg-terminal-card text-terminal-text/70 hover:border-terminal-highlight/40 hover:text-terminal-text hover:bg-terminal-window',
+					: 'border border-terminal-window-border bg-terminal-card text-terminal-text/85 hover:border-terminal-highlight/40 hover:text-terminal-text hover:bg-terminal-window',
 				className
 			)}
 			{...props}
@@ -124,7 +124,7 @@ function PaginationEllipsis({
 			aria-hidden
 			data-slot="pagination-ellipsis"
 			className={cn(
-				'flex h-10 w-10 items-center justify-center text-terminal-text/60',
+				'flex h-10 w-10 items-center justify-center text-terminal-text/80',
 				className
 			)}
 			{...props}

@@ -1,5 +1,4 @@
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router'
-import MatrixEffect from '@/components/Background/page-background'
 import TerminalFooter from '@/components/Footer/terminal-footer'
 import TerminalHeader from '@/components/Layout/terminal-header'
 import NotFound from '@/components/not-found'
@@ -29,8 +28,7 @@ function LocaleLayout() {
 	return (
 		<>
 			<TerminalHeader isPrideThemeEnabled={prideThemeEnabled} />
-			<MatrixEffect />
-			<div className="container px-4 md:px-12 xl:px-20 mx-auto pt-[calc(var(--navbar-height,4.5rem)+1.5rem)] relative z-10">
+			<div className="mx-auto max-w-[1400px] px-4 md:px-12 xl:px-20 pt-[var(--navbar-height,4.5rem)] relative z-10">
 				<Outlet />
 				<TerminalFooter />
 			</div>

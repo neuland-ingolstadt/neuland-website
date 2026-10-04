@@ -51,9 +51,9 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 	const getTitleClass = () => {
 		switch (headingLevel) {
 			case 1:
-				return 'text-3xl'
+				return 'text-3xl md:text-4xl'
 			case 2:
-				return 'text-2xl'
+				return 'text-2xl md:text-3xl'
 			case 3:
 				return 'text-xl'
 			default:
@@ -63,19 +63,21 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 
 	return (
 		<section
-			className={`${classNames} mb-20 relative`}
+			className={`${classNames} mb-24 relative border border-terminal-window-border`}
 			id={id}
 			ref={sectionRef}
 		>
 			<h2
-				className={`${getTitleClass()} font-normal mb-4 font-mono flex items-center tracking-tight`}
+				className={`${getTitleClass()} font-mono font-bold tracking-tight px-6 py-5 sm:px-8 border-b border-terminal-window-border`}
 			>
 				{title}
 			</h2>
-			{subtitle && <p className="text-md opacity-90 -mt-2 mb-6">{subtitle}</p>}
+			{subtitle && (
+				<p className="text-md opacity-90 px-6 pt-4 sm:px-8">{subtitle}</p>
+			)}
 			<div
-				className={`${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
-				style={{ overflow: 'visible' }} // Add explicit overflow visible here
+				className={`${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000 p-6 sm:p-8`}
+				style={{ overflow: 'visible' }}
 			>
 				{children}
 			</div>

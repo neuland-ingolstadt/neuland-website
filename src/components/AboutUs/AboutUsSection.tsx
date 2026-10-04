@@ -93,7 +93,7 @@ const AboutUsSection: React.FC = () => {
 											{feature.title}
 										</p>
 									</div>
-									<p className="m-0 text-sm leading-relaxed text-terminal-text/70">
+									<p className="m-0 text-sm leading-relaxed text-terminal-text/85">
 										{feature.desc}
 									</p>
 								</div>

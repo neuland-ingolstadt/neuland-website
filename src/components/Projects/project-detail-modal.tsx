@@ -95,14 +95,14 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 												/>
 												{project.tags && project.tags.length > 0 && (
 													<div className="mt-4 w-full">
-														<p className="text-sm mb-2 font-mono text-terminal-text/60">
+														<p className="text-sm mb-2 font-mono text-terminal-text/80">
 															$ tags --list
 														</p>
 														<div className="flex flex-wrap gap-2">
 															{project.tags.map((tag) => (
 																<span
 																	key={tag}
-																	className="text-xs px-2.5 py-1 bg-terminal-card text-terminal-text/70 font-medium border border-terminal-window-border"
+																	className="text-xs px-2.5 py-1 bg-terminal-card text-terminal-text/85 font-medium border border-terminal-window-border"
 																>
 																	{tag}
 																</span>
@@ -125,7 +125,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 															text={
 																project.longDescription || project.description
 															}
-															className="text-terminal-text/70"
+															className="text-terminal-text/85"
 															delay={1}
 															preventLayoutJumps
 														/>
@@ -133,7 +133,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
 													{project.additionalInfo && (
 														<div className="mb-6 mt-4 border-l-2 border-terminal-window-border pl-4">
-															<p className="text-sm text-terminal-text/70">
+															<p className="text-sm text-terminal-text/85">
 																{project.additionalInfo}
 															</p>
 														</div>
@@ -146,7 +146,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 															<div className="flex flex-row gap-8 mt-4">
 																{/* Links column */}
 																<div className="flex flex-col">
-																	<p className="text-sm mb-2 font-mono text-terminal-text/60">
+																	<p className="text-sm mb-2 font-mono text-terminal-text/80">
 																		$ links --open
 																	</p>
 																	<div className="flex flex-wrap gap-3 items-center">
@@ -170,14 +170,14 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 																</div>
 																{/* Tags column */}
 																<div className="flex flex-col">
-																	<p className="text-sm mb-2 font-mono text-terminal-text/60">
+																	<p className="text-sm mb-2 font-mono text-terminal-text/80">
 																		$ tags --list
 																	</p>
 																	<div className="flex flex-wrap gap-2">
 																		{project.tags.map((tag) => (
 																			<span
 																				key={tag}
-																				className="text-xs px-2.5 py-1 bg-terminal-card text-terminal-text/70 font-medium border border-terminal-window-border"
+																				className="text-xs px-2.5 py-1 bg-terminal-card text-terminal-text/85 font-medium border border-terminal-window-border"
 																			>
 																				{tag}
 																			</span>
@@ -187,7 +187,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 															</div>
 														) : (
 															<div className="mt-4">
-																<p className="text-sm mb-4 font-mono text-terminal-text/60">
+																<p className="text-sm mb-4 font-mono text-terminal-text/80">
 																	$ links --open
 																</p>
 																<div className="flex flex-wrap gap-3 items-center">

@@ -115,7 +115,7 @@ const TocModal: React.FC<TocModalProps> = ({ sections, isOpen, onClose }) => {
 								</h2>
 								<button
 									onClick={onClose}
-									className="ml-4 p-1 text-terminal-text/70 hover:text-terminal-text transition-colors duration-200"
+									className="ml-4 p-1 text-terminal-text/85 hover:text-terminal-text transition-colors duration-200"
 									aria-label="Schließen"
 									type="button"
 								>
@@ -138,7 +138,7 @@ const TocModal: React.FC<TocModalProps> = ({ sections, isOpen, onClose }) => {
 														>
 															<a
 																href={`#${section.id}`}
-																className="text-terminal-text/70 hover:text-terminal-cyan transition-colors duration-200 flex items-center no-underline group"
+																className="text-terminal-text/85 hover:text-terminal-cyan transition-colors duration-200 flex items-center no-underline group"
 																onClick={(e) => {
 																	e.preventDefault()
 																	const targetElement = document.getElementById(
@@ -159,7 +159,7 @@ const TocModal: React.FC<TocModalProps> = ({ sections, isOpen, onClose }) => {
 																}}
 															>
 																{section.level > 1 && (
-																	<span className="mr-2 text-terminal-text/60 group-hover:text-terminal-cyan/60 transition-colors duration-200">
+																	<span className="mr-2 text-terminal-text/80 group-hover:text-terminal-cyan/80 transition-colors duration-200">
 																		{section.level === 2 ? '▪' : '•'}
 																	</span>
 																)}

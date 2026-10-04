@@ -51,7 +51,7 @@ export function TagFilter({
 							className={`cursor-pointer ${
 								selectedTags.includes(tag)
 									? 'bg-terminal-cyan text-terminal-onAccent'
-									: 'bg-terminal-card text-terminal-text/80 border border-terminal-window-border'
+									: 'bg-terminal-card text-terminal-text/90 border border-terminal-window-border'
 							}`}
 							onClick={() => toggleTag(tag)}
 						>

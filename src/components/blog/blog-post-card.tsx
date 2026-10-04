@@ -46,19 +46,19 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
 							{post.title}
 						</div>
 						{formattedDate && (
-							<div className="text-xs text-terminal-text/70 font-mono">
+							<div className="text-xs text-terminal-text/85 font-mono">
 								<time dateTime={post.date}>{formattedDate}</time>
 							</div>
 						)}
 					</div>
 					<ChevronRight
 						size={20}
-						className="shrink-0 text-terminal-text/70 group-hover:text-terminal-cyan group-hover:translate-x-1 transition-all duration-200 mt-0.5"
+						className="shrink-0 text-terminal-text/85 group-hover:text-terminal-cyan group-hover:translate-x-1 transition-all duration-200 mt-0.5"
 					/>
 				</div>
 
 				{post.description && (
-					<p className="text-sm text-terminal-text/70 leading-relaxed line-clamp-2 group-hover:text-terminal-text transition-colors duration-200">
+					<p className="text-sm text-terminal-text/85 leading-relaxed line-clamp-2 group-hover:text-terminal-text transition-colors duration-200">
 						{post.description}
 					</p>
 				)}
@@ -68,7 +68,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
 						{post.tags.map((tag) => (
 							<span
 								key={tag}
-								className="text-xs px-2.5 py-1 bg-terminal-card text-terminal-text/70 font-medium border border-terminal-window-border hover:border-terminal-highlight/40 transition-colors duration-200"
+								className="text-xs px-2.5 py-1 bg-terminal-card text-terminal-text/85 font-medium border border-terminal-window-border hover:border-terminal-highlight/40 transition-colors duration-200"
 							>
 								{tag}
 							</span>
