@@ -36,7 +36,7 @@ function FilterButton({ active, label, onClick }: FilterButtonProps) {
 				'px-3 py-1.5 border text-sm font-mono transition-colors duration-200',
 				active
 					? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
-					: 'border-terminal-window-border text-terminal-text/80 hover:border-terminal-cyan/70 hover:text-terminal-cyan'
+					: 'border-terminal-window-border text-terminal-text/90 hover:border-terminal-cyan/70 hover:text-terminal-cyan'
 			)}
 		>
 			{label}
@@ -104,8 +104,8 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 				<h1 className="text-3xl md:text-4xl font-normal font-mono">
 					{t('title')}
 				</h1>
-				<p className="mt-3 text-terminal-text/80 max-w-3xl">{t('subtitle')}</p>
-				<p className="mt-4 text-sm text-terminal-text/60 font-mono">
+				<p className="mt-3 text-terminal-text/90 max-w-3xl">{t('subtitle')}</p>
+				<p className="mt-4 text-sm text-terminal-text/80 font-mono">
 					{t('eventsFound', { count: filteredEvents.length })}
 				</p>
 			</div>
@@ -113,7 +113,7 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 			<div className="mb-8 space-y-4">
 				<div className="flex items-center gap-3">
 					<Filter size={18} className="text-terminal-cyan" />
-					<span className="text-terminal-text/80 font-mono text-sm">
+					<span className="text-terminal-text/90 font-mono text-sm">
 						{t('filters.visibility')}
 					</span>
 					<div className="flex flex-wrap gap-2">
@@ -137,7 +137,7 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 
 				<div className="flex items-center gap-3">
 					<Clock3 size={18} className="text-terminal-cyan" />
-					<span className="text-terminal-text/80 font-mono text-sm">
+					<span className="text-terminal-text/90 font-mono text-sm">
 						{t('filters.time')}
 					</span>
 					<div className="flex flex-wrap gap-2">
@@ -163,10 +163,10 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 			{error ? (
 				<div className="p-4 text-terminal-lightGreen border border-terminal-window-border rounded-sm bg-terminal-window">
 					<p className="text-md mb-2">{t('apiErrorTitle')}</p>
-					<p className="text-sm text-terminal-lightGreen/60">{error}</p>
+					<p className="text-sm text-terminal-lightGreen/80">{error}</p>
 				</div>
 			) : filteredEvents.length === 0 ? (
-				<div className="p-6 border border-terminal-window-border bg-terminal-window text-terminal-text/80 font-mono">
+				<div className="p-6 border border-terminal-window-border bg-terminal-window text-terminal-text/90 font-mono">
 					{t('emptyState')}
 				</div>
 			) : (
@@ -197,13 +197,13 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 										<div className="shrink-0">
 											{event.isInternal ? (
 												<InternalOnlyTooltip>
-													<span className="inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.08em] text-terminal-text/80">
+													<span className="inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.08em] text-terminal-text/90">
 														<Lock size={10} />
 														{t('filters.internal')}
 													</span>
 												</InternalOnlyTooltip>
 											) : (
-												<span className="inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.08em] text-terminal-text/80">
+												<span className="inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.08em] text-terminal-text/90">
 													<Unlock size={10} />
 													{t('filters.public')}
 												</span>
@@ -211,17 +211,17 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 										</div>
 									</div>
 
-									<p className=">text-terminal-text/80 mb-1">
+									<p className=">text-terminal-text/90 mb-1">
 										{formatEventDateRange(event, locale, t('tbd'))}
 									</p>
 									{event.location && (
-										<p className="text-sm text-terminal-text/65 mb-4">
+										<p className="text-sm text-terminal-text/85 mb-4">
 											@{event.location}
 										</p>
 									)}
 
 									{description && (
-										<p className="text-sm text-terminal-text/75 mb-5 leading-relaxed">
+										<p className="text-sm text-terminal-text/85 mb-5 leading-relaxed">
 											{description}
 										</p>
 									)}

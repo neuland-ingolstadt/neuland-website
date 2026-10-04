@@ -62,7 +62,7 @@ export default function Impressum() {
 							<h1 className="text-4xl font-bold text-terminal-text mb-2">
 								{t('breadcrumb')}
 							</h1>
-							<p className="text-terminal-text/70 text-sm font-mono">
+							<p className="text-terminal-text/85 text-sm font-mono">
 								$ cat legalnotice.txt
 							</p>
 						</div>
@@ -79,10 +79,10 @@ export default function Impressum() {
 									<h3 className="text-lg font-semibold text-terminal-text mb-2">
 										Verein
 									</h3>
-									<p className="text-terminal-text/70 leading-relaxed mb-2">
+									<p className="text-terminal-text/85 leading-relaxed mb-2">
 										Neuland Ingolstadt e.V.
 									</p>
-									<p className="text-terminal-text/70 leading-relaxed">
+									<p className="text-terminal-text/85 leading-relaxed">
 										Esplanade 10
 										<br />
 										85049 Ingolstadt
@@ -103,10 +103,10 @@ export default function Impressum() {
 									<h3 className="text-lg font-semibold text-terminal-text mb-2">
 										Registergericht
 									</h3>
-									<p className="text-terminal-text/70 leading-relaxed mb-1">
+									<p className="text-terminal-text/85 leading-relaxed mb-1">
 										Amtsgericht Ingolstadt
 									</p>
-									<p className="text-terminal-text/70 leading-relaxed">
+									<p className="text-terminal-text/85 leading-relaxed">
 										Registernummer: <span className="font-mono">VR 201088</span>
 									</p>
 								</div>
@@ -125,19 +125,19 @@ export default function Impressum() {
 							</h3>
 							<div className="space-y-3">
 								<div className="flex items-center gap-3">
-									<Mail className="h-4 w-4 text-terminal-text/60 shrink-0" />
+									<Mail className="h-4 w-4 text-terminal-text/80 shrink-0" />
 									<a
 										href="mailto:info@neuland-ingolstadt.de"
-										className="text-terminal-text/70 hover:text-terminal-cyan transition-colors duration-200 no-underline"
+										className="text-terminal-text/85 hover:text-terminal-cyan transition-colors duration-200 no-underline"
 									>
 										info@neuland-ingolstadt.de
 									</a>
 								</div>
 								<div className="flex items-center gap-3">
-									<Phone className="h-4 w-4 text-terminal-text/60 shrink-0" />
+									<Phone className="h-4 w-4 text-terminal-text/80 shrink-0" />
 									<a
 										href="tel:015678384646"
-										className="text-terminal-text/70 hover:text-terminal-cyan transition-colors duration-200 no-underline"
+										className="text-terminal-text/85 hover:text-terminal-cyan transition-colors duration-200 no-underline"
 									>
 										015678 384646
 									</a>
@@ -155,7 +155,7 @@ export default function Impressum() {
 								<Users className="h-5 w-5 text-terminal-cyan" />
 								Vorstand
 							</h3>
-							<p className="text-terminal-text/70 mb-3">Vertreten durch:</p>
+							<p className="text-terminal-text/85 mb-3">Vertreten durch:</p>
 							<div className="space-y-2">
 								{vorstandData.vorstand.map((member, index) => (
 									<div
@@ -173,7 +173,7 @@ export default function Impressum() {
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.5 }}
 						>
-							<p className="text-terminal-text/70">
+							<p className="text-terminal-text/85">
 								Inhaltlich verantwortlich:{' '}
 								<span className="text-terminal-text font-semibold">
 									{vorstandData.verantwortlicher}

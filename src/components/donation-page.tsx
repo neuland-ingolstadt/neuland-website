@@ -14,7 +14,7 @@ export default function DonationPage() {
 				<h1 className="text-4xl md:text-5xl font-bold mb-4 font-mono">
 					{t('title')}
 				</h1>
-				<p className="text-lg text-terminal-text/80 max-w-2xl mx-auto">
+				<p className="text-lg text-terminal-text/90 max-w-2xl mx-auto">
 					{t('description')}
 				</p>
 			</section>
@@ -48,17 +48,17 @@ export default function DonationPage() {
 
 			{/* Disclaimer & donation receipt info */}
 			<section className="mt-12 max-w-lg mx-auto w-full">
-				<div className="p-4 border border-terminal-text/10 bg-terminal-text/5 text-xs text-terminal-text/70 leading-relaxed">
+				<div className="p-4 border border-terminal-text/10 bg-terminal-text/5 text-xs text-terminal-text/85 leading-relaxed">
 					<p className="mb-3">
 						<span className="text-terminal-cyan font-mono font-semibold">
 							NOTICE
 						</span>
-						<span className="text-terminal-cyan/50 mr-2">:</span>
+						<span className="text-terminal-cyan/80 mr-2">:</span>
 						{t('disclaimer')}
 					</p>
 
 					<div className="flex flex-wrap items-center gap-2 pt-3 border-t border-terminal-text/10">
-						<span className="text-terminal-text/40">{t('receiptRequest')}</span>
+						<span className="text-terminal-text/70">{t('receiptRequest')}</span>
 						<a
 							href={`mailto:info@neuland-ingolstadt.de?subject=${t('receiptSubject')}`}
 							className="text-terminal-cyan hover:opacity-70 transition-opacity flex items-center gap-1"

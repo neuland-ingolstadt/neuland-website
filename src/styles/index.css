@@ -2,6 +2,7 @@
 @import "@fontsource/ibm-plex-mono/400.css";
 @import "@fontsource/ibm-plex-mono/600.css";
 @import "@fontsource/ibm-plex-mono/700.css";
+@import "@fontsource/mansalva/400.css";
 @import "tailwindcss";
 @import "./animations.css";
 
@@ -62,6 +63,7 @@
 	--animate-cyberpunk: cyberpunk-glow 1.5s ease-in-out infinite;
 
 	--font-mono: "IBM Plex Mono", ui-monospace, monospace;
+	--font-script: "Mansalva", cursive;
 	--font-sans:
 		"IBM Plex Sans Variable", "IBM Plex Sans", system-ui, -apple-system,
 		BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -116,8 +118,8 @@
 }
 
 @theme inline {
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
+	--color-background: hsl(var(--background));
+	--color-foreground: hsl(var(--foreground));
 	--color-sidebar-ring: var(--sidebar-ring);
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -131,45 +133,42 @@
 :root {
 	color-scheme: dark;
 	--navbar-height: 4.5rem;
-	--background: 150 9% 4%;
-	--foreground: 150 25% 95%;
+	--background: 0 0% 0%;
+	--foreground: 0 0% 100%;
 	--muted: 150 9% 12%;
 	--muted-foreground: 150 9% 70%;
 	--border: 150 7% 20%;
 	--input: var(--border);
-	--ring: 148 82% 54%;
-	--primary: 148 82% 54%;
-	--primary-foreground: 160 30% 12%;
+	--ring: 149 100% 57%;
+	--primary: 149 100% 57%;
+	--primary-foreground: 0 0% 0%;
 	--secondary: 150 9% 22%;
 	--secondary-foreground: 160 20% 94%;
-	--accent: 148 88% 56%;
-	--accent-foreground: 160 35% 12%;
+	--accent: 149 100% 57%;
+	--accent-foreground: 0 0% 0%;
 	--destructive: 0 70% 45%;
 	--destructive-foreground: 0 0% 98%;
 
-	--terminal-bg: #020302;
-	--terminal-text: #f6fff8;
-	/* ~60% toward #24ff8a — brighter mint, slightly less punchy chroma */
-	--terminal-cyan: oklch(0.857 0.265 148.5);
-	--terminal-highlight: oklch(0.885 0.255 150.2);
-	--terminal-darkGreen: #003300;
+	--terminal-bg: #000000;
+	--terminal-text: #ffffff;
+	/* Neuland brand green (CI) */
+	--terminal-cyan: #23ff88;
+	--terminal-highlight: #23ff88;
+	--terminal-darkGreen: #04180d;
 	--terminal-mutedGreen: #0a4f2b;
-	--terminal-lightGreen: oklch(0.82 0.245 148.2);
-	--terminal-mediumGreen: oklch(0.745 0.23 147.8);
-	--terminal-window: #0b0b0b;
-	--terminal-window-border: #333333;
-	--terminal-window-title: #414141;
+	--terminal-lightGreen: #23ff88;
+	--terminal-mediumGreen: #23ff88;
+	--terminal-window: #000000;
+	/* frame + divider lines: white at 50% */
+	--terminal-window-border: rgba(255, 255, 255, 0.5);
+	--terminal-window-title: rgba(255, 255, 255, 0.08);
 	--terminal-overlay: rgba(0, 0, 0, 0.8);
-	--terminal-card: #101413;
-	--terminal-onAccent: #001f12;
-	--terminal-paper: #ffe44a;
-	--terminal-paper-text: #2a1f00;
+	--terminal-card: rgba(35, 255, 136, 0.04);
+	--terminal-onAccent: #000000;
+	--terminal-paper: #23ff88;
+	--terminal-paper-text: #000000;
+	--brand-glow: 0 0 18px 3px rgba(0, 255, 117, 0.5);
 
-	--ambient-background: #010101;
-	--ambient-grid-line: rgba(156, 163, 175, 0.09);
-	--ambient-grid-highlight: rgba(52, 242, 134, 0.28);
-	--ambient-grid-cross: rgba(70, 255, 170, 0.25);
-	--ambient-grid-glow: rgba(52, 242, 134, 0.8);
 	--sidebar: hsl(0 0% 98%);
 	--sidebar-foreground: hsl(240 5.3% 26.1%);
 	--sidebar-primary: hsl(240 5.9% 10%);
@@ -182,50 +181,6 @@
 
 :root[data-theme="dark"] {
 	color-scheme: dark;
-}
-
-@media (prefers-color-scheme: light) {
-	:root:not([data-theme]) {
-		color-scheme: light;
-		--background: 145 40% 97%;
-		--foreground: 155 24% 12%;
-		--muted: 145 26% 90%;
-		--muted-foreground: 150 20% 32%;
-		--border: 145 20% 82%;
-		--input: var(--border);
-		--ring: 149 45% 40%;
-		--primary: 150 55% 40%;
-		--primary-foreground: 140 50% 98%;
-		--secondary: 150 18% 86%;
-		--secondary-foreground: 150 28% 20%;
-		--accent: 150 55% 40%;
-		--accent-foreground: 140 40% 96%;
-		--destructive: 0 70% 40%;
-		--destructive-foreground: 0 0% 98%;
-
-		--terminal-bg: #f5f8f5;
-		--terminal-text: #0b1d14;
-		--terminal-cyan: oklch(0.72 0.24 142.83);
-		--terminal-highlight: oklch(0.64 0.2 142.83);
-		--terminal-darkGreen: #0a4a2e;
-		--terminal-mutedGreen: #1a6b40;
-		--terminal-lightGreen: #0d8f5c;
-		--terminal-mediumGreen: #0c6b46;
-		--terminal-window: #ffffff;
-		--terminal-window-border: #c7d3c8;
-		--terminal-window-title: #e3ede6;
-		--terminal-overlay: rgba(7, 24, 19, 0.55);
-		--terminal-card: #eff4ef;
-		--terminal-onAccent: #042011;
-		--terminal-paper: #ffe88c;
-		--terminal-paper-text: #3c3100;
-
-		--ambient-background: #fafafa;
-		--ambient-grid-line: rgba(13, 50, 36, 0.05);
-		--ambient-grid-highlight: rgba(19, 119, 75, 0.18);
-		--ambient-grid-cross: rgba(6, 89, 58, 0.22);
-		--ambient-grid-glow: rgba(25, 141, 94, 0.4);
-	}
 }
 
 :root[data-theme="light"] {
@@ -262,12 +217,6 @@
 	--terminal-onAccent: #042011;
 	--terminal-paper: #ffe88c;
 	--terminal-paper-text: #3c3100;
-
-	--ambient-background: #fafafa;
-	--ambient-grid-line: rgba(13, 50, 36, 0.05);
-	--ambient-grid-highlight: rgba(19, 119, 75, 0.18);
-	--ambient-grid-cross: rgba(6, 89, 58, 0.22);
-	--ambient-grid-glow: rgba(25, 141, 94, 0.4);
 }
 
 /*
@@ -305,6 +254,13 @@
 		overflow-x: hidden;
 		font-family: var(--font-sans);
 		background-color: var(--color-terminal-bg);
+		background-image:
+			radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+			linear-gradient(180deg, #000000 60%, #04180d 100%);
+		background-size:
+			24px 24px,
+			auto;
+		background-attachment: fixed;
 		color: var(--color-terminal-text);
 		word-wrap: break-word;
 		overflow-wrap: break-word;
@@ -317,39 +273,39 @@
 	h4,
 	h5,
 	h6 {
-		@apply font-mono font-normal;
+		@apply font-mono font-bold;
 	}
 
 	button,
 	[type="button"],
 	[type="submit"],
 	[type="reset"] {
-		@apply font-mono font-normal;
+		@apply font-mono font-bold;
 	}
 
 	/* Add specific heading styles for articles */
 	article h1 {
-		@apply text-3xl font-normal mb-4 text-terminal-lightGreen;
+		@apply text-3xl font-bold mb-4 text-terminal-lightGreen;
 	}
 
 	article h2 {
-		@apply text-2xl font-normal mt-12 pb-2 text-terminal-lightGreen;
+		@apply text-2xl font-bold mt-12 pb-2 text-terminal-lightGreen;
 	}
 
 	article h3 {
-		@apply text-xl font-normal mt-10 pb-2 text-terminal-lightGreen;
+		@apply text-xl font-bold mt-10 pb-2 text-terminal-lightGreen;
 	}
 
 	article h4 {
-		@apply text-lg font-normal mt-8 pb-2 text-terminal-lightGreen;
+		@apply text-lg font-bold mt-8 pb-2 text-terminal-lightGreen;
 	}
 
 	article h5 {
-		@apply text-base font-normal mt-8 pb-2 text-terminal-lightGreen;
+		@apply text-base font-bold mt-8 pb-2 text-terminal-lightGreen;
 	}
 
 	article h6 {
-		@apply text-sm font-normal mt-6 pb-2 text-terminal-lightGreen;
+		@apply text-sm font-bold mt-6 pb-2 text-terminal-lightGreen;
 	}
 
 	p {
@@ -467,5 +423,19 @@
 	}
 	body {
 		@apply bg-background text-foreground;
+	}
+}
+
+/* ---- Neuland CI utilities ---- */
+@layer utilities {
+	.font-script {
+		font-family: var(--font-script);
+		font-weight: 400;
+	}
+	.glow {
+		box-shadow: var(--brand-glow);
+	}
+	.frame-line {
+		border-color: rgba(255, 255, 255, 0.5);
 	}
 }

@@ -1,6 +1,9 @@
 {
     "Home": {
         "clientIntro": {
+            "primaryCta": "Become a member",
+            "secondaryCta": "Our projects",
+            "greeting": "Hi everyone",
             "typewriter": "The student association for all IT-enthusiastic students at TH Ingolstadt."
         },
         "eventsSection": {

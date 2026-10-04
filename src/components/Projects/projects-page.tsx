@@ -51,7 +51,7 @@ const ProjectsPage = () => {
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ duration: 0.6, delay: 0.2 }}
-					className="mt-3 text-lg text-terminal-text/80 max-w-3xl"
+					className="mt-3 text-lg text-terminal-text/90 max-w-3xl"
 				>
 					{t('subtitle')}
 				</motion.p>
@@ -60,7 +60,7 @@ const ProjectsPage = () => {
 					initial={{ opacity: 0, y: 10 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 0.4 }}
-					className="flex items-center gap-2 mt-4 text-sm text-terminal-text/60 font-mono"
+					className="flex items-center gap-2 mt-4 text-sm text-terminal-text/80 font-mono"
 				>
 					<Code size={16} />
 					<span>
@@ -73,7 +73,7 @@ const ProjectsPage = () => {
 			<div className="max-w-6xl mx-auto mb-8">
 				<div className="flex items-center gap-3 mb-4">
 					<Filter size={20} className="text-terminal-cyan" />
-					<span className="text-terminal-text/80 font-mono">
+					<span className="text-terminal-text/90 font-mono">
 						{t('filterByTechnology')}
 					</span>
 				</div>
@@ -84,7 +84,7 @@ const ProjectsPage = () => {
 						className={`px-4 py-2  border transition-all duration-200 ${
 							!activeTag
 								? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
-								: 'border-terminal-text/30 text-terminal-text/70 hover:border-terminal-cyan hover:text-terminal-cyan'
+								: 'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-cyan'
 						}`}
 						onClick={() => setActiveTag(null)}
 					>
@@ -97,7 +97,7 @@ const ProjectsPage = () => {
 							className={`px-4 py-2 border transition-all duration-200 ${
 								activeTag === tag
 									? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
-									: 'border-terminal-text/30 text-terminal-text/70 hover:border-terminal-cyan hover:text-terminal-cyan'
+									: 'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-cyan'
 							}`}
 							onClick={() => setActiveTag(tag)}
 						>
@@ -136,8 +136,8 @@ const ProjectsPage = () => {
 						animate={{ opacity: 1 }}
 						className="text-center py-12"
 					>
-						<Code size={48} className="text-terminal-text/40 mx-auto mb-4" />
-						<p className="text-terminal-text/60 font-mono">
+						<Code size={48} className="text-terminal-text/70 mx-auto mb-4" />
+						<p className="text-terminal-text/80 font-mono">
 							{t('noProjectsByFilter')}
 						</p>
 					</motion.div>
@@ -153,7 +153,7 @@ const ProjectsPage = () => {
 			>
 				<div className="text-center">
 					<div className="flex items-center justify-center gap-2 mb-4">
-						<span className="text-terminal-text/80 font-mono">
+						<span className="text-terminal-text/90 font-mono">
 							{t('githubText')}
 						</span>
 					</div>

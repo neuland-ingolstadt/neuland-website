@@ -71,7 +71,7 @@ function PostPage() {
 				<div className="mb-6 border-b border-terminal-window-border pb-6">
 					<time
 						dateTime={post.date}
-						className="text-terminal-text/70 mb-1 text-xs"
+						className="text-terminal-text/85 mb-1 text-xs"
 					>
 						{format(parseISO(post.date), 'LLLL d, yyyy')}
 					</time>
@@ -80,7 +80,7 @@ function PostPage() {
 						{post.title}
 					</h1>
 					{post.authors && post.authors.length > 0 && (
-						<div className="text-terminal-text/80 mt-2 text-sm">
+						<div className="text-terminal-text/90 mt-2 text-sm">
 							{t('by')}{' '}
 							{post.authors.map((author, index) => {
 								// Support both string and object format for backward compatibility
@@ -117,7 +117,7 @@ function PostPage() {
 									href={`/blog/tags/${encodeURIComponent(tag.toLowerCase())}`}
 									className="group/tag no-underline"
 								>
-									<span className="bg-terminal-card text-terminal-text/70 group-hover/tag:border-terminal-highlight/40 group-hover/tag:text-terminal-text inline-block border border-terminal-window-border px-2.5 py-1 text-xs font-medium transition-colors duration-200">
+									<span className="bg-terminal-card text-terminal-text/85 group-hover/tag:border-terminal-highlight/40 group-hover/tag:text-terminal-text inline-block border border-terminal-window-border px-2.5 py-1 text-xs font-medium transition-colors duration-200">
 										{tag}
 									</span>
 								</Link>

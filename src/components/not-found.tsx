@@ -46,7 +46,7 @@ export default function NotFound() {
 						<div className="mb-8">
 							<div className="flex items-center gap-3 mb-4">
 								<Terminal className="h-6 w-6 text-terminal-cyan" />
-								<span className="text-terminal-text/60 font-mono text-sm">
+								<span className="text-terminal-text/80 font-mono text-sm">
 									$ cat error.log
 								</span>
 							</div>
@@ -55,11 +55,11 @@ export default function NotFound() {
 									<span className="text-terminal-cyan">Error:</span> HTTP 404 -
 									Not Found
 								</div>
-								<div className="text-terminal-text/70">
+								<div className="text-terminal-text/85">
 									<span className="text-terminal-cyan">Path:</span>{' '}
 									<span className="text-terminal-yellow">{pathname}</span>
 								</div>
-								<div className="text-terminal-text/70">
+								<div className="text-terminal-text/85">
 									<span className="text-terminal-cyan">Status:</span>{' '}
 									<span className="text-terminal-red">FAILED</span>
 								</div>
@@ -79,7 +79,7 @@ export default function NotFound() {
 							<h2 className="text-2xl md:text-3xl font-semibold text-terminal-text mb-3">
 								Page Not Found
 							</h2>
-							<p className="text-terminal-text/70 leading-relaxed">
+							<p className="text-terminal-text/85 leading-relaxed">
 								{t('description')}
 							</p>
 						</motion.div>
@@ -101,7 +101,7 @@ export default function NotFound() {
 
 						{/* Helpful links */}
 						<div className="mt-8 pt-8 border-t border-terminal-window-border">
-							<p className="text-sm text-terminal-text/60 mb-3 font-mono">
+							<p className="text-sm text-terminal-text/80 mb-3 font-mono">
 								$ ls -la /helpful-links
 							</p>
 							<div className="flex flex-wrap gap-3">

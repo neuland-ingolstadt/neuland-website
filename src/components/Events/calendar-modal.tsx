@@ -89,7 +89,7 @@ const CalendarModal: React.FC<CalendarModalProps> = ({
 						</div>
 						<button
 							onClick={onClose}
-							className="ml-4 p-1 text-terminal-text/70 hover:text-terminal-text"
+							className="ml-4 p-1 text-terminal-text/85 hover:text-terminal-text"
 							aria-label="Close"
 							type="button"
 						>
@@ -107,7 +107,7 @@ const CalendarModal: React.FC<CalendarModalProps> = ({
 						<h3 className="text-lg text-terminal-cyan my-3 font-semibold">
 							{t('tutorialTitle')}
 						</h3>
-						<ul className="list-disc list-inside space-y-2 mb-0 text-terminal-text/70">
+						<ul className="list-disc list-inside space-y-2 mb-0 text-terminal-text/85">
 							<li>{t('tutorialLine1')}</li>
 							<li>{t('tutorialLine2')}</li>
 							<li>{t('tutorialLine3')}</li>

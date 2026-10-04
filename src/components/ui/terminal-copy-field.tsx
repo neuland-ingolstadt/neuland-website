@@ -29,7 +29,7 @@ export const TerminalCopyField = ({
 	return (
 		<div className="flex flex-col gap-2 w-full mb-4">
 			{label && (
-				<p className="text-[10px] font-mono text-terminal-text/50 uppercase tracking-widest m-0">
+				<p className="text-[10px] font-mono text-terminal-text/70 uppercase tracking-widest m-0">
 					/ {label}
 				</p>
 			)}
@@ -40,7 +40,7 @@ export const TerminalCopyField = ({
 				<button
 					type="button"
 					onClick={handleCopy}
-					className="shrink-0 p-1 ml-2 text-terminal-text/40 hover:text-terminal-cyan transition-colors duration-200 flex items-center justify-center"
+					className="shrink-0 p-1 ml-2 text-terminal-text/70 hover:text-terminal-cyan transition-colors duration-200 flex items-center justify-center"
 					aria-label="Copy to clipboard"
 				>
 					{/* Fixed sizes added here to prevent image explosion */}

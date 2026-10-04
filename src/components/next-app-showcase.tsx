@@ -14,59 +14,13 @@ import {
 	Users,
 	Zap
 } from 'lucide-react'
-import { AnimatePresence, motion, type Variants } from 'motion/react'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { motion } from 'motion/react'
 import { useTranslations } from '@/i18n/react'
 import FeatureItem from './feature-item'
 import TerminalButton from './terminal-button'
 
 const NextAppShowcase = () => {
-	const phoneRef = useRef<HTMLDivElement>(null)
-	const [activeIndex, setActiveIndex] = useState(0)
-	const screenshots = [
-		'/assets/neuland-next/next_1.webp',
-		'/assets/neuland-next/next_2.webp',
-		'/assets/neuland-next/next_4.webp',
-		'/assets/neuland-next/next_3.webp'
-	]
-
 	const t = useTranslations('Home.neulandNextSection')
-
-	const rotateScreenshot = useCallback(() => {
-		setActiveIndex((prev) => (prev + 1) % screenshots.length)
-	}, [screenshots.length])
-
-	useEffect(() => {
-		const timer = setInterval(rotateScreenshot, 3500)
-		return () => clearInterval(timer)
-	}, [rotateScreenshot])
-
-	useEffect(() => {
-		screenshots.forEach((src) => {
-			const img = new Image()
-			img.src = src
-		})
-	}, [screenshots])
-
-	const imageVariants = {
-		initial: {
-			opacity: 0
-		},
-		animate: {
-			opacity: 1,
-			transition: {
-				duration: 1,
-				ease: 'easeInOut'
-			}
-		},
-		exit: {
-			opacity: 0,
-			transition: {
-				duration: 1.2,
-				ease: 'easeInOut'
-			}
-		}
-	}
 
 	const features = [
 		{
@@ -127,85 +81,49 @@ const NextAppShowcase = () => {
 	]
 
 	return (
-		<div className="w-full pt-12 pb-16 relative">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+		<div className="w-full relative border border-terminal-window-border mb-24">
+			<div className="relative z-10">
 				{/* Header Section */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6 }}
 					viewport={{ once: true }}
-					className="text-center mb-16"
+					className="px-6 py-5 sm:px-8 border-b border-terminal-window-border"
 				>
-					<h2 className="text-3xl sm:text-4xl mb-2 font-normal tracking-tight">
-						{t('hero.title')}
-					</h2>
-					<p className="text-lg sm:text-xl/loose mb-6 font-sans font-normal text-terminal-text/90">
+					<p className="font-script text-terminal-cyan text-xl mb-1 -rotate-1">
 						{t('hero.subtitle')}
 					</p>
-					<p className="text-lg text-terminal-text/80 max-w-3xl mx-auto">
-						{t('hero.introduction')}
-					</p>
+					<h2 className="text-2xl md:text-3xl font-bold font-mono tracking-tight">
+						{t('hero.title')}
+					</h2>
 				</motion.div>
+				<p className="text-lg text-terminal-text/90 max-w-3xl px-6 pt-8 sm:px-8">
+					{t('hero.introduction')}
+				</p>
 
 				{/* Main Content Grid */}
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
+				<div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] items-end overflow-hidden">
 					{/* Phone Showcase */}
 					<motion.div
-						ref={phoneRef}
 						initial={{ opacity: 0, x: -50 }}
 						whileInView={{ opacity: 1, x: 0 }}
 						transition={{ duration: 0.8, delay: 0.2 }}
 						viewport={{ once: true }}
-						className="flex flex-col items-center"
+						className="flex items-end justify-start self-end overflow-hidden"
 					>
-						<div
-							className="relative mx-auto w-[270px] h-[560px] rounded-[48px] overflow-hidden"
-							style={{ willChange: 'transform' }}
-						>
-							<AnimatePresence mode="sync">
-								<motion.img
-									key={activeIndex}
-									src={screenshots[activeIndex]}
-									alt={`Neuland Next App Screenshot ${activeIndex + 1}`}
-									className="absolute inset-0 h-full w-full object-cover"
-									variants={imageVariants as Variants}
-									initial="initial"
-									animate="animate"
-									exit="exit"
-									style={{ willChange: 'opacity' }}
-									loading="eager"
-								/>
-							</AnimatePresence>
-						</div>
-
-						<div className="flex justify-center gap-2 mt-6">
-							{screenshots.map((_, idx) => (
-								<motion.button
-									key={idx}
-									onClick={() => setActiveIndex(idx)}
-									className="w-3 bg-terminal-window border border-terminal-window-border focus:outline-none transition-all duration-200"
-									animate={{
-										scale: activeIndex === idx ? 1.2 : 1,
-										backgroundColor:
-											activeIndex === idx
-												? 'var(--color-terminal-lightGreen)'
-												: 'var(--color-terminal-window)',
-										borderColor:
-											activeIndex === idx
-												? 'var(--color-terminal-lightGreen)'
-												: 'var(--color-terminal-window-border)'
-									}}
-									whileHover={{ scale: 1.1 }}
-									transition={{ duration: 0.2 }}
-									aria-label={`Show screenshot ${idx + 1}`}
-								/>
-							))}
-						</div>
+						<img
+							src="/assets/neuland-next/next-hand.webp"
+							alt="Neuland Next App"
+							width={2000}
+							height={1500}
+							className="block w-[120%] max-w-none shrink-0 -ml-[10%] translate-y-[11%]"
+							loading="lazy"
+						/>
 					</motion.div>
 
 					{/* Content Section */}
-					<div>
+					<div className="self-center p-6 sm:p-8">
 						<motion.div
 							initial={{ opacity: 0, x: 50 }}
 							whileInView={{ opacity: 1, x: 0 }}
@@ -214,26 +132,19 @@ const NextAppShowcase = () => {
 							className="relative bg-terminal-window border border-terminal-window-border p-8 overflow-hidden"
 						>
 							{/* Outer accent corners */}
-							<div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-terminal-cyan/30" />
-							<div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-terminal-cyan/30" />
-							<div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-terminal-cyan/30" />
-							<div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-terminal-cyan/30" />
-
-							{/* Subtle background gradient */}
-							<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/2 via-transparent to-terminal-cyan/1 pointer-events-none" />
 
 							<div className="relative z-10">
-								<h3 className="text-xl sm:text-2xl mb-3 font-normal text-terminal-text tracking-tight">
+								<h3 className="text-xl sm:text-2xl mb-3 font-bold font-mono text-terminal-text tracking-tight">
 									{t('container.title')}
 								</h3>
 
-								<p className="mb-8 text-base leading-relaxed text-terminal-text/70">
+								<p className="mb-8 text-base leading-relaxed text-terminal-text/85">
 									{t('container.description')}
 								</p>
 
 								{/* Highlights */}
 								<div className="mb-8 pb-8 border-b border-terminal-window-border">
-									<h4 className="text-sm font-normal mb-4 text-terminal-cyan uppercase tracking-wider">
+									<h4 className="text-sm font-bold mb-4 text-terminal-cyan font-mono">
 										{t('container.whyNeulandNext')}
 									</h4>
 									<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -246,10 +157,10 @@ const NextAppShowcase = () => {
 												viewport={{ once: true }}
 												className="flex items-center gap-3 text-sm group"
 											>
-												<div className="text-terminal-text/70 group-hover:text-terminal-cyan shrink-0 transition-colors duration-200">
+												<div className="text-terminal-text/85 group-hover:text-terminal-cyan shrink-0 transition-colors duration-200">
 													{highlight.icon}
 												</div>
-												<span className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-200">
+												<span className="text-terminal-text/85 group-hover:text-terminal-text transition-colors duration-200">
 													{highlight.text}
 												</span>
 											</motion.div>
@@ -313,20 +224,13 @@ const NextAppShowcase = () => {
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8 }}
 					viewport={{ once: true }}
-					className="mb-16 hidden lg:block"
+					className="hidden lg:block border-t border-terminal-window-border p-6 sm:p-8"
 				>
-					<h3 className="text-xl sm:text-2xl font-normal text-center mb-12 tracking-tight">
+					<h3 className="text-xl sm:text-2xl font-bold font-mono mb-8 tracking-tight">
 						{t('features.title')}
 					</h3>
-					<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
+					<div className="relative bg-terminal-card border border-terminal-cyan/60 rounded-md overflow-hidden">
 						{/* Outer accent corners */}
-						<div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-terminal-cyan/30" />
-						<div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-terminal-cyan/30" />
-						<div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-terminal-cyan/30" />
-						<div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-terminal-cyan/30" />
-
-						{/* Subtle glow effect */}
-						<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none" />
 
 						<div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 relative z-10">
 							{features.map((feature, idx) => {

@@ -105,20 +105,20 @@ function EventDetailPage() {
 							{title}
 						</h1>
 						<div className="shrink-0">
-							<span className="text-terminal-text/80 inline-flex items-center border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.65rem] font-semibold tracking-[0.08em] uppercase">
+							<span className="text-terminal-text/90 inline-flex items-center border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.65rem] font-semibold tracking-[0.08em] uppercase">
 								{event.isInternal ? t('filters.internal') : t('filters.public')}
 							</span>
 						</div>
 					</div>
 
-					<div className="text-terminal-text/80 mb-6 space-y-2">
+					<div className="text-terminal-text/90 mb-6 space-y-2">
 						<div>
-							<span className="text-terminal-text/60 mr-2">{t('date')}:</span>
+							<span className="text-terminal-text/80 mr-2">{t('date')}:</span>
 							{formatEventDateRange(event, locale, t('tbd'))}
 						</div>
 						{event.location && (
 							<div>
-								<span className="text-terminal-text/60 mr-2">
+								<span className="text-terminal-text/80 mr-2">
 									{t('location')}:
 								</span>
 								{event.location}
@@ -135,12 +135,12 @@ function EventDetailPage() {
 								{description}
 							</p>
 						) : (
-							<p className="text-terminal-text/60">{t('noDescription')}</p>
+							<p className="text-terminal-text/80">{t('noDescription')}</p>
 						)}
 					</div>
 
 					<div className="mt-6">
-						<p className="text-terminal-text/75 mb-2 text-xs">
+						<p className="text-terminal-text/85 mb-2 text-xs">
 							{t('shareableHint')}
 						</p>
 						<div className="text-terminal-text border border-terminal-window-border/70 bg-terminal-card/70 px-3 py-2 font-mono text-sm break-all">

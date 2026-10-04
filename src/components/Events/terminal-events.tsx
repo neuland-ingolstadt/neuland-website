@@ -30,7 +30,7 @@ const InternalBadge = React.forwardRef<
 		<span
 			ref={ref}
 			className={cn(
-				'inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.6rem] font-normal uppercase tracking-[0.08em] text-terminal-text/80',
+				'inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.6rem] font-normal uppercase tracking-[0.08em] text-terminal-text/90',
 				className
 			)}
 			{...props}
@@ -116,7 +116,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 							{error ? (
 								<div className="p-4 text-terminal-lightGreen">
 									<p className="text-md mb-2">{t('apiErrorTitle')}</p>
-									<p className="text-sm text-terminal-lightGreen/60">
+									<p className="text-sm text-terminal-lightGreen/80">
 										{typeof error === 'object' &&
 										error !== null &&
 										'message' in error
@@ -125,7 +125,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 												? error
 												: t('unknownError')}
 									</p>
-									<p className="text-sm mt-4 text-terminal-text/70">
+									<p className="text-sm mt-4 text-terminal-text/85">
 										{t('apiErrorMessageLine1')}
 										<br />
 										{t('apiErrorMessageLine2')}
@@ -136,7 +136,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 									<p className="text-md mb-3">
 										{t('noEventsToDisplayMessageLine1')}
 									</p>
-									<p className="text-sm mb-3 text-terminal-text/80">
+									<p className="text-sm mb-3 text-terminal-text/90">
 										{t('noEventsToDisplayMessageLine2')}
 										<br />
 										<span className="text-terminal-highlight">$</span>{' '}
@@ -173,7 +173,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 																: eventsData.events[selectedEventIndex].titleEn}
 															{eventsData.events[selectedEventIndex]
 																.location && (
-																<span className="text-terminal-text/60 ml-2 break-all">
+																<span className="text-terminal-text/80 ml-2 break-all">
 																	@
 																	{
 																		eventsData.events[selectedEventIndex]
@@ -190,7 +190,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 														)}
 													</div>
 
-													<div className="mb-5 text-terminal-text/80">
+													<div className="mb-5 text-terminal-text/90">
 														{eventsData.events[selectedEventIndex].date
 															.split('\n')
 															.map((line, i) => (
@@ -198,7 +198,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 																	<span
 																		className={
 																			line.trim().toLowerCase() === 'tbd'
-																				? 'text-terminal-text/50 text-[0.95rem]'
+																				? 'text-terminal-text/70 text-[0.95rem]'
 																				: 'text-[0.95rem]'
 																		}
 																	>
@@ -299,7 +299,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 															? event.titleDe
 															: event.titleEn}
 														{event.location && (
-															<span className="text-terminal-text/60 ml-2">
+															<span className="text-terminal-text/80 ml-2">
 																@{event.location}
 															</span>
 														)}
@@ -315,7 +315,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 														<span
 															className={
 																line.trim().toLowerCase() === 'tbd'
-																	? 'text-terminal-text/50 text-[0.95rem]'
+																	? 'text-terminal-text/70 text-[0.95rem]'
 																	: 'text-[0.95rem]'
 															}
 														>

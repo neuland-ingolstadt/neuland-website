@@ -149,7 +149,7 @@ function RootComponent(): ReactNode {
 				/>
 			</head>
 
-			<body className="font-sans antialiased">
+			<body className="font-sans">
 				<Providers locale={locale}>
 					<Outlet />
 				</Providers>

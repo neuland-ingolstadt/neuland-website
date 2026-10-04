@@ -135,7 +135,7 @@ const ThemeToggleMobile: React.FC = () => {
 				</div>
 			</div>
 			<div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-terminal-cyan/0 via-terminal-cyan/12 to-terminal-cyan/0 opacity-0 group-hover:opacity-100 transition-opacity duration-250" />
-			<span className="relative z-10 text-terminal-text/70">{icon}</span>
+			<span className="relative z-10 text-terminal-text/85">{icon}</span>
 		</button>
 	)
 }

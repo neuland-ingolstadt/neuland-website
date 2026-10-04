@@ -251,28 +251,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 				}}
 			>
 				{/* Corner accent brackets - only show when terminal is on */}
-				{terminalState === 'on' && !isTransparentBg && (
-					<>
-						<div className="absolute top-0 left-0 w-12 h-12 pointer-events-none z-0">
-							<div className="absolute top-0 left-0 w-6 h-px bg-terminal-cyan/30" />
-							<div className="absolute top-0 left-0 w-px h-6 bg-terminal-cyan/30" />
-						</div>
-						<div className="absolute top-0 right-0 w-12 h-12 pointer-events-none z-0">
-							<div className="absolute top-0 right-0 w-6 h-px bg-terminal-cyan/30" />
-							<div className="absolute top-0 right-0 w-px h-6 bg-terminal-cyan/30" />
-						</div>
-						<div className="absolute bottom-0 left-0 w-12 h-12 pointer-events-none z-0">
-							<div className="absolute bottom-0 left-0 w-6 h-px bg-terminal-cyan/30" />
-							<div className="absolute bottom-0 left-0 w-px h-6 bg-terminal-cyan/30" />
-						</div>
-						<div className="absolute bottom-0 right-0 w-12 h-12 pointer-events-none z-0">
-							<div className="absolute bottom-0 right-0 w-6 h-px bg-terminal-cyan/30" />
-							<div className="absolute bottom-0 right-0 w-px h-6 bg-terminal-cyan/30" />
-						</div>
-						{/* Subtle inner glow */}
-						<div className="absolute inset-0 bg-linear-to-b from-terminal-cyan/3 via-transparent to-transparent pointer-events-none z-0" />
-					</>
-				)}
+				{terminalState === 'on' && !isTransparentBg && <></>}
 
 				<div
 					className="confetti-container"

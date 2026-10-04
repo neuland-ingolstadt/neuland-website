@@ -71,7 +71,7 @@ const ProjectDetailClient = ({ project }: ProjectDetailClientProps) => {
 							{project.title}
 						</h1>
 					</div>
-					<p className="text-lg text-terminal-text/80 max-w-3xl mx-auto">
+					<p className="text-lg text-terminal-text/90 max-w-3xl mx-auto">
 						{project.description}
 					</p>
 				</div>
@@ -154,7 +154,7 @@ const ProjectDetailClient = ({ project }: ProjectDetailClientProps) => {
 								{t('detailClient.title')}
 							</h2>
 
-							<p className="text-terminal-text/80 text-base leading-relaxed mb-6">
+							<p className="text-terminal-text/90 text-base leading-relaxed mb-6">
 								{project.longDescription || project.description}
 							</p>
 
@@ -162,7 +162,7 @@ const ProjectDetailClient = ({ project }: ProjectDetailClientProps) => {
 								<div className="mt-8 pt-6 border-t border-terminal-window-border">
 									<div className="relative pl-6">
 										<div className="absolute left-0 top-0 bottom-0 w-0.5 bg-terminal-cyan" />
-										<p className="text-sm text-terminal-text/70 leading-relaxed">
+										<p className="text-sm text-terminal-text/85 leading-relaxed">
 											{project.additionalInfo}
 										</p>
 									</div>
@@ -216,7 +216,7 @@ const ProjectDetailClient = ({ project }: ProjectDetailClientProps) => {
 											whileInView={{ opacity: 1, scale: 1 }}
 											transition={{ duration: 0.3, delay: idx * 0.05 }}
 											viewport={{ once: true }}
-											className="text-xs px-3 py-1.5 bg-terminal-card text-terminal-text/70 font-medium border border-terminal-window-border hover:border-terminal-cyan/50 hover:text-terminal-text transition-colors duration-200"
+											className="text-xs px-3 py-1.5 bg-terminal-card text-terminal-text/85 font-medium border border-terminal-window-border hover:border-terminal-cyan/50 hover:text-terminal-text transition-colors duration-200"
 										>
 											{tag}
 										</motion.span>
@@ -276,14 +276,14 @@ const ProjectDetailClient = ({ project }: ProjectDetailClientProps) => {
 										>
 											<ExternalLink
 												size={16}
-												className="text-terminal-text/70 group-hover:text-terminal-cyan transition-colors duration-200"
+												className="text-terminal-text/85 group-hover:text-terminal-cyan transition-colors duration-200"
 											/>
-											<span className="text-sm text-terminal-text/80 group-hover:text-terminal-text transition-colors duration-200">
+											<span className="text-sm text-terminal-text/90 group-hover:text-terminal-text transition-colors duration-200">
 												{link.label}
 											</span>
 											<ArrowUpRight
 												size={14}
-												className="ml-auto text-terminal-text/50 group-hover:text-terminal-cyan group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-200"
+												className="ml-auto text-terminal-text/70 group-hover:text-terminal-cyan group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-200"
 											/>
 										</motion.a>
 									))}

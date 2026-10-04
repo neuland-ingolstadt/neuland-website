@@ -179,7 +179,7 @@ function TagPage() {
 				</BreadcrumbList>
 			</Breadcrumb>
 			<h1 className="mt-4 mb-2 text-3xl font-bold ">{displayTag}</h1>
-			<p className="text-terminal-text/70 mb-8">
+			<p className="text-terminal-text/85 mb-8">
 				{t('amountPosts', { numberOfPosts: filteredPosts.length })}
 			</p>
 
@@ -232,7 +232,7 @@ function TagPage() {
 				</>
 			) : (
 				<div className="py-12 text-center">
-					<p className="text-terminal-text/70 text-lg">
+					<p className="text-terminal-text/85 text-lg">
 						{t('noPostsFoundWithTag')}
 					</p>
 					<Link

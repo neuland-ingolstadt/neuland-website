@@ -1,6 +1,9 @@
 {
     "Home": {
         "clientIntro": {
+            "primaryCta": "Mitglied werden",
+            "secondaryCta": "Unsere Projekte",
+            "greeting": "Hi zusammen",
             "typewriter": "Der studentische Verein für alle informatikbegeisterten Studierenden der TH Ingolstadt."
         },
         "eventsSection": {

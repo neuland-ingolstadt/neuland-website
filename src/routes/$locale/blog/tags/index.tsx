@@ -67,7 +67,7 @@ function TagsIndexPage() {
 			</Breadcrumb>
 
 			<h1 className="mt-4 mb-2 text-3xl font-bold ">Blog Tags</h1>
-			<p className="text-terminal-text/70 mb-8">
+			<p className="text-terminal-text/85 mb-8">
 				{t('searchAllTags', { numberOfTags: sortedTags.length })}
 			</p>
 
@@ -106,15 +106,15 @@ function TagsIndexPage() {
 								<div className="relative z-10 flex min-w-0 flex-1 items-center">
 									<Badge
 										variant="outline"
-										className="text-terminal-text/70 group-hover:border-terminal-highlight/40 mr-3 border-terminal-window-border bg-terminal-card px-2 py-0.5 text-sm transition-colors duration-200"
+										className="text-terminal-text/85 group-hover:border-terminal-highlight/40 mr-3 border-terminal-window-border bg-terminal-card px-2 py-0.5 text-sm transition-colors duration-200"
 									>
 										{displayTag}
 									</Badge>
-									<span className="text-terminal-text/70 group-hover:text-terminal-text text-sm transition-colors duration-200">
+									<span className="text-terminal-text/85 group-hover:text-terminal-text text-sm transition-colors duration-200">
 										{t('amountPosts', { numberOfPosts: count })}
 									</span>
 								</div>
-								<span className="text-terminal-text/60 group-hover:text-terminal-cyan relative z-10 flex items-center gap-1 text-xs transition-colors duration-200">
+								<span className="text-terminal-text/80 group-hover:text-terminal-cyan relative z-10 flex items-center gap-1 text-xs transition-colors duration-200">
 									{t('display')}
 									<span className="inline-block transition-transform duration-200 group-hover:translate-x-1">
 										→
