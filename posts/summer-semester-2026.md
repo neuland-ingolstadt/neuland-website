@@ -58,13 +58,13 @@ Am 26. März folgte unsere **Infoveranstaltung**. Mit lediglich fünf Personen w
 
 Zu Ostern startete unser **Osterspecial**. Insgesamt wurden 40 Oster-Enten vorbereitet, von denen 20 auf dem Campus versteckt wurden. Wer eine Ente gefunden hatte, konnte sich dafür ein Osternest mit Süßigkeiten abholen.
 
-Auch unser **Social-Media- und desing-Team** ist in diesem Semester gewachsen. Mittlerweile kümmern sich mindestens zwei bis drei Personen aktiv um diesen Bereich. Einen großen Anteil daran hatte insbesondere unsere Kooperation mit dem 2. Semester UXD. Die UXDler haben auf Basis der Nutzungsdaten unserer Neuland Next App Plakate für uns erstellt und damit gleichzeitig wertvolle Erfahrungen aus der Praxis gesammelt.
+Auch unser **Social-Media- und Desing-Team** ist in diesem Semester gewachsen. Mittlerweile kümmern sich mindestens zwei bis drei Personen aktiv um diesen Bereich. Einen großen Anteil daran hatte insbesondere unsere Kooperation mit dem 2. Semester UXD. Die UXDler und UXDlerinnen haben auf Basis der Nutzungsdaten unserer Neuland Next App Plakate für uns erstellt und damit gleichzeitig wertvolle Erfahrungen aus der Praxis gesammelt.
 
 Am 11. April fand der erste Teil unseres **[3D-Druck-Workshops](https://neuland-ingolstadt.de/de/blog/neuland-3d-printing-workshop-2026-04-11)** statt – und der hatte es in sich. Mit rund 26 Teilnehmenden war der Workshop extrem gut besucht und hat unsere Erwartungen deutlich übertroffen. Entsprechend konnten wir leider nicht alle gewünschten Drucke fertigstellen. Die Teilnehmenden erhielten dafür ein Zertifikat und hoffentlich auch Lust auf weitere 3D-Druck-Projekte.
 
 Am 14. April folgte **„Von 0 auf Linux“**, passend zum Fedora 44 Release. Hier war die Resonanz etwas geringer. Die Organisatoren gaben trotzdem alles und stellten verschiedene Linux-Distributionen und deren Funktionen vor. Ziel war es, Interessierten einen Überblick zu geben und ihnen zu helfen, herauszufinden, welche Distribution für die eigenen Bedürfnisse geeignet sein könnte.
 
-Parallel dazu fand das Kickoff für das **Neuland Next Backend Remake** statt. Dabei fiel die Entscheidung auf Java mit Quarkus als technische Grundlage.
+Parallel dazu fand das Kickoff Meeting für das **Neuland Next Backend Remake** statt. Dabei fiel die Entscheidung auf Java mit Quarkus als technische Grundlage.
 
 Beim nächsten **Brettspielabend am 16. April** wurde es dann wieder deutlich voller. Unter dem Motto Casino kamen insgesamt 41 Personen – teilweise sogar in Abendgarderobe. Damit war der Abend einer der bisher größten Brettspielabende seit Beginn der Veranstaltungsreihe.
 
@@ -80,7 +80,7 @@ Bei der letzten Präsentation war außerdem die Frage aufgekommen, ob es überha
 
 Am 28. April folgte intern eine **Einführung in Quarkus** für unser stetig wachsendes Entwicklungsteam. Inzwischen kümmern sich bereits vier bis fünf Personen aktiv um das Backend.
 
-Ein großer Meilenstein des Semesters war unser **Einzug in das neue Büro W207**. Im Laufe des Semesters wurde das Büro immer weiter eingerichtet und gegen Ende war es schließlich weitgehend fertig. Wir verfügen nun über zwei voll ausgestattete Arbeitsplätze mit jeweils zwei Monitoren, Tastatur, Maus und Dockingstation. Dazu kommen zwei schicke RGB-LED-Lampen an der Decke – die wichtigste Infrastruktur für produktives Arbeiten. Natürlich haben wir auch ein Sofa zum entspannen.
+Ein großer Meilenstein des Semesters war unser **Einzug in das neue Büro W207**. Im Laufe des Semesters wurde das Büro immer weiter eingerichtet und gegen Ende war es schließlich weitgehend fertig. Wir verfügen nun über zwei voll ausgestattete Arbeitsplätze mit jeweils zwei Monitoren, Tastatur, Maus und Dockingstation. Dazu kommen zwei schicke RGB-LED-Lampen an der Decke – die wichtigste Infrastruktur für produktives Arbeiten. Natürlich haben wir auch ein Sofa zum Entspannen.
 
 Dass wir unser neues Büro durchaus vorzeigbar finden, konnten wir bei der **Einweihung des CUBE am 8. Mai** unter Beweis stellen. Es waren einige Neuländer vor Ort, außerdem gab es Catering von der THI und mehrere Ansprachen von hohen Persönlichkeiten, wie etwa unserem Konventsvorsitz. Währenddessen gaben sich einige von uns alle Mühe, im Büro beschäftigt auszusehen. Am 3D-Drucker wurde außerdem kurzerhand das neue THI-Logo gedruckt, um die hohen Persönlichkeiten angemessen zu beeindrucken.
 
@@ -110,7 +110,7 @@ Neben den sichtbaren Veranstaltungen ist auch bei unseren internen Strukturen ei
 
 ## Fazit
 
-Insgesamt war es ein sehr abwechslungsreiches Semester für Neuland!. Wir hatten zahlreiche Veranstaltungen, einige davon mit Rekordbeteiligung, haben unser neues Büro bezogen und eingerichtet, unsere internen Teams erweitert und mehrere technische Projekte vorangetrieben.
+Insgesamt war es ein sehr abwechslungsreiches Semester für Neuland. Wir hatten zahlreiche Veranstaltungen, einige davon mit Rekordbeteiligung, haben unser neues Büro bezogen und eingerichtet, unsere internen Teams erweitert und mehrere technische Projekte vorangetrieben.
 
 Besonders schön ist, dass sich sowohl unsere regelmäßigen Veranstaltungen wie der Stammtisch und die Brettspielabende weiter etabliert haben als auch neue Projekte und Kooperationen entstanden sind. Mit einem wachsenden Entwicklungsteam, einem fertigen Büro, neuen Strukturen im Bereich Marketing und Social Media und dem Start von Backend 2.0 gehen wir gut aufgestellt ins nächste Semester.
 Und natürlich gilt auch weiterhin: Beim nächsten Erstitag gibt es wieder Enten.
