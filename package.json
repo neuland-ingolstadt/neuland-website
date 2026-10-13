@@ -66,12 +66,12 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "5.2.0",
-    "concurrently": "10.0.5",
-    "postcss": "8.5.28",
+    "concurrently": "10.0.6",
+    "postcss": "8.5.29",
     "tailwindcss": "4.3.3",
     "tailwindcss-animate": "1.0.7",
     "typescript": "5.9.3",
-    "vite": "8.3.2",
+    "vite": "8.3.4",
     "vite-tsconfig-paths": "6.1.1"
   },
   "trustedDependencies": [
