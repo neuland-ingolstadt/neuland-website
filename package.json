@@ -65,12 +65,12 @@
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.1.2",
     "concurrently": "10.0.6",
-    "oxc-transform-react": "^0.154.0",
-    "postcss": "8.5.30",
+    "oxc-transform-react": "0.154.0",
+    "postcss": "8.5.31",
     "tailwindcss": "4.3.3",
     "tailwindcss-animate": "1.0.7",
     "typescript": "7.0.2",
-    "vite": "8.3.4",
+    "vite": "8.3.5",
     "vite-tsconfig-paths": "6.1.1"
   },
   "trustedDependencies": [
