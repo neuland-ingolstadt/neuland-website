@@ -1,12 +1,16 @@
 {
     "Home": {
+        "sponsorsStrip": {
+            "title": "Unterstützt von"
+        },
         "clientIntro": {
             "primaryCta": "Mitglied werden",
             "secondaryCta": "Unsere Projekte",
             "greeting": "Hi zusammen",
-            "typewriter": "Der studentische Verein für alle informatikbegeisterten Studierenden der TH Ingolstadt."
+            "typewriter": "Wir sind die Tech Community an der THI"
         },
         "eventsSection": {
+            "headline": "Unsere nächsten Events",
             "title": "Unsere Veranstaltungen",
             "unknownError": "Unbekannter Fehler",
             "apiErrorTitle": "Oh nein! Beim Abrufen der Events ist etwas schiefgelaufen.",
@@ -18,6 +22,7 @@
             "onlyForMembersDescription": "Diese Veranstaltung ist ausschließlich für Vereinsmitglieder und nicht öffentlich.",
             "internalBadge": "Intern",
             "showAllEvents": "Alle Events",
+            "showAllEventsLink": "Alle Events anzeigen",
             "openEventDetails": "Details öffnen",
             "openEventsPage": "Events-Seite öffnen",
             "subscribeToEvents": "Events abonnieren",
@@ -85,6 +90,12 @@
         },
         "aboutUsSection": {
             "title": "Über uns",
+            "heading": "Über Neuland",
+            "stats": {
+                "members": { "label": "Mitglieder im Verein" },
+                "events": { "label": "Veranstaltungen im Sommersemester 2026" },
+                "linesOfCode": { "label": "Zeilen Code in den letzten 6 Monaten geschrieben" }
+            },
             "container": {
                 "title": "Gemeinschaft & Plattform",
                 "subtitle": "Wir bieten Studierenden eine Plattform zum Austausch, zur Projektarbeit und zur Wissensvermittlung.",
@@ -104,6 +115,12 @@
                 }
             }
         },
+        "gallerySection": {
+            "heading": "Einblicke in den Verein",
+            "subtitle": "Vorträge, Workshops, Wettbewerbe und viel Zeit miteinander. So sieht das Vereinsleben bei Neuland aus.",
+            "placeholder": "Foto folgt",
+            "items": { "lanparty": "LAN-Party von Hochschulgaming und Neuland", "social": "Neue Leute kennenlernen beim Ersti-Tag", "brainstorming": "Workshop mit Studierenden von UX Design", "talk": "Die Cookie Talks sind unsere wiederkehrende Event-Reihe.", "printing": "Unser beliebter 3D-Druck-Workshop", "meetup": "Zusammenbauen der eigenen 3D-gedruckten Lampe für das Neulandbüro" }
+        },
         "membershipSection": {
             "title": "Mitgliedschaft",
             "pricing": {
@@ -116,8 +133,9 @@
                 "line1": "Teil eines aktiven studentischen Vereins mit regelmäßigen Treffen und Austausch",
                 "line2": "Gemeinsame Arbeit an Open-Source Projekten",
                 "line3": "Exklusive Workshops, Hackathons und soziale Events mit Gleichgesinnten",
-                "becomeMember": "Mitglied werden",
-                "writeEmail": "E-Mail schreiben"
+                "becomeMember": "Zum Beitrittsformular",
+                "writeEmail": "Discord beitreten",
+                "discordHint": "Steig hier in den Verein ein"
             }
         },
         "partnerSection": {

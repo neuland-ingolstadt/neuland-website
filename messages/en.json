@@ -1,12 +1,16 @@
 {
     "Home": {
+        "sponsorsStrip": {
+            "title": "We are sponsored by"
+        },
         "clientIntro": {
             "primaryCta": "Become a member",
             "secondaryCta": "Our projects",
             "greeting": "Hi everyone",
-            "typewriter": "The student association for all IT-enthusiastic students at TH Ingolstadt."
+            "typewriter": "We are the tech community at THI"
         },
         "eventsSection": {
+            "headline": "Our upcoming events",
             "title": "Our Events",
             "unknownError": "Unknown error",
             "apiErrorTitle": "Oh no! Something went wrong while fetching the events.",
@@ -18,6 +22,7 @@
             "onlyForMembersDescription": "This event is exclusively for association members and is not open to the public.",
             "internalBadge": "Internal",
             "showAllEvents": "All Events",
+            "showAllEventsLink": "Show all events",
             "openEventDetails": "Open details",
             "openEventsPage": "Open events page",
             "subscribeToEvents": "Subscribe to Events",
@@ -85,6 +90,12 @@
         },
         "aboutUsSection": {
             "title": "About Us",
+            "heading": "About Neuland",
+            "stats": {
+                "members": { "label": "Members in the club" },
+                "events": { "label": "Events in the summer semester 2026" },
+                "linesOfCode": { "label": "lines of code written in the last 6 months" }
+            },
             "container": {
                 "title": "Community & Platform",
                 "subtitle": "We provide students with a platform for exchange, project work, and knowledge sharing.",
@@ -104,6 +115,12 @@
                 }
             }
         },
+        "gallerySection": {
+            "heading": "A look inside the club",
+            "subtitle": "Talks, workshops, competitions and plenty of time together. This is what club life at Neuland looks like.",
+            "placeholder": "Photo coming soon",
+            "items": { "lanparty": "LAN party by Hochschulgaming and Neuland", "social": "Meeting new people at the freshers' day", "brainstorming": "UX design workshop with students", "talk": "The Cookie Talks are our recurring event series.", "printing": "Our popular 3D printing workshop", "meetup": "Assembling our own 3D-printed lamp for the Neuland office" }
+        },
         "membershipSection": {
             "title": "Membership",
             "pricing": {
@@ -116,13 +133,14 @@
                 "line1": "Part of an active student association with regular meetings and exchange",
                 "line2": "Collaborative work on open-source projects",
                 "line3": "Exclusive workshops, hackathons, and social events with like-minded people",
-                "becomeMember": "Become a member",
-                "writeEmail": "Write an email"
+                "becomeMember": "Application form",
+                "writeEmail": "Join Discord",
+                "discordHint": "Join the club here"
             }
         },
         "partnerSection": {
             "title": "Partners",
-            "subtitle": "Become a partner now and support our association!",
+            "subtitle": "Become a partner now and support our club!",
             "features": {
                 "title": "Together we achieve",
                 "line1": "Exciting events, hackathons, and workshops that inspire students",

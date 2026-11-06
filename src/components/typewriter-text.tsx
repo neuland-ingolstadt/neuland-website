@@ -63,13 +63,15 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
 			if (indexRef.current < text.length) {
 				setDisplayText(text.substring(0, indexRef.current + 1))
 				indexRef.current += 1
+				// Hide the cursor together with the last character
+				if (indexRef.current >= text.length) setShowCursor(false)
 			} else {
 				if (intervalRef.current) {
 					clearInterval(intervalRef.current)
 					intervalRef.current = null
 				}
 				setIsAnimating(false)
-				window.setTimeout(() => setShowCursor(false), 1000)
+				setShowCursor(false)
 			}
 		}, delay)
 	})

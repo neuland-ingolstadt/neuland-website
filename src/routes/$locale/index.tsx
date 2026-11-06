@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import AboutUsSection from '@/components/AboutUs/about-us-section'
 import BlogPreview from '@/components/blog/blog-peview'
 import ClientIntro from '@/components/client-intro'
+import ClubGallery from '@/components/club-gallery'
 import { getEventsData } from '@/components/Events/events-loader'
 import EventsSection from '@/components/Events/events-section'
 import TerminalSection from '@/components/Layout/terminal-section'
@@ -34,28 +35,31 @@ function Index() {
 	return (
 		<>
 			<ClientIntro />
+			<AboutUsSection />
+			<ClubGallery />
 			<EventsSection
 				eventsData={eventsData.eventsData}
 				error={eventsData.error}
 			/>
 			<NextAppShowcase />
-			<TerminalSection title={t('projectsSection.title')} headingLevel={2}>
+			<TerminalSection
+				title={t('projectsSection.title')}
+				headingLevel={2}
+				display
+			>
 				<ProjectsShowcase />
 			</TerminalSection>
-			<AboutUsSection />
-			<TerminalSection
-				title={t('membershipSection.title')}
-				headingLevel={2}
-				id="membership"
-			>
-				<TerminalMembership />
-			</TerminalSection>
-			<TerminalSection title={t('partnerSection.title')} headingLevel={2}>
-				<TerminalPartners />
-			</TerminalSection>
-			<TerminalSection title="Neuland Blog" headingLevel={2}>
+			<TerminalSection title="Neuland Blog" headingLevel={2} display>
 				<BlogPreview />
 			</TerminalSection>
+			<TerminalSection
+				title={t('partnerSection.title')}
+				headingLevel={2}
+				display
+			>
+				<TerminalPartners />
+			</TerminalSection>
+			<TerminalMembership />
 		</>
 	)
 }

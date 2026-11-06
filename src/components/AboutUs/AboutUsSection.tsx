@@ -7,17 +7,17 @@ import TerminalSection from '@/components/Layout/terminal-section'
 const AboutUsSection: React.FC = () => {
 	const features = [
 		{
-			icon: <Rocket className="h-6 w-6 text-terminal-cyan" />,
+			icon: <Rocket className="h-6 w-6 text-terminal-ink" />,
 			title: 'Projekte & Wettbewerbe',
 			desc: 'Wir entwickeln innovative Projekte, nehmen an Wettbewerben teil und fördern Kreativität.'
 		},
 		{
-			icon: <Lightbulb className="h-6 w-6 text-terminal-cyan" />,
+			icon: <Lightbulb className="h-6 w-6 text-terminal-ink" />,
 			title: 'Veranstaltungen & Wissen',
 			desc: 'Wir organisieren Events rund um Informatik und Technik – offen für alle Fakultäten und Studiengänge.'
 		},
 		{
-			icon: <Users className="h-6 w-6 text-terminal-cyan" />,
+			icon: <Users className="h-6 w-6 text-terminal-ink" />,
 			title: 'Community & Networking',
 			desc: 'Lerne neue Leute kennen, vernetze dich und werde Teil einer aktiven, hilfsbereiten Studierenden-Community.'
 		}
@@ -33,24 +33,6 @@ const AboutUsSection: React.FC = () => {
 				viewport={{ once: true }}
 				className="relative bg-terminal-window border border-terminal-window-border overflow-hidden"
 			>
-				{/* Corner accent brackets */}
-				<div className="absolute top-0 left-0 w-12 h-12">
-					<div className="absolute top-0 left-0 w-6 h-px bg-terminal-cyan/30" />
-					<div className="absolute top-0 left-0 w-px h-6 bg-terminal-cyan/30" />
-				</div>
-				<div className="absolute top-0 right-0 w-12 h-12">
-					<div className="absolute top-0 right-0 w-6 h-px bg-terminal-cyan/30" />
-					<div className="absolute top-0 right-0 w-px h-6 bg-terminal-cyan/30" />
-				</div>
-				<div className="absolute bottom-0 left-0 w-12 h-12">
-					<div className="absolute bottom-0 left-0 w-6 h-px bg-terminal-cyan/30" />
-					<div className="absolute bottom-0 left-0 w-px h-6 bg-terminal-cyan/30" />
-				</div>
-				<div className="absolute bottom-0 right-0 w-12 h-12">
-					<div className="absolute bottom-0 right-0 w-6 h-px bg-terminal-cyan/30" />
-					<div className="absolute bottom-0 right-0 w-px h-6 bg-terminal-cyan/30" />
-				</div>
-
 				{/* Subtle inner glow */}
 				<div className="absolute inset-0 bg-gradient-to-b from-terminal-cyan/3 via-transparent to-transparent pointer-events-none" />
 
@@ -80,12 +62,6 @@ const AboutUsSection: React.FC = () => {
 								{/* Hover background accent, similar to NextAppShowcase feature items */}
 								<div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-terminal-cyan/1 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-								{/* Top-left corner accessory */}
-								<div className="pointer-events-none absolute top-0 left-0 w-8 h-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-									<div className="absolute top-0 left-0 w-4 h-px bg-terminal-cyan/40" />
-									<div className="absolute top-0 left-0 w-px h-4 bg-terminal-cyan/40" />
-								</div>
-
 								<div className="relative z-10">
 									<div className="flex items-center gap-3 mb-3">
 										<div className="shrink-0">{feature.icon}</div>
@@ -93,7 +69,7 @@ const AboutUsSection: React.FC = () => {
 											{feature.title}
 										</p>
 									</div>
-									<p className="m-0 text-sm leading-relaxed text-terminal-text/85">
+									<p className="m-0 text-base leading-relaxed text-terminal-text/70">
 										{feature.desc}
 									</p>
 								</div>
