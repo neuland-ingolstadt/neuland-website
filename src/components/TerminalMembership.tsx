@@ -27,7 +27,7 @@ const TerminalMembership = () => {
 						</div>
 						<div className="flex flex-col gap-5">
 							<div className="flex items-center justify-between">
-								<span className="text-terminal-highlight font-medium">
+								<span className="text-terminal-ink font-medium">
 									Studierende:
 								</span>
 								<span className="text-terminal-text ml-2 font-normal font-mono text-lg">
@@ -35,9 +35,7 @@ const TerminalMembership = () => {
 								</span>
 							</div>
 							<div className="flex items-center justify-between">
-								<span className="text-terminal-highlight font-medium">
-									Externe:
-								</span>
+								<span className="text-terminal-ink font-medium">Externe:</span>
 								<span className="text-terminal-text ml-2 font-normal font-mono text-lg">
 									20€ / Jahr
 								</span>
@@ -54,13 +52,13 @@ const TerminalMembership = () => {
 						className="md:w-3/5 p-6 space-y-5"
 					>
 						<h4 className="text-xl font-normal flex items-center">
-							<Zap size={18} className="text-terminal-cyan mr-2" />
+							<Zap size={18} className="text-terminal-ink mr-2" />
 							Deine Vorteile:
 						</h4>
 
 						<div className="space-y-3">
 							<div className="flex items-start group">
-								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
+								<span className="text-terminal-ink mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
 								<p className="text-terminal-text/85 group-hover:text-terminal-text transition-colors duration-300 mb-0">
@@ -69,7 +67,7 @@ const TerminalMembership = () => {
 								</p>
 							</div>
 							<div className="flex items-start group">
-								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
+								<span className="text-terminal-ink mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
 								<p className="text-terminal-text/85 group-hover:text-terminal-text transition-colors duration-300 mb-0">
@@ -77,7 +75,7 @@ const TerminalMembership = () => {
 								</p>
 							</div>
 							<div className="flex items-start group">
-								<span className="text-terminal-cyan mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
+								<span className="text-terminal-ink mr-3 text-xl group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5">
 									•
 								</span>
 								<p className="text-terminal-text/85 group-hover:text-terminal-text transition-colors duration-300 mb-0">

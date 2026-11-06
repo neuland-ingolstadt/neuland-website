@@ -68,7 +68,7 @@ function Cluster({ side }: { side: 'left' | 'right' }) {
 					}
 				/>
 				<path
-					className="text-terminal-cyan"
+					className="text-terminal-ink"
 					stroke="#23ff88"
 					strokeDasharray="none"
 					d={side === 'left' ? 'M -40 36 V 110 H -8' : 'M 130 184 V 236 H 260'}
