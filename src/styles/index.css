@@ -34,6 +34,8 @@
 	--color-terminal-bg: var(--terminal-bg, #000000);
 	--color-terminal-text: var(--terminal-text, #ffffff);
 	--color-terminal-cyan: var(--terminal-cyan, oklch(0.857 0.265 148.5));
+	/* Neon green on dark, black on light: for text, thin lines and small icons */
+	--color-terminal-ink: var(--terminal-ink, #23ff88);
 	--color-terminal-highlight: var(
 		--terminal-highlight,
 		oklch(0.885 0.255 150.2)
@@ -159,8 +161,8 @@
 	--terminal-lightGreen: #23ff88;
 	--terminal-mediumGreen: #23ff88;
 	--terminal-window: #000000;
-	/* frame + divider lines: white at 50% */
-	--terminal-window-border: rgba(255, 255, 255, 0.5);
+	/* frame + divider lines: white at 28% */
+	--terminal-window-border: rgba(255, 255, 255, 0.28);
 	--terminal-window-title: rgba(255, 255, 255, 0.08);
 	--terminal-overlay: rgba(0, 0, 0, 0.8);
 	--terminal-card: rgba(35, 255, 136, 0.04);
@@ -168,6 +170,13 @@
 	--terminal-paper: #23ff88;
 	--terminal-paper-text: #000000;
 	--brand-glow: 0 0 18px 3px rgba(0, 255, 117, 0.5);
+
+	/* Hero / showcase backdrop */
+	--backdrop-glow-a: rgba(35, 255, 136, 0.16);
+	--backdrop-glow-b: rgba(35, 255, 136, 0.12);
+	--backdrop-dot: rgba(255, 255, 255, 0.14);
+	--backdrop-end: #04180d;
+	--backdrop-photo-opacity: 0.16;
 
 	--sidebar: hsl(0 0% 98%);
 	--sidebar-foreground: hsl(240 5.3% 26.1%);
@@ -203,20 +212,28 @@
 
 	--terminal-bg: #f5f8f5;
 	--terminal-text: #0b1d14;
-	--terminal-cyan: oklch(0.72 0.24 142.83);
-	--terminal-highlight: oklch(0.64 0.2 142.83);
+	/* CI: neon green stays, but only for surfaces. Details are black. */
+	--terminal-cyan: #23ff88;
+	--terminal-highlight: #23ff88;
+	--terminal-ink: #000000;
 	--terminal-darkGreen: #0a4a2e;
 	--terminal-mutedGreen: #1a6b40;
-	--terminal-lightGreen: #0d8f5c;
-	--terminal-mediumGreen: #0c6b46;
+	--terminal-lightGreen: #000000;
+	--terminal-mediumGreen: #23ff88;
 	--terminal-window: #ffffff;
 	--terminal-window-border: #c7d3c8;
 	--terminal-window-title: #e3ede6;
 	--terminal-overlay: rgba(7, 24, 19, 0.55);
 	--terminal-card: #eff4ef;
-	--terminal-onAccent: #042011;
-	--terminal-paper: #ffe88c;
-	--terminal-paper-text: #3c3100;
+	--terminal-onAccent: #000000;
+	--terminal-paper: #91ffc3;
+	--terminal-paper-text: #000000;
+
+	--backdrop-glow-a: rgba(35, 255, 136, 0.4);
+	--backdrop-glow-b: rgba(35, 255, 136, 0.28);
+	--backdrop-dot: rgba(0, 0, 0, 0.14);
+	--backdrop-end: #d9ffe8;
+	--backdrop-photo-opacity: 0.1;
 }
 
 /*
@@ -254,13 +271,6 @@
 		overflow-x: hidden;
 		font-family: var(--font-sans);
 		background-color: var(--color-terminal-bg);
-		background-image:
-			radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
-			linear-gradient(180deg, #000000 60%, #04180d 100%);
-		background-size:
-			24px 24px,
-			auto;
-		background-attachment: fixed;
 		color: var(--color-terminal-text);
 		word-wrap: break-word;
 		overflow-wrap: break-word;
@@ -328,12 +338,12 @@
 	}
 
 	a {
-		@apply text-terminal-cyan hover:text-terminal-highlight transition-colors duration-300 relative;
+		@apply text-terminal-ink transition-colors duration-300 relative;
 	}
 
 	a::after {
 		content: "";
-		@apply absolute bottom-0 left-0 w-0 h-[1px] bg-terminal-highlight transition-all duration-300;
+		@apply absolute bottom-0 left-0 w-0 h-[1px] bg-terminal-ink transition-all duration-300;
 	}
 
 	a:hover::after {
@@ -434,6 +444,21 @@
 	}
 	.glow {
 		box-shadow: var(--brand-glow);
+	}
+	/* Highlighter effect: neon text on dark, black text on a 50% neon marker on light */
+	.marker {
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+	}
+	/* Hand-drawn stroke with ragged ends, stretched to the element's box */
+	:root[data-theme="light"] .marker,
+	:root[data-theme="light"] .marker-stroke {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath fill='rgba(35,255,136,0.5)' d='M4 7 L40 4 L90 6 L150 3 L196 5 L191 10 L199 15 L192 21 L198 27 L193 33 L150 37 L90 35 L40 38 L7 36 L2 31 L8 26 L1 20 L7 14 L2 10 Z'/%3E%3C/svg%3E");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
+	:root[data-theme="light"] .marker {
+		padding: 0.05em 0.5em;
 	}
 	.frame-line {
 		border-color: rgba(255, 255, 255, 0.5);

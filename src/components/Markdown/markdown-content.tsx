@@ -114,7 +114,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
 							: undefined
 
 					return (
-						<h1 className="text-3xl font-bold mb-8 text-terminal-cyan" id={id}>
+						<h1 className="text-3xl font-bold mb-8 text-terminal-ink" id={id}>
 							{children}
 						</h1>
 					)
@@ -130,7 +130,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
 							: undefined
 
 					return (
-						<h2 className="text-2xl font-bold mb-6 text-terminal-cyan" id={id}>
+						<h2 className="text-2xl font-bold mb-6 text-terminal-ink" id={id}>
 							{children}
 						</h2>
 					)
@@ -147,7 +147,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
 
 					return (
 						<h3
-							className="text-xl font-semibold mb-6 text-terminal-cyan"
+							className="text-xl font-semibold mb-6 text-terminal-ink"
 							id={id}
 						>
 							{children}
@@ -205,7 +205,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({
 					</div>
 				),
 				thead: ({ children }) => (
-					<thead className="bg-terminal-window text-terminal-cyan">
+					<thead className="bg-terminal-window text-terminal-ink">
 						{children}
 					</thead>
 				),

@@ -66,6 +66,7 @@
 				"url": "https://github.com/neuland-ingolstadt/neuland-connect"
 			}
 		],
+		"imageUrl": "/assets/neuland-connect.webp",
 		"tags": ["Tanstack", "TypeScript", "Authentik"],
 		"longDescription": "Neuland Connect ist der zentrale Hub für Vereinsmitglieder. Hinter dem Authentik-Login finden sich Events, Ressourcen und weitere Vereinsangebote sowie Self-Service für den Zugang zur GitHub-Organisation und zum Discord-Server.",
 		"additionalInfo": "Das Portal wurde mit TanStack Router und TypeScript entwickelt und integriert Authentik, die GitHub- und die Discord-API für das Onboarding von Vereinsmitgliedern."

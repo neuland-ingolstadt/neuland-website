@@ -93,7 +93,7 @@ function PostPage() {
 										{authorLink ? (
 											<Link
 												href={authorLink}
-												className="text-terminal-cyan hover:text-terminal-cyan/80 no-underline transition-colors"
+												className="text-terminal-ink hover:text-terminal-ink/80 no-underline transition-colors"
 												target="_blank"
 												rel="noopener noreferrer"
 											>

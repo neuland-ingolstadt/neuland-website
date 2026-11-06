@@ -232,12 +232,12 @@ function TagPage() {
 				</>
 			) : (
 				<div className="py-12 text-center">
-					<p className="text-terminal-text/85 text-lg">
+					<p className="text-terminal-text/85 text-base">
 						{t('noPostsFoundWithTag')}
 					</p>
 					<Link
 						href="/blog"
-						className="text-terminal-cyan hover:underline mt-4 inline-block"
+						className="text-terminal-ink hover:underline mt-4 inline-block"
 					>
 						{t('backToAll')}
 					</Link>

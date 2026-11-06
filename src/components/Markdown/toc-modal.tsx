@@ -84,24 +84,6 @@ const TocModal: React.FC<TocModalProps> = ({ sections, isOpen, onClose }) => {
 							aria-modal="true"
 							aria-labelledby="toc-modal-title"
 						>
-							{/* Corner accent brackets */}
-							<div className="absolute top-0 left-0 w-12 h-12">
-								<div className="absolute top-0 left-0 w-6 h-px bg-terminal-cyan/30" />
-								<div className="absolute top-0 left-0 w-px h-6 bg-terminal-cyan/30" />
-							</div>
-							<div className="absolute top-0 right-0 w-12 h-12">
-								<div className="absolute top-0 right-0 w-6 h-px bg-terminal-cyan/30" />
-								<div className="absolute top-0 right-0 w-px h-6 bg-terminal-cyan/30" />
-							</div>
-							<div className="absolute bottom-0 left-0 w-12 h-12">
-								<div className="absolute bottom-0 left-0 w-6 h-px bg-terminal-cyan/30" />
-								<div className="absolute bottom-0 left-0 w-px h-6 bg-terminal-cyan/30" />
-							</div>
-							<div className="absolute bottom-0 right-0 w-12 h-12">
-								<div className="absolute bottom-0 right-0 w-6 h-px bg-terminal-cyan/30" />
-								<div className="absolute bottom-0 right-0 w-px h-6 bg-terminal-cyan/30" />
-							</div>
-
 							{/* Subtle inner glow */}
 							<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none" />
 
@@ -138,7 +120,7 @@ const TocModal: React.FC<TocModalProps> = ({ sections, isOpen, onClose }) => {
 														>
 															<a
 																href={`#${section.id}`}
-																className="text-terminal-text/85 hover:text-terminal-cyan transition-colors duration-200 flex items-center no-underline group"
+																className="text-terminal-text/85 hover:text-terminal-ink transition-colors duration-200 flex items-center no-underline group"
 																onClick={(e) => {
 																	e.preventDefault()
 																	const targetElement = document.getElementById(
@@ -159,7 +141,7 @@ const TocModal: React.FC<TocModalProps> = ({ sections, isOpen, onClose }) => {
 																}}
 															>
 																{section.level > 1 && (
-																	<span className="mr-2 text-terminal-text/80 group-hover:text-terminal-cyan/80 transition-colors duration-200">
+																	<span className="mr-2 text-terminal-text/80 group-hover:text-terminal-ink/80 transition-colors duration-200">
 																		{section.level === 2 ? '▪' : '•'}
 																	</span>
 																)}

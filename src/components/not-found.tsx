@@ -20,24 +20,6 @@ export default function NotFound() {
 			>
 				{/* Main container */}
 				<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
-					{/* Corner accent brackets */}
-					<div className="absolute top-0 left-0 w-16 h-16">
-						<div className="absolute top-0 left-0 w-8 h-px bg-terminal-cyan/40" />
-						<div className="absolute top-0 left-0 w-px h-8 bg-terminal-cyan/40" />
-					</div>
-					<div className="absolute top-0 right-0 w-16 h-16">
-						<div className="absolute top-0 right-0 w-8 h-px bg-terminal-cyan/40" />
-						<div className="absolute top-0 right-0 w-px h-8 bg-terminal-cyan/40" />
-					</div>
-					<div className="absolute bottom-0 left-0 w-16 h-16">
-						<div className="absolute bottom-0 left-0 w-8 h-px bg-terminal-cyan/40" />
-						<div className="absolute bottom-0 left-0 w-px h-8 bg-terminal-cyan/40" />
-					</div>
-					<div className="absolute bottom-0 right-0 w-16 h-16">
-						<div className="absolute bottom-0 right-0 w-8 h-px bg-terminal-cyan/40" />
-						<div className="absolute bottom-0 right-0 w-px h-8 bg-terminal-cyan/40" />
-					</div>
-
 					{/* Subtle inner glow */}
 					<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none" />
 
@@ -45,22 +27,22 @@ export default function NotFound() {
 						{/* Terminal-style error message */}
 						<div className="mb-8">
 							<div className="flex items-center gap-3 mb-4">
-								<Terminal className="h-6 w-6 text-terminal-cyan" />
+								<Terminal className="h-6 w-6 text-terminal-ink" />
 								<span className="text-terminal-text/80 font-mono text-sm">
 									$ cat error.log
 								</span>
 							</div>
 							<div className="font-mono text-sm space-y-2">
 								<div className="text-terminal-red">
-									<span className="text-terminal-cyan">Error:</span> HTTP 404 -
+									<span className="text-terminal-ink">Error:</span> HTTP 404 -
 									Not Found
 								</div>
 								<div className="text-terminal-text/85">
-									<span className="text-terminal-cyan">Path:</span>{' '}
+									<span className="text-terminal-ink">Path:</span>{' '}
 									<span className="text-terminal-yellow">{pathname}</span>
 								</div>
 								<div className="text-terminal-text/85">
-									<span className="text-terminal-cyan">Status:</span>{' '}
+									<span className="text-terminal-ink">Status:</span>{' '}
 									<span className="text-terminal-red">FAILED</span>
 								</div>
 							</div>
@@ -73,7 +55,7 @@ export default function NotFound() {
 							transition={{ duration: 0.5, delay: 0.2 }}
 							className="mb-8"
 						>
-							<h1 className="text-8xl md:text-9xl font-bold text-terminal-cyan/20 mb-4 font-mono">
+							<h1 className="text-8xl md:text-9xl font-bold text-terminal-ink/20 mb-4 font-mono">
 								404
 							</h1>
 							<h2 className="text-2xl md:text-3xl font-semibold text-terminal-text mb-3">
@@ -107,19 +89,19 @@ export default function NotFound() {
 							<div className="flex flex-wrap gap-3">
 								<Link
 									href="/"
-									className="text-sm text-terminal-cyan hover:text-terminal-cyan/80 transition-colors duration-200 no-underline"
+									className="text-sm text-terminal-ink hover:text-terminal-ink/80 transition-colors duration-200 no-underline"
 								>
 									→ {t('links.home')}
 								</Link>
 								<Link
 									href="/blog"
-									className="text-sm text-terminal-cyan hover:text-terminal-cyan/80 transition-colors duration-200 no-underline"
+									className="text-sm text-terminal-ink hover:text-terminal-ink/80 transition-colors duration-200 no-underline"
 								>
 									→ {t('links.blog')}
 								</Link>
 								<Link
 									href="/projects"
-									className="text-sm text-terminal-cyan hover:text-terminal-cyan/80 transition-colors duration-200 no-underline"
+									className="text-sm text-terminal-ink hover:text-terminal-ink/80 transition-colors duration-200 no-underline"
 								>
 									→ {t('links.projects')}
 								</Link>

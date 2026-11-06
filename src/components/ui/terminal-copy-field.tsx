@@ -40,12 +40,12 @@ export const TerminalCopyField = ({
 				<button
 					type="button"
 					onClick={handleCopy}
-					className="shrink-0 p-1 ml-2 text-terminal-text/70 hover:text-terminal-cyan transition-colors duration-200 flex items-center justify-center"
+					className="shrink-0 p-1 ml-2 text-terminal-text/70 hover:text-terminal-ink transition-colors duration-200 flex items-center justify-center"
 					aria-label="Copy to clipboard"
 				>
 					{/* Fixed sizes added here to prevent image explosion */}
 					{copied ? (
-						<Check className="w-4 h-4 text-terminal-cyan" />
+						<Check className="w-4 h-4 text-terminal-ink" />
 					) : (
 						<Copy className="w-4 h-4" />
 					)}

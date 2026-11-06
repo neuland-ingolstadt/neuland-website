@@ -192,7 +192,7 @@ const CarouselContent = React.forwardRef<
 	const { carouselRef, orientation } = useCarousel()
 
 	return (
-		<div ref={carouselRef} className="overflow-hidden">
+		<div ref={carouselRef} className="overflow-clip [overflow-clip-margin:2px]">
 			<div
 				ref={ref}
 				className={cn(
@@ -242,7 +242,7 @@ const CarouselPrevious = React.forwardRef<
 			variant="ghost"
 			size={size}
 			className={cn(
-				'absolute h-8 w-8 rounded-full bg-terminal-bg/80 hover:bg-terminal-bg hover:text-terminal-text border border-terminal-window-border',
+				'absolute h-9 w-9 rounded-none border-0 bg-terminal-cyan [:root[data-theme=light]_&]:bg-black [:root[data-theme=light]_&]:text-white text-black transition-[filter,opacity] hover:bg-terminal-cyan [:root[data-theme=light]_&]:hover:bg-black/80 hover:text-black [:root[data-theme=light]_&]:hover:text-white hover:brightness-110 disabled:opacity-30 [:root[data-theme=light]_&]:disabled:opacity-100 [:root[data-theme=light]_&]:disabled:bg-neutral-400 [:root[data-theme=light]_&]:disabled:hover:bg-neutral-400',
 				orientation === 'horizontal'
 					? '-left-12 top-1/2 -translate-y-1/2'
 					: '-top-12 left-1/2 -translate-x-1/2 rotate-90',
@@ -252,7 +252,7 @@ const CarouselPrevious = React.forwardRef<
 			onClick={scrollPrev}
 			{...props}
 		>
-			<ArrowLeft className="h-4 w-4 text-terminal-text" />
+			<ArrowLeft className="h-4 w-4 text-current" />
 			<span className="sr-only">Previous slide</span>
 		</Button>
 	)
@@ -271,7 +271,7 @@ const CarouselNext = React.forwardRef<
 			variant="ghost"
 			size={size}
 			className={cn(
-				'absolute h-8 w-8 rounded-full bg-terminal-bg/80 hover:bg-terminal-bg hover:text-terminal-text border border-terminal-window-border',
+				'absolute h-9 w-9 rounded-none border-0 bg-terminal-cyan [:root[data-theme=light]_&]:bg-black [:root[data-theme=light]_&]:text-white text-black transition-[filter,opacity] hover:bg-terminal-cyan [:root[data-theme=light]_&]:hover:bg-black/80 hover:text-black [:root[data-theme=light]_&]:hover:text-white hover:brightness-110 disabled:opacity-30 [:root[data-theme=light]_&]:disabled:opacity-100 [:root[data-theme=light]_&]:disabled:bg-neutral-400 [:root[data-theme=light]_&]:disabled:hover:bg-neutral-400',
 				orientation === 'horizontal'
 					? '-right-12 top-1/2 -translate-y-1/2'
 					: '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
@@ -281,7 +281,7 @@ const CarouselNext = React.forwardRef<
 			onClick={scrollNext}
 			{...props}
 		>
-			<ArrowRight className="h-4 w-4 text-terminal-text" />
+			<ArrowRight className="h-4 w-4 text-current" />
 			<span className="sr-only">Next slide</span>
 		</Button>
 	)

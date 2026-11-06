@@ -66,12 +66,12 @@ const ProjectDetailClient = ({ project }: ProjectDetailClientProps) => {
 			>
 				<div className="text-center mb-12">
 					<div className="flex items-center justify-center gap-3 mb-4">
-						<Code className="h-8 w-8 text-terminal-cyan" />
+						<Code className="h-8 w-8 text-terminal-ink" />
 						<h1 className="text-4xl md:text-5xl font-bold text-terminal-text">
 							{project.title}
 						</h1>
 					</div>
-					<p className="text-lg text-terminal-text/90 max-w-3xl mx-auto">
+					<p className="text-base text-terminal-text/90 max-w-3xl mx-auto">
 						{project.description}
 					</p>
 				</div>
@@ -85,24 +85,6 @@ const ProjectDetailClient = ({ project }: ProjectDetailClientProps) => {
 						className="relative w-full max-w-4xl mx-auto rounded-lg overflow-hidden"
 					>
 						<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
-							{/* Corner accent brackets */}
-							<div className="absolute top-0 left-0 w-16 h-16 z-10">
-								<div className="absolute top-0 left-0 w-8 h-px bg-terminal-cyan/40" />
-								<div className="absolute top-0 left-0 w-px h-8 bg-terminal-cyan/40" />
-							</div>
-							<div className="absolute top-0 right-0 w-16 h-16 z-10">
-								<div className="absolute top-0 right-0 w-8 h-px bg-terminal-cyan/40" />
-								<div className="absolute top-0 right-0 w-px h-8 bg-terminal-cyan/40" />
-							</div>
-							<div className="absolute bottom-0 left-0 w-16 h-16 z-10">
-								<div className="absolute bottom-0 left-0 w-8 h-px bg-terminal-cyan/40" />
-								<div className="absolute bottom-0 left-0 w-px h-8 bg-terminal-cyan/40" />
-							</div>
-							<div className="absolute bottom-0 right-0 w-16 h-16 z-10">
-								<div className="absolute bottom-0 right-0 w-8 h-px bg-terminal-cyan/40" />
-								<div className="absolute bottom-0 right-0 w-px h-8 bg-terminal-cyan/40" />
-							</div>
-
 							{/* Subtle glow effect */}
 							<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none z-0" />
 
@@ -128,24 +110,6 @@ const ProjectDetailClient = ({ project }: ProjectDetailClientProps) => {
 						viewport={{ once: true }}
 						className="relative bg-terminal-window border border-terminal-window-border overflow-hidden"
 					>
-						{/* Corner accent brackets */}
-						<div className="absolute top-0 left-0 w-16 h-16">
-							<div className="absolute top-0 left-0 w-8 h-px bg-terminal-cyan/30" />
-							<div className="absolute top-0 left-0 w-px h-8 bg-terminal-cyan/30" />
-						</div>
-						<div className="absolute top-0 right-0 w-16 h-16">
-							<div className="absolute top-0 right-0 w-8 h-px bg-terminal-cyan/30" />
-							<div className="absolute top-0 right-0 w-px h-8 bg-terminal-cyan/30" />
-						</div>
-						<div className="absolute bottom-0 left-0 w-16 h-16">
-							<div className="absolute bottom-0 left-0 w-8 h-px bg-terminal-cyan/30" />
-							<div className="absolute bottom-0 left-0 w-px h-8 bg-terminal-cyan/30" />
-						</div>
-						<div className="absolute bottom-0 right-0 w-16 h-16">
-							<div className="absolute bottom-0 right-0 w-8 h-px bg-terminal-cyan/30" />
-							<div className="absolute bottom-0 right-0 w-px h-8 bg-terminal-cyan/30" />
-						</div>
-
 						{/* Subtle inner glow */}
 						<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none" />
 
@@ -162,7 +126,7 @@ const ProjectDetailClient = ({ project }: ProjectDetailClientProps) => {
 								<div className="mt-8 pt-6 border-t border-terminal-window-border">
 									<div className="relative pl-6">
 										<div className="absolute left-0 top-0 bottom-0 w-0.5 bg-terminal-cyan" />
-										<p className="text-sm text-terminal-text/85 leading-relaxed">
+										<p className="text-base text-terminal-text/85 leading-relaxed">
 											{project.additionalInfo}
 										</p>
 									</div>
@@ -183,29 +147,11 @@ const ProjectDetailClient = ({ project }: ProjectDetailClientProps) => {
 							viewport={{ once: true }}
 							className="relative bg-terminal-window border border-terminal-window-border overflow-hidden"
 						>
-							{/* Corner accent brackets */}
-							<div className="absolute top-0 left-0 w-12 h-12">
-								<div className="absolute top-0 left-0 w-6 h-px bg-terminal-cyan/30" />
-								<div className="absolute top-0 left-0 w-px h-6 bg-terminal-cyan/30" />
-							</div>
-							<div className="absolute top-0 right-0 w-12 h-12">
-								<div className="absolute top-0 right-0 w-6 h-px bg-terminal-cyan/30" />
-								<div className="absolute top-0 right-0 w-px h-6 bg-terminal-cyan/30" />
-							</div>
-							<div className="absolute bottom-0 left-0 w-12 h-12">
-								<div className="absolute bottom-0 left-0 w-6 h-px bg-terminal-cyan/30" />
-								<div className="absolute bottom-0 left-0 w-px h-6 bg-terminal-cyan/30" />
-							</div>
-							<div className="absolute bottom-0 right-0 w-12 h-12">
-								<div className="absolute bottom-0 right-0 w-6 h-px bg-terminal-cyan/30" />
-								<div className="absolute bottom-0 right-0 w-px h-6 bg-terminal-cyan/30" />
-							</div>
-
 							{/* Subtle glow */}
 							<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none" />
 
 							<div className="p-6 relative z-10">
-								<h3 className="text-sm font-semibold mb-4 text-terminal-cyan uppercase tracking-wider">
+								<h3 className="text-sm font-semibold mb-4 text-terminal-ink uppercase tracking-wider">
 									{t('detailClient.technologies')}
 								</h3>
 								<div className="flex flex-wrap gap-2">
@@ -235,29 +181,11 @@ const ProjectDetailClient = ({ project }: ProjectDetailClientProps) => {
 							viewport={{ once: true }}
 							className="relative bg-terminal-window border border-terminal-window-border overflow-hidden"
 						>
-							{/* Corner accent brackets */}
-							<div className="absolute top-0 left-0 w-12 h-12">
-								<div className="absolute top-0 left-0 w-6 h-px bg-terminal-cyan/30" />
-								<div className="absolute top-0 left-0 w-px h-6 bg-terminal-cyan/30" />
-							</div>
-							<div className="absolute top-0 right-0 w-12 h-12">
-								<div className="absolute top-0 right-0 w-6 h-px bg-terminal-cyan/30" />
-								<div className="absolute top-0 right-0 w-px h-6 bg-terminal-cyan/30" />
-							</div>
-							<div className="absolute bottom-0 left-0 w-12 h-12">
-								<div className="absolute bottom-0 left-0 w-6 h-px bg-terminal-cyan/30" />
-								<div className="absolute bottom-0 left-0 w-px h-6 bg-terminal-cyan/30" />
-							</div>
-							<div className="absolute bottom-0 right-0 w-12 h-12">
-								<div className="absolute bottom-0 right-0 w-6 h-px bg-terminal-cyan/30" />
-								<div className="absolute bottom-0 right-0 w-px h-6 bg-terminal-cyan/30" />
-							</div>
-
 							{/* Subtle glow */}
 							<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none" />
 
 							<div className="p-6 relative z-10">
-								<h3 className="text-sm font-semibold mb-4 text-terminal-cyan uppercase tracking-wider">
+								<h3 className="text-sm font-semibold mb-4 text-terminal-ink uppercase tracking-wider">
 									Links
 								</h3>
 								<div className="flex flex-col gap-3">
@@ -276,14 +204,14 @@ const ProjectDetailClient = ({ project }: ProjectDetailClientProps) => {
 										>
 											<ExternalLink
 												size={16}
-												className="text-terminal-text/85 group-hover:text-terminal-cyan transition-colors duration-200"
+												className="text-terminal-text/85 group-hover:text-terminal-ink transition-colors duration-200"
 											/>
 											<span className="text-sm text-terminal-text/90 group-hover:text-terminal-text transition-colors duration-200">
 												{link.label}
 											</span>
 											<ArrowUpRight
 												size={14}
-												className="ml-auto text-terminal-text/70 group-hover:text-terminal-cyan group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-200"
+												className="ml-auto text-terminal-text/70 group-hover:text-terminal-ink group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-200"
 											/>
 										</motion.a>
 									))}

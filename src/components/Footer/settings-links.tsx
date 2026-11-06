@@ -14,8 +14,8 @@ const SettingsLinks: React.FC = () => {
 						className="group  text-terminal-text font-mono"
 					>
 						<span className="mr-2.5 group-hover:animate-cyberpunk">$</span>
-						<span className="text-terminal-cyan">git</span>&nbsp;
-						<span className="text-terminal-cyan">clone</span>
+						<span className="text-terminal-ink">git</span>&nbsp;
+						<span className="text-terminal-ink">clone</span>
 						&nbsp;neuland-website
 					</a>
 				</li>
@@ -28,7 +28,7 @@ const SettingsLinks: React.FC = () => {
 						className="inline-flex items-center gap-1 text-terminal-text group"
 					>
 						<span className="mr-1 group-hover:animate-cyberpunk">$</span>
-						<span className="text-terminal-cyan">curl</span>
+						<span className="text-terminal-ink">curl</span>
 						<span>&nbsp;status.neuland.ing</span>
 					</a>
 				</li>

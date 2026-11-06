@@ -77,20 +77,8 @@ const ThemeToggle: React.FC = () => {
 				type="button"
 				onClick={cycleMode}
 				aria-label="Theme switch"
-				className="relative inline-flex h-8 w-8 items-center justify-center border border-terminal-window-border/70 bg-terminal-bg/40 backdrop-blur-sm shadow-sm cursor-pointer select-none group overflow-hidden"
+				className="header-icon-btn relative inline-flex h-8 w-8 items-center justify-center border border-terminal-window-border/70 bg-terminal-bg/40 backdrop-blur-sm shadow-sm cursor-pointer select-none group overflow-hidden"
 			>
-				{/* corner accents, matching cards */}
-				<div className="pointer-events-none absolute inset-0">
-					<div className="absolute top-0 left-0 w-3 h-3">
-						<div className="absolute top-0 left-0 w-2 h-px bg-terminal-cyan/40" />
-						<div className="absolute top-0 left-0 w-px h-2 bg-terminal-cyan/40" />
-					</div>
-					<div className="absolute bottom-0 right-0 w-3 h-3">
-						<div className="absolute bottom-0 right-0 w-2 h-px bg-terminal-cyan/30" />
-						<div className="absolute bottom-0 right-0 w-px h-2 bg-terminal-cyan/30" />
-					</div>
-				</div>
-
 				{/* subtle hover glow */}
 				<div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-terminal-cyan/0 via-terminal-cyan/12 to-terminal-cyan/0 opacity-0 group-hover:opacity-100 transition-opacity duration-250" />
 
@@ -122,18 +110,8 @@ const ThemeToggleMobile: React.FC = () => {
 			type="button"
 			onClick={cycleMode}
 			aria-label="Theme switch"
-			className="relative inline-flex h-8 w-8 items-center justify-center  border border-terminal-window-border/70 bg-terminal-bg/30 shadow-sm cursor-pointer select-none group overflow-hidden"
+			className="header-icon-btn relative inline-flex h-8 w-8 items-center justify-center  border border-terminal-window-border/70 bg-terminal-bg/30 shadow-sm cursor-pointer select-none group overflow-hidden"
 		>
-			<div className="pointer-events-none absolute inset-0">
-				<div className="absolute top-0 left-0 w-3 h-3">
-					<div className="absolute top-0 left-0 w-2 h-px bg-terminal-cyan/40" />
-					<div className="absolute top-0 left-0 w-px h-2 bg-terminal-cyan/40" />
-				</div>
-				<div className="absolute bottom-0 right-0 w-3 h-3">
-					<div className="absolute bottom-0 right-0 w-2 h-px bg-terminal-cyan/30" />
-					<div className="absolute bottom-0 right-0 w-px h-2 bg-terminal-cyan/30" />
-				</div>
-			</div>
 			<div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-terminal-cyan/0 via-terminal-cyan/12 to-terminal-cyan/0 opacity-0 group-hover:opacity-100 transition-opacity duration-250" />
 			<span className="relative z-10 text-terminal-text/85">{icon}</span>
 		</button>
