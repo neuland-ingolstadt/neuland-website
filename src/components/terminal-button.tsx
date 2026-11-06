@@ -14,7 +14,7 @@ interface TerminalButtonProps {
 }
 
 const baseStyles =
-	'inline-flex items-center justify-center gap-2 px-5 py-2.5 font-mono font-bold border border-terminal-cyan text-terminal-cyan rounded-md transition-all duration-200 hover:bg-terminal-cyan hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan/30 no-underline'
+	'inline-flex items-center justify-center gap-2 px-5 py-2.5 font-mono font-bold border border-terminal-cyan text-terminal-ink transition-all duration-200 hover:bg-terminal-cyan hover:text-terminal-onAccent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-cyan/30 no-underline'
 
 const TerminalButton: React.FC<TerminalButtonProps> = ({
 	children,
@@ -26,9 +26,10 @@ const TerminalButton: React.FC<TerminalButtonProps> = ({
 	dark = false,
 	primary = false
 }) => {
-	const bgClass = dark ? 'bg-terminal-bg' : 'bg-transparent'
+	// Light mode: secondary is a black outline that fills black on hover
+	const bgClass = `${dark ? 'bg-terminal-bg' : 'bg-transparent'} [:root[data-theme=light]_&]:border-black [:root[data-theme=light]_&]:text-black [:root[data-theme=light]_&]:hover:bg-black [:root[data-theme=light]_&]:hover:text-white`
 	const variantClass = primary
-		? 'bg-terminal-cyan !text-black glow hover:brightness-110'
+		? 'bg-terminal-cyan !text-terminal-onAccent glow hover:brightness-110 [:root[data-theme=light]_&]:border-black [:root[data-theme=light]_&]:bg-black [:root[data-theme=light]_&]:!text-white [:root[data-theme=light]_&]:shadow-none [:root[data-theme=light]_&]:hover:!bg-neutral-700 [:root[data-theme=light]_&]:hover:border-neutral-700 [:root[data-theme=light]_&]:hover:brightness-100'
 		: bgClass
 	const styles = `${baseStyles} ${variantClass} ${className}`
 	const content = <span className="flex items-center gap-2">{children}</span>
