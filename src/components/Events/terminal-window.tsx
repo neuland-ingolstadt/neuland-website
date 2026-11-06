@@ -225,9 +225,8 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 				minHeight: containerHeight ? `${containerHeight}px` : 'auto',
 				background: isTransparentBg ? 'transparent' : undefined,
 				position: 'relative',
-				border: isTransparentBg
-					? 'none'
-					: '1px solid var(--color-terminal-window-border)',
+				border: 'none',
+				borderRadius: '8px',
 				overflow: 'visible'
 			}}
 		>
@@ -241,7 +240,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 			)}
 
 			<div
-				className={`terminal-inner ${
+				className={`terminal-inner overflow-hidden rounded-[inherit] ${
 					terminalState === 'shutting-down' ? 'terminal-shutdown' : ''
 				} ${terminalState === 'off' ? 'terminal-off' : ''} ${
 					terminalState === 'starting-up' ? 'terminal-startup' : ''
@@ -250,8 +249,12 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 					background: isTransparentBg ? 'transparent' : undefined
 				}}
 			>
-				{/* Corner accent brackets - only show when terminal is on */}
-				{terminalState === 'on' && !isTransparentBg && <></>}
+				{terminalState === 'on' && !isTransparentBg && (
+					<>
+						{/* Subtle inner glow */}
+						<div className="absolute inset-0 bg-linear-to-b from-terminal-cyan/3 via-transparent to-transparent pointer-events-none z-0" />
+					</>
+				)}
 
 				<div
 					className="confetti-container"

@@ -14,9 +14,9 @@ const FetchErrorMessage: React.FC<FetchErrorMessageProps> = ({
 
 	return (
 		<div className="p-4 text-terminal-lightGreen border border-terminal-window-border rounded-lg bg-terminal-window">
-			<p className="text-md mb-2">{t('message', { title })}</p>
+			<p className="text-base mb-2">{t('message', { title })}</p>
 			{error && <p className="text-sm text-terminal-lightGreen/80">{error}</p>}
-			<p className="text-sm mt-4 text-terminal-text/85">
+			<p className="text-base mt-4 text-terminal-text/85">
 				{t('descriptionLine1')}
 				<br />
 				{t('descriptionLine2')}

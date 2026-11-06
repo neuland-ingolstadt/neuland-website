@@ -133,7 +133,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
 													{project.additionalInfo && (
 														<div className="mb-6 mt-4 border-l-2 border-terminal-window-border pl-4">
-															<p className="text-sm text-terminal-text/85">
+															<p className="text-base text-terminal-text/85">
 																{project.additionalInfo}
 															</p>
 														</div>

@@ -36,7 +36,7 @@ function FilterButton({ active, label, onClick }: FilterButtonProps) {
 				'px-3 py-1.5 border text-sm font-mono transition-colors duration-200',
 				active
 					? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
-					: 'border-terminal-window-border text-terminal-text/90 hover:border-terminal-cyan/70 hover:text-terminal-cyan'
+					: 'border-terminal-window-border text-terminal-text/90 hover:border-terminal-cyan/70 hover:text-terminal-ink'
 			)}
 		>
 			{label}
@@ -112,7 +112,7 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 
 			<div className="mb-8 space-y-4">
 				<div className="flex items-center gap-3">
-					<Filter size={18} className="text-terminal-cyan" />
+					<Filter size={18} className="text-terminal-ink" />
 					<span className="text-terminal-text/90 font-mono text-sm">
 						{t('filters.visibility')}
 					</span>
@@ -136,7 +136,7 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 				</div>
 
 				<div className="flex items-center gap-3">
-					<Clock3 size={18} className="text-terminal-cyan" />
+					<Clock3 size={18} className="text-terminal-ink" />
 					<span className="text-terminal-text/90 font-mono text-sm">
 						{t('filters.time')}
 					</span>
@@ -180,15 +180,6 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 								key={event.id}
 								className="relative bg-terminal-window border border-terminal-window-border overflow-hidden p-5 h-full flex flex-col"
 							>
-								<div className="absolute top-0 left-0 w-8 h-8">
-									<div className="absolute top-0 left-0 w-4 h-px bg-terminal-cyan/35" />
-									<div className="absolute top-0 left-0 w-px h-4 bg-terminal-cyan/35" />
-								</div>
-								<div className="absolute bottom-0 right-0 w-8 h-8">
-									<div className="absolute bottom-0 right-0 w-4 h-px bg-terminal-cyan/35" />
-									<div className="absolute bottom-0 right-0 w-px h-4 bg-terminal-cyan/35" />
-								</div>
-
 								<div className="relative z-10 h-full flex flex-col">
 									<div className="flex items-start justify-between gap-3">
 										<h2 className="text-2xl font-normal text-terminal-lightGreen leading-tight ">
@@ -221,7 +212,7 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 									)}
 
 									{description && (
-										<p className="text-sm text-terminal-text/85 mb-5 leading-relaxed">
+										<p className="text-base text-terminal-text/85 mb-5 leading-relaxed">
 											{description}
 										</p>
 									)}

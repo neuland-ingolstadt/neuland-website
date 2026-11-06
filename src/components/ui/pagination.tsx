@@ -62,7 +62,7 @@ function PaginationLink({
 				'inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-200 no-underline relative group overflow-hidden',
 				sizeClasses[size],
 				isActive
-					? 'border border-terminal-cyan/40 bg-terminal-card text-terminal-cyan hover:border-terminal-cyan/60 hover:bg-terminal-card'
+					? 'border border-terminal-cyan/40 bg-terminal-card text-terminal-ink hover:border-terminal-cyan/60 hover:bg-terminal-card'
 					: 'border border-terminal-window-border bg-terminal-card text-terminal-text/85 hover:border-terminal-highlight/40 hover:text-terminal-text hover:bg-terminal-window',
 				className
 			)}

@@ -38,23 +38,6 @@ export default function Impressum() {
 					transition={{ duration: 0.6 }}
 					className="relative bg-terminal-window border border-terminal-window-border overflow-hidden"
 				>
-					<div className="absolute top-0 left-0 w-16 h-16">
-						<div className="absolute top-0 left-0 w-8 h-px bg-terminal-cyan/30" />
-						<div className="absolute top-0 left-0 w-px h-8 bg-terminal-cyan/30" />
-					</div>
-					<div className="absolute top-0 right-0 w-16 h-16">
-						<div className="absolute top-0 right-0 w-8 h-px bg-terminal-cyan/30" />
-						<div className="absolute top-0 right-0 w-px h-8 bg-terminal-cyan/30" />
-					</div>
-					<div className="absolute bottom-0 left-0 w-16 h-16">
-						<div className="absolute bottom-0 left-0 w-8 h-px bg-terminal-cyan/30" />
-						<div className="absolute bottom-0 left-0 w-px h-8 bg-terminal-cyan/30" />
-					</div>
-					<div className="absolute bottom-0 right-0 w-16 h-16">
-						<div className="absolute bottom-0 right-0 w-8 h-px bg-terminal-cyan/30" />
-						<div className="absolute bottom-0 right-0 w-px h-8 bg-terminal-cyan/30" />
-					</div>
-
 					<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/1 via-transparent to-terminal-cyan/1 pointer-events-none" />
 
 					<div className="p-8 md:p-12 relative z-10">
@@ -74,7 +57,7 @@ export default function Impressum() {
 							className="mb-8 border-b border-terminal-window-border"
 						>
 							<div className="flex items-start gap-3 mb-4">
-								<MapPin className="h-5 w-5 text-terminal-cyan shrink-0 mt-0.5" />
+								<MapPin className="h-5 w-5 text-terminal-ink shrink-0 mt-0.5" />
 								<div>
 									<h3 className="text-lg font-semibold text-terminal-text mb-2">
 										Verein
@@ -98,7 +81,7 @@ export default function Impressum() {
 							className="mb-8 border-b border-terminal-window-border"
 						>
 							<div className="flex items-start gap-3">
-								<Scale className="h-5 w-5 text-terminal-cyan shrink-0 mt-0.5" />
+								<Scale className="h-5 w-5 text-terminal-ink shrink-0 mt-0.5" />
 								<div>
 									<h3 className="text-lg font-semibold text-terminal-text mb-2">
 										Registergericht
@@ -120,7 +103,7 @@ export default function Impressum() {
 							className="mb-8 pb-8 border-b border-terminal-window-border"
 						>
 							<h3 className="text-lg font-semibold text-terminal-text mb-4 flex items-center gap-2">
-								<Mail className="h-5 w-5 text-terminal-cyan" />
+								<Mail className="h-5 w-5 text-terminal-ink" />
 								Kontakt
 							</h3>
 							<div className="space-y-3">
@@ -128,7 +111,7 @@ export default function Impressum() {
 									<Mail className="h-4 w-4 text-terminal-text/80 shrink-0" />
 									<a
 										href="mailto:info@neuland-ingolstadt.de"
-										className="text-terminal-text/85 hover:text-terminal-cyan transition-colors duration-200 no-underline"
+										className="text-terminal-text/85 hover:text-terminal-ink transition-colors duration-200 no-underline"
 									>
 										info@neuland-ingolstadt.de
 									</a>
@@ -137,7 +120,7 @@ export default function Impressum() {
 									<Phone className="h-4 w-4 text-terminal-text/80 shrink-0" />
 									<a
 										href="tel:015678384646"
-										className="text-terminal-text/85 hover:text-terminal-cyan transition-colors duration-200 no-underline"
+										className="text-terminal-text/85 hover:text-terminal-ink transition-colors duration-200 no-underline"
 									>
 										015678 384646
 									</a>
@@ -152,7 +135,7 @@ export default function Impressum() {
 							className="mb-8 pb-8 border-b border-terminal-window-border"
 						>
 							<h3 className="text-lg font-semibold text-terminal-text mb-4 flex items-center gap-2">
-								<Users className="h-5 w-5 text-terminal-cyan" />
+								<Users className="h-5 w-5 text-terminal-ink" />
 								Vorstand
 							</h3>
 							<p className="text-terminal-text/85 mb-3">Vertreten durch:</p>

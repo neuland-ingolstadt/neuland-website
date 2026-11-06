@@ -73,7 +73,7 @@ const ProjectsPage = () => {
 			{/* Filter Section */}
 			<div className="max-w-6xl mx-auto mb-8">
 				<div className="flex items-center gap-3 mb-4">
-					<Filter size={20} className="text-terminal-cyan" />
+					<Filter size={20} className="text-terminal-ink" />
 					<span className="text-terminal-text/90 font-mono">
 						{t('filterByTechnology')}
 					</span>
@@ -85,7 +85,7 @@ const ProjectsPage = () => {
 						className={`px-4 py-2  border transition-all duration-200 ${
 							!activeTag
 								? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
-								: 'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-cyan'
+								: 'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-ink'
 						}`}
 						onClick={() => setActiveTag(null)}
 					>
@@ -98,7 +98,7 @@ const ProjectsPage = () => {
 							className={`px-4 py-2 border transition-all duration-200 ${
 								activeTag === tag
 									? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
-									: 'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-cyan'
+									: 'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-ink'
 							}`}
 							onClick={() => setActiveTag(tag)}
 						>

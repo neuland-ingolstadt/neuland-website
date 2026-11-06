@@ -107,7 +107,7 @@ export function TagFilter({
 								</p>
 							</div>
 							<div className="px-4 py-2 bg-terminal-bg border-t border-terminal-window-border mt-auto">
-								<span className="text-terminal-cyan text-xs font-mono group-hover:underline">
+								<span className="text-terminal-ink text-xs font-mono group-hover:underline">
 									Mehr lesen →
 								</span>
 							</div>

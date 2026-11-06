@@ -3,8 +3,7 @@
 import { useLocation } from '@tanstack/react-router'
 import { Menu } from 'lucide-react'
 import type React from 'react'
-import { useEffect, useRef } from 'react'
-import TerminalButton from '@/components/terminal-button'
+import { useEffect, useRef, useState } from 'react'
 import {
 	Sidebar,
 	SidebarContent,
@@ -66,7 +65,7 @@ const DesktopNavLink: React.FC<NavLinkProps> = ({ link, className }) => {
 				className={`${className ?? ''} relative group no-underline`}
 			>
 				{link.name}
-				<span className="absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-terminal-cyan transition-transform duration-300 group-hover:scale-x-100" />
+				<span className="absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-terminal-cyan [:root[data-theme=light]_&]:bg-black transition-transform duration-300 group-hover:scale-x-100" />
 			</a>
 		)
 	}
@@ -77,7 +76,7 @@ const DesktopNavLink: React.FC<NavLinkProps> = ({ link, className }) => {
 			className={`${className ?? ''} relative group no-underline`}
 		>
 			{link.name}
-			<span className="absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-terminal-cyan transition-transform duration-300 group-hover:scale-x-100" />
+			<span className="absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-terminal-cyan [:root[data-theme=light]_&]:bg-black transition-transform duration-300 group-hover:scale-x-100" />
 		</Link>
 	)
 }
@@ -117,7 +116,7 @@ const MobileSidebar: React.FC = () => {
 												: pathname === item.href.replace('/#membership', '/')
 										}
 										size="lg"
-										className="no-underline font-mono text-base font-normal text-terminal-text/90 hover:bg-terminal-window/30 hover:text-terminal-cyan data-[active=true]:bg-terminal-window/60 data-[active=true]:text-terminal-cyan"
+										className="no-underline font-mono text-base font-normal text-terminal-text/90 hover:bg-terminal-window/30 hover:text-terminal-ink data-[active=true]:bg-terminal-window/60 data-[active=true]:text-terminal-ink"
 									>
 										{item.external ? (
 											<a
@@ -164,18 +163,8 @@ const MobileSidebarTrigger: React.FC = () => {
 			type="button"
 			onClick={toggleSidebar}
 			aria-label="Open navigation"
-			className="relative inline-flex h-8 w-8 items-center justify-center border border-terminal-window-border bg-terminal-bg cursor-pointer select-none group overflow-hidden text-terminal-text"
+			className="header-icon-btn relative inline-flex h-8 w-8 items-center justify-center border border-terminal-window-border bg-terminal-bg cursor-pointer select-none group overflow-hidden text-terminal-text"
 		>
-			<div className="pointer-events-none absolute inset-0">
-				<div className="absolute left-0 top-0 h-3 w-3">
-					<div className="absolute left-0 top-0 h-px w-2 bg-terminal-cyan/40" />
-					<div className="absolute left-0 top-0 h-2 w-px bg-terminal-cyan/40" />
-				</div>
-				<div className="absolute bottom-0 right-0 h-3 w-3">
-					<div className="absolute bottom-0 right-0 h-px w-2 bg-terminal-cyan/30" />
-					<div className="absolute bottom-0 right-0 h-2 w-px bg-terminal-cyan/30" />
-				</div>
-			</div>
 			<div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-terminal-cyan/0 via-terminal-cyan/12 to-terminal-cyan/0 opacity-0 transition-opacity duration-250 group-hover:opacity-100" />
 			<span className="relative z-10 text-terminal-text/85">
 				<Menu className="h-4 w-4" />
@@ -192,6 +181,14 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 	isPrideThemeEnabled = false
 }) => {
 	const headerRef = useRef<HTMLElement>(null)
+	const [isScrolled, setIsScrolled] = useState(false)
+
+	useEffect(() => {
+		const onScroll = () => setIsScrolled(window.scrollY > 8)
+		onScroll()
+		window.addEventListener('scroll', onScroll, { passive: true })
+		return () => window.removeEventListener('scroll', onScroll)
+	}, [])
 
 	// Dynamically set --navbar-height on the document root for robust layout
 	useEffect(() => {
@@ -215,9 +212,11 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 		<SidebarProvider>
 			<header
 				ref={headerRef}
-				className="terminal-nav fixed top-0 left-0 right-0 z-50 border-b border-terminal-window-border bg-terminal-bg/80 backdrop-blur-md"
+				className={`terminal-nav fixed top-0 left-0 right-0 z-50 transition-[background-color] duration-300 ${
+					isScrolled ? 'bg-terminal-bg' : 'bg-transparent'
+				}`}
 			>
-				<div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-4 py-4 md:px-12 xl:px-20">
+				<div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-4 py-4 md:grid md:grid-cols-[1fr_auto_1fr] md:px-12 xl:px-20">
 					<div className="flex items-center gap-3 md:hidden">
 						<MobileSidebarTrigger />
 					</div>
@@ -246,20 +245,14 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 							<DesktopNavLink
 								key={link.name}
 								link={link}
-								className="text-sm text-terminal-text font-sans font-normal transition-colors hover:text-terminal-cyan"
+								className="font-mono text-sm font-normal uppercase tracking-wide text-terminal-text transition-colors hover:text-terminal-ink"
 							/>
 						))}
 					</nav>
 
-					<div className="hidden items-center gap-3 md:flex">
+					<div className="hidden items-center justify-end gap-3 md:flex">
 						<ThemeToggle />
 						<LanguageToggle />
-						<TerminalButton
-							href={navLinks[0].href}
-							className="px-4 py-2 text-sm"
-						>
-							{navLinks[0].name}
-						</TerminalButton>
 					</div>
 
 					<div className="w-8 md:hidden" aria-hidden="true" />

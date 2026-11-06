@@ -11,6 +11,7 @@ interface TerminalSectionProps {
 	classNames?: string
 	headingLevel?: number // 1 = h1, 2 = h2, 3 = h3
 	showPrefix?: boolean // Add this prop to control the '>' symbol
+	display?: boolean // Large bold section heading (homepage style)
 }
 
 const TerminalSection: React.FC<TerminalSectionProps> = ({
@@ -19,7 +20,8 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 	children,
 	id,
 	classNames = '',
-	headingLevel = 3
+	headingLevel = 3,
+	display = false
 }) => {
 	const [isVisible, setIsVisible] = useState(false)
 	const sectionRef = useRef<HTMLDivElement>(null)
@@ -49,11 +51,14 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 
 	// Determine heading size based on heading level
 	const getTitleClass = () => {
+		if (display) {
+			return 'text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl mb-8'
+		}
 		switch (headingLevel) {
 			case 1:
-				return 'text-3xl md:text-4xl'
+				return 'text-3xl'
 			case 2:
-				return 'text-2xl md:text-3xl'
+				return 'text-2xl'
 			case 3:
 				return 'text-xl'
 			default:
@@ -63,21 +68,19 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 
 	return (
 		<section
-			className={`${classNames} mb-24 relative border border-terminal-window-border`}
+			className={`${classNames} ${display ? 'mb-32 md:mb-40' : 'mb-20'} relative`}
 			id={id}
 			ref={sectionRef}
 		>
 			<h2
-				className={`${getTitleClass()} font-mono font-bold tracking-tight px-6 py-5 sm:px-8 border-b border-terminal-window-border`}
+				className={`${getTitleClass()} ${display ? '' : 'font-normal mb-4'} font-mono flex items-center tracking-tight`}
 			>
 				{title}
 			</h2>
-			{subtitle && (
-				<p className="text-md opacity-90 px-6 pt-4 sm:px-8">{subtitle}</p>
-			)}
+			{subtitle && <p className="text-md opacity-90 -mt-2 mb-6">{subtitle}</p>}
 			<div
-				className={`${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000 p-6 sm:p-8`}
-				style={{ overflow: 'visible' }}
+				className={`${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
+				style={{ overflow: 'visible' }} // Add explicit overflow visible here
 			>
 				{children}
 			</div>

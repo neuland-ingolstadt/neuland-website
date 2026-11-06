@@ -85,24 +85,6 @@ function TagsIndexPage() {
 								{/* Subtle background effect */}
 								<div className="from-terminal-cyan/1 via-transparent to-terminal-cyan/3 pointer-events-none absolute inset-0 bg-gradient-to-br" />
 
-								{/* Corner accent brackets */}
-								<div className="top-0 left-0 absolute h-8 w-8">
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 top-0 left-0 absolute h-px w-4 transition-colors duration-200" />
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 top-0 left-0 absolute h-4 w-px transition-colors duration-200" />
-								</div>
-								<div className="top-0 right-0 absolute h-8 w-8">
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 top-0 right-0 absolute h-px w-4 transition-colors duration-200" />
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 top-0 right-0 absolute h-4 w-px transition-colors duration-200" />
-								</div>
-								<div className="bottom-0 left-0 absolute h-8 w-8">
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 bottom-0 left-0 absolute h-px w-4 transition-colors duration-200" />
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 bottom-0 left-0 absolute h-4 w-px transition-colors duration-200" />
-								</div>
-								<div className="bottom-0 right-0 absolute h-8 w-8">
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 bottom-0 right-0 absolute h-px w-4 transition-colors duration-200" />
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 bottom-0 right-0 absolute h-4 w-px transition-colors duration-200" />
-								</div>
-
 								<div className="relative z-10 flex min-w-0 flex-1 items-center">
 									<Badge
 										variant="outline"
@@ -114,7 +96,7 @@ function TagsIndexPage() {
 										{t('amountPosts', { numberOfPosts: count })}
 									</span>
 								</div>
-								<span className="text-terminal-text/80 group-hover:text-terminal-cyan relative z-10 flex items-center gap-1 text-xs transition-colors duration-200">
+								<span className="text-terminal-text/80 group-hover:text-terminal-ink relative z-10 flex items-center gap-1 text-xs transition-colors duration-200">
 									{t('display')}
 									<span className="inline-block transition-transform duration-200 group-hover:translate-x-1">
 										→

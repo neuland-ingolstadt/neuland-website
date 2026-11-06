@@ -1,6 +1,7 @@
 import { ChevronRight, Code, ExternalLink } from 'lucide-react'
 import type React from 'react'
 import { memo, useCallback } from 'react'
+import { markerRotation } from '@/lib/utils'
 
 export interface ProjectLink {
 	label: string
@@ -41,10 +42,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 	return (
 		<button
 			type="button"
-			className="h-full border border-terminal-cyan/60 bg-terminal-card rounded-md cursor-pointer group relative overflow-hidden flex flex-col transition-all duration-200 hover:border-terminal-cyan text-left w-full"
+			className="h-full border border-terminal-windowTitle bg-terminal-window cursor-pointer group relative overflow-hidden flex flex-col transition-all duration-200 hover:border-terminal-window-border text-left w-full"
 			onClick={onClick}
 			onKeyDown={handleKeyDown}
 		>
+			{/* Subtle background effect */}
+			<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none" />
+
 			{/* Project Image */}
 			{project.imageUrl && (
 				<div className="w-full h-40 bg-terminal-window overflow-hidden relative">
@@ -58,10 +62,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 			)}
 
 			<div className="p-5 pb-2 flex flex-col items-start gap-2">
-				<div className="text-xl font-bold font-mono flex items-center gap-2 text-terminal-text">
+				<div className="font-mono text-xl font-bold flex items-center gap-2 text-terminal-text">
 					<Code
 						size={20}
-						className="text-terminal-text/85 group-hover:text-terminal-cyan transition-colors duration-200"
+						className="text-terminal-text/70 group-hover:text-terminal-ink transition-colors duration-200"
 					/>
 					{project.title}
 				</div>
@@ -71,7 +75,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 						{project.tags.map((tag, index) => (
 							<span
 								key={index}
-								className="text-xs px-2.5 py-1 bg-terminal-card text-terminal-text/85 font-medium border border-terminal-window-border"
+								className="text-xs px-2.5 py-1 bg-terminal-windowTitle text-terminal-text/70 font-medium rounded-sm"
 							>
 								{tag}
 							</span>
@@ -80,7 +84,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 				)}
 			</div>
 			<div className="pt-2 pb-4 px-5 grow overflow-auto">
-				<p className="text-base text-terminal-text/85 mb-2 leading-relaxed">
+				<p className="text-base text-terminal-text/70 mb-2 leading-relaxed font-sans font-normal">
 					{project.description}
 				</p>
 			</div>
@@ -92,7 +96,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 							href={link.url}
 							target="_blank"
 							rel="noreferrer noopener"
-							className="inline-flex items-center gap-1 px-2.5 py-1 bg-terminal-card text-terminal-text/85 font-medium hover:text-terminal-text hover:border-terminal-highlight/40 transition-colors border border-terminal-window-border whitespace-nowrap max-w-full truncate no-underline text-xs"
+							className="inline-flex items-center gap-1 px-2.5 py-1 bg-terminal-card text-terminal-text/70 font-medium hover:text-terminal-text hover:border-terminal-cyan [:root[data-theme=light]_&]:hover:border-transparent transition-colors border border-terminal-cyan/60 [:root[data-theme=light]_&]:border-transparent whitespace-nowrap max-w-full truncate no-underline text-xs"
 							onClick={handleLinkClick}
 						>
 							<ExternalLink size={12} className="mr-1" />
@@ -102,11 +106,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 				</div>
 			</div>
 
-			{/* Floating Details Button */}
-			<ChevronRight
-				size={24}
-				className="group-hover:translate-x-1 transition-transform absolute bottom-4 right-4 z-10 text-terminal-text/85 group-hover:text-terminal-cyan"
-			/>
+			{/* Floating Details Button, with a marker stroke behind it in light mode */}
+			<span
+				className="marker-stroke absolute bottom-3 right-3 z-10 flex items-center justify-center px-2.5 py-1.5"
+				style={{ transform: markerRotation(project.id) }}
+			>
+				<ChevronRight
+					size={24}
+					className="group-hover:translate-x-1 transition-transform text-terminal-text/70 group-hover:text-terminal-ink"
+				/>
+			</span>
 		</button>
 	)
 }
