@@ -4,7 +4,7 @@ import {
 	InstagramIcon,
 	LinkedinIcon
 } from '@/components/icons/brand-icons'
-import MastodonIcon from './mastodon-icon'
+import DiscordIcon from '../discord-icon'
 
 const SocialLinks: React.FC = () => {
 	return (
@@ -20,7 +20,7 @@ const SocialLinks: React.FC = () => {
 						<span className="text-terminal-ink transition-all duration-300 group-hover:text-terminal-text group-hover:animate-cyberpunk">
 							<GithubIcon className="inline-block" size={16} />
 						</span>{' '}
-						github.com
+						GitHub
 					</a>
 				</li>
 				<li className="mb-2">
@@ -33,7 +33,7 @@ const SocialLinks: React.FC = () => {
 						<span className="text-terminal-ink transition-all duration-300 group-hover:text-terminal-text group-hover:animate-cyberpunk">
 							<LinkedinIcon className="inline-block" size={16} />
 						</span>{' '}
-						linkedin.com
+						LinkedIn
 					</a>
 				</li>
 				<li className="mb-2">
@@ -46,20 +46,20 @@ const SocialLinks: React.FC = () => {
 						<span className="text-terminal-ink transition-all duration-300 group-hover:text-terminal-text group-hover:animate-cyberpunk">
 							<InstagramIcon className="inline-block" size={16} />
 						</span>{' '}
-						instagram.com
+						Instagram
 					</a>
 				</li>
 				<li className="mb-2">
 					<a
-						href="https://social.tchncs.de/@neuland"
+						href="https://discord.gg/gsxgQqvVue"
 						rel="noreferrer noopener"
 						target="_blank"
 						className="text-terminal-text! group"
 					>
 						<span className="text-terminal-ink transition-all duration-300 group-hover:text-terminal-text group-hover:animate-cyberpunk">
-							<MastodonIcon className="inline-block w-4 h-4 fill-current" />
+							<DiscordIcon className="inline-block" size={16} />
 						</span>{' '}
-						mastodon.social
+						Discord
 					</a>
 				</li>
 			</ul>

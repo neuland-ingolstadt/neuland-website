@@ -118,7 +118,7 @@ const TerminalMembership = () => {
 				<div className="flex w-fit flex-col items-start">
 					<div className="flex flex-wrap justify-center gap-3">
 						<TerminalButton
-							href="https://discord.gg/PLACEHOLDER"
+							href="https://discord.gg/gsxgQqvVue"
 							target="_blank"
 							rel="noreferrer noopener"
 							className="shrink-0 whitespace-nowrap !px-6 !py-3 !border-terminal-cyan !bg-terminal-cyan !text-terminal-onAccent hover:!bg-terminal-cyan/80 [:root[data-theme=light]_&]:!border-black [:root[data-theme=light]_&]:!bg-black [:root[data-theme=light]_&]:!text-white [:root[data-theme=light]_&]:hover:!border-neutral-700 [:root[data-theme=light]_&]:hover:!bg-neutral-700 [:root[data-theme=light]_&]:hover:!text-white"
