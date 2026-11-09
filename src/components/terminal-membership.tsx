@@ -34,7 +34,7 @@ const TerminalMembership = () => {
 	return (
 		<section
 			id="membership"
-			className="relative isolate mb-32 md:mb-40 text-terminal-text"
+			className="relative isolate mb-32 scroll-mt-[var(--navbar-height,4.5rem)] md:mb-40 text-terminal-text"
 		>
 			{/* Light mode: no photo, a white band that fades out softly */}
 			<div
