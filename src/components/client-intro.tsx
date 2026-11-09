@@ -17,8 +17,8 @@ export default function ClientIntro() {
 				className="pointer-events-none absolute -top-[var(--navbar-height,4.5rem)] bottom-0 left-1/2 w-screen -translate-x-1/2"
 				style={{
 					backgroundImage:
-						'radial-gradient(ellipse 45% 55% at 18% 35%, var(--backdrop-glow-a), transparent 70%), radial-gradient(ellipse 40% 50% at 82% 65%, var(--backdrop-glow-b), transparent 70%), radial-gradient(var(--backdrop-dot) 1px, transparent 1px), linear-gradient(180deg, var(--terminal-bg) 60%, var(--backdrop-end) 100%)',
-					backgroundSize: 'auto, auto, 24px 24px, auto',
+						'radial-gradient(ellipse 45% 55% at 18% 35%, var(--backdrop-glow-a), transparent 70%), radial-gradient(ellipse 40% 50% at 82% 65%, var(--backdrop-glow-b), transparent 70%), linear-gradient(180deg, var(--terminal-bg) 60%, var(--backdrop-end) 100%)',
+					backgroundSize: 'auto, auto, auto',
 					maskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
 					WebkitMaskImage:
 						'linear-gradient(to bottom, black 55%, transparent 100%)'
@@ -34,7 +34,7 @@ export default function ClientIntro() {
 						}}
 					/>
 				</div>
-				<NoiseOverlay />
+				<NoiseOverlay opacity={0.16} />
 			</div>
 			<div className="relative z-10 mx-auto max-w-5xl">
 				<p className="font-script marker mb-4 inline-block -rotate-1 text-2xl text-terminal-ink">
