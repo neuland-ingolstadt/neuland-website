@@ -1,5 +1,9 @@
-import { GithubIcon, InstagramIcon, LinkedinIcon } from 'lucide-react'
 import type React from 'react'
+import {
+	GithubIcon,
+	InstagramIcon,
+	LinkedinIcon
+} from '@/components/icons/brand-icons'
 import MastodonIcon from './mastodon-icon'
 
 const SocialLinks: React.FC = () => {

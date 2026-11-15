@@ -5,7 +5,6 @@ import {
 	BookOpen,
 	Calendar,
 	ForkKnife,
-	GithubIcon,
 	Globe,
 	Laptop,
 	MapPin,
@@ -16,6 +15,7 @@ import {
 } from 'lucide-react'
 import { AnimatePresence, motion, type Variants } from 'motion/react'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { GithubIcon } from '@/components/icons/brand-icons'
 import { useTranslations } from '@/i18n/react'
 import FeatureItem from './feature-item'
 import TerminalButton from './terminal-button'
