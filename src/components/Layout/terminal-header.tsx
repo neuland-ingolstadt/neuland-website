@@ -163,7 +163,7 @@ const MobileSidebarTrigger: React.FC = () => {
 			type="button"
 			onClick={toggleSidebar}
 			aria-label="Open navigation"
-			className="header-icon-btn relative inline-flex h-8 w-8 items-center justify-center border border-terminal-window-border bg-terminal-bg cursor-pointer select-none group overflow-hidden text-terminal-text"
+			className="header-icon-btn relative inline-flex h-10 w-10 items-center md:h-8 md:w-8 justify-center border border-terminal-window-border bg-terminal-bg cursor-pointer select-none group overflow-hidden text-terminal-text"
 		>
 			<div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-terminal-cyan/0 via-terminal-cyan/12 to-terminal-cyan/0 opacity-0 transition-opacity duration-250 group-hover:opacity-100" />
 			<span className="relative z-10 text-terminal-text/85">
@@ -255,7 +255,7 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 						<LanguageToggle />
 					</div>
 
-					<div className="w-8 md:hidden" aria-hidden="true" />
+					<div className="w-10 md:hidden" aria-hidden="true" />
 				</div>
 			</header>
 

@@ -11,7 +11,7 @@ export default function ClientIntro() {
 	const bgY = useTransform(scrollY, [0, 1000], [0, 450])
 
 	return (
-		<div className="relative mb-32 flex min-h-[calc(100svh-var(--navbar-height,4.5rem))] items-center justify-center pb-40 pt-16 text-center md:mb-40">
+		<div className="relative mb-32 flex min-h-[calc(100svh-var(--navbar-height,4.5rem))] flex-col items-center justify-center gap-14 pb-16 pt-12 text-center md:mb-40 md:gap-0 md:pb-40 md:pt-16">
 			<div
 				aria-hidden="true"
 				className="pointer-events-none absolute -top-[var(--navbar-height,4.5rem)] bottom-0 left-1/2 w-screen -translate-x-1/2"
@@ -53,7 +53,7 @@ export default function ClientIntro() {
 					<TerminalButton href="/projects">{t('secondaryCta')}</TerminalButton>
 				</div>
 			</div>
-			<div className="absolute inset-x-0 bottom-[14%] z-10 px-6">
+			<div className="relative z-10 w-full px-6 md:absolute md:inset-x-0 md:bottom-[14%]">
 				<SponsorsStrip />
 			</div>
 		</div>

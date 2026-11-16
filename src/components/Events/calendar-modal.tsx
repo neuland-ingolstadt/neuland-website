@@ -32,7 +32,7 @@ const CalendarModal: React.FC<CalendarModalProps> = ({
 
 		return () => {
 			document.removeEventListener('keydown', handleEscKey)
-			document.body.style.overflow = 'auto'
+			document.body.style.overflow = ''
 		}
 	}, [isOpen, onClose])
 

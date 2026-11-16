@@ -116,12 +116,12 @@ const TerminalMembership = () => {
 
 				{/* Actions */}
 				<div className="flex w-fit flex-col items-start">
-					<div className="flex flex-wrap justify-center gap-3">
+					<div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
 						<TerminalButton
 							href="https://discord.gg/gsxgQqvVue"
 							target="_blank"
 							rel="noreferrer noopener"
-							className="shrink-0 whitespace-nowrap !px-6 !py-3 !border-terminal-cyan !bg-terminal-cyan !text-terminal-onAccent hover:!bg-terminal-cyan/80 [:root[data-theme=light]_&]:!border-black [:root[data-theme=light]_&]:!bg-black [:root[data-theme=light]_&]:!text-white [:root[data-theme=light]_&]:hover:!border-neutral-700 [:root[data-theme=light]_&]:hover:!bg-neutral-700 [:root[data-theme=light]_&]:hover:!text-white"
+							className="order-2 w-full shrink-0 whitespace-nowrap sm:order-1 sm:w-auto !px-6 !py-3 !border-terminal-cyan !bg-terminal-cyan !text-terminal-onAccent hover:!bg-terminal-cyan/80 [:root[data-theme=light]_&]:!border-black [:root[data-theme=light]_&]:!bg-black [:root[data-theme=light]_&]:!text-white [:root[data-theme=light]_&]:hover:!border-neutral-700 [:root[data-theme=light]_&]:hover:!bg-neutral-700 [:root[data-theme=light]_&]:hover:!text-white"
 						>
 							<DiscordIcon
 								size={16}
@@ -133,7 +133,7 @@ const TerminalMembership = () => {
 							href="https://join.neuland-ingolstadt.de/"
 							target="_blank"
 							rel="noreferrer noopener"
-							className="whitespace-nowrap !px-6 !py-3 !border-terminal-cyan !text-terminal-ink hover:!bg-terminal-cyan [:root[data-theme=light]_&]:!border-black [:root[data-theme=light]_&]:!text-black [:root[data-theme=light]_&]:hover:!bg-black [:root[data-theme=light]_&]:hover:!text-white hover:!text-terminal-onAccent"
+							className="order-1 w-full whitespace-nowrap sm:order-2 sm:w-auto !px-6 !py-3 !border-terminal-cyan !text-terminal-ink hover:!bg-terminal-cyan [:root[data-theme=light]_&]:!border-black [:root[data-theme=light]_&]:!text-black [:root[data-theme=light]_&]:hover:!bg-black [:root[data-theme=light]_&]:hover:!text-white hover:!text-terminal-onAccent"
 						>
 							<UserPlus
 								size={16}

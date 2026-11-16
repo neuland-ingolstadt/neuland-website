@@ -25,7 +25,7 @@ const TocModal: React.FC<TocModalProps> = ({ sections, isOpen, onClose }) => {
 
 		return () => {
 			document.removeEventListener('keydown', handleEscKey)
-			document.body.style.overflow = 'auto'
+			document.body.style.overflow = ''
 		}
 	}, [isOpen, onClose])
 

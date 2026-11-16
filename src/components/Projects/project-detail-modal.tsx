@@ -30,7 +30,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 			}
 		}
 		setShowContent(false)
-		document.body.style.overflow = 'auto'
+		document.body.style.overflow = ''
 	}, [isOpen])
 
 	useEffect(() => {

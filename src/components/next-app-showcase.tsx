@@ -55,7 +55,7 @@ const NextAppShowcase = () => {
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6 }}
 					viewport={{ once: true }}
-					className="text-center mb-16"
+					className="text-center mb-12 md:mb-16"
 				>
 					<p className="font-script marker mb-2 inline-block -rotate-1 text-2xl text-terminal-ink">
 						{t('hero.subtitle')}
@@ -69,7 +69,7 @@ const NextAppShowcase = () => {
 				</motion.div>
 
 				{/* Main Content Grid */}
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch mb-20">
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch mb-20">
 					{/* Phone Showcase */}
 					<motion.div
 						initial={{ opacity: 0, x: -50 }}
@@ -111,7 +111,7 @@ const NextAppShowcase = () => {
 							whileInView={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.8, delay: 0.4 }}
 							viewport={{ once: true }}
-							className="relative bg-terminal-window border border-terminal-window-border p-8 overflow-hidden"
+							className="relative bg-terminal-window border border-terminal-window-border p-5 sm:p-8 overflow-hidden"
 						>
 							{/* Subtle background gradient */}
 							<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/2 via-transparent to-terminal-cyan/1 pointer-events-none" />
