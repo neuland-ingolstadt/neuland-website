@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 import { compareDesc } from 'date-fns'
 import { RssIcon, TagIcon } from 'lucide-react'
 import { PostCard } from '@/components/blog/post-card'

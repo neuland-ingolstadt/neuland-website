@@ -1,5 +1,5 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 import { format, parseISO } from 'date-fns'
 import { ArrowLeft } from 'lucide-react'
 import TerminalButton from '@/components/terminal-button'
@@ -21,7 +21,7 @@ type Author = {
 export const Route = createFileRoute('/$locale/blog/$slug')({
 	loader: async ({ params }) => {
 		const post = allPosts.find(
-			(candidate) => candidate._raw.flattenedPath === params.slug
+			(candidate) => candidate._meta.path === params.slug
 		)
 		if (!post) {
 			throw notFound()
@@ -128,7 +128,7 @@ function PostPage() {
 				<div
 					className="[&>*]:mb-3 [&>*:last-child]:mb-0 prose-img:max-w-full [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-2"
 					// biome-ignore lint/security/noDangerouslySetInnerHtml: no problem
-					dangerouslySetInnerHTML={{ __html: post.body.html }}
+					dangerouslySetInnerHTML={{ __html: post.html }}
 				/>
 			</article>
 

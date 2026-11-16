@@ -1,6 +1,6 @@
 'use client'
 
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 import { compareDesc } from 'date-fns'
 import { motion } from 'motion/react'
 import { memo, useMemo } from 'react'

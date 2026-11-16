@@ -1,4 +1,4 @@
-import type { Post } from 'contentlayer/generated'
+import type { Post } from 'content-collections'
 import { format, parseISO } from 'date-fns'
 import { ChevronRight } from 'lucide-react'
 import { memo } from 'react'
