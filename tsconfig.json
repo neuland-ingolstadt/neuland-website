@@ -3,7 +3,8 @@
 		"src/**/*.ts",
 		"src/**/*.tsx",
 		"vite.config.ts",
-		".contentlayer/generated/**/*.ts",
+		"content-collections.ts",
+		".content-collections/generated/**/*.ts",
 		"messages/**/*.json"
 	],
 	"compilerOptions": {
@@ -22,7 +23,8 @@
 		"types": ["vite/client"],
 		"paths": {
 			"@/*": ["./src/*"],
-			"contentlayer/generated": ["./.contentlayer/generated"]
+			"content-collections": ["./.content-collections/generated"]
 		}
 	}
 }
+

@@ -1,4 +1,4 @@
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 import { compareDesc } from 'date-fns'
 
 function extractDescription(content: string): string {
@@ -85,7 +85,7 @@ ${sortedPosts
 					.join(', ')
 			: 'Neuland Ingolstadt'
 
-		const extractedPreview = extractDescription(post.body.raw || '')
+		const extractedPreview = extractDescription(post.content || '')
 
 		const description = post.description
 			? `${post.description}<br /><br />${extractedPreview}`

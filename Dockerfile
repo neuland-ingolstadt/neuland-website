@@ -20,7 +20,6 @@ ENV VITE_COMMIT_HASH=${COMMIT_HASH}
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-RUN npx contentlayer2 build
 RUN npm run build
 
 FROM node:26.13.0-alpine@sha256:8996bb5821d62a8fd9bb27c1cb07462f3fdce6e47d640c6a881ead0b064ce216 AS runner

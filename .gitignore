@@ -28,3 +28,5 @@ src/static/content
 node_modules/.nitro
 tsconfig.tsbuildinfo
 .contentlayer
+.content-collections
+

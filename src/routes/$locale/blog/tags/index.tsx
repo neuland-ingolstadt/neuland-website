@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 import { Badge } from '@/components/ui/badge'
 import {
 	Breadcrumb,

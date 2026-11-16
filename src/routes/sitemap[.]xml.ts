@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 import type { ProjectDetails } from '@/components/Projects/project-card'
 import projectsData from '@/data/projects.json'
 
