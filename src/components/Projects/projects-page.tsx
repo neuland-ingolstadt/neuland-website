@@ -1,6 +1,7 @@
-import { Code, Filter, Github } from 'lucide-react'
+import { Code, Filter } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useMemo, useState } from 'react'
+import { GithubIcon } from '@/components/icons/brand-icons'
 import ProjectCard, {
 	type ProjectDetails
 } from '@/components/Projects/project-card'
@@ -162,7 +163,7 @@ const ProjectsPage = () => {
 						target="_blank"
 						rel="noreferrer noopener"
 					>
-						<Github
+						<GithubIcon
 							size={16}
 							className="mr-2 group-hover:rotate-8 transition-transform duration-300"
 						/>
