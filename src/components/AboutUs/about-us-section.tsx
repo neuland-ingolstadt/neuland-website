@@ -108,7 +108,10 @@ const AboutUsSection: React.FC = () => {
 							>
 								<div className="flex items-baseline gap-1 font-mono text-[clamp(1.75rem,15cqw,3.75rem)] font-bold leading-none tracking-tight">
 									{stat.prefix && (
-										<span className="text-lg font-normal text-terminal-text/70">
+										<span
+											aria-hidden="true"
+											className="text-lg font-normal text-terminal-text/70"
+										>
 											{stat.prefix}
 										</span>
 									)}
