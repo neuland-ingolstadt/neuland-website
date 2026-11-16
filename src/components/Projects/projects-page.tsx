@@ -10,7 +10,14 @@ import projectsData from '@/data/projects.json'
 import { useRouter } from '@/i18n/navigation'
 import { useTranslations } from '@/i18n/react'
 
-const uniqueTags = (projectsData as ProjectDetails[]).reduce((acc, project) => {
+const filterChipClass =
+	'inline-flex items-center px-2.5 py-1 font-mono text-sm border transition-colors duration-200'
+const activeFilterClass =
+	'border-terminal-cyan bg-terminal-cyan text-terminal-onAccent'
+const inactiveFilterClass =
+	'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-ink'
+
+const uniqueTags =(projectsData as ProjectDetails[]).reduce((acc, project) => {
 	project.tags?.forEach((tag) => {
 		acc.add(tag)
 	})
@@ -36,15 +43,23 @@ const ProjectsPage = () => {
 	}
 
 	return (
-		<div>
+		<div className="relative">
+			<div
+				aria-hidden="true"
+				className="pointer-events-none absolute -top-[var(--navbar-height,4.5rem)] left-1/2 -z-10 h-[100vh] w-screen -translate-x-1/2"
+				style={{
+					backgroundImage:
+						'radial-gradient(ellipse 60% 70% at 100% 0%, var(--backdrop-glow-a), transparent 70%)'
+				}}
+			/>
 			{/* Header Section */}
 			<motion.div
 				initial={{ opacity: 0, y: -20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6 }}
-				className="max-w-6xl mx-auto mb-8"
+				className="max-w-6xl mx-auto pt-8 mb-12 md:pt-16 md:mb-16"
 			>
-				<h1 className="text-3xl md:text-4xl font-normal font-mono">
+				<h1 className="mb-6 mt-0 font-mono text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl xl:text-7xl">
 					{t('title')}
 				</h1>
 
@@ -71,7 +86,7 @@ const ProjectsPage = () => {
 			</motion.div>
 
 			{/* Filter Section */}
-			<div className="max-w-6xl mx-auto mb-8">
+			<div className="max-w-6xl mx-auto mb-12 md:mb-16">
 				<div className="flex items-center gap-3 mb-4">
 					<Filter size={20} className="text-terminal-ink" />
 					<span className="text-terminal-text/90 font-mono">
@@ -79,14 +94,10 @@ const ProjectsPage = () => {
 					</span>
 				</div>
 
-				<div className="flex flex-wrap gap-3">
+				<div className="flex flex-wrap gap-x-3 gap-y-4">
 					<button
 						type="button"
-						className={`px-4 py-2  border transition-all duration-200 ${
-							!activeTag
-								? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
-								: 'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-ink'
-						}`}
+						className={`${filterChipClass} ${!activeTag ? activeFilterClass : inactiveFilterClass}`}
 						onClick={() => setActiveTag(null)}
 					>
 						{t('allProjects')}
@@ -95,11 +106,7 @@ const ProjectsPage = () => {
 						<button
 							type="button"
 							key={tag}
-							className={`px-4 py-2 border transition-all duration-200 ${
-								activeTag === tag
-									? 'border-terminal-cyan bg-terminal-cyan/80 text-terminal-onAccent'
-									: 'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-ink'
-							}`}
+							className={`${filterChipClass} ${activeTag === tag ? activeFilterClass : inactiveFilterClass}`}
 							onClick={() => setActiveTag(tag)}
 						>
 							{tag}
@@ -111,7 +118,7 @@ const ProjectsPage = () => {
 			{/* Projects Grid */}
 			<div className="max-w-6xl mx-auto">
 				<AnimatePresence>
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
 						{filteredProjects.map((project: ProjectDetails) => (
 							<motion.div
 								key={project.id}
@@ -150,7 +157,7 @@ const ProjectsPage = () => {
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				transition={{ duration: 0.6, delay: 0.8 }}
-				className="max-w-6xl mx-auto mt-16 pt-8 border-t border-terminal-text/20"
+				className="max-w-6xl mx-auto mt-20 md:mt-24 pt-10 border-t border-terminal-text/20"
 			>
 				<div className="text-center">
 					<div className="flex items-center justify-center gap-2 mb-4">
