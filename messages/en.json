@@ -203,6 +203,8 @@
             "projects": "Projects"
         },
         "metadata": {
+            "title": "Projects - Neuland Ingolstadt",
+            "description": "Creative, technical and community-driven projects by Neuland Ingolstadt e.V.",
             "notFound": "Project not found"
         },
         "detailClient": {
