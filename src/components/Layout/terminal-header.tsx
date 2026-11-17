@@ -10,7 +10,6 @@ import {
 	SidebarFooter,
 	SidebarGroup,
 	SidebarGroupContent,
-	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
@@ -91,15 +90,8 @@ const MobileSidebar: React.FC = () => {
 
 	return (
 		<Sidebar variant="sidebar" side="bottom">
-			<SidebarHeader>
-				{/* Mobile bottom sheet handle */}
-				<div className="flex justify-center py-2 md:hidden">
-					<div className="h-1 w-8 rounded-full bg-muted-foreground/30" />
-				</div>
-			</SidebarHeader>
-
 			<SidebarContent>
-				<SidebarGroup className="px-2 pb-2">
+				<SidebarGroup className="px-2 py-2">
 					<SidebarGroupContent>
 						<SidebarMenu>
 							{navLinks.map((item) => (

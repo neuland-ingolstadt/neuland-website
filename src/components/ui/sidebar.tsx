@@ -204,7 +204,7 @@ const Sidebar = React.forwardRef<
 						className={cn(
 							'p-0 [&>button]:hidden',
 							side === 'bottom'
-								? 'w-full max-h-[calc(100vh-3.5rem)] rounded-t-3xl border-t border-terminal-window-border bg-terminal-window text-terminal-text shadow-[0_-24px_48px_rgba(0,0,0,0.9)]'
+								? 'w-full max-h-[calc(100vh-3.5rem)] rounded-t-lg border-t border-terminal-window-border bg-terminal-window text-terminal-text shadow-none'
 								: 'w-[--sidebar-width] bg-sidebar text-sidebar-foreground'
 						)}
 						style={
