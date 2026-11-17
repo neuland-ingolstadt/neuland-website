@@ -172,13 +172,15 @@
         "projects": "Projekte",
         "blog": "Blog",
         "donate": "Spenden",
-        "login": "Login"
+        "login": "Login",
+        "team": "Mitmachen"
     },
     "Footer": {
         "bylaws": "Satzung",
         "privacyPolicyNeuland": "Datenschutz Neuland",
         "privacyPolicyWebsite": "Datenschutz Website",
-        "legalNotice": "Impressum"
+        "legalNotice": "Impressum",
+        "team": "Mitmachen"
     },
     "NotFound": {
         "description": "Die angeforderte Seite existiert nicht oder wurde verschoben. Bitte überprüfe die URL oder kehre zur Startseite zurück.",
@@ -298,5 +300,115 @@
         "disclaimer": "Neuland Ingolstadt e.V. ist ein offiziell anerkannter gemeinnütziger Verein. Spenden sind steuerlich absetzbar – wir stellen auf Anfrage gerne eine Spendenquittung aus, sofern keine Gegenleistung erbracht wurde.",
         "receiptRequest": "Quittung anfordern:",
         "receiptSubject": "Anfrage%20Spendenquittung"
+    },
+    "Team": {
+        "title": "Bei Neuland mitmachen",
+        "subtitle": "Wir sind ein ehrenamtlicher Verein von Studierenden für Studierende. Such dir eine Rolle, die zu dir passt, und gestalte die Tech-Community an der THI mit.",
+        "positionsFound": "{count, plural, =0 {Keine offenen Stellen} =1 {Eine Stelle} other {# Stellen}}",
+        "why": {
+            "title": "Was habe ich davon?",
+            "learn": {
+                "title": "Praxis statt Theorie",
+                "description": "Arbeite an echten Projekten und lerne Dinge, die im Studium zu kurz kommen."
+            },
+            "team": {
+                "title": "Starkes Team",
+                "description": "Eine offene Community, die sich gegenseitig unterstützt."
+            },
+            "network": {
+                "title": "Netzwerk",
+                "description": "Knüpfe Kontakte zu Studierenden, Alumni und Unternehmen aus der Region."
+            },
+            "impact": {
+                "title": "Echte Wirkung",
+                "description": "Deine Arbeit wird von Studierenden und Gästen tatsächlich genutzt und erlebt."
+            },
+            "volunteer": {
+                "title": "Bestätigung für dein Ehrenamt",
+                "description": "Du engagierst dich ehrenamtlich bei Neuland und bekommst dafür eine Bestätigung. Ein Pluspunkt für deinen Lebenslauf und ein positiver Social Impact."
+            }
+        },
+        "filter": {
+            "teamLabel": "Nach Kategorie filtern",
+            "allTeams": "Alle Kategorien"
+        },
+        "status": {
+            "open": "Offen",
+            "filled": "Besetzt"
+        },
+        "teams": {
+            "development": "Engineering",
+            "design": "Design",
+            "events": "Events",
+            "marketing": "Marketing",
+            "cybersecurity": "Cybersecurity",
+            "sponsoring": "Sponsoring",
+            "board": "Vorstand"
+        },
+        "format": {
+            "remote": "Remote",
+            "onsite": "Vor Ort",
+            "hybrid": "Hybrid"
+        },
+        "language": {
+            "de": "Deutsch",
+            "en": "Englisch",
+            "both": "Deutsch & Englisch"
+        },
+        "hoursPerWeek": "{min}–{max} Std. / Woche",
+        "card": {
+            "more": "Mehr erfahren"
+        },
+        "empty": {
+            "title": "> 0 offene Stellen gefunden",
+            "description": "Aktuell passt hier nichts zu deinem Filter. Schreib uns trotzdem im Discord, wir finden bestimmt eine Aufgabe für dich.",
+            "cta": "Zum Discord"
+        },
+        "spontaneous": {
+            "title": "Nichts Passendes dabei? Werde trotzdem Mitglied",
+            "description": "Du musst dich nicht auf eine Stelle bewerben. Tritt dem Verein jederzeit bei, nimm an Events teil und sei Teil der Community. Wenn du Lust hast mitzumachen, findet sich immer etwas zu tun: Melde dich einfach im Discord.",
+            "ctaMembership": "Mitglied werden",
+            "cta": "Im Discord melden"
+        },
+        "detail": {
+            "back": "Zurück zu allen Stellen",
+            "description": "Beschreibung",
+            "tasks": "Deine Aufgaben",
+            "requirements": "Das bringst du mit",
+            "niceToHave": "Nice to have",
+            "benefits": "Das bekommst du",
+            "contact": "Ansprechperson",
+            "jobId": "Job-ID",
+            "copyJobId": "Job-ID kopieren",
+            "filledNotice": "Diese Stelle ist aktuell besetzt. Du kannst dich trotzdem melden, wir geben dir Bescheid, wenn wieder etwas frei wird.",
+            "apply": {
+                "title": "Bewerbung",
+                "hint": "Die Bewerbung läuft über unseren Discord. Kopiere einfach die Job-ID und nenne sie in deinem Discord-Ticket.",
+                "copied": "Kopiert!",
+                "copyFailed": "Kopieren fehlgeschlagen",
+                "cta": "Im Discord bewerben"
+            },
+            "steps": {
+                "title": "So läuft es ab",
+                "ticket": {
+                    "title": "Ticket im Discord",
+                    "description": "Öffne ein Ticket und füge die Positionsbeschreibung ein."
+                },
+                "meeting": {
+                    "title": "Kennenlernen",
+                    "description": "Wir lernen uns in einem kurzen, lockeren Gespräch kennen."
+                },
+                "onboarding": {
+                    "title": "Onboarding",
+                    "description": "Du wirst im Team begrüßt und bekommst deine ersten Aufgaben."
+                }
+            }
+        },
+        "metadata": {
+            "title": "Mitmachen - Neuland Ingolstadt",
+            "description": "Offene ehrenamtliche Stellen beim Neuland Ingolstadt e.V. Bewirb dich im Discord und gestalte die Tech-Community an der THI mit.",
+            "detailTitle": "{title} - Neuland Ingolstadt",
+            "notFound": "Stelle nicht gefunden"
+        }
     }
 }

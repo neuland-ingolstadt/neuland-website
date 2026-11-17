@@ -172,13 +172,15 @@
         "projects": "Projects",
         "blog": "Blog",
         "donate": "Donate",
-        "login": "Login"
+        "login": "Login",
+        "team": "Open Positions"
     },
     "Footer": {
         "bylaws": "Bylaws",
         "privacyPolicyNeuland": "Privacy Neuland",
         "privacyPolicyWebsite": "Privacy Website",
-        "legalNotice": "Legal Notice"
+        "legalNotice": "Legal Notice",
+        "team": "Join"
     },
     "NotFound": {
         "description": "The requested page does not exist or has been moved. Please check the URL or return to the homepage.",
@@ -298,5 +300,115 @@
         "disclaimer": "Neuland Ingolstadt e.V. is an officially recognized non-profit organization. Donations are tax-deductible – we are happy to provide a donation receipt upon request, provided no consideration was rendered in return.",
         "receiptRequest": "Request a receipt:",
         "receiptSubject": "Donation%20Receipt%20Request"
+    },
+    "Team": {
+        "title": "Join Neuland",
+        "subtitle": "We are a volunteer-run club by students for students. Pick a role that suits you and help shape the tech community at THI.",
+        "positionsFound": "{count, plural, =0 {No open positions} =1 {One position} other {# positions}}",
+        "why": {
+            "title": "What's in it for me?",
+            "learn": {
+                "title": "Practice over theory",
+                "description": "Work on real projects and learn things your studies often skip."
+            },
+            "team": {
+                "title": "Great team",
+                "description": "An open community that supports each other."
+            },
+            "network": {
+                "title": "Network",
+                "description": "Get in touch with students, alumni and companies from the region."
+            },
+            "impact": {
+                "title": "Real impact",
+                "description": "Students and guests actually use and experience your work."
+            },
+            "volunteer": {
+                "title": "Proof of your volunteer work",
+                "description": "You volunteer at Neuland and get a confirmation for it. A plus for your CV and a positive social impact."
+            }
+        },
+        "filter": {
+            "teamLabel": "Filter by category",
+            "allTeams": "All categories"
+        },
+        "status": {
+            "open": "Open",
+            "filled": "Filled"
+        },
+        "teams": {
+            "development": "Engineering",
+            "design": "Design",
+            "events": "Events",
+            "marketing": "Marketing",
+            "cybersecurity": "Cybersecurity",
+            "sponsoring": "Sponsoring",
+            "board": "Board"
+        },
+        "format": {
+            "remote": "Remote",
+            "onsite": "On site",
+            "hybrid": "Hybrid"
+        },
+        "language": {
+            "de": "German",
+            "en": "English",
+            "both": "German & English"
+        },
+        "hoursPerWeek": "{min}–{max} hrs / week",
+        "card": {
+            "more": "Learn more"
+        },
+        "empty": {
+            "title": "> 0 open positions found",
+            "description": "Nothing matches your filter right now. Reach out on Discord anyway, we will find a task for you.",
+            "cta": "Go to Discord"
+        },
+        "spontaneous": {
+            "title": "Nothing fitting? Become a member anyway",
+            "description": "You don't have to apply for a position. Join the club at any time, attend events and be part of the community. If you feel like getting involved, there is always something to do: just reach out on Discord.",
+            "ctaMembership": "Become a member",
+            "cta": "Contact us on Discord"
+        },
+        "detail": {
+            "back": "Back to all positions",
+            "description": "Description",
+            "tasks": "Your tasks",
+            "requirements": "What you bring",
+            "niceToHave": "Nice to have",
+            "benefits": "What you get",
+            "contact": "Contact person",
+            "jobId": "Job ID",
+            "copyJobId": "Copy job ID",
+            "filledNotice": "This position is currently filled. You can still reach out, we will let you know when something opens up again.",
+            "apply": {
+                "title": "Apply",
+                "hint": "Applications run through our Discord. Simply copy the job ID and mention it in your Discord ticket.",
+                "copied": "Copied!",
+                "copyFailed": "Copying failed",
+                "cta": "Apply on Discord"
+            },
+            "steps": {
+                "title": "How it works",
+                "ticket": {
+                    "title": "Ticket on Discord",
+                    "description": "Open a ticket and paste the position description."
+                },
+                "meeting": {
+                    "title": "Getting to know each other",
+                    "description": "We meet in a short, relaxed conversation."
+                },
+                "onboarding": {
+                    "title": "Onboarding",
+                    "description": "You are welcomed to the team and get your first tasks."
+                }
+            }
+        },
+        "metadata": {
+            "title": "Join us - Neuland Ingolstadt",
+            "description": "Open volunteer positions at Neuland Ingolstadt e.V. Apply on Discord and help shape the tech community at THI.",
+            "detailTitle": "{title} - Neuland Ingolstadt",
+            "notFound": "Position not found"
+        }
     }
 }

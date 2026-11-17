@@ -34,6 +34,7 @@ const useNavigation = () => {
 		},
 		{ name: t('events'), href: '/events', external: false },
 		{ name: t('projects'), href: '/projects', external: false },
+		{ name: t('team'), href: '/open-positions', external: false },
 		{ name: t('blog'), href: '/blog', external: false },
 		{
 			name: t('login'),
