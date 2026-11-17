@@ -27,11 +27,6 @@ const useNavigation = () => {
 	const t = useTranslations('Navigation')
 
 	const navLinks = [
-		{
-			name: t('becomeMember'),
-			href: '/#membership',
-			external: false
-		},
 		{ name: t('events'), href: '/events', external: false },
 		{ name: t('projects'), href: '/projects', external: false },
 		{ name: t('team'), href: '/open-positions', external: false },
@@ -238,7 +233,7 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 
 					{/* Desktop Navigation */}
 					<nav className="hidden items-center gap-8 md:flex">
-						{navLinks.slice(1).map((link) => (
+						{navLinks.map((link) => (
 							<DesktopNavLink
 								key={link.name}
 								link={link}
