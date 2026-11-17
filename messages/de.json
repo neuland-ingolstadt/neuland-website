@@ -212,6 +212,10 @@
         }
     },
     "Blog": {
+        "title": "Neuland Blog",
+        "subtitle": "Einblicke in unsere Arbeit: Informatik- und Technikthemen, Events, Workshops und Neuigkeiten aus dem Verein.",
+        "postsFound": "{amountPosts, plural, =0 {Keine Beiträge gefunden} =1 {Ein Beitrag gefunden} other {# Beiträge gefunden}}",
+        "rssFeed": "RSS Feed",
         "allTags": "Alle Tags",
         "allPosts": "Alle Beiträge",
         "by": "Von",

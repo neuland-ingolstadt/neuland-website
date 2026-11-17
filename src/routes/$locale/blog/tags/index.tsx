@@ -46,14 +46,6 @@ function TagsIndexPage() {
 				<BreadcrumbList className="flex items-center">
 					<BreadcrumbItem className="flex items-center">
 						<BreadcrumbLink asChild className="flex items-center">
-							<Link href="/" className="flex items-center">
-								Home
-							</Link>
-						</BreadcrumbLink>
-					</BreadcrumbItem>
-					<BreadcrumbSeparator className="mx-1 flex items-center" />
-					<BreadcrumbItem className="flex items-center">
-						<BreadcrumbLink asChild className="flex items-center">
 							<Link href="/blog" className="flex items-center">
 								Blog
 							</Link>

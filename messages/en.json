@@ -212,6 +212,10 @@
         }
     },
     "Blog": {
+        "title": "Neuland Blog",
+        "subtitle": "Insights into our work: computer science and tech topics, events, workshops and news from the association.",
+        "postsFound": "{amountPosts, plural, =0 {No posts found} =1 {One post found} other {# posts found}}",
+        "rssFeed": "RSS Feed",
         "allTags": "All Tags",
         "allPosts": "All Posts",
         "by": "By",
