@@ -313,23 +313,23 @@
             "title": "Was habe ich davon?",
             "learn": {
                 "title": "Praxis statt Theorie",
-                "description": "Arbeite an echten Projekten und lerne Dinge, die im Studium zu kurz kommen."
+                "description": "Echte Projekte statt Lehrbuch."
             },
             "team": {
                 "title": "Starkes Team",
-                "description": "Eine offene Community, die sich gegenseitig unterstützt."
+                "description": "Eine offene, hilfsbereite Community."
             },
             "network": {
                 "title": "Netzwerk",
-                "description": "Knüpfe Kontakte zu Studierenden, Alumni und Unternehmen aus der Region."
+                "description": "Kontakte zu Studierenden, Alumni und Firmen."
             },
             "impact": {
                 "title": "Echte Wirkung",
-                "description": "Deine Arbeit wird von Studierenden und Gästen tatsächlich genutzt und erlebt."
+                "description": "Studierende und THI-Mitarbeitende nutzen deine Arbeit."
             },
             "volunteer": {
-                "title": "Bestätigung für dein Ehrenamt",
-                "description": "Du engagierst dich ehrenamtlich bei Neuland und bekommst dafür eine Bestätigung. Ein Pluspunkt für deinen Lebenslauf und ein positiver Social Impact."
+                "title": "Bestätigung fürs Ehrenamt",
+                "description": "Ein Pluspunkt für deinen Lebenslauf."
             }
         },
         "filter": {

@@ -1,4 +1,12 @@
-import { ChevronDown, Filter, Terminal } from 'lucide-react'
+import {
+	BadgeCheck,
+	Filter,
+	Network,
+	Rocket,
+	Sparkles,
+	Terminal,
+	Users
+} from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useMemo, useState } from 'react'
 import PositionCard from '@/components/Team/position-card'
@@ -19,7 +27,13 @@ const activeFilterClass =
 const inactiveFilterClass =
 	'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-ink [:root[data-theme=light]_&]:hover:border-black [:root[data-theme=light]_&]:hover:text-black'
 
-const whyKeys = ['learn', 'team', 'network', 'impact', 'volunteer'] as const
+const whyItems = [
+	{ key: 'learn', Icon: Rocket },
+	{ key: 'team', Icon: Users },
+	{ key: 'network', Icon: Network },
+	{ key: 'impact', Icon: Sparkles },
+	{ key: 'volunteer', Icon: BadgeCheck }
+] as const
 
 const usedTeams = positionTeams.filter((team) =>
 	positions.some((position) => position.team === team)
@@ -38,6 +52,18 @@ const PositionsPage = () => {
 		<div className="relative">
 			<div
 				aria-hidden="true"
+				className="pointer-events-none absolute -top-[var(--navbar-height,4.5rem)] left-1/2 -z-10 h-[44rem] w-screen -translate-x-1/2 overflow-hidden"
+			>
+				<img
+					src="/assets/ersti-tag.webp"
+					alt=""
+					className="h-full w-full object-cover opacity-60 [:root[data-theme=light]_&]:opacity-40"
+				/>
+				<div className="absolute inset-0 bg-gradient-to-t from-terminal-bg via-terminal-bg/60 to-terminal-bg/10" />
+				<div className="absolute inset-0 bg-gradient-to-r from-terminal-bg/70 via-terminal-bg/20 to-transparent" />
+			</div>
+			<div
+				aria-hidden="true"
 				className="pointer-events-none absolute -top-[var(--navbar-height,4.5rem)] left-1/2 -z-10 h-[100vh] w-screen -translate-x-1/2"
 				style={{
 					backgroundImage:
@@ -45,64 +71,62 @@ const PositionsPage = () => {
 				}}
 			/>
 			{/* Header Section */}
-			<motion.div
-				initial={{ opacity: 0, y: -20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.6 }}
-				className="max-w-6xl mx-auto pt-8 mb-12 md:pt-16 md:mb-16"
-			>
-				<h1 className="mb-6 mt-0 font-mono text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl xl:text-7xl">
-					{t('title')}
-				</h1>
-				<motion.p
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ duration: 0.6, delay: 0.2 }}
-					className="mt-3 text-lg text-terminal-text/90 max-w-3xl"
+			<div className="max-w-6xl mx-auto pt-8 mb-12 md:pt-16 md:mb-16 lg:grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-center lg:gap-12">
+				<motion.div
+					initial={{ opacity: 0, y: -20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6 }}
+					className="mb-12 w-fit max-w-full lg:mb-0"
 				>
-					{t('subtitle')}
-				</motion.p>
-			</motion.div>
-
-			{/* Why join */}
-			<div className="max-w-6xl mx-auto mb-12 md:mb-16">
-				<details className="group relative bg-terminal-window border border-terminal-window-border overflow-hidden">
-					<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none" />
-					<summary className="relative z-10 flex cursor-pointer list-none items-center justify-between gap-4 p-5 sm:p-8 [&::-webkit-details-marker]:hidden">
-						<h2 className="m-0 text-sm font-semibold text-terminal-ink uppercase tracking-wider">
-							{t('why.title')}
-						</h2>
-						<ChevronDown
-							size={20}
-							aria-hidden="true"
-							className="shrink-0 text-terminal-text/70 transition-transform duration-200 group-open:rotate-180"
-						/>
-					</summary>
-					<ol className="relative z-10 list-none p-0 m-0 pt-2 pb-5 sm:pb-8 px-5 sm:px-8 max-w-3xl space-y-6">
-						{whyKeys.map((key, idx) => (
-							<motion.li
-								key={key}
-								initial={{ opacity: 0, y: 10 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.4, delay: idx * 0.06 }}
-								viewport={{ once: true }}
-								className="flex gap-4"
-							>
-								<span className="font-mono text-xl font-bold text-terminal-ink">
-									{String(idx + 1).padStart(2, '0')}
-								</span>
-								<div>
-									<h3 className="font-mono text-lg font-bold text-terminal-text m-0">
-										{t(`why.${key}.title`)}
-									</h3>
-									<p className="text-base text-terminal-text/80 leading-relaxed mt-1 mb-0">
-										{t(`why.${key}.description`)}
-									</p>
-								</div>
-							</motion.li>
-						))}
-					</ol>
-				</details>
+					<h1 className="mb-6 mt-0 font-mono text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl xl:text-7xl">
+						{t('title')}
+					</h1>
+					<motion.p
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.6, delay: 0.2 }}
+						className="mt-3 w-0 min-w-full text-lg text-terminal-text/90"
+					>
+						{t('subtitle')}
+					</motion.p>
+				</motion.div>
+				{/* Why join */}
+				<div>
+					<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
+						<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none" />
+						<div className="relative z-10 p-5 sm:p-8">
+							<h2 className="text-sm font-semibold mb-5 mt-0 text-terminal-ink uppercase tracking-wider">
+								{t('why.title')}
+							</h2>
+							<ol className="m-0 grid list-none grid-cols-1 gap-x-8 gap-y-5 p-0 sm:grid-cols-2 lg:grid-cols-1">
+								{whyItems.map(({ key, Icon }, idx) => (
+									<motion.li
+										key={key}
+										initial={{ opacity: 0, y: 10 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.4, delay: idx * 0.06 }}
+										viewport={{ once: true }}
+										className="flex gap-3"
+									>
+										<Icon
+											size={20}
+											aria-hidden="true"
+											className="mt-0.5 shrink-0 text-terminal-ink"
+										/>
+										<div>
+											<h3 className="font-mono text-base font-bold text-terminal-text m-0">
+												{t(`why.${key}.title`)}
+											</h3>
+											<p className="text-sm text-terminal-text/80 leading-relaxed mt-1 mb-0">
+												{t(`why.${key}.description`)}
+											</p>
+										</div>
+									</motion.li>
+								))}
+							</ol>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			{/* Filter Section */}

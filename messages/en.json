@@ -313,23 +313,23 @@
             "title": "What's in it for me?",
             "learn": {
                 "title": "Practice over theory",
-                "description": "Work on real projects and learn things your studies often skip."
+                "description": "Real projects instead of textbooks."
             },
             "team": {
                 "title": "Great team",
-                "description": "An open community that supports each other."
+                "description": "An open, supportive community."
             },
             "network": {
                 "title": "Network",
-                "description": "Get in touch with students, alumni and companies from the region."
+                "description": "Connect with students, alumni and companies."
             },
             "impact": {
                 "title": "Real impact",
-                "description": "Students and guests actually use and experience your work."
+                "description": "Students and THI staff use your work."
             },
             "volunteer": {
-                "title": "Proof of your volunteer work",
-                "description": "You volunteer at Neuland and get a confirmation for it. A plus for your CV and a positive social impact."
+                "title": "Proof of volunteer work",
+                "description": "A plus for your CV."
             }
         },
         "filter": {
