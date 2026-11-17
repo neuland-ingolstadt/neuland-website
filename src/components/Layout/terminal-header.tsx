@@ -218,14 +218,10 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 				}`}
 			>
 				<div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-4 py-4 md:grid md:grid-cols-[1fr_auto_1fr] md:px-12 xl:px-20">
-					<div className="flex items-center gap-3 md:hidden">
-						<MobileSidebarTrigger />
-					</div>
-
 					<div className="terminal-logo flex flex-col items-start">
 						<Link href="/" className="flex items-center no-underline">
 							<div className="logo">
-								<NeulandLogo className="h-8 text-terminal-text sm:h-10" />
+								<NeulandLogo className="h-9 w-auto text-terminal-text sm:h-10" />
 							</div>
 						</Link>
 						{isPrideThemeEnabled && (
@@ -256,7 +252,9 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 						<LanguageToggle />
 					</div>
 
-					<div className="w-10 md:hidden" aria-hidden="true" />
+					<div className="flex items-center gap-3 md:hidden">
+						<MobileSidebarTrigger />
+					</div>
 				</div>
 			</header>
 
