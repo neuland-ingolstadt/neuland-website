@@ -13,11 +13,11 @@ import { useTranslations } from '@/i18n/react'
 const filterChipClass =
 	'inline-flex items-center px-2.5 py-1 font-mono text-sm border transition-colors duration-200'
 const activeFilterClass =
-	'border-terminal-cyan bg-terminal-cyan text-terminal-onAccent'
+	'border-transparent bg-terminal-cyan text-terminal-onAccent [:root[data-theme=light]_&]:bg-black [:root[data-theme=light]_&]:text-white'
 const inactiveFilterClass =
-	'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-ink'
+	'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-ink [:root[data-theme=light]_&]:hover:border-black [:root[data-theme=light]_&]:hover:text-black'
 
-const uniqueTags =(projectsData as ProjectDetails[]).reduce((acc, project) => {
+const uniqueTags = (projectsData as ProjectDetails[]).reduce((acc, project) => {
 	project.tags?.forEach((tag) => {
 		acc.add(tag)
 	})
@@ -157,7 +157,7 @@ const ProjectsPage = () => {
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				transition={{ duration: 0.6, delay: 0.8 }}
-				className="max-w-6xl mx-auto mt-20 md:mt-24 pt-10 border-t border-terminal-text/20"
+				className="max-w-6xl mx-auto mt-20 md:mt-24 p-8 md:p-12 border border-dashed border-terminal-text/30 bg-transparent"
 			>
 				<div className="text-center">
 					<div className="flex items-center justify-center gap-2 mb-4">

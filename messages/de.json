@@ -198,10 +198,6 @@
         "allProjects": "Alle Projekte",
         "githubText": "Sieh dir unsere Projekte auf GitHub an!",
         "learnMore": "Mehr erfahren",
-        "breadcrumbs": {
-            "home": "Home",
-            "projects": "Projekte"
-        },
         "metadata": {
             "title": "Projekte - Neuland Ingolstadt",
             "description": "Kreative, technische und community-getragene Projekte des Neuland Ingolstadt e.V.",
@@ -209,7 +205,7 @@
         },
         "detailClient": {
             "title": "Über das Projekt",
-            "technologies": "Technologien",
+            "technologies": "Technologien & Tags",
             "back": "Zurück zu allen Projekten"
         }
     },

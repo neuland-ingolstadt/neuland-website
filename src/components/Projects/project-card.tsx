@@ -96,7 +96,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 							href={link.url}
 							target="_blank"
 							rel="noreferrer noopener"
-							className="inline-flex items-center gap-1 px-2.5 py-1 bg-terminal-card text-terminal-text/70 font-medium hover:text-terminal-text hover:border-terminal-cyan [:root[data-theme=light]_&]:hover:border-transparent transition-colors border border-terminal-cyan/60 [:root[data-theme=light]_&]:border-transparent whitespace-nowrap max-w-full truncate no-underline text-xs"
+							className="inline-flex items-center gap-1 px-2.5 py-1 bg-terminal-card text-terminal-text/70 font-medium hover:text-terminal-text hover:border-terminal-cyan [:root[data-theme=light]_&]:hover:border-terminal-text/50 transition-colors border border-terminal-cyan/60 [:root[data-theme=light]_&]:border-terminal-text/20 whitespace-nowrap max-w-full truncate no-underline text-xs"
 							onClick={handleLinkClick}
 						>
 							<ExternalLink size={12} className="mr-1" />
