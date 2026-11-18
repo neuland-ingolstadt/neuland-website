@@ -367,6 +367,31 @@
             "description": "Aktuell passt hier nichts zu deinem Filter. Schreib uns trotzdem im Discord, wir finden bestimmt eine Aufgabe für dich.",
             "cta": "Zum Discord"
         },
+        "faq": {
+            "title": "Häufige Fragen",
+            "items": {
+                "cost": {
+                    "q": "Was kostet die Mitgliedschaft?",
+                    "a": "Studierende zahlen 10 € im Jahr, alle anderen 20 €. Der Beitrag wird einmal jährlich zum 15. März fällig. Wer sich besonders für den Verein engagiert, kann vom Vorstand befreit werden."
+                },
+                "thi": {
+                    "q": "Muss ich an der THI studieren?",
+                    "a": "Nein. Mitglied kann jede Person werden, die die Ziele des Vereins unterstützt. Studierende zahlen einen ermäßigten Beitrag."
+                },
+                "experience": {
+                    "q": "Brauche ich Vorkenntnisse?",
+                    "a": "Nicht für jede Stelle. Wir vermitteln Praxis- und Theoriewissen im Informatikbereich, und neben Entwicklung und Infrastruktur gibt es auch Bereiche wie Marketing und HR, in denen du keinen Code schreibst."
+                },
+                "time": {
+                    "q": "Wie viel Zeit muss ich investieren?",
+                    "a": "Wir arbeiten ehrenamtlich und du teilst dir die Zeit selbst ein. Bei jeder Stelle steht, mit wie vielen Stunden pro Woche du ungefähr rechnen kannst."
+                },
+                "joining": {
+                    "q": "Wie läuft der Beitritt ab?",
+                    "a": "Du füllst das Beitrittsformular aus und bekommst eine Bestätigung. Dein Account wird innerhalb von 48 Stunden freigeschaltet. Danach laden wir dich zum Onboarding-Call und zum Stammtisch ein, wo du das Team kennenlernst und deinen Einstieg in ein Projekt klärst."
+                }
+            }
+        },
         "spontaneous": {
             "title": "Nichts Passendes dabei? Werde trotzdem Mitglied",
             "description": "Du musst dich nicht auf eine Stelle bewerben. Tritt dem Verein jederzeit bei, nimm an Events teil und sei Teil der Community. Wenn du Lust hast mitzumachen, findet sich immer etwas zu tun: Melde dich einfach im Discord.",

@@ -367,6 +367,31 @@
             "description": "Nothing matches your filter right now. Reach out on Discord anyway, we will find a task for you.",
             "cta": "Go to Discord"
         },
+        "faq": {
+            "title": "Frequently asked questions",
+            "items": {
+                "cost": {
+                    "q": "How much does membership cost?",
+                    "a": "Students pay €10 per year, everyone else €20. The fee is due once a year on 15 March. Members who are especially committed to the club can be exempted by the board."
+                },
+                "thi": {
+                    "q": "Do I have to study at THI?",
+                    "a": "No. Anyone who supports the club's goals can become a member. Students pay a reduced fee."
+                },
+                "experience": {
+                    "q": "Do I need prior experience?",
+                    "a": "Not for every role. We teach practical and theoretical computer science, and besides development and infrastructure there are areas like marketing and HR where you won't write code."
+                },
+                "time": {
+                    "q": "How much time do I have to invest?",
+                    "a": "We work on a volunteer basis and you manage your own time. Every position lists roughly how many hours per week to expect."
+                },
+                "joining": {
+                    "q": "How does joining work?",
+                    "a": "You fill out the membership form and receive a confirmation. Your account is activated within 48 hours. After that we invite you to the onboarding call and the regular meetup, where you meet the team and sort out how to get started on a project."
+                }
+            }
+        },
         "spontaneous": {
             "title": "Nothing fitting? Become a member anyway",
             "description": "You don't have to apply for a position. Join the club at any time, attend events and be part of the community. If you feel like getting involved, there is always something to do: just reach out on Discord.",

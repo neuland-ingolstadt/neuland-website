@@ -1,5 +1,6 @@
 import {
 	BadgeCheck,
+	ChevronDown,
 	Filter,
 	Network,
 	Rocket,
@@ -34,6 +35,8 @@ const whyItems = [
 	{ key: 'impact', Icon: Sparkles },
 	{ key: 'volunteer', Icon: BadgeCheck }
 ] as const
+
+const faqKeys = ['cost', 'thi', 'experience', 'time', 'joining'] as const
 
 const usedTeams = positionTeams.filter((team) =>
 	positions.some((position) => position.team === team)
@@ -204,6 +207,30 @@ const PositionsPage = () => {
 						</div>
 					</motion.div>
 				)}
+			</div>
+
+			{/* FAQ */}
+			<div className="max-w-3xl mx-auto mt-20 mb-12 md:mt-32 md:mb-20">
+				<h2 className="font-mono text-2xl font-bold mb-6 mt-0 text-center">
+					{t('faq.title')}
+				</h2>
+				<div className="divide-y divide-terminal-window-border border border-terminal-window-border">
+					{faqKeys.map((key) => (
+						<details key={key} className="group">
+							<summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-mono text-base font-bold text-terminal-text marker:hidden [&::-webkit-details-marker]:hidden sm:px-8">
+								{t(`faq.items.${key}.q`)}
+								<ChevronDown
+									size={18}
+									aria-hidden="true"
+									className="shrink-0 text-terminal-ink transition-transform duration-200 group-open:rotate-180"
+								/>
+							</summary>
+							<p className="m-0 px-5 pb-5 text-terminal-text/80 leading-relaxed sm:px-8 sm:pb-6">
+								{t(`faq.items.${key}.a`)}
+							</p>
+						</details>
+					))}
+				</div>
 			</div>
 
 			{/* Join anytime / spontaneous application */}
