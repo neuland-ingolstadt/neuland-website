@@ -315,7 +315,6 @@
         "subtitle": "Wir sind ein ehrenamtlicher Verein von Studierenden für Studierende. Such dir eine Rolle, die zu dir passt, und gestalte die Tech-Community an der THI mit.",
         "positionsFound": "{count, plural, =0 {Keine offenen Stellen} =1 {Eine Stelle} other {# Stellen}}",
         "why": {
-            "title": "Was habe ich davon?",
             "learn": {
                 "title": "Praxis statt Theorie",
                 "description": "Echte Projekte statt Lehrbuch."
@@ -368,11 +367,6 @@
         "card": {
             "more": "Mehr erfahren"
         },
-        "empty": {
-            "title": "> 0 offene Stellen gefunden",
-            "description": "Aktuell passt hier nichts zu deinem Filter. Schreib uns trotzdem im Discord, wir finden bestimmt eine Aufgabe für dich.",
-            "cta": "Zum Discord"
-        },
         "faq": {
             "title": "Häufige Fragen",
             "items": {
@@ -394,15 +388,14 @@
                 },
                 "joining": {
                     "q": "Wie läuft der Beitritt ab?",
-                    "a": "Du füllst das Beitrittsformular aus und bekommst eine Bestätigung. Dein Account wird innerhalb von 48 Stunden freigeschaltet. Danach laden wir dich zum Onboarding-Call und zum Stammtisch ein, wo du das Team kennenlernst und deinen Einstieg in ein Projekt klärst."
+                    "a": "Ganz unkompliziert: Komm einfach auf unseren Discord. Dort öffnet sich automatisch ein Ticket, in dem wir dich und deine Interessen kennenlernen. Wenn es für dich passt, stellst du anschließend deinen Mitgliedsantrag. Danach bekommst du Zugriff auf unsere internen Plattformen und kannst direkt in ein Projekt einsteigen. Wir freuen uns auf dich!"
                 }
             }
         },
         "spontaneous": {
-            "title": "Nichts Passendes dabei? Werde trotzdem Mitglied",
+            "title": "Nichts Passendes dabei? Werde trotzdem Mitglied.",
             "description": "Du musst dich nicht auf eine Stelle bewerben. Tritt dem Verein jederzeit bei, nimm an Events teil und sei Teil der Community. Wenn du Lust hast mitzumachen, findet sich immer etwas zu tun: Melde dich einfach im Discord.",
-            "ctaMembership": "Mitglied werden",
-            "cta": "Im Discord melden"
+            "cta": "Discord beitreten"
         },
         "detail": {
             "back": "Zurück zu allen Stellen",

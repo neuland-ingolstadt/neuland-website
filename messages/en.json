@@ -315,7 +315,6 @@
         "subtitle": "We are a volunteer-run club by students for students. Pick a role that suits you and help shape the tech community at THI.",
         "positionsFound": "{count, plural, =0 {No open positions} =1 {One position} other {# positions}}",
         "why": {
-            "title": "What's in it for me?",
             "learn": {
                 "title": "Practice over theory",
                 "description": "Real projects instead of textbooks."
@@ -368,11 +367,6 @@
         "card": {
             "more": "Learn more"
         },
-        "empty": {
-            "title": "> 0 open positions found",
-            "description": "Nothing matches your filter right now. Reach out on Discord anyway, we will find a task for you.",
-            "cta": "Go to Discord"
-        },
         "faq": {
             "title": "Frequently asked questions",
             "items": {
@@ -394,15 +388,14 @@
                 },
                 "joining": {
                     "q": "How does joining work?",
-                    "a": "You fill out the membership form and receive a confirmation. Your account is activated within 48 hours. After that we invite you to the onboarding call and the regular meetup, where you meet the team and sort out how to get started on a project."
+                    "a": "Super simple: just join our Discord. A ticket opens automatically, where we get to know you and your interests. If it feels right, you then submit your membership application. After that you get access to our internal platforms and can jump right into a project. We look forward to meeting you!"
                 }
             }
         },
         "spontaneous": {
-            "title": "Nothing fitting? Become a member anyway",
+            "title": "Nothing fitting? Become a member anyway.",
             "description": "You don't have to apply for a position. Join the club at any time, attend events and be part of the community. If you feel like getting involved, there is always something to do: just reach out on Discord.",
-            "ctaMembership": "Become a member",
-            "cta": "Contact us on Discord"
+            "cta": "Join Discord"
         },
         "detail": {
             "back": "Back to all positions",

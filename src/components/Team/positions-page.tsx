@@ -54,14 +54,14 @@ const PositionsPage = () => {
 		<div className="relative">
 			<div
 				aria-hidden="true"
-				className="pointer-events-none absolute -top-[var(--navbar-height,4.5rem)] left-1/2 -z-10 h-[44rem] w-screen -translate-x-1/2 overflow-hidden"
+				className="pointer-events-none absolute -top-[var(--navbar-height,4.5rem)] left-1/2 -z-10 h-[56rem] w-screen -translate-x-1/2 overflow-hidden"
 			>
 				<img
 					src="/assets/ersti-tag.webp"
 					alt=""
 					className="h-full w-full object-cover opacity-60 [:root[data-theme=light]_&]:opacity-40"
 				/>
-				<div className="absolute inset-0 bg-gradient-to-t from-terminal-bg via-terminal-bg/60 to-terminal-bg/10" />
+				<div className="absolute inset-0 bg-gradient-to-t from-terminal-bg from-0% via-terminal-bg/70 via-70% to-terminal-bg/10" />
 				<div className="absolute inset-0 bg-gradient-to-r from-terminal-bg/70 via-terminal-bg/20 to-transparent" />
 			</div>
 			<div
@@ -73,61 +73,53 @@ const PositionsPage = () => {
 				}}
 			/>
 			{/* Header Section */}
-			<div className="max-w-6xl mx-auto pt-8 mb-12 md:pt-16 md:mb-16 lg:grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-center lg:gap-12">
+			<div className="max-w-6xl mx-auto pt-16 mb-16 md:pt-32 md:mb-24">
 				<motion.div
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6 }}
-					className="mb-12 w-fit max-w-full lg:mb-0"
+					className="mb-16 max-w-full md:mb-24"
 				>
-					<h1 className="mb-6 mt-0 font-mono text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl xl:text-7xl">
+					<h1 className="mb-8 mt-0 font-mono text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl xl:text-8xl">
 						{t('title')}
 					</h1>
 					<motion.p
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						transition={{ duration: 0.6, delay: 0.2 }}
-						className="mt-3 w-0 min-w-full text-lg text-terminal-text/90"
+						className="mt-3 max-w-[40rem] text-lg text-terminal-text/90 md:text-xl"
 					>
 						{t('subtitle')}
 					</motion.p>
 				</motion.div>
 				{/* Why join */}
 				<div>
-					<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
-						<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none" />
-						<div className="relative z-10 p-5 sm:p-8">
-							<h2 className="text-sm font-semibold mb-5 mt-0 text-terminal-ink uppercase tracking-wider">
-								{t('why.title')}
-							</h2>
-							<ol className="m-0 grid list-none grid-cols-1 gap-x-8 gap-y-5 p-0 sm:grid-cols-2 lg:grid-cols-1">
-								{whyItems.map(({ key, Icon }, idx) => (
-									<motion.li
-										key={key}
-										initial={{ opacity: 0, y: 10 }}
-										whileInView={{ opacity: 1, y: 0 }}
-										transition={{ duration: 0.4, delay: idx * 0.06 }}
-										viewport={{ once: true }}
-										className="flex gap-3"
-									>
-										<Icon
-											size={20}
-											aria-hidden="true"
-											className="mt-0.5 shrink-0 text-terminal-ink"
-										/>
-										<div>
-											<h3 className="font-mono text-base font-bold text-terminal-text m-0">
-												{t(`why.${key}.title`)}
-											</h3>
-											<p className="text-sm text-terminal-text/80 leading-relaxed mt-1 mb-0">
-												{t(`why.${key}.description`)}
-											</p>
-										</div>
-									</motion.li>
-								))}
-							</ol>
-						</div>
-					</div>
+					<ol className="m-0 grid list-none grid-cols-1 gap-x-8 gap-y-5 p-0 sm:grid-cols-2 lg:grid-cols-5">
+						{whyItems.map(({ key, Icon }, idx) => (
+							<motion.li
+								key={key}
+								initial={{ opacity: 0, y: 10 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.4, delay: idx * 0.06 }}
+								viewport={{ once: true }}
+								className="m-0 flex gap-3 sm:flex-col sm:gap-2"
+							>
+								<Icon
+									size={20}
+									aria-hidden="true"
+									className="shrink-0 text-terminal-ink"
+								/>
+								<div className="flex flex-col gap-1 sm:gap-2">
+									<h3 className="m-0 font-mono text-base font-bold text-terminal-text">
+										{t(`why.${key}.title`)}
+									</h3>
+									<p className="m-0 text-sm leading-relaxed text-terminal-text/80">
+										{t(`why.${key}.description`)}
+									</p>
+								</div>
+							</motion.li>
+						))}
+					</ol>
 				</div>
 			</div>
 
@@ -187,10 +179,8 @@ const PositionsPage = () => {
 								{t('spontaneous.description')}
 							</p>
 							<div className="flex flex-col gap-3">
-								<TerminalButton primary href="/#membership">
-									{t('spontaneous.ctaMembership')}
-								</TerminalButton>
 								<TerminalButton
+									primary
 									href={DISCORD_URL}
 									target="_blank"
 									rel="noreferrer noopener"
