@@ -412,23 +412,48 @@
             "apply": {
                 "title": "Apply",
                 "hint": "Applications run through our Discord. Simply copy the job ID and mention it in your Discord ticket.",
+                "hintMember": "If you are already a member, simply contact the point of contact directly on Signal or Discord and mention the job ID.",
                 "copied": "Copied!",
                 "copyFailed": "Copying failed",
                 "cta": "Apply on Discord"
             },
             "steps": {
                 "title": "How it works",
-                "ticket": {
-                    "title": "Ticket on Discord",
-                    "description": "Open a ticket and paste the position description."
+                "tabs": {
+                    "new": "Not a member yet",
+                    "member": "Already a member"
                 },
-                "meeting": {
-                    "title": "Getting to know each other",
-                    "description": "We meet in a short, relaxed conversation."
+                "new": {
+                    "ticket": {
+                        "title": "Ticket on Discord",
+                        "description": "Open a ticket and mention the job ID of the position."
+                    },
+                    "meeting": {
+                        "title": "Getting to know each other",
+                        "description": "We meet in a short, relaxed conversation."
+                    },
+                    "join": {
+                        "title": "Become a member",
+                        "description": "Fill out the membership form. Your account is activated within 48 hours."
+                    },
+                    "onboarding": {
+                        "title": "Onboarding",
+                        "description": "You are welcomed to the team and get your first tasks."
+                    }
                 },
-                "onboarding": {
-                    "title": "Onboarding",
-                    "description": "You are welcomed to the team and get your first tasks."
+                "member": {
+                    "contact": {
+                        "title": "Contact the point of contact",
+                        "description": "Message the position's contact person directly on Signal or Discord and mention the job ID."
+                    },
+                    "meeting": {
+                        "title": "Short conversation",
+                        "description": "We check whether the position fits you and how much time you want to invest."
+                    },
+                    "start": {
+                        "title": "Start right away",
+                        "description": "You already know the club and our tools. You get access to the team and your first tasks."
+                    }
                 }
             }
         },

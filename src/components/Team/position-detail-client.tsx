@@ -87,17 +87,19 @@ const useCopy = () => {
 	return { state, copy }
 }
 
-const stepKeys = ['ticket', 'meeting', 'onboarding'] as const
+const stepKeys = {
+	new: ['ticket', 'meeting', 'join', 'onboarding'],
+	member: ['contact', 'meeting', 'start']
+} as const
+
+type StepTab = keyof typeof stepKeys
+const stepTabs = Object.keys(stepKeys) as StepTab[]
 
 const PositionDetailClient = ({ position }: PositionDetailClientProps) => {
 	const t = useTranslations('Team')
 	const locale = resolveLocale(useLocale())
 	const jobIdCopy = useCopy()
-
-	const postedDate = new Intl.DateTimeFormat(locale, {
-		dateStyle: 'medium',
-		timeZone: 'UTC'
-	}).format(new Date(position.postedAt))
+	const [stepTab, setStepTab] = useState<StepTab>('new')
 
 	const metaItems = [
 		t(`teams.${position.team}`),
@@ -106,8 +108,7 @@ const PositionDetailClient = ({ position }: PositionDetailClientProps) => {
 			max: position.hoursPerWeek.max
 		}),
 		t(`format.${position.format}`),
-		t(`language.${position.language}`),
-		postedDate
+		t(`language.${position.language}`)
 	]
 
 	const sections = [
@@ -201,7 +202,11 @@ const PositionDetailClient = ({ position }: PositionDetailClientProps) => {
 				<div className="space-y-8 md:space-y-10">
 					<InfoBox title={t('detail.apply.title')}>
 						<p className="text-base text-terminal-text/90 leading-relaxed mb-6">
-							{t('detail.apply.hint')}
+							{t(
+								stepTab === 'member'
+									? 'detail.apply.hintMember'
+									: 'detail.apply.hint'
+							)}
 						</p>
 						<div className="flex flex-col gap-3">
 							<TerminalButton onClick={() => jobIdCopy.copy(position.jobId)}>
@@ -237,18 +242,35 @@ const PositionDetailClient = ({ position }: PositionDetailClientProps) => {
 					</InfoBox>
 
 					<InfoBox title={t('detail.steps.title')}>
-						<ol className="space-y-5 list-none p-0 m-0">
-							{stepKeys.map((key, idx) => (
+						<div
+							role="tablist"
+							className="mb-5 grid grid-cols-2 gap-1 rounded-md border border-terminal-window-border p-1"
+						>
+							{stepTabs.map((tab) => (
+								<button
+									key={tab}
+									type="button"
+									role="tab"
+									aria-selected={stepTab === tab}
+									onClick={() => setStepTab(tab)}
+									className={`cursor-pointer rounded px-2 py-2 font-mono text-xs transition-colors duration-200 ${stepTab === tab ? 'bg-terminal-text/20 text-terminal-text' : 'text-terminal-text/70 hover:text-terminal-text'}`}
+								>
+									{t(`detail.steps.tabs.${tab}`)}
+								</button>
+							))}
+						</div>
+						<ol role="tabpanel" className="space-y-5 list-none p-0 m-0">
+							{stepKeys[stepTab].map((key, idx) => (
 								<li key={key} className="flex gap-4">
 									<span className="font-mono font-bold text-terminal-ink">
 										{idx + 1}.
 									</span>
 									<div>
 										<p className="text-base font-semibold text-terminal-text m-0">
-											{t(`detail.steps.${key}.title`)}
+											{t(`detail.steps.${stepTab}.${key}.title`)}
 										</p>
 										<p className="text-sm text-terminal-text/80 mt-1 mb-0">
-											{t(`detail.steps.${key}.description`)}
+											{t(`detail.steps.${stepTab}.${key}.description`)}
 										</p>
 									</div>
 								</li>

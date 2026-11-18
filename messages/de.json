@@ -412,23 +412,48 @@
             "apply": {
                 "title": "Bewerbung",
                 "hint": "Die Bewerbung läuft über unseren Discord. Kopiere einfach die Job-ID und nenne sie in deinem Discord-Ticket.",
+                "hintMember": "Bist du schon Mitglied, melde dich einfach direkt beim Ansprechpartner per Signal oder Discord und nenne die Job-ID.",
                 "copied": "Kopiert!",
                 "copyFailed": "Kopieren fehlgeschlagen",
                 "cta": "Im Discord bewerben"
             },
             "steps": {
                 "title": "So läuft es ab",
-                "ticket": {
-                    "title": "Ticket im Discord",
-                    "description": "Öffne ein Ticket und füge die Positionsbeschreibung ein."
+                "tabs": {
+                    "new": "Noch kein Mitglied",
+                    "member": "Bereits Mitglied"
                 },
-                "meeting": {
-                    "title": "Kennenlernen",
-                    "description": "Wir lernen uns in einem kurzen, lockeren Gespräch kennen."
+                "new": {
+                    "ticket": {
+                        "title": "Ticket im Discord",
+                        "description": "Öffne ein Ticket und nenne die Job-ID der Stelle."
+                    },
+                    "meeting": {
+                        "title": "Kennenlernen",
+                        "description": "Wir lernen uns in einem kurzen, lockeren Gespräch kennen."
+                    },
+                    "join": {
+                        "title": "Mitglied werden",
+                        "description": "Fülle das Beitrittsformular aus. Dein Account wird innerhalb von 48 Stunden freigeschaltet."
+                    },
+                    "onboarding": {
+                        "title": "Onboarding",
+                        "description": "Du wirst im Team begrüßt und bekommst deine ersten Aufgaben."
+                    }
                 },
-                "onboarding": {
-                    "title": "Onboarding",
-                    "description": "Du wirst im Team begrüßt und bekommst deine ersten Aufgaben."
+                "member": {
+                    "contact": {
+                        "title": "Ansprechpartner kontaktieren",
+                        "description": "Schreib dem Ansprechpartner der Stelle direkt per Signal oder Discord und nenne die Job-ID."
+                    },
+                    "meeting": {
+                        "title": "Kurzes Gespräch",
+                        "description": "Wir klären, ob die Stelle zu dir passt und wie viel Zeit du einbringen möchtest."
+                    },
+                    "start": {
+                        "title": "Direkt loslegen",
+                        "description": "Du kennst den Verein und unsere Tools bereits. Du bekommst Zugang zum Team und deine ersten Aufgaben."
+                    }
                 }
             }
         },
