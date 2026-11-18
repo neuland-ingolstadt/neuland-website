@@ -1,5 +1,5 @@
 'use client'
-import { Code, Rocket, UserPlus, Users } from 'lucide-react'
+import { Briefcase, Code, Rocket, Users } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useTranslations } from '@/i18n/react'
 import DiscordIcon from './discord-icon'
@@ -130,16 +130,14 @@ const TerminalMembership = () => {
 							{t('benefits.writeEmail')}
 						</TerminalButton>
 						<TerminalButton
-							href="https://join.neuland-ingolstadt.de/"
-							target="_blank"
-							rel="noreferrer noopener"
+							href="/open-positions"
 							className="order-1 w-full whitespace-nowrap sm:order-2 sm:w-auto !px-6 !py-3 !border-terminal-cyan !text-terminal-ink hover:!bg-terminal-cyan [:root[data-theme=light]_&]:!border-black [:root[data-theme=light]_&]:!text-black [:root[data-theme=light]_&]:hover:!bg-black [:root[data-theme=light]_&]:hover:!text-white hover:!text-terminal-onAccent"
 						>
-							<UserPlus
+							<Briefcase
 								size={16}
 								className="mr-2 group-hover:rotate-8 transition-transform duration-300"
 							/>
-							{t('benefits.becomeMember')}
+							{t('benefits.openPositions')}
 						</TerminalButton>
 					</div>
 					<div className="ml-8 mt-1 flex items-end gap-1">

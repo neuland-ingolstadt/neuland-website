@@ -133,7 +133,7 @@
                 "line1": "Part of an active student association with regular meetings and exchange",
                 "line2": "Collaborative work on open-source projects",
                 "line3": "Exclusive workshops, hackathons, and social events with like-minded people",
-                "becomeMember": "Application form",
+                "openPositions": "Open positions & FAQ",
                 "writeEmail": "Join Discord",
                 "discordHint": "Join the club here"
             }
@@ -179,6 +179,7 @@
         "privacyPolicyNeuland": "Privacy Neuland",
         "privacyPolicyWebsite": "Privacy Website",
         "legalNotice": "Legal Notice",
+        "membershipForm": "Membership form",
         "headings": {
             "club": "Club",
             "social": "Follow us",

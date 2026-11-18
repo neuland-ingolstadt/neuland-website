@@ -9,6 +9,18 @@ const TerminalLinks: React.FC = () => {
 		<nav>
 			<ul>
 				<li className="mb-2">
+					<a
+						href="https://join.neuland-ingolstadt.de/"
+						target="_blank"
+						rel="noreferrer noopener"
+						className="text-terminal-text! group"
+					>
+						<span className="group-hover:animate-cyberpunk">$</span>{' '}
+						<span className="text-terminal-ink">open</span>{' '}
+						{t('membershipForm')}
+					</a>
+				</li>
+				<li className="mb-2">
 					<Link href="/legal/satzung" className="text-terminal-text! group">
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
 						<span className="text-terminal-ink">cat</span> {t('bylaws')}

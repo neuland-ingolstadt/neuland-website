@@ -133,7 +133,7 @@
                 "line1": "Teil eines aktiven studentischen Vereins mit regelmäßigen Treffen und Austausch",
                 "line2": "Gemeinsame Arbeit an Open-Source Projekten",
                 "line3": "Exklusive Workshops, Hackathons und soziale Events mit Gleichgesinnten",
-                "becomeMember": "Zum Beitrittsformular",
+                "openPositions": "Offene Stellen & FAQ",
                 "writeEmail": "Discord beitreten",
                 "discordHint": "Steig hier in den Verein ein"
             }
@@ -179,6 +179,7 @@
         "privacyPolicyNeuland": "Datenschutz Neuland",
         "privacyPolicyWebsite": "Datenschutz Website",
         "legalNotice": "Impressum",
+        "membershipForm": "Mitgliedsantrag",
         "headings": {
             "club": "Verein",
             "social": "Folge uns",
