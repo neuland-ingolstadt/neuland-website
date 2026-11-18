@@ -255,6 +255,8 @@
         "location": "Location",
         "details": "Details",
         "tbd": "TBD",
+        "happeningNow": "Happening now",
+        "dayOffset": "(+{count}d)",
         "noDescription": "No additional details available yet.",
         "shareableHint": "Shareable URL:",
         "copyLink": "Copy link",

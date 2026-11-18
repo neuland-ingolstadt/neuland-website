@@ -6,15 +6,16 @@ import {
 	Clock3,
 	Filter,
 	Lock,
+	MapPin,
 	Unlock
 } from 'lucide-react'
 import { motion } from 'motion/react'
-import { useMemo, useState } from 'react'
-import TerminalButton from '@/components/terminal-button'
+import { useEffect, useMemo, useState } from 'react'
 import { InternalOnlyTooltip } from '@/components/ui/tooltip'
+import { Link } from '@/i18n/navigation'
 import { useLocale, useTranslations } from '@/i18n/react'
 import {
-	formatEventDateRange,
+	formatEventDateAndTime,
 	getLocalizedEventDescription,
 	getLocalizedEventTitle
 } from '@/lib/events'
@@ -36,22 +37,44 @@ const activeFilterClass =
 const inactiveFilterClass =
 	'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-ink [:root[data-theme=light]_&]:hover:border-black [:root[data-theme=light]_&]:hover:text-black'
 
+const MINUTE = 60_000
+const HOUR = 60 * MINUTE
+const DAY = 24 * HOUR
+
+function formatTimeUntil(
+	start: number,
+	now: number,
+	locale: string
+): string | null {
+	const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' })
+	const diff = start - now
+	const abs = Math.abs(diff)
+	if (abs < HOUR) return rtf.format(Math.round(diff / MINUTE), 'minute')
+	if (abs < DAY) return rtf.format(Math.round(diff / HOUR), 'hour')
+	if (abs < 14 * DAY) return rtf.format(Math.round(diff / DAY), 'day')
+	if (abs < 60 * DAY) return rtf.format(Math.round(diff / (7 * DAY)), 'week')
+	return rtf.format(Math.round(diff / (30 * DAY)), 'month')
+}
+
 interface FilterButtonProps {
 	active: boolean
 	label: string
+	icon?: React.ReactNode
 	onClick: () => void
 }
 
-function FilterButton({ active, label, onClick }: FilterButtonProps) {
+function FilterButton({ active, label, icon, onClick }: FilterButtonProps) {
 	return (
 		<button
 			type="button"
 			onClick={onClick}
 			className={cn(
 				filterChipClass,
+				icon && 'gap-1.5',
 				active ? activeFilterClass : inactiveFilterClass
 			)}
 		>
+			{icon}
 			{label}
 		</button>
 	)
@@ -60,6 +83,13 @@ function FilterButton({ active, label, onClick }: FilterButtonProps) {
 const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 	const t = useTranslations('Events')
 	const locale = useLocale()
+	const [now, setNow] = useState<number | null>(null)
+
+	useEffect(() => {
+		setNow(Date.now())
+		const timer = setInterval(() => setNow(Date.now()), MINUTE)
+		return () => clearInterval(timer)
+	}, [])
 	const [visibilityFilter, setVisibilityFilter] =
 		useState<VisibilityFilter>('all')
 	const [timeFilter, setTimeFilter] = useState<TimeFilter>('upcoming')
@@ -164,11 +194,13 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 						<FilterButton
 							active={visibilityFilter === 'public'}
 							label={t('filters.public')}
+							icon={<Unlock size={12} />}
 							onClick={() => setVisibilityFilter('public')}
 						/>
 						<FilterButton
 							active={visibilityFilter === 'internal'}
 							label={t('filters.internal')}
+							icon={<Lock size={12} />}
 							onClick={() => setVisibilityFilter('internal')}
 						/>
 					</div>
@@ -199,7 +231,7 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 				</div>
 			</div>
 
-			<div className="max-w-6xl mx-auto">
+			<div className="max-w-6xl mx-auto mb-20 md:mb-28">
 				{error ? (
 					<div className="p-4 text-terminal-lightGreen border border-terminal-window-border rounded-sm bg-terminal-window">
 						<p className="text-md mb-2">{t('apiErrorTitle')}</p>
@@ -210,22 +242,45 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 						{t('emptyState')}
 					</div>
 				) : (
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-stretch">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 items-stretch">
 						{filteredEvents.map((event) => {
 							const title = getLocalizedEventTitle(event, locale)
 							const description = getLocalizedEventDescription(event, locale)
+							const schedule = formatEventDateAndTime(event, locale, t('tbd'))
+							const start = event.startDateTime
+								? new Date(event.startDateTime).getTime()
+								: Number.NaN
+							const end = event.endDateTime
+								? new Date(event.endDateTime).getTime()
+								: Number.NaN
+							const timeLabel =
+								now === null || Number.isNaN(start)
+									? null
+									: start <= now && now < (Number.isNaN(end) ? start : end)
+										? t('happeningNow')
+										: formatTimeUntil(start, now, locale)
 
 							return (
 								<article
 									key={event.id}
-									className="relative bg-terminal-window border border-terminal-window-border overflow-hidden p-5 h-full flex flex-col"
+									className="group relative bg-terminal-window border border-terminal-window-border overflow-hidden h-full flex flex-col transition-colors duration-200 hover:border-terminal-text/40"
 								>
 									<div className="relative z-10 h-full flex flex-col">
-										<div className="flex items-start justify-between gap-3">
-											<h2 className="text-2xl font-normal text-terminal-lightGreen leading-tight ">
-												{title}
-											</h2>
-											<div className="shrink-0">
+										<Link
+											href={`/events/${event.id}`}
+											aria-label={title}
+											className="absolute inset-0 z-10 after:hidden"
+										/>
+										<div className="flex items-center justify-between gap-3 border-b border-terminal-window-border bg-terminal-text/[0.06] px-6 py-2.5 font-mono text-xs text-terminal-text/80">
+											<span className="inline-flex items-center gap-2">
+												{timeLabel && (
+													<>
+														<Clock3 size={12} aria-hidden="true" />
+														{timeLabel}
+													</>
+												)}
+											</span>
+											<span className="relative z-20">
 												{event.isInternal ? (
 													<InternalOnlyTooltip>
 														<span className="inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.08em] text-terminal-text/90">
@@ -239,44 +294,70 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 														{t('filters.public')}
 													</span>
 												)}
-											</div>
+											</span>
 										</div>
+										<div className="grow p-6">
+											<h2 className="mb-4 mt-0 text-xl font-bold text-terminal-lightGreen leading-tight">
+												{title}
+											</h2>
 
-										<p className="text-terminal-text/90 mb-1">
-											{formatEventDateRange(event, locale, t('tbd'))}
-										</p>
-										{event.location && (
-											<p className="text-sm text-terminal-text/85 mb-4">
-												@{event.location}
-											</p>
-										)}
+											<ul className="m-0 mb-4 list-none space-y-1.5 p-0 font-mono [&>li]:mb-0 text-sm text-terminal-text/85">
+												<li className="flex items-start gap-2.5">
+													<Calendar
+														size={14}
+														aria-hidden="true"
+														className="mt-0.5 shrink-0 text-terminal-ink"
+													/>
+													{schedule.date}
+												</li>
+												{schedule.time && (
+													<li className="flex items-start gap-2.5">
+														<Clock3
+															size={14}
+															aria-hidden="true"
+															className="mt-0.5 shrink-0 text-terminal-ink"
+														/>
+														{schedule.time}
+														{schedule.dayOffset > 0 &&
+															` ${t('dayOffset', { count: schedule.dayOffset })}`}
+													</li>
+												)}
+												{event.location && (
+													<li className="flex items-start gap-2.5">
+														<MapPin
+															size={14}
+															aria-hidden="true"
+															className="mt-0.5 shrink-0 text-terminal-ink"
+														/>
+														{event.location}
+													</li>
+												)}
+											</ul>
 
-										{description && (
-											<p className="text-base text-terminal-text/85 mb-5 leading-relaxed">
-												{description}
-											</p>
-										)}
-
-										<div className="mt-auto pt-4 border-t border-terminal-window-border/50">
-											<div className="flex flex-wrap gap-2">
-												<TerminalButton
-													href={`/events/${event.id}`}
-													className="group"
-												>
+											{description && (
+												<p className="m-0 line-clamp-4 font-sans text-sm leading-relaxed text-terminal-text/75">
+													{description}
+												</p>
+											)}
+										</div>
+										<div className="mt-auto border-t border-terminal-window-border bg-terminal-text/[0.06] px-6 py-5">
+											<div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 font-mono text-sm">
+												<span className="inline-flex items-center gap-1.5 text-terminal-text/80 transition-colors duration-200 group-hover:text-terminal-ink">
 													{t('openDetails')}
 													<ArrowUpRight
-														size={16}
+														size={14}
 														className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
 													/>
-												</TerminalButton>
+												</span>
 												{event.eventUrl && (
-													<TerminalButton
+													<a
 														href={event.eventUrl}
 														target="_blank"
 														rel="noreferrer noopener"
+														className="relative z-20 text-terminal-text/60 no-underline after:hidden transition-colors duration-200 hover:text-terminal-ink"
 													>
 														{t('eventWebsite')}
-													</TerminalButton>
+													</a>
 												)}
 											</div>
 										</div>

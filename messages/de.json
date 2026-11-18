@@ -255,6 +255,8 @@
         "location": "Ort",
         "details": "Details",
         "tbd": "Offen",
+        "happeningNow": "Läuft gerade",
+        "dayOffset": "(+{count} T.)",
         "noDescription": "Es sind noch keine weiteren Details verfügbar.",
         "shareableHint": "Teilbare URL:",
         "copyLink": "Link kopieren",
