@@ -1,16 +1,23 @@
 'use client'
-import { ArrowUpRight, CalendarIcon, LucideArrowBigLeft } from 'lucide-react'
+import {
+	ArrowUpRight,
+	CalendarIcon,
+	Clock3,
+	LucideArrowBigLeft
+} from 'lucide-react'
 import React, { useCallback, useRef, useState } from 'react'
 import TerminalTypeWriter from '@/components/Events/terminal-type-writer'
 import TerminalWindow from '@/components/Events/terminal-window'
 import TerminalButton from '@/components/terminal-button'
 import TerminalList from '@/components/terminal-list'
 import { InternalOnlyTooltip } from '@/components/ui/tooltip'
+import { useNow } from '@/hooks/use-now'
 import { Link } from '@/i18n/navigation'
 import { useLocale, useTranslations } from '@/i18n/react'
+import { getEventCountdown } from '@/lib/events'
 import { getCurrentSemester } from '@/lib/semester'
 import { cn } from '@/lib/utils'
-import type { fetchEvents } from '@/services/events'
+import type { Event, fetchEvents } from '@/services/events'
 import CalendarModal from './calendar-modal'
 
 interface TerminalEventsProps {
@@ -52,12 +59,26 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 }) => {
 	const locale = useLocale()
 	const t = useTranslations('Home.eventsSection')
+	const now = useNow()
 
 	const eventsData = initialData || {
 		semester: getCurrentSemester(),
 		events: []
 	}
 	const error = serverError
+
+	const renderCountdown = (event: Event) => {
+		const label =
+			now === null
+				? null
+				: getEventCountdown(event, now, locale, t('happeningNow'))
+		return label ? (
+			<span className="mt-1 flex items-center gap-1.5 text-xs text-terminal-text/70">
+				<Clock3 size={12} aria-hidden="true" />
+				{label}
+			</span>
+		) : null
+	}
 
 	const [selectedEventIndex, setSelectedEventIndex] = useState<number | null>(
 		null
@@ -227,6 +248,9 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 																			1 && <br />}
 																</React.Fragment>
 															))}
+														{renderCountdown(
+															eventsData.events[selectedEventIndex]
+														)}
 													</div>
 
 													<strong
@@ -304,7 +328,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 												<div
 													key={index}
 													onClick={() => handleEventClick(index)}
-													className="cursor-pointer hover:bg-terminal-window-border/30 p-1 rounded-sm transition-colors mb-1"
+													className="mb-1 cursor-pointer p-1 transition-opacity hover:opacity-70"
 													onKeyDown={(e) => {
 														if (e.key === 'Enter') {
 															handleEventClick(index)
@@ -342,6 +366,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 															{i < event.date.split('\n').length - 1 && <br />}
 														</React.Fragment>
 													))}
+													{renderCountdown(event)}
 													{/* rrule short text removed in new API */}
 												</div>
 											))}

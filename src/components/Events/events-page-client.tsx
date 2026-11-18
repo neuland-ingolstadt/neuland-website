@@ -10,12 +10,14 @@ import {
 	Unlock
 } from 'lucide-react'
 import { motion } from 'motion/react'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { InternalOnlyTooltip } from '@/components/ui/tooltip'
+import { useNow } from '@/hooks/use-now'
 import { Link } from '@/i18n/navigation'
 import { useLocale, useTranslations } from '@/i18n/react'
 import {
 	formatEventDateAndTime,
+	getEventCountdown,
 	getLocalizedEventDescription,
 	getLocalizedEventTitle
 } from '@/lib/events'
@@ -36,25 +38,6 @@ const activeFilterClass =
 	'border-transparent bg-terminal-cyan text-terminal-onAccent [:root[data-theme=light]_&]:bg-black [:root[data-theme=light]_&]:text-white'
 const inactiveFilterClass =
 	'border-terminal-text/30 text-terminal-text/85 hover:border-terminal-cyan hover:text-terminal-ink [:root[data-theme=light]_&]:hover:border-black [:root[data-theme=light]_&]:hover:text-black'
-
-const MINUTE = 60_000
-const HOUR = 60 * MINUTE
-const DAY = 24 * HOUR
-
-function formatTimeUntil(
-	start: number,
-	now: number,
-	locale: string
-): string | null {
-	const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' })
-	const diff = start - now
-	const abs = Math.abs(diff)
-	if (abs < HOUR) return rtf.format(Math.round(diff / MINUTE), 'minute')
-	if (abs < DAY) return rtf.format(Math.round(diff / HOUR), 'hour')
-	if (abs < 14 * DAY) return rtf.format(Math.round(diff / DAY), 'day')
-	if (abs < 60 * DAY) return rtf.format(Math.round(diff / (7 * DAY)), 'week')
-	return rtf.format(Math.round(diff / (30 * DAY)), 'month')
-}
 
 interface FilterButtonProps {
 	active: boolean
@@ -83,13 +66,7 @@ function FilterButton({ active, label, icon, onClick }: FilterButtonProps) {
 const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 	const t = useTranslations('Events')
 	const locale = useLocale()
-	const [now, setNow] = useState<number | null>(null)
-
-	useEffect(() => {
-		setNow(Date.now())
-		const timer = setInterval(() => setNow(Date.now()), MINUTE)
-		return () => clearInterval(timer)
-	}, [])
+	const now = useNow()
 	const [visibilityFilter, setVisibilityFilter] =
 		useState<VisibilityFilter>('all')
 	const [timeFilter, setTimeFilter] = useState<TimeFilter>('upcoming')
@@ -247,18 +224,10 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 							const title = getLocalizedEventTitle(event, locale)
 							const description = getLocalizedEventDescription(event, locale)
 							const schedule = formatEventDateAndTime(event, locale, t('tbd'))
-							const start = event.startDateTime
-								? new Date(event.startDateTime).getTime()
-								: Number.NaN
-							const end = event.endDateTime
-								? new Date(event.endDateTime).getTime()
-								: Number.NaN
 							const timeLabel =
-								now === null || Number.isNaN(start)
+								now === null
 									? null
-									: start <= now && now < (Number.isNaN(end) ? start : end)
-										? t('happeningNow')
-										: formatTimeUntil(start, now, locale)
+									: getEventCountdown(event, now, locale, t('happeningNow'))
 
 							return (
 								<article

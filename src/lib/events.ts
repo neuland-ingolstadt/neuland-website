@@ -73,3 +73,32 @@ export function formatEventDateAndTime(
 
 	return { date, time, dayOffset }
 }
+
+const MINUTE = 60_000
+const HOUR = 60 * MINUTE
+const DAY = 24 * HOUR
+
+/** Relative time until the event starts, or `liveLabel` while it is running. */
+export function getEventCountdown(
+	event: Event,
+	now: number,
+	locale: string,
+	liveLabel: string
+): string | null {
+	const start = getEventTimestamp(event)
+	if (!start) return null
+
+	const end = event.endDateTime ? new Date(event.endDateTime).getTime() : start
+	if (start <= now && now < (Number.isNaN(end) ? start : end)) return liveLabel
+
+	const rtf = new Intl.RelativeTimeFormat(getLocaleTag(locale), {
+		numeric: 'auto'
+	})
+	const diff = start - now
+	const abs = Math.abs(diff)
+	if (abs < HOUR) return rtf.format(Math.round(diff / MINUTE), 'minute')
+	if (abs < DAY) return rtf.format(Math.round(diff / HOUR), 'hour')
+	if (abs < 14 * DAY) return rtf.format(Math.round(diff / DAY), 'day')
+	if (abs < 60 * DAY) return rtf.format(Math.round(diff / (7 * DAY)), 'week')
+	return rtf.format(Math.round(diff / (30 * DAY)), 'month')
+}
