@@ -167,11 +167,13 @@
         }
     },
     "Navigation": {
+        "home": "Home",
         "events": "Events",
         "projects": "Projects",
         "blog": "Blog",
         "donate": "Donate",
         "login": "Login",
+        "connectLogin": "Member Login",
         "team": "Open Positions"
     },
     "Footer": {

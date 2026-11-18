@@ -167,11 +167,13 @@
         }
     },
     "Navigation": {
+        "home": "Startseite",
         "events": "Events",
         "projects": "Projekte",
         "blog": "Blog",
         "donate": "Spenden",
         "login": "Login",
+        "connectLogin": "Member Login",
         "team": "Mitmachen"
     },
     "Footer": {

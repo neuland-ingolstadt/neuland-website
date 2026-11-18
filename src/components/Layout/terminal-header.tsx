@@ -1,22 +1,10 @@
 'use client'
 
-import { useLocation } from '@tanstack/react-router'
-import { Menu } from 'lucide-react'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
 import type React from 'react'
 import { useEffect, useRef, useState } from 'react'
-import {
-	Sidebar,
-	SidebarContent,
-	SidebarFooter,
-	SidebarGroup,
-	SidebarGroupContent,
-	SidebarMenu,
-	SidebarMenuButton,
-	SidebarMenuItem,
-	SidebarProvider,
-	useSidebar
-} from '@/components/ui/sidebar'
-import { Link } from '@/i18n/navigation'
+import { Sidebar, SidebarProvider, useSidebar } from '@/components/ui/sidebar'
+import { Link, usePathname, useRouter } from '@/i18n/navigation'
 import { useTranslations } from '@/i18n/react'
 import LanguageToggle from './language-toggle'
 import NeulandLogo from './neuland-logo'
@@ -39,6 +27,9 @@ const useNavigation = () => {
 
 	return navLinks
 }
+
+const mobileLinkClass =
+	'flex items-center justify-between gap-3 py-2 font-semibold leading-tight tracking-tight no-underline transition-opacity duration-150 after:hidden hover:opacity-60 active:opacity-50'
 
 interface NavLinkProps {
 	link: {
@@ -77,8 +68,10 @@ const DesktopNavLink: React.FC<NavLinkProps> = ({ link, className }) => {
 }
 
 const MobileSidebar: React.FC = () => {
-	const pathname = useLocation({ select: (location) => location.pathname })
+	const pathname = usePathname()
 	const { isMobile, setOpenMobile } = useSidebar()
+
+	const router = useRouter()
 
 	const handleNavigation = () => {
 		if (isMobile) {
@@ -86,59 +79,132 @@ const MobileSidebar: React.FC = () => {
 		}
 	}
 
+	// Start the route change only after the exit animation has finished, so
+	// rendering the next page doesn't compete with it for the main thread
+	const handleInternalNavigation = (
+		event: React.MouseEvent<HTMLAnchorElement>,
+		href: string
+	) => {
+		if (
+			event.button !== 0 ||
+			event.metaKey ||
+			event.ctrlKey ||
+			event.shiftKey ||
+			event.altKey
+		) {
+			return
+		}
+		event.preventDefault()
+		const sheet = document.querySelector('[data-slot="sheet-content"]')
+		handleNavigation()
+		if (
+			!sheet ||
+			window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		) {
+			router.push(href)
+			return
+		}
+		let navigated = false
+		const go = () => {
+			if (navigated) return
+			navigated = true
+			router.push(href)
+		}
+		sheet.addEventListener('animationend', go, { once: true })
+		window.setTimeout(go, 400)
+	}
+
+	const t = useTranslations('Navigation')
 	const navLinks = useNavigation()
+	const pageLinks = [
+		{ name: t('home'), href: '/', external: false },
+		...navLinks.filter((link) => !link.external)
+	]
+	const loginLink = navLinks.find((link) => link.external)
 
 	return (
 		<Sidebar variant="sidebar" side="bottom">
-			<SidebarContent>
-				<SidebarGroup className="px-2 py-2">
-					<SidebarGroupContent>
-						<SidebarMenu>
-							{navLinks.map((item) => (
-								<SidebarMenuItem key={item.name}>
-									<SidebarMenuButton
-										asChild
-										isActive={
-											item.href.startsWith('http')
-												? false
-												: pathname === item.href.replace('/#membership', '/')
-										}
-										size="lg"
-										className="no-underline font-mono text-base font-normal text-terminal-text/90 hover:bg-terminal-window/30 hover:text-terminal-ink data-[active=true]:bg-terminal-window/60 data-[active=true]:text-terminal-ink"
-									>
-										{item.external ? (
-											<a
-												href={item.href}
-												target="_blank"
-												rel="noreferrer noopener"
-												onClick={handleNavigation}
-											>
-												<span>{item.name}</span>
-											</a>
-										) : (
-											<Link href={item.href} onClick={handleNavigation}>
-												<span>{item.name}</span>
-											</Link>
-										)}
-									</SidebarMenuButton>
-								</SidebarMenuItem>
-							))}
-						</SidebarMenu>
-					</SidebarGroupContent>
-				</SidebarGroup>
-			</SidebarContent>
-
-			<SidebarFooter className="border-t border-terminal-window-border/70 bg-terminal-bg/95 px-4 py-3">
-				<div className="flex items-center justify-between gap-4 text-xs text-terminal-text/80">
-					<div className="flex items-center gap-2">
-						<span className="uppercase tracking-[0.18em] text-[0.65rem] text-terminal-text/85">
-							Theme
-						</span>
-						<ThemeToggleMobile />
-					</div>
-					<LanguageToggle />
+			<div className="flex h-full w-full flex-col font-mono">
+				{/* Same bar as the navbar, so logo and button don't move */}
+				<div className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-6 px-4 py-4">
+					<Link
+						href="/"
+						onClick={(event) => handleInternalNavigation(event, '/')}
+						className="flex items-center no-underline"
+					>
+						<NeulandLogo className="h-9 w-auto text-terminal-text sm:h-10" />
+					</Link>
+					<button
+						type="button"
+						onClick={() => setOpenMobile(false)}
+						aria-label="Close navigation"
+						className="header-icon-btn relative inline-flex h-10 w-10 cursor-pointer select-none items-center justify-center border border-terminal-window-border bg-terminal-bg text-terminal-text"
+					>
+						<X className="h-4 w-4 text-terminal-text/85" />
+					</button>
 				</div>
-			</SidebarFooter>
+
+				<div className="sheet-body flex flex-1 flex-col">
+					<nav className="flex flex-1 flex-col justify-start gap-1 px-6 pt-8">
+						{pageLinks.map((item) => {
+							const isActive = pathname === item.href
+							return (
+								<Link
+									key={item.name}
+									href={item.href}
+									onClick={(event) =>
+										handleInternalNavigation(event, item.href)
+									}
+									aria-current={isActive ? 'page' : undefined}
+									className={`${mobileLinkClass} text-4xl ${
+										isActive ? 'text-terminal-ink' : 'text-terminal-text'
+									}`}
+								>
+									{item.name}
+								</Link>
+							)
+						})}
+						{loginLink && (
+							<>
+								<div
+									aria-hidden="true"
+									className="my-3 border-t border-terminal-window-border"
+								/>
+								<a
+									href={loginLink.href}
+									target="_blank"
+									rel="noreferrer noopener"
+									onClick={handleNavigation}
+									className={`${mobileLinkClass} text-4xl text-terminal-text/60`}
+								>
+									{t('connectLogin')}
+									<ArrowUpRight
+										className="h-6 w-6 shrink-0"
+										aria-hidden="true"
+									/>
+								</a>
+							</>
+						)}
+					</nav>
+
+					<div className="flex flex-col gap-5 px-6 pb-6">
+						<div className="flex items-center justify-between gap-4 text-xs text-terminal-text/80">
+							<div className="flex items-center gap-2">
+								<span className="font-mono text-xs font-normal uppercase tracking-wider text-terminal-text/60">
+									Theme
+								</span>
+								<ThemeToggleMobile />
+							</div>
+							<div className="flex items-center gap-2">
+								<span className="font-mono text-xs font-normal uppercase tracking-wider text-terminal-text/60">
+									Language
+								</span>
+								<LanguageToggle />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</Sidebar>
 	)
 }
