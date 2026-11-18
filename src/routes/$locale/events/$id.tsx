@@ -5,8 +5,7 @@ import {
 	Clock3,
 	ExternalLink,
 	Lock,
-	MapPin,
-	Unlock
+	MapPin
 } from 'lucide-react'
 import ShareEventLinkButton from '@/components/Events/share-event-link-button'
 import TerminalButton from '@/components/terminal-button'
@@ -89,17 +88,15 @@ function EventDetailPage() {
 			<div className="bg-terminal-window relative overflow-hidden border border-terminal-window-border p-6 md:p-8">
 				<div className="pointer-events-none absolute inset-0 bg-linear-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3" />
 				<div className="relative z-10">
-					<div className="mb-4 flex items-start justify-between gap-3">
-						<h1 className="text-terminal-lightGreen text-3xl leading-tight font-bold">
-							{title}
-						</h1>
-						<div className="shrink-0">
-							<span className="text-terminal-text/90 inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.65rem] font-semibold tracking-[0.08em] uppercase">
-								{event.isInternal ? <Lock size={10} /> : <Unlock size={10} />}
-								{event.isInternal ? t('filters.internal') : t('filters.public')}
-							</span>
-						</div>
-					</div>
+					{event.isInternal && (
+						<span className="text-terminal-text/90 mb-4 inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.65rem] font-semibold tracking-[0.08em] uppercase">
+							<Lock size={10} />
+							{t('filters.internal')}
+						</span>
+					)}
+					<h1 className="text-terminal-lightGreen mb-4 mt-0 text-3xl leading-tight font-bold break-words">
+						{title}
+					</h1>
 
 					<ul className="text-terminal-text/90 m-0 mb-6 list-none space-y-2 p-0 font-mono">
 						<li className="flex items-start gap-3">

@@ -240,31 +240,28 @@ const EventsPageClient = ({ initialData, error }: EventsPageClientProps) => {
 											aria-label={title}
 											className="absolute inset-0 z-10 after:hidden"
 										/>
-										<div className="flex items-center justify-between gap-3 border-b border-terminal-window-border bg-terminal-text/[0.06] px-6 py-2.5 font-mono text-xs text-terminal-text/80">
-											<span className="inline-flex items-center gap-2">
-												{timeLabel && (
-													<>
-														<Clock3 size={12} aria-hidden="true" />
-														{timeLabel}
-													</>
-												)}
-											</span>
-											<span className="relative z-20">
-												{event.isInternal ? (
-													<InternalOnlyTooltip>
-														<span className="inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.08em] text-terminal-text/90">
-															<Lock size={10} />
-															{t('filters.internal')}
-														</span>
-													</InternalOnlyTooltip>
-												) : (
-													<span className="inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.08em] text-terminal-text/90">
-														<Unlock size={10} />
-														{t('filters.public')}
+										{(timeLabel || event.isInternal) && (
+											<div className="flex items-center justify-between gap-3 border-b border-terminal-window-border bg-terminal-text/[0.06] px-6 py-2.5 font-mono text-xs text-terminal-text/80">
+												<span className="inline-flex items-center gap-2">
+													{timeLabel && (
+														<>
+															<Clock3 size={12} aria-hidden="true" />
+															{timeLabel}
+														</>
+													)}
+												</span>
+												{event.isInternal && (
+													<span className="relative z-20">
+														<InternalOnlyTooltip>
+															<span className="inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.08em] text-terminal-text/90">
+																<Lock size={10} />
+																{t('filters.internal')}
+															</span>
+														</InternalOnlyTooltip>
 													</span>
 												)}
-											</span>
-										</div>
+											</div>
+										)}
 										<div className="grow p-6">
 											<h2 className="mb-4 mt-0 text-xl font-bold text-terminal-lightGreen leading-tight">
 												{title}
