@@ -263,10 +263,6 @@
         "copyLink": "Copy link",
         "copied": "Copied",
         "backToEvents": "Back to all events",
-        "breadcrumbs": {
-            "home": "Home",
-            "events": "Events"
-        },
         "metadata": {
             "title": "Events - Neuland Ingolstadt",
             "description": "All Neuland events with filters for public/internal and upcoming/past.",
