@@ -350,7 +350,7 @@
         },
         "format": {
             "remote": "Remote",
-            "onsite": "On site",
+            "onsite": "On campus",
             "hybrid": "Hybrid"
         },
         "language": {
