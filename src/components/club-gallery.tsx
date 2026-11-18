@@ -2,6 +2,7 @@
 import { ImagePlus } from 'lucide-react'
 import { motion } from 'motion/react'
 import type React from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from '@/i18n/react'
 
 interface GalleryItem {
@@ -50,6 +51,35 @@ const ITEMS: GalleryItem[] = [
 	}
 ]
 
+// Fades the photo in once it has loaded, so it doesn't pop in mid-animation
+const GalleryImage: React.FC<{
+	src: string
+	alt: string
+	className?: string
+}> = ({ src, alt, className = '' }) => {
+	const ref = useRef<HTMLImageElement>(null)
+	const [loaded, setLoaded] = useState(false)
+
+	useEffect(() => {
+		// Cached images can finish loading before hydration
+		if (ref.current?.complete) setLoaded(true)
+	}, [])
+
+	return (
+		<img
+			ref={ref}
+			src={src}
+			alt={alt}
+			loading="lazy"
+			decoding="async"
+			onLoad={() => setLoaded(true)}
+			className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+				loaded ? 'opacity-100' : 'opacity-0'
+			} ${className}`}
+		/>
+	)
+}
+
 const ClubGallery: React.FC = () => {
 	const t = useTranslations('Home.gallerySection')
 
@@ -78,15 +108,14 @@ const ClubGallery: React.FC = () => {
 						whileInView={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5, delay: idx * 0.08 }}
 						viewport={{ once: true }}
-						className={`m-0 flex flex-col gap-3 border border-terminal-window-border bg-terminal-window p-3 transition-transform duration-300 hover:rotate-0 ${item.style}`}
+						className={`m-0 flex flex-col gap-3 border border-terminal-window-border bg-terminal-window p-3 transition-[rotate] duration-300 hover:rotate-0 ${item.style}`}
 					>
 						<div className="relative min-h-48 flex-1 overflow-hidden bg-terminal-bg">
 							{item.src ? (
-								<img
+								<GalleryImage
 									src={item.src}
 									alt={t(`items.${item.id}`)}
-									loading="lazy"
-									className={`absolute inset-0 h-full w-full object-cover ${item.focus ?? ''}`}
+									className={item.focus}
 								/>
 							) : (
 								<div className="absolute inset-0 flex flex-col items-center justify-center gap-2 border border-dashed border-terminal-window-border text-terminal-text/50">

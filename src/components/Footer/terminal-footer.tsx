@@ -32,7 +32,7 @@ const TerminalFooter: React.FC = () => {
 						className="no-underline"
 						aria-label="Neuland Ingolstadt"
 					>
-						<NeulandWordmark className="h-5 w-auto text-terminal-text" />
+						<NeulandWordmark className="h-4 w-auto text-terminal-text" />
 					</Link>
 					<div className="text-sm text-terminal-text/70">
 						© {currentYear} Neuland Ingolstadt e.V.
