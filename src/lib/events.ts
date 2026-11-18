@@ -27,58 +27,6 @@ export function getLocalizedEventDescription(event: Event, locale: string) {
 		: event.descriptionEn || event.descriptionDe || event.description
 }
 
-export function formatEventDateRange(
-	event: Event,
-	locale: string,
-	fallback = 'TBD'
-) {
-	const timestamp = getEventTimestamp(event)
-	if (!timestamp) return fallback
-
-	const start = new Date(timestamp)
-	const localeTag = getLocaleTag(locale)
-	const fullFormatter = new Intl.DateTimeFormat(localeTag, {
-		timeZone: EVENT_TIMEZONE,
-		day: '2-digit',
-		month: '2-digit',
-		year: 'numeric',
-		hour: '2-digit',
-		minute: '2-digit'
-	})
-	const timeFormatter = new Intl.DateTimeFormat(localeTag, {
-		timeZone: EVENT_TIMEZONE,
-		hour: '2-digit',
-		minute: '2-digit'
-	})
-	let label = fullFormatter.format(start)
-
-	if (!event.endDateTime) {
-		return label
-	}
-
-	const end = new Date(event.endDateTime)
-	if (Number.isNaN(end.getTime())) {
-		return label
-	}
-
-	const dayFormatter = new Intl.DateTimeFormat('en-CA', {
-		timeZone: EVENT_TIMEZONE,
-		year: 'numeric',
-		month: '2-digit',
-		day: '2-digit'
-	})
-	const startsAndEndsOnSameDay =
-		dayFormatter.format(start) === dayFormatter.format(end)
-
-	if (startsAndEndsOnSameDay) {
-		label += ` - ${timeFormatter.format(end)}`
-	} else {
-		label += ` - ${fullFormatter.format(end)}`
-	}
-
-	return label
-}
-
 /** Splits the event schedule into a date line and a time line. */
 export function formatEventDateAndTime(
 	event: Event,
