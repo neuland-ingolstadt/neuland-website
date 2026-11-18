@@ -1,11 +1,11 @@
 import type * as React from 'react'
 
-/** The "NEULAND" lettering of the logo, without the palm. */
+/** The "NEULAND" lettering of the logo including the trailing underscore, without the palm. */
 const NeulandWordmark = (props: React.SVGProps<SVGSVGElement>) => (
 	<svg
 		role="img"
 		aria-label="Neuland"
-		viewBox="91.5 36.8 193 20.5"
+		viewBox="91.5 36.8 216.5 20.5"
 		fill="currentColor"
 		xmlns="http://www.w3.org/2000/svg"
 		{...props}
@@ -17,6 +17,7 @@ const NeulandWordmark = (props: React.SVGProps<SVGSVGElement>) => (
 		<path d="m202.53 56.38h-4.57l8.33-16.67c0.88-1.75 2.49-2.42 5-2.42s4.07 0.67 4.92 2.42l8 16.67h-4.6l-7.21-15.09a1.14 1.14 0 0 0-1.16-0.63 1.22 1.22 0 0 0-1.19 0.63z" />
 		<path d="m232.72 56.38h-4.14v-15c0-2.45 1.75-4.09 5.44-4.09 3.31 0 4.78 1.34 5.77 3.48l6.92 12a1.64 1.64 0 0 0 1.51 0.78c0.88 0 1.41-0.41 1.41-1v-14.92h4.18v15c0 2.48-1.79 4.12-5.45 4.12-3.3 0-4.81-1.34-5.8-3.48l-6.92-12a1.48 1.48 0 0 0-1.47-0.81c-0.95 0-1.45 0.42-1.45 1.08z" />
 		<path d="m273.4 37.62h-11.93c-1.33 0-2 0.51-2 1.53v10.07h4.15v-8c0-0.25 0.14-0.33 0.46-0.33h9.29c4.6 0 6.53 1.8 6.53 6.08s-1.93 6.12-6.53 6.12h-13.9v1.74c0 1 0.64 1.54 2 1.54h11.93c7 0 10.68-3.06 10.68-9.37s-3.73-9.38-10.68-9.38z" />
+		<rect x={288.09} y={53.11} width={19.64} height={3.28} opacity={0.5} />
 	</svg>
 )
 
