@@ -42,7 +42,7 @@ export default function ClientIntro() {
 				</p>
 				<TypewriterText
 					text={t('typewriter')}
-					className="mx-auto max-w-3xl font-mono text-3xl font-bold leading-tight tracking-tight hyphens-none sm:text-5xl lg:text-6xl xl:text-7xl"
+					className="mx-auto max-w-3xl whitespace-pre-line font-mono text-3xl font-bold leading-tight tracking-tight hyphens-none sm:text-5xl lg:text-6xl xl:text-7xl"
 					delay={25}
 					preventLayoutJumps={true}
 				/>
