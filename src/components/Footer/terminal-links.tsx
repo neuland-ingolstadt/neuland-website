@@ -9,12 +9,6 @@ const TerminalLinks: React.FC = () => {
 		<nav>
 			<ul>
 				<li className="mb-2">
-					<Link href="/open-positions" className="text-terminal-text! group">
-						<span className="group-hover:animate-cyberpunk">$</span>{' '}
-						<span className="text-terminal-ink">cd</span> {t('team')}
-					</Link>
-				</li>
-				<li className="mb-2">
 					<Link href="/legal/satzung" className="text-terminal-text! group">
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
 						<span className="text-terminal-ink">cat</span> {t('bylaws')}

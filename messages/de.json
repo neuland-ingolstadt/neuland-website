@@ -179,7 +179,11 @@
         "privacyPolicyNeuland": "Datenschutz Neuland",
         "privacyPolicyWebsite": "Datenschutz Website",
         "legalNotice": "Impressum",
-        "team": "Mitmachen"
+        "headings": {
+            "club": "Verein",
+            "social": "Folge uns",
+            "dev": "Entwicklung"
+        }
     },
     "NotFound": {
         "description": "Die angeforderte Seite existiert nicht oder wurde verschoben. Bitte überprüfe die URL oder kehre zur Startseite zurück.",

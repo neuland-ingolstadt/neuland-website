@@ -6,7 +6,7 @@ const SettingsLinks: React.FC = () => {
 	return (
 		<nav>
 			<ul>
-				<li className="my-3 group">
+				<li className="mb-2 group">
 					<a
 						href="https://github.com/neuland-ingolstadt/neuland-website"
 						rel="noreferrer noopener"
@@ -20,7 +20,7 @@ const SettingsLinks: React.FC = () => {
 					</a>
 				</li>
 
-				<li className="mt-3 group">
+				<li className="mb-2 group">
 					<a
 						href="https://status.neuland.ing"
 						rel="noreferrer noopener"

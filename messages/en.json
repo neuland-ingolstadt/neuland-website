@@ -179,7 +179,11 @@
         "privacyPolicyNeuland": "Privacy Neuland",
         "privacyPolicyWebsite": "Privacy Website",
         "legalNotice": "Legal Notice",
-        "team": "Join"
+        "headings": {
+            "club": "Club",
+            "social": "Follow us",
+            "dev": "Development"
+        }
     },
     "NotFound": {
         "description": "The requested page does not exist or has been moved. Please check the URL or return to the homepage.",
