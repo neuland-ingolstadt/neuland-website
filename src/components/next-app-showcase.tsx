@@ -156,7 +156,7 @@ const NextAppShowcase = () => {
 									<h4 className="text-sm font-bold font-mono mb-4 text-terminal-ink uppercase tracking-wider">
 										{t('container.download')}
 									</h4>
-									<div className="flex flex-col sm:flex-row gap-3 mb-6">
+									<div className="flex flex-row flex-wrap items-center gap-3 mb-6">
 										<a
 											href="https://apps.apple.com/app/neuland-next/id1617096811"
 											rel="noreferrer noopener"
@@ -166,7 +166,7 @@ const NextAppShowcase = () => {
 											<img
 												src="/assets/app_store_badge_de.svg"
 												alt="Apple App Store"
-												className="h-12"
+												className="h-10 sm:h-12"
 											/>
 										</a>
 										<a
@@ -178,7 +178,7 @@ const NextAppShowcase = () => {
 											<img
 												src="/assets/play_store_badge_de.svg"
 												alt="Google Play Store"
-												className="h-12"
+												className="h-10 sm:h-12"
 											/>
 										</a>
 									</div>
