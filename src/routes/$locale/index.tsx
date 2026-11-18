@@ -33,7 +33,7 @@ function Index() {
 	const eventsData = Route.useLoaderData()
 
 	return (
-		<>
+		<div className="mx-auto max-w-6xl">
 			<ClientIntro />
 			<AboutUsSection />
 			<ClubGallery />
@@ -60,6 +60,6 @@ function Index() {
 				<TerminalPartners />
 			</TerminalSection>
 			<TerminalMembership />
-		</>
+		</div>
 	)
 }
