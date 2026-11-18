@@ -257,6 +257,8 @@
 @layer utilities {
 	html {
 		@apply scroll-smooth;
+		/* Elements that slide in from the side must not widen the page on mobile */
+		overflow-x: clip;
 	}
 }
 
