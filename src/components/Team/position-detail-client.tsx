@@ -7,6 +7,7 @@ import { badgeClass, StatusBadge } from '@/components/Team/position-card'
 import TerminalButton from '@/components/terminal-button'
 import { Link } from '@/i18n/navigation'
 import { resolveLocale, useLocale, useTranslations } from '@/i18n/react'
+import { copyToClipboard } from '@/lib/clipboard'
 import {
 	DISCORD_URL,
 	localize,
@@ -74,9 +75,7 @@ const useCopy = () => {
 
 	const copy = async (text: string) => {
 		let next: CopyState = 'copied'
-		try {
-			await navigator.clipboard.writeText(text)
-		} catch {
+		if (!(await copyToClipboard(text))) {
 			next = 'failed'
 		}
 		setState(next)

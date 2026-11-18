@@ -265,6 +265,7 @@
         "shareableHint": "Shareable URL:",
         "copyLink": "Copy link",
         "copied": "Copied",
+        "copyFailed": "Copy failed",
         "backToEvents": "Back to all events",
         "metadata": {
             "title": "Events - Neuland Ingolstadt",

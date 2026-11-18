@@ -265,6 +265,7 @@
         "shareableHint": "Teilbare URL:",
         "copyLink": "Link kopieren",
         "copied": "Kopiert",
+        "copyFailed": "Kopieren fehlgeschlagen",
         "backToEvents": "Zurück zu allen Events",
         "metadata": {
             "title": "Events - Neuland Ingolstadt",

@@ -1,9 +1,10 @@
 'use client'
 
-import { Check, Link2 } from 'lucide-react'
+import { Check, Link2, X } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import TerminalButton from '@/components/terminal-button'
 import { useTranslations } from '@/i18n/react'
+import { copyToClipboard } from '@/lib/clipboard'
 
 interface ShareEventLinkButtonProps {
 	url: string
@@ -11,25 +12,20 @@ interface ShareEventLinkButtonProps {
 
 const ShareEventLinkButton = ({ url }: ShareEventLinkButtonProps) => {
 	const t = useTranslations('Events')
-	const [copied, setCopied] = useState(false)
+	const [state, setState] = useState<'idle' | 'copied' | 'failed'>('idle')
 	const resetTimeoutRef = useRef<number | null>(null)
 
 	const handleCopy = useCallback(() => {
 		const copyUrl = async () => {
-			try {
-				await navigator.clipboard.writeText(url)
-				setCopied(true)
+			setState((await copyToClipboard(url)) ? 'copied' : 'failed')
 
-				if (resetTimeoutRef.current !== null) {
-					window.clearTimeout(resetTimeoutRef.current)
-				}
-
-				resetTimeoutRef.current = window.setTimeout(() => {
-					setCopied(false)
-				}, 1400)
-			} catch {
-				setCopied(false)
+			if (resetTimeoutRef.current !== null) {
+				window.clearTimeout(resetTimeoutRef.current)
 			}
+
+			resetTimeoutRef.current = window.setTimeout(() => {
+				setState('idle')
+			}, 1400)
 		}
 
 		void copyUrl()
@@ -45,8 +41,18 @@ const ShareEventLinkButton = ({ url }: ShareEventLinkButtonProps) => {
 
 	return (
 		<TerminalButton onClick={handleCopy}>
-			{copied ? <Check size={16} /> : <Link2 size={16} />}
-			{copied ? t('copied') : t('copyLink')}
+			{state === 'copied' ? (
+				<Check size={16} />
+			) : state === 'failed' ? (
+				<X size={16} />
+			) : (
+				<Link2 size={16} />
+			)}
+			{state === 'copied'
+				? t('copied')
+				: state === 'failed'
+					? t('copyFailed')
+					: t('copyLink')}
 		</TerminalButton>
 	)
 }
