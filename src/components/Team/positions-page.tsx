@@ -5,7 +5,6 @@ import {
 	Network,
 	Rocket,
 	Sparkles,
-	Terminal,
 	Users
 } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
@@ -179,34 +178,29 @@ const PositionsPage = () => {
 								<PositionCard position={position} />
 							</motion.div>
 						))}
+						{/* Filler card: join without a specific position */}
+						<div className="relative flex h-full flex-col border border-dashed border-terminal-text/30 bg-terminal-text/[0.06] p-5">
+							<h2 className="m-0 font-mono text-xl font-bold text-terminal-text">
+								{t('spontaneous.title')}
+							</h2>
+							<p className="mb-6 mt-3 grow text-base leading-relaxed text-terminal-text/70">
+								{t('spontaneous.description')}
+							</p>
+							<div className="flex flex-col gap-3">
+								<TerminalButton primary href="/#membership">
+									{t('spontaneous.ctaMembership')}
+								</TerminalButton>
+								<TerminalButton
+									href={DISCORD_URL}
+									target="_blank"
+									rel="noreferrer noopener"
+								>
+									{t('spontaneous.cta')}
+								</TerminalButton>
+							</div>
+						</div>
 					</div>
 				</AnimatePresence>
-
-				{/* Empty State */}
-				{filtered.length === 0 && (
-					<motion.div
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						className="relative bg-terminal-window border border-terminal-window-border overflow-hidden"
-					>
-						<div className="p-5 sm:p-8 font-mono">
-							<div className="flex items-center gap-2 text-terminal-ink mb-3">
-								<Terminal size={18} />
-								<span className="font-bold">{t('empty.title')}</span>
-							</div>
-							<p className="text-terminal-text/80 mb-6">
-								{t('empty.description')}
-							</p>
-							<TerminalButton
-								href={DISCORD_URL}
-								target="_blank"
-								rel="noreferrer noopener"
-							>
-								{t('empty.cta')}
-							</TerminalButton>
-						</div>
-					</motion.div>
-				)}
 			</div>
 
 			{/* FAQ */}
@@ -232,36 +226,6 @@ const PositionsPage = () => {
 					))}
 				</div>
 			</div>
-
-			{/* Join anytime / spontaneous application */}
-			<motion.div
-				initial={{ opacity: 0 }}
-				whileInView={{ opacity: 1 }}
-				transition={{ duration: 0.6 }}
-				viewport={{ once: true }}
-				className="max-w-6xl mx-auto mt-12 md:mt-16 p-8 md:p-12 border border-dashed border-terminal-text/30 bg-transparent"
-			>
-				<div className="text-center">
-					<h2 className="font-mono text-2xl font-bold mb-4 mt-0">
-						{t('spontaneous.title')}
-					</h2>
-					<p className="text-terminal-text/90 max-w-2xl mx-auto mb-6">
-						{t('spontaneous.description')}
-					</p>
-					<div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-						<TerminalButton primary href="/#membership">
-							{t('spontaneous.ctaMembership')}
-						</TerminalButton>
-						<TerminalButton
-							href={DISCORD_URL}
-							target="_blank"
-							rel="noreferrer noopener"
-						>
-							{t('spontaneous.cta')}
-						</TerminalButton>
-					</div>
-				</div>
-			</motion.div>
 		</div>
 	)
 }
