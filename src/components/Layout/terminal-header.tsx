@@ -270,6 +270,16 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 					isScrolled ? 'bg-terminal-bg' : 'bg-transparent'
 				}`}
 			>
+				{isPrideThemeEnabled && (
+					<div aria-hidden="true" className="flex h-0.5 w-full">
+						<div className="h-full w-1/6 bg-red-500" />
+						<div className="h-full w-1/6 bg-orange-500" />
+						<div className="h-full w-1/6 bg-yellow-400" />
+						<div className="h-full w-1/6 bg-green-500" />
+						<div className="h-full w-1/6 bg-blue-500" />
+						<div className="h-full w-1/6 bg-purple-500" />
+					</div>
+				)}
 				<div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-4 py-4 md:grid md:grid-cols-[1fr_auto_1fr] md:px-12 xl:px-20">
 					<div className="terminal-logo flex flex-col items-start">
 						<Link href="/" className="flex items-center no-underline">
@@ -277,16 +287,6 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 								<NeulandLogo className="h-9 w-auto text-terminal-text sm:h-10" />
 							</div>
 						</Link>
-						{isPrideThemeEnabled && (
-							<div className="mt-1 flex h-0.5 w-full overflow-hidden rounded">
-								<div className="h-full w-1/6 bg-red-500" />
-								<div className="h-full w-1/6 bg-orange-500" />
-								<div className="h-full w-1/6 bg-yellow-400" />
-								<div className="h-full w-1/6 bg-green-500" />
-								<div className="h-full w-1/6 bg-blue-500" />
-								<div className="h-full w-1/6 bg-purple-500" />
-							</div>
-						)}
 					</div>
 
 					{/* Desktop Navigation */}
