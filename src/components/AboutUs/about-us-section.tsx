@@ -135,7 +135,7 @@ const AboutUsSection: React.FC = () => {
 								whileInView={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.5, delay: idx * 0.1 }}
 								viewport={{ once: true }}
-								className="relative flex gap-4 overflow-hidden border border-terminal-windowTitle bg-terminal-window p-6"
+								className="relative flex gap-4 overflow-hidden border border-terminal-windowTitle bg-terminal-text/[0.06] p-6"
 							>
 								<div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3" />
 								<div className="relative z-10 flex gap-4">

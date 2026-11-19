@@ -453,14 +453,24 @@
 		-webkit-box-decoration-break: clone;
 	}
 	/* Hand-drawn stroke with ragged ends, stretched to the element's box */
-	:root[data-theme="light"] .marker,
-	:root[data-theme="light"] .marker-stroke {
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath fill='rgba(35,255,136,0.5)' d='M4 7 L40 4 L90 6 L150 3 L196 5 L191 10 L199 15 L192 21 L198 27 L193 33 L150 37 L90 35 L40 38 L7 36 L2 31 L8 26 L1 20 L7 14 L2 10 Z'/%3E%3C/svg%3E");
+	.marker,
+	.marker-stroke {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath fill='rgba(35,255,136,1)' d='M4 7 L40 4 L90 6 L150 3 L196 5 L191 10 L199 15 L192 21 L198 27 L193 33 L150 37 L90 35 L40 38 L7 36 L2 31 L8 26 L1 20 L7 14 L2 10 Z'/%3E%3C/svg%3E");
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
 	}
-	:root[data-theme="light"] .marker {
-		padding: 0.05em 0.5em;
+	.marker {
+		padding: 0.05em 0.7em;
+	}
+	/* On the solid neon stroke everything on top (text, icons) is black */
+	:root:not([data-theme="light"]) :is(.marker, .marker-stroke),
+	:root:not([data-theme="light"]) :is(.marker, .marker-stroke) * {
+		/* biome-ignore lint/complexity/noImportantStyles: must beat the utilities layer (text-terminal-*, group-hover) */
+		color: #000 !important;
+	}
+	:root[data-theme="light"] .marker,
+	:root[data-theme="light"] .marker-stroke {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath fill='rgba(35,255,136,0.5)' d='M4 7 L40 4 L90 6 L150 3 L196 5 L191 10 L199 15 L192 21 L198 27 L193 33 L150 37 L90 35 L40 38 L7 36 L2 31 L8 26 L1 20 L7 14 L2 10 Z'/%3E%3C/svg%3E");
 	}
 	.frame-line {
 		border-color: rgba(255, 255, 255, 0.5);
