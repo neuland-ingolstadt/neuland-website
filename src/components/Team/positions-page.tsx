@@ -171,14 +171,28 @@ const PositionsPage = () => {
 							</motion.div>
 						))}
 						{/* Filler card: join without a specific position */}
-						<div className="relative flex h-full flex-col border border-dashed border-terminal-text/30 bg-terminal-text/[0.06] p-5">
-							<h2 className="m-0 font-mono text-xl font-bold text-terminal-text">
+						<div className="relative flex h-full flex-col overflow-hidden border border-transparent bg-terminal-window p-5">
+							<svg
+								aria-hidden="true"
+								className="pointer-events-none absolute inset-0 h-full w-full text-terminal-text/30"
+							>
+								<rect
+									width="100%"
+									height="100%"
+									fill="none"
+									stroke="currentColor"
+									strokeWidth="2"
+									strokeDasharray="12 8"
+								/>
+							</svg>
+							<div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3" />
+							<h2 className="relative m-0 font-mono text-xl font-bold text-terminal-text">
 								{t('spontaneous.title')}
 							</h2>
-							<p className="mb-6 mt-3 grow text-base leading-relaxed text-terminal-text/70">
+							<p className="relative mb-6 mt-3 grow font-sans text-base leading-relaxed text-terminal-text/70">
 								{t('spontaneous.description')}
 							</p>
-							<div className="flex flex-col gap-3">
+							<div className="relative flex flex-col gap-3">
 								<TerminalButton
 									primary
 									href={DISCORD_URL}
