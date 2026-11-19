@@ -7,6 +7,8 @@ export const positionTeams = [
 	'development',
 	'design',
 	'events',
+	'hr',
+	'management',
 	'marketing',
 	'cybersecurity',
 	'sponsoring',

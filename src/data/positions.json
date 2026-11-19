@@ -1,132 +1,279 @@
 [
 	{
-		"id": "frontend-neuland-next",
+		"id": "developer-prototypen",
 		"jobId": "NL-ENG-001",
 		"language": "both",
 		"team": "development",
 		"status": "open",
-		"postedAt": "2026-11-03",
+		"postedAt": "2026-11-19",
 		"format": "hybrid",
-		"hoursPerWeek": { "min": 3, "max": 5 },
-		"projectId": "neuland-next",
-		"contact": { "name": "Max Mustermann", "role": "Teamleitung Entwicklung" },
+		"hoursPerWeek": {
+			"min": 1,
+			"max": 3
+		},
+		"contact": {
+			"name": "Nico Märtin",
+			"role": "Ressortleitung Engineering"
+		},
 		"title": {
-			"de": "Frontend-Entwicklung Neuland Next",
-			"en": "Frontend Development Neuland Next"
+			"de": "Developer für neue Prototypen",
+			"en": "Developer for new prototypes"
 		},
 		"shortDescription": {
-			"de": "Hilf uns, die Campus-App Neuland Next für tausende Studierende der THI weiterzuentwickeln.",
-			"en": "Help us improve the Neuland Next campus app for thousands of THI students."
+			"de": "Bring neue Ideen als Prototypen zum Laufen und finde mit uns heraus, welche davon ein echtes Projekt werden.",
+			"en": "Turn new ideas into working prototypes and help us find out which of them become real projects."
 		},
 		"tasks": {
 			"de": [
-				"Neue Features in React Native und TypeScript umsetzen",
-				"Bestehende Screens verbessern und Bugs beheben",
-				"Code-Reviews im Team durchführen",
-				"Zusammen mit dem Design-Team neue Oberflächen entwickeln"
+				"Ideen aus dem Verein in lauffähige Prototypen umsetzen",
+				"Technologien ausprobieren und Machbarkeit bewerten",
+				"Gemeinsam mit dem Design-Team Oberflächen entwickeln",
+				"Ergebnisse dem Team vorstellen und dokumentieren"
 			],
 			"en": [
-				"Build new features with React Native and TypeScript",
-				"Improve existing screens and fix bugs",
-				"Take part in code reviews",
-				"Work with the design team on new interfaces"
+				"Turn ideas from the club into working prototypes",
+				"Try out technologies and assess feasibility",
+				"Build interfaces together with the design team",
+				"Present and document your results to the team"
 			]
 		},
 		"requirements": {
 			"de": [
-				"Grundkenntnisse in JavaScript oder TypeScript",
-				"Lust, im Team an einem echten Produkt zu arbeiten",
-				"Interesse an mobiler Entwicklung"
+				"Grundkenntnisse in einer Programmiersprache",
+				"Lust, Neues auszuprobieren und im Team zu arbeiten"
 			],
 			"en": [
-				"Basic knowledge of JavaScript or TypeScript",
-				"Motivation to work on a real product as a team",
-				"Interest in mobile development"
+				"Basic knowledge of a programming language",
+				"Curiosity to try new things and to work in a team"
 			]
 		},
 		"niceToHave": {
 			"de": [
-				"Erfahrung mit React oder React Native",
-				"Erste Erfahrungen mit Git und Pull Requests"
+				"Erfahrung mit Git und Pull Requests",
+				"Erfahrung mit Web- oder Backend-Entwicklung"
 			],
 			"en": [
-				"Experience with React or React Native",
-				"First experience with Git and pull requests"
+				"Experience with Git and pull requests",
+				"Experience with web or backend development"
 			]
 		},
 		"benefits": {
 			"de": [
-				"Praxiserfahrung in einem echten Open-Source-Projekt",
-				"Dein Code wird von Studierenden täglich genutzt",
-				"Mentoring durch erfahrene Vereinsmitglieder"
+				"Freiheit bei Technologie und Ideen",
+				"Praxiserfahrung außerhalb der Vorlesung",
+				"Austausch mit erfahrenen Vereinsmitgliedern"
 			],
 			"en": [
-				"Hands-on experience in a real open-source project",
-				"Your code is used by students every day",
+				"Freedom in technology and ideas",
+				"Hands-on experience beyond lectures",
+				"Exchange with experienced members"
+			]
+		}
+	},
+	{
+		"id": "uiux-designer-prototypen",
+		"jobId": "NL-DES-001",
+		"language": "both",
+		"team": "design",
+		"status": "open",
+		"postedAt": "2026-11-19",
+		"format": "hybrid",
+		"hoursPerWeek": {
+			"min": 1,
+			"max": 3
+		},
+		"contact": {
+			"name": "Nico Märtin",
+			"role": "Ressortleitung Design & Marketing"
+		},
+		"title": {
+			"de": "UI/UX Designer für neue Prototypen",
+			"en": "UI/UX Designer for new prototypes"
+		},
+		"shortDescription": {
+			"de": "Gestalte Konzepte und Oberflächen für neue Projekte und mache Ideen schon vor der ersten Zeile Code erlebbar.",
+			"en": "Design concepts and interfaces for new projects and make ideas tangible before the first line of code."
+		},
+		"tasks": {
+			"de": [
+				"Konzepte, Wireframes und klickbare Prototypen erstellen",
+				"Mit den Developern an der Umsetzung zusammenarbeiten",
+				"Nutzerfeedback einholen und in das Design einfließen lassen",
+				"Ein einheitliches Erscheinungsbild für neue Projekte pflegen"
+			],
+			"en": [
+				"Create concepts, wireframes and clickable prototypes",
+				"Work with the developers on the implementation",
+				"Gather user feedback and feed it into the design",
+				"Maintain a consistent look for new projects"
+			]
+		},
+		"requirements": {
+			"de": [
+				"Grundkenntnisse in UI/UX-Design",
+				"Interesse, Ideen visuell auszuarbeiten"
+			],
+			"en": [
+				"Basic knowledge of UI/UX design",
+				"Interest in working out ideas visually"
+			]
+		},
+		"niceToHave": {
+			"de": ["Erfahrung mit Figma", "Erfahrung in Nutzerforschung"],
+			"en": ["Experience with Figma", "Experience in user research"]
+		},
+		"benefits": {
+			"de": [
+				"Eigene Entwürfe landen in echten Projekten",
+				"Portfolio-Arbeiten mit echten Nutzern",
+				"Enge Zusammenarbeit mit Developern"
+			],
+			"en": [
+				"Your designs end up in real projects",
+				"Portfolio work with real users",
+				"Close collaboration with developers"
+			]
+		}
+	},
+	{
+		"id": "infrastruktur-kubernetes",
+		"jobId": "NL-ENG-002",
+		"language": "both",
+		"team": "development",
+		"status": "open",
+		"postedAt": "2026-11-19",
+		"format": "remote",
+		"hoursPerWeek": {
+			"min": 1,
+			"max": 3
+		},
+		"contact": {
+			"name": "Nico Märtin",
+			"role": "Ressortleitung Engineering"
+		},
+		"title": {
+			"de": "Infrastruktur & Kubernetes",
+			"en": "Infrastructure & Kubernetes"
+		},
+		"shortDescription": {
+			"de": "Hilf uns, die Vereinsinfrastruktur zu betreiben und weiterzuentwickeln: von GitOps bis Monitoring.",
+			"en": "Help us run and improve the club's infrastructure, from GitOps to monitoring."
+		},
+		"tasks": {
+			"de": [
+				"Unseren Kubernetes-Cluster betreuen und weiterentwickeln",
+				"Deployments per GitOps mit Flux pflegen",
+				"Monitoring, Backups und Benachrichtigungen im Blick behalten",
+				"Dokumentation im Wiki aktuell halten"
+			],
+			"en": [
+				"Operate and improve our Kubernetes cluster",
+				"Maintain GitOps deployments with Flux",
+				"Keep an eye on monitoring, backups and alerts",
+				"Keep the documentation in the wiki up to date"
+			]
+		},
+		"requirements": {
+			"de": [
+				"Interesse an Linux, Containern und Infrastruktur",
+				"Bereitschaft, sich in neue Tools einzuarbeiten"
+			],
+			"en": [
+				"Interest in Linux, containers and infrastructure",
+				"Willingness to learn new tools"
+			]
+		},
+		"niceToHave": {
+			"de": [
+				"Erfahrung mit Docker oder Kubernetes",
+				"Grundkenntnisse in Netzwerken und CI/CD"
+			],
+			"en": [
+				"Experience with Docker or Kubernetes",
+				"Basic knowledge of networking and CI/CD"
+			]
+		},
+		"benefits": {
+			"de": [
+				"Praxis mit einer echten Produktivumgebung",
+				"Ausführliche Dokumentation für den Einstieg",
+				"Mentoring durch erfahrene Mitglieder"
+			],
+			"en": [
+				"Practice with a real production environment",
+				"Thorough documentation to get started",
 				"Mentoring from experienced members"
 			]
 		}
 	},
 	{
-		"id": "ux-ui-design",
-		"jobId": "NL-DES-001",
-		"language": "both",
-		"team": "design",
+		"id": "social-media-content",
+		"jobId": "NL-MKT-001",
+		"language": "de",
+		"team": "marketing",
 		"status": "open",
-		"postedAt": "2026-10-20",
+		"postedAt": "2026-11-19",
 		"format": "remote",
-		"hoursPerWeek": { "min": 2, "max": 4 },
-		"contact": { "name": "Erika Beispiel", "role": "Teamleitung Design" },
+		"hoursPerWeek": {
+			"min": 1,
+			"max": 3
+		},
+		"contact": {
+			"name": "Nico Märtin",
+			"role": "Ressortleitung Design & Marketing"
+		},
 		"title": {
-			"de": "UX/UI-Design",
-			"en": "UX/UI Design"
+			"de": "Social Media & Content",
+			"en": "Social Media & Content"
 		},
 		"shortDescription": {
-			"de": "Gestalte Oberflächen und Erlebnisse für unsere Apps, Website und Veranstaltungen.",
-			"en": "Shape interfaces and experiences for our apps, website and events."
+			"de": "Zeig, was bei Neuland passiert: mit Posts, Plakaten und Flyern, die neue Leute auf uns aufmerksam machen.",
+			"en": "Show what's happening at Neuland with posts, posters and flyers that put us on new people's radar."
 		},
 		"tasks": {
 			"de": [
-				"Wireframes und Prototypen in Figma erstellen",
-				"Das Neuland-Designsystem pflegen und erweitern",
-				"Nutzerfeedback sammeln und auswerten"
+				"Beiträge für Instagram und LinkedIn planen und veröffentlichen",
+				"Events und Projekte in Bild und Text begleiten",
+				"Plakate und Flyer mit dem Design-Team abstimmen",
+				"Den Redaktionsplan pflegen"
 			],
 			"en": [
-				"Create wireframes and prototypes in Figma",
-				"Maintain and extend the Neuland design system",
-				"Collect and evaluate user feedback"
+				"Plan and publish posts for Instagram and LinkedIn",
+				"Cover events and projects in images and text",
+				"Coordinate posters and flyers with the design team",
+				"Maintain the editorial calendar"
 			]
 		},
 		"requirements": {
 			"de": [
-				"Gespür für gute Gestaltung und Usability",
-				"Grundkenntnisse in Figma oder einem ähnlichen Tool"
+				"Spaß am Schreiben und an sozialen Medien",
+				"Zuverlässigkeit bei regelmäßigen Terminen"
 			],
 			"en": [
-				"A feel for good design and usability",
-				"Basic knowledge of Figma or a similar tool"
+				"Enjoy writing and social media",
+				"Reliability with regular deadlines"
 			]
 		},
 		"niceToHave": {
 			"de": [
-				"Erste Projekte oder ein kleines Portfolio",
-				"Grundkenntnisse in HTML und CSS"
+				"Erfahrung mit Foto, Video oder Bildbearbeitung",
+				"Erste Erfahrung mit Canva oder Figma"
 			],
 			"en": [
-				"First projects or a small portfolio",
-				"Basic knowledge of HTML and CSS"
+				"Experience with photo, video or image editing",
+				"First experience with Canva or Figma"
 			]
 		},
 		"benefits": {
 			"de": [
-				"Eigene Designs landen in echten Produkten",
-				"Feedback von Designern und Entwicklern",
-				"Flexible, remote Zeiteinteilung"
+				"Eigene Ideen direkt umsetzen",
+				"Reichweite für den Verein aufbauen",
+				"Erfahrung in Marketing und Kommunikation"
 			],
 			"en": [
-				"Your designs ship in real products",
-				"Feedback from designers and developers",
-				"Flexible, remote time management"
+				"Put your own ideas into practice right away",
+				"Build reach for the club",
+				"Experience in marketing and communications"
 			]
 		}
 	},
@@ -136,163 +283,290 @@
 		"language": "de",
 		"team": "events",
 		"status": "open",
-		"postedAt": "2026-10-12",
+		"postedAt": "2026-11-19",
 		"format": "onsite",
-		"hoursPerWeek": { "min": 2, "max": 6 },
-		"contact": { "name": "Jonas Probe", "role": "Teamleitung Events" },
+		"hoursPerWeek": {
+			"min": 1,
+			"max": 3
+		},
+		"contact": {
+			"name": "Felix Weber",
+			"role": "Ressortleitung Events"
+		},
 		"title": {
-			"de": "Event-Organisation",
+			"de": "Event-Orga",
 			"en": "Event Organization"
 		},
 		"shortDescription": {
-			"de": "Plane und betreue Workshops, Vorträge und Community-Treffen des Vereins.",
-			"en": "Plan and run the club's workshops, talks and community meetups."
+			"de": "Übernimm die Verantwortung für ein Event, vom Stammtisch bis zur LAN-Party, und werde Teil unseres Orga-Teams.",
+			"en": "Take charge of an event, from regular meetups to the LAN party, and join our organizing team."
 		},
 		"tasks": {
 			"de": [
-				"Veranstaltungen planen und Räume organisieren",
-				"Referentinnen und Referenten ansprechen",
-				"Events vor Ort betreuen",
-				"Ablauf und Aufgaben mit dem Team abstimmen"
+				"Ein Format als Hauptverantwortliche/r betreuen",
+				"Raum, Ankündigung und Ablauf organisieren",
+				"Planung und Ergebnis im Protokoll festhalten",
+				"Fotos machen und kurz über das Event berichten"
 			],
 			"en": [
-				"Plan events and organize rooms",
-				"Reach out to speakers",
-				"Look after events on site",
-				"Coordinate schedule and tasks with the team"
+				"Lead one event format",
+				"Organize room, announcement and schedule",
+				"Record planning and results in the event log",
+				"Take photos and report on the event"
 			]
 		},
 		"requirements": {
 			"de": [
-				"Zuverlässigkeit und Organisationstalent",
-				"Freude am Kontakt mit Menschen"
+				"Spaß daran, Leute zusammenzubringen",
+				"Verlässlichkeit bei Absprachen und Terminen"
 			],
 			"en": [
-				"Reliability and organizational skills",
-				"Enjoy working with people"
+				"Enjoy bringing people together",
+				"Reliability with agreements and dates"
 			]
 		},
 		"niceToHave": {
-			"de": ["Erfahrung in der Organisation von Veranstaltungen"],
-			"en": ["Experience organizing events"]
+			"de": [
+				"Erfahrung in der Organisation von Veranstaltungen",
+				"Ideen für neue Formate"
+			],
+			"en": ["Experience organizing events", "Ideas for new formats"]
 		},
 		"benefits": {
 			"de": [
-				"Wertvolle Organisations- und Teamerfahrung",
-				"Kontakte zu Unternehmen und Community",
-				"Ein starkes Team mit viel Spaß"
+				"Unterstützung, wenn du zum ersten Mal organisierst",
+				"Erfahrung in Projekt- und Eventmanagement",
+				"Menschen aus dem ganzen Verein kennenlernen"
 			],
 			"en": [
-				"Valuable organizational and teamwork experience",
-				"Contacts in companies and the community",
-				"A great team and lots of fun"
+				"Support if you organize for the first time",
+				"Experience in project and event management",
+				"Get to know people from across the club"
 			]
 		}
 	},
 	{
-		"id": "social-media-marketing",
-		"jobId": "NL-MKT-001",
+		"id": "hr-mitgliederbetreuung",
+		"jobId": "NL-HR-001",
 		"language": "de",
-		"team": "marketing",
+		"team": "hr",
 		"status": "open",
-		"postedAt": "2026-09-28",
-		"format": "remote",
-		"hoursPerWeek": { "min": 2, "max": 3 },
-		"contact": { "name": "Lena Muster", "role": "Teamleitung Marketing" },
+		"postedAt": "2026-11-19",
+		"format": "hybrid",
+		"hoursPerWeek": {
+			"min": 1,
+			"max": 3
+		},
+		"contact": {
+			"name": "Felix Weber",
+			"role": "Ressortleitung Management"
+		},
 		"title": {
-			"de": "Social Media & Marketing",
-			"en": "Social Media & Marketing"
+			"de": "Mitgliederbetreuung & HR",
+			"en": "Member Care & HR"
 		},
 		"shortDescription": {
-			"de": "Bringe Neuland auf Instagram, LinkedIn & Co. und erzähle die Geschichten unseres Vereins.",
-			"en": "Bring Neuland to Instagram, LinkedIn & co. and tell the stories of our club."
+			"de": "Begleite neue Mitglieder von der ersten Nachricht bis zum Einstieg ins Team.",
+			"en": "Guide new members from their first message to joining a team."
 		},
 		"tasks": {
 			"de": [
-				"Beiträge und Stories planen und erstellen",
-				"Events und Projekte begleiten und dokumentieren",
-				"Reichweite und Interaktionen auswerten"
+				"Neue Interessierte im Kennenlerngespräch begrüßen",
+				"Accounts und Zugänge für neue Mitglieder einrichten",
+				"Den monatlichen Onboarding-Call vorbereiten",
+				"Neue Mitglieder zum Stammtisch einladen"
 			],
 			"en": [
-				"Plan and create posts and stories",
-				"Accompany and document events and projects",
-				"Evaluate reach and engagement"
+				"Welcome newcomers in an introductory chat",
+				"Set up accounts and access for new members",
+				"Prepare the monthly onboarding call",
+				"Invite new members to the regular meetup"
 			]
 		},
 		"requirements": {
 			"de": [
-				"Sicherer Umgang mit Social-Media-Plattformen",
-				"Freude am Schreiben und Gestalten"
+				"Offene und zugängliche Art im Umgang mit Menschen",
+				"Zuverlässigkeit bei Rückmeldungen"
 			],
 			"en": [
-				"Confident use of social media platforms",
-				"Enjoy writing and creating"
+				"An open, approachable way with people",
+				"Reliability when following up"
 			]
 		},
 		"niceToHave": {
-			"de": ["Erfahrung mit Foto- oder Videobearbeitung"],
-			"en": ["Experience with photo or video editing"]
+			"de": [
+				"Erfahrung mit Mitgliederverwaltung",
+				"Interesse an Organisation und Prozessen"
+			],
+			"en": [
+				"Experience with membership management",
+				"Interest in organization and processes"
+			]
 		},
 		"benefits": {
 			"de": [
-				"Kreativer Freiraum für eigene Ideen",
-				"Referenzen für deinen Lebenslauf"
+				"Direkter Einfluss darauf, wie der Verein wächst",
+				"Erfahrung in Personal- und Teamarbeit",
+				"Viel Kontakt zu Mitgliedern aus allen Teams"
 			],
-			"en": ["Creative freedom for your own ideas", "References for your CV"]
+			"en": [
+				"Direct influence on how the club grows",
+				"Experience in HR and team work",
+				"Lots of contact with members from every team"
+			]
 		}
 	},
 	{
-		"id": "sponsoring-finanzen",
+		"id": "vereinsmanagement",
+		"jobId": "NL-MGT-001",
+		"language": "de",
+		"team": "management",
+		"status": "open",
+		"postedAt": "2026-11-19",
+		"format": "hybrid",
+		"hoursPerWeek": {
+			"min": 1,
+			"max": 3
+		},
+		"contact": {
+			"name": "Felix Weber",
+			"role": "Ressortleitung Management"
+		},
+		"title": {
+			"de": "Vereinsmanagement",
+			"en": "Club Management"
+		},
+		"shortDescription": {
+			"de": "Gestalte mit, wohin sich Neuland entwickelt: Entwickle Strategien, präge die Vision des Vereins und pflege den Kontakt zu unseren Partnern.",
+			"en": "Help shape where Neuland is heading: develop strategies, shape the club's vision and maintain relationships with our partners."
+		},
+		"tasks": {
+			"de": [
+				"Strategien und Ziele für die kommenden Semester mitentwickeln",
+				"Die Vision und das Selbstverständnis des Vereins mitgestalten",
+				"Kontakt zu Stakeholdern wie der THI, der Studierendenvertretung und Partnern pflegen",
+				"Meetings und Strategie-Termine vorbereiten und moderieren",
+				"Abläufe im Verein verbessern und Entscheidungen dokumentieren",
+				"Projekte und Ressorts miteinander vernetzen"
+			],
+			"en": [
+				"Help develop strategies and goals for the coming semesters",
+				"Help shape the club's vision and identity",
+				"Maintain relationships with stakeholders such as the university, the student council and partners",
+				"Prepare and moderate meetings and strategy sessions",
+				"Improve processes in the club and document decisions",
+				"Connect projects and departments with each other"
+			]
+		},
+		"requirements": {
+			"de": [
+				"Interesse daran, einen Verein strategisch weiterzuentwickeln",
+				"Strukturierte und zuverlässige Arbeitsweise",
+				"Offenes und sicheres Auftreten im Gespräch mit anderen"
+			],
+			"en": [
+				"Interest in developing a club strategically",
+				"A structured and reliable way of working",
+				"An open and confident manner when talking to others"
+			]
+		},
+		"niceToHave": {
+			"de": [
+				"Erfahrung in Vereins-, Projekt- oder Gremienarbeit",
+				"Erfahrung in Moderation oder Protokollführung"
+			],
+			"en": [
+				"Experience in club, project or committee work",
+				"Experience in moderation or minute-taking"
+			]
+		},
+		"benefits": {
+			"de": [
+				"Direkter Einfluss auf die Zukunft des Vereins",
+				"Erfahrung in Führung, Strategie und Organisation",
+				"Kontakte zu Hochschule und Unternehmen aus der Region"
+			],
+			"en": [
+				"Direct influence on the club's future",
+				"Experience in leadership, strategy and organization",
+				"Contacts at the university and with regional companies"
+			]
+		}
+	},
+	{
+		"id": "sponsoren-akquise",
 		"jobId": "NL-SPO-001",
 		"language": "de",
 		"team": "sponsoring",
-		"status": "filled",
-		"postedAt": "2026-08-15",
+		"status": "open",
+		"postedAt": "2026-11-19",
 		"format": "hybrid",
-		"hoursPerWeek": { "min": 2, "max": 4 },
-		"contact": { "name": "Paul Platzhalter", "role": "Vorstand Finanzen" },
+		"hoursPerWeek": {
+			"min": 1,
+			"max": 3
+		},
+		"contact": {
+			"name": "Felix Weber",
+			"role": "Ressortleitung Management"
+		},
 		"title": {
-			"de": "Sponsoring & Finanzen",
-			"en": "Sponsoring & Finance"
+			"de": "Sponsoren-Akquise",
+			"en": "Sponsor Acquisition"
 		},
 		"shortDescription": {
-			"de": "Unterstütze uns bei der Suche nach Sponsoren und bei der Verwaltung der Vereinsfinanzen.",
-			"en": "Help us find sponsors and manage the club's finances."
+			"de": "Finde Unternehmen, die zu uns passen, und sichere mit ihnen die Unterstützung für Events, Projekte und Infrastruktur von Neuland.",
+			"en": "Find companies that fit us and secure their support for Neuland's events, projects and infrastructure."
 		},
 		"tasks": {
 			"de": [
-				"Unternehmen für Kooperationen ansprechen",
-				"Sponsoring-Angebote pflegen",
-				"Einnahmen und Ausgaben mit dem Vorstand abstimmen"
+				"Passende Unternehmen aus der Region und der Tech-Branche recherchieren",
+				"Unternehmen ansprechen und Kooperationen anbahnen",
+				"Sponsoring-Pakete und Unterlagen pflegen",
+				"Bestehende Partner betreuen und regelmäßig auf dem Laufenden halten",
+				"Kontakte und Gespräche übersichtlich dokumentieren",
+				"Gemeinsam mit dem Vorstand Konditionen und Verträge abstimmen"
 			],
 			"en": [
-				"Approach companies for partnerships",
-				"Maintain sponsoring offers",
-				"Coordinate income and expenses with the board"
+				"Research suitable companies from the region and the tech industry",
+				"Approach companies and initiate partnerships",
+				"Maintain sponsorship packages and materials",
+				"Look after existing partners and keep them updated",
+				"Document contacts and conversations clearly",
+				"Agree on terms and contracts together with the board"
 			]
 		},
 		"requirements": {
 			"de": [
-				"Sorgfältige und zuverlässige Arbeitsweise",
-				"Sicheres Auftreten im Kontakt mit Unternehmen"
+				"Sicheres und freundliches Auftreten im Kontakt mit Unternehmen",
+				"Zuverlässigkeit bei Absprachen und Nachfassen",
+				"Interesse an Vertrieb, Networking und Partnerschaften"
 			],
 			"en": [
-				"Careful and reliable way of working",
-				"Confident when dealing with companies"
+				"A confident and friendly manner when dealing with companies",
+				"Reliability with agreements and follow-ups",
+				"Interest in sales, networking and partnerships"
 			]
 		},
 		"niceToHave": {
-			"de": ["Grundkenntnisse in Buchhaltung"],
-			"en": ["Basic knowledge of bookkeeping"]
+			"de": [
+				"Erste Erfahrung in Vertrieb, Sponsoring oder Fundraising",
+				"Kontakte zu Unternehmen in der Region"
+			],
+			"en": [
+				"First experience in sales, sponsorship or fundraising",
+				"Contacts at companies in the region"
+			]
 		},
 		"benefits": {
 			"de": [
-				"Einblick in die Vorstandsarbeit eines Vereins",
-				"Netzwerk zu regionalen Unternehmen"
+				"Direkter Beitrag dazu, dass Events und Projekte finanziert werden",
+				"Netzwerk zu Unternehmen aus der Region",
+				"Erfahrung in Vertrieb und Verhandlung"
 			],
 			"en": [
-				"Insight into how a club board works",
-				"Network with regional companies"
+				"Directly helps fund events and projects",
+				"Network with companies from the region",
+				"Experience in sales and negotiation"
 			]
 		}
 	}
