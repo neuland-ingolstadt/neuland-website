@@ -51,7 +51,7 @@
     "tailwind-merge": "3.7.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.7",
+    "@biomejs/biome": "2.6.8",
     "@content-collections/cli": "0.1.9",
     "@content-collections/core": "0.15.3",
     "@content-collections/markdown": "0.1.4",
