@@ -46,14 +46,6 @@ function TagsIndexPage() {
 				<BreadcrumbList className="flex items-center">
 					<BreadcrumbItem className="flex items-center">
 						<BreadcrumbLink asChild className="flex items-center">
-							<Link href="/" className="flex items-center">
-								Home
-							</Link>
-						</BreadcrumbLink>
-					</BreadcrumbItem>
-					<BreadcrumbSeparator className="mx-1 flex items-center" />
-					<BreadcrumbItem className="flex items-center">
-						<BreadcrumbLink asChild className="flex items-center">
 							<Link href="/blog" className="flex items-center">
 								Blog
 							</Link>
@@ -67,7 +59,7 @@ function TagsIndexPage() {
 			</Breadcrumb>
 
 			<h1 className="mt-4 mb-2 text-3xl font-bold ">Blog Tags</h1>
-			<p className="text-terminal-text/70 mb-8">
+			<p className="text-terminal-text/85 mb-8">
 				{t('searchAllTags', { numberOfTags: sortedTags.length })}
 			</p>
 
@@ -85,36 +77,18 @@ function TagsIndexPage() {
 								{/* Subtle background effect */}
 								<div className="from-terminal-cyan/1 via-transparent to-terminal-cyan/3 pointer-events-none absolute inset-0 bg-gradient-to-br" />
 
-								{/* Corner accent brackets */}
-								<div className="top-0 left-0 absolute h-8 w-8">
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 top-0 left-0 absolute h-px w-4 transition-colors duration-200" />
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 top-0 left-0 absolute h-4 w-px transition-colors duration-200" />
-								</div>
-								<div className="top-0 right-0 absolute h-8 w-8">
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 top-0 right-0 absolute h-px w-4 transition-colors duration-200" />
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 top-0 right-0 absolute h-4 w-px transition-colors duration-200" />
-								</div>
-								<div className="bottom-0 left-0 absolute h-8 w-8">
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 bottom-0 left-0 absolute h-px w-4 transition-colors duration-200" />
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 bottom-0 left-0 absolute h-4 w-px transition-colors duration-200" />
-								</div>
-								<div className="bottom-0 right-0 absolute h-8 w-8">
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 bottom-0 right-0 absolute h-px w-4 transition-colors duration-200" />
-									<div className="bg-terminal-cyan/30 group-hover:bg-terminal-cyan/50 bottom-0 right-0 absolute h-4 w-px transition-colors duration-200" />
-								</div>
-
 								<div className="relative z-10 flex min-w-0 flex-1 items-center">
 									<Badge
 										variant="outline"
-										className="text-terminal-text/70 group-hover:border-terminal-highlight/40 mr-3 border-terminal-window-border bg-terminal-card px-2 py-0.5 text-sm transition-colors duration-200"
+										className="text-terminal-text/85 group-hover:border-terminal-highlight/40 mr-3 border-terminal-window-border bg-terminal-card px-2 py-0.5 text-sm transition-colors duration-200"
 									>
 										{displayTag}
 									</Badge>
-									<span className="text-terminal-text/70 group-hover:text-terminal-text text-sm transition-colors duration-200">
+									<span className="text-terminal-text/85 group-hover:text-terminal-text text-sm transition-colors duration-200">
 										{t('amountPosts', { numberOfPosts: count })}
 									</span>
 								</div>
-								<span className="text-terminal-text/60 group-hover:text-terminal-cyan relative z-10 flex items-center gap-1 text-xs transition-colors duration-200">
+								<span className="text-terminal-text/80 group-hover:text-terminal-ink relative z-10 flex items-center gap-1 text-xs transition-colors duration-200">
 									{t('display')}
 									<span className="inline-block transition-transform duration-200 group-hover:translate-x-1">
 										→

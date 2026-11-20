@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { allPosts } from 'content-collections'
 import type { ProjectDetails } from '@/components/Projects/project-card'
 import projectsData from '@/data/projects.json'
+import { positions } from '@/lib/positions'
 
 type SitemapEntry = {
 	url: string
@@ -42,6 +43,12 @@ function buildSitemap(): string {
 			lastModified: now,
 			changeFrequency: 'weekly',
 			priority: 0.8
+		},
+		{
+			url: `${baseUrl}/open-positions`,
+			lastModified: now,
+			changeFrequency: 'weekly',
+			priority: 0.7
 		},
 		{
 			url: `${baseUrl}/events`,
@@ -87,7 +94,20 @@ function buildSitemap(): string {
 		})
 	)
 
-	const entries = [...staticPages, ...blogPosts, ...projectPages]
+	// Team positions
+	const positionPages: SitemapEntry[] = positions.map((position) => ({
+		url: `${baseUrl}/open-positions/${position.id}`,
+		lastModified: new Date(position.postedAt).toISOString(),
+		changeFrequency: 'monthly',
+		priority: 0.5
+	}))
+
+	const entries = [
+		...staticPages,
+		...blogPosts,
+		...projectPages,
+		...positionPages
+	]
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

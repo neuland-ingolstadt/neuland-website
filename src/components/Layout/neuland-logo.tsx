@@ -2,7 +2,7 @@ import type * as React from 'react'
 
 const NeulandLogo = (props: React.SVGProps<SVGSVGElement>) => (
 	<svg
-		width={150.73}
+		width={307.73}
 		height={95.04}
 		role="img"
 		aria-label="Neuland Ingolstadt e.V. Logo"

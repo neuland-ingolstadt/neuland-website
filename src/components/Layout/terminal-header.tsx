@@ -1,24 +1,10 @@
 'use client'
 
-import { useLocation } from '@tanstack/react-router'
-import { Menu } from 'lucide-react'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
 import type React from 'react'
-import { useEffect, useRef } from 'react'
-import {
-	Sidebar,
-	SidebarContent,
-	SidebarFooter,
-	SidebarGroup,
-	SidebarGroupContent,
-	SidebarHeader,
-	SidebarMenu,
-	SidebarMenuButton,
-	SidebarMenuItem,
-	SidebarProvider,
-	useSidebar
-} from '@/components/ui/sidebar'
-import { useBackground } from '@/contexts/BackgroundContext'
-import { Link } from '@/i18n/navigation'
+import { useEffect, useRef, useState } from 'react'
+import { Sidebar, SidebarProvider, useSidebar } from '@/components/ui/sidebar'
+import { Link, usePathname, useRouter } from '@/i18n/navigation'
 import { useTranslations } from '@/i18n/react'
 import LanguageToggle from './language-toggle'
 import NeulandLogo from './neuland-logo'
@@ -28,13 +14,9 @@ const useNavigation = () => {
 	const t = useTranslations('Navigation')
 
 	const navLinks = [
-		{
-			name: t('becomeMember'),
-			href: '/#membership',
-			external: false
-		},
 		{ name: t('events'), href: '/events', external: false },
 		{ name: t('projects'), href: '/projects', external: false },
+		{ name: t('team'), href: '/open-positions', external: false },
 		{ name: t('blog'), href: '/blog', external: false },
 		{
 			name: t('login'),
@@ -45,6 +27,9 @@ const useNavigation = () => {
 
 	return navLinks
 }
+
+const mobileLinkClass =
+	'flex items-center justify-between gap-3 py-2 font-semibold leading-tight tracking-tight no-underline transition-opacity duration-150 after:hidden hover:opacity-60 active:opacity-50'
 
 interface NavLinkProps {
 	link: {
@@ -66,7 +51,7 @@ const DesktopNavLink: React.FC<NavLinkProps> = ({ link, className }) => {
 				className={`${className ?? ''} relative group no-underline`}
 			>
 				{link.name}
-				<span className="absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-terminal-cyan transition-transform duration-300 group-hover:scale-x-100" />
+				<span className="absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-terminal-cyan [:root[data-theme=light]_&]:bg-black transition-transform duration-300 group-hover:scale-x-100" />
 			</a>
 		)
 	}
@@ -77,14 +62,16 @@ const DesktopNavLink: React.FC<NavLinkProps> = ({ link, className }) => {
 			className={`${className ?? ''} relative group no-underline`}
 		>
 			{link.name}
-			<span className="absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-terminal-cyan transition-transform duration-300 group-hover:scale-x-100" />
+			<span className="absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-terminal-cyan [:root[data-theme=light]_&]:bg-black transition-transform duration-300 group-hover:scale-x-100" />
 		</Link>
 	)
 }
 
 const MobileSidebar: React.FC = () => {
-	const pathname = useLocation({ select: (location) => location.pathname })
+	const pathname = usePathname()
 	const { isMobile, setOpenMobile } = useSidebar()
+
+	const router = useRouter()
 
 	const handleNavigation = () => {
 		if (isMobile) {
@@ -92,66 +79,132 @@ const MobileSidebar: React.FC = () => {
 		}
 	}
 
+	// Start the route change only after the exit animation has finished, so
+	// rendering the next page doesn't compete with it for the main thread
+	const handleInternalNavigation = (
+		event: React.MouseEvent<HTMLAnchorElement>,
+		href: string
+	) => {
+		if (
+			event.button !== 0 ||
+			event.metaKey ||
+			event.ctrlKey ||
+			event.shiftKey ||
+			event.altKey
+		) {
+			return
+		}
+		event.preventDefault()
+		const sheet = document.querySelector('[data-slot="sheet-content"]')
+		handleNavigation()
+		if (
+			!sheet ||
+			window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		) {
+			router.push(href)
+			return
+		}
+		let navigated = false
+		const go = () => {
+			if (navigated) return
+			navigated = true
+			router.push(href)
+		}
+		sheet.addEventListener('animationend', go, { once: true })
+		window.setTimeout(go, 400)
+	}
+
+	const t = useTranslations('Navigation')
 	const navLinks = useNavigation()
+	const pageLinks = [
+		{ name: t('home'), href: '/', external: false },
+		...navLinks.filter((link) => !link.external)
+	]
+	const loginLink = navLinks.find((link) => link.external)
 
 	return (
 		<Sidebar variant="sidebar" side="bottom">
-			<SidebarHeader>
-				{/* Mobile bottom sheet handle */}
-				<div className="flex justify-center py-2 md:hidden">
-					<div className="h-1 w-8 rounded-full bg-muted-foreground/30" />
+			<div className="flex h-full w-full flex-col font-mono">
+				{/* Same bar as the navbar, so logo and button don't move */}
+				<div className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-6 px-4 py-4">
+					<Link
+						href="/"
+						onClick={(event) => handleInternalNavigation(event, '/')}
+						className="flex items-center no-underline"
+					>
+						<NeulandLogo className="h-9 w-auto text-terminal-text sm:h-10" />
+					</Link>
+					<button
+						type="button"
+						onClick={() => setOpenMobile(false)}
+						aria-label="Close navigation"
+						className="header-icon-btn relative inline-flex h-10 w-10 cursor-pointer select-none items-center justify-center border border-terminal-window-border bg-terminal-bg text-terminal-text"
+					>
+						<X className="h-4 w-4 text-terminal-text/85" />
+					</button>
 				</div>
-			</SidebarHeader>
 
-			<SidebarContent>
-				<SidebarGroup className="px-2 pb-2">
-					<SidebarGroupContent>
-						<SidebarMenu>
-							{navLinks.map((item) => (
-								<SidebarMenuItem key={item.name}>
-									<SidebarMenuButton
-										asChild
-										isActive={
-											item.href.startsWith('http')
-												? false
-												: pathname === item.href.replace('/#membership', '/')
-										}
-										size="lg"
-										className="no-underline font-mono text-base font-normal text-terminal-text/80 hover:bg-terminal-window/30 hover:text-terminal-cyan data-[active=true]:bg-terminal-window/60 data-[active=true]:text-terminal-cyan"
-									>
-										{item.external ? (
-											<a
-												href={item.href}
-												target="_blank"
-												rel="noreferrer noopener"
-												onClick={handleNavigation}
-											>
-												<span>{item.name}</span>
-											</a>
-										) : (
-											<Link href={item.href} onClick={handleNavigation}>
-												<span>{item.name}</span>
-											</Link>
-										)}
-									</SidebarMenuButton>
-								</SidebarMenuItem>
-							))}
-						</SidebarMenu>
-					</SidebarGroupContent>
-				</SidebarGroup>
-			</SidebarContent>
+				<div className="sheet-body flex flex-1 flex-col">
+					<nav className="flex flex-1 flex-col justify-start gap-1 px-6 pt-8">
+						{pageLinks.map((item) => {
+							const isActive = pathname === item.href
+							return (
+								<Link
+									key={item.name}
+									href={item.href}
+									onClick={(event) =>
+										handleInternalNavigation(event, item.href)
+									}
+									aria-current={isActive ? 'page' : undefined}
+									className={`${mobileLinkClass} text-4xl ${
+										isActive ? 'text-terminal-ink' : 'text-terminal-text'
+									}`}
+								>
+									{item.name}
+								</Link>
+							)
+						})}
+						{loginLink && (
+							<>
+								<div
+									aria-hidden="true"
+									className="my-3 border-t border-terminal-window-border"
+								/>
+								<a
+									href={loginLink.href}
+									target="_blank"
+									rel="noreferrer noopener"
+									onClick={handleNavigation}
+									className={`${mobileLinkClass} text-4xl text-terminal-text/60`}
+								>
+									{t('connectLogin')}
+									<ArrowUpRight
+										className="h-6 w-6 shrink-0"
+										aria-hidden="true"
+									/>
+								</a>
+							</>
+						)}
+					</nav>
 
-			<SidebarFooter className="border-t border-terminal-window-border/70 bg-terminal-bg/95 px-4 py-3">
-				<div className="flex items-center justify-between gap-4 text-xs text-terminal-text/60">
-					<div className="flex items-center gap-2">
-						<span className="uppercase tracking-[0.18em] text-[0.65rem] text-terminal-text/70">
-							Theme
-						</span>
-						<ThemeToggleMobile />
+					<div className="flex flex-col gap-5 px-6 pb-6">
+						<div className="flex items-center justify-between gap-4 text-xs text-terminal-text/80">
+							<div className="flex items-center gap-2">
+								<span className="font-mono text-xs font-normal uppercase tracking-wider text-terminal-text/60">
+									Theme
+								</span>
+								<ThemeToggleMobile />
+							</div>
+							<div className="flex items-center gap-2">
+								<span className="font-mono text-xs font-normal uppercase tracking-wider text-terminal-text/60">
+									Language
+								</span>
+								<LanguageToggle />
+							</div>
+						</div>
 					</div>
-					<LanguageToggle />
 				</div>
-			</SidebarFooter>
+			</div>
 		</Sidebar>
 	)
 }
@@ -164,20 +217,10 @@ const MobileSidebarTrigger: React.FC = () => {
 			type="button"
 			onClick={toggleSidebar}
 			aria-label="Open navigation"
-			className="relative inline-flex h-8 w-8 items-center justify-center rounded-md border border-terminal-window-border/70 bg-terminal-bg/30 backdrop-blur-sm shadow-sm cursor-pointer select-none group overflow-hidden text-terminal-text"
+			className="header-icon-btn relative inline-flex h-10 w-10 items-center md:h-8 md:w-8 justify-center border border-terminal-window-border bg-terminal-bg cursor-pointer select-none group overflow-hidden text-terminal-text"
 		>
-			<div className="pointer-events-none absolute inset-0">
-				<div className="absolute left-0 top-0 h-3 w-3">
-					<div className="absolute left-0 top-0 h-px w-2 bg-terminal-cyan/40" />
-					<div className="absolute left-0 top-0 h-2 w-px bg-terminal-cyan/40" />
-				</div>
-				<div className="absolute bottom-0 right-0 h-3 w-3">
-					<div className="absolute bottom-0 right-0 h-px w-2 bg-terminal-cyan/30" />
-					<div className="absolute bottom-0 right-0 h-2 w-px bg-terminal-cyan/30" />
-				</div>
-			</div>
 			<div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-terminal-cyan/0 via-terminal-cyan/12 to-terminal-cyan/0 opacity-0 transition-opacity duration-250 group-hover:opacity-100" />
-			<span className="relative z-10 text-terminal-text/70">
+			<span className="relative z-10 text-terminal-text/85">
 				<Menu className="h-4 w-4" />
 			</span>
 		</button>
@@ -192,7 +235,14 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 	isPrideThemeEnabled = false
 }) => {
 	const headerRef = useRef<HTMLElement>(null)
-	const { triggerCrossesRotation } = useBackground()
+	const [isScrolled, setIsScrolled] = useState(false)
+
+	useEffect(() => {
+		const onScroll = () => setIsScrolled(window.scrollY > 8)
+		onScroll()
+		window.addEventListener('scroll', onScroll, { passive: true })
+		return () => window.removeEventListener('scroll', onScroll)
+	}, [])
 
 	// Dynamically set --navbar-height on the document root for robust layout
 	useEffect(() => {
@@ -216,46 +266,46 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 		<SidebarProvider>
 			<header
 				ref={headerRef}
-				className="terminal-nav fixed top-0 left-0 right-0 z-50 border-b border-terminal-window-border/80 bg-terminal-bg/80 py-3 backdrop-blur-md"
+				className={`terminal-nav fixed top-0 left-0 right-0 z-50 transition-[background-color] duration-300 ${
+					isScrolled ? 'bg-terminal-bg' : 'bg-transparent'
+				}`}
 			>
-				<div className="container mx-auto flex items-center justify-between px-4 py-1 sm:px-6">
+				{isPrideThemeEnabled && (
+					<div aria-hidden="true" className="flex h-0.5 w-full">
+						<div className="h-full w-1/6 bg-red-500" />
+						<div className="h-full w-1/6 bg-orange-500" />
+						<div className="h-full w-1/6 bg-yellow-400" />
+						<div className="h-full w-1/6 bg-green-500" />
+						<div className="h-full w-1/6 bg-blue-500" />
+						<div className="h-full w-1/6 bg-purple-500" />
+					</div>
+				)}
+				<div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-4 py-4 md:grid md:grid-cols-[1fr_auto_1fr] md:px-12 xl:px-20">
 					<div className="terminal-logo flex flex-col items-start">
-						<Link
-							href="/"
-							className="flex items-center no-underline"
-							onMouseEnter={triggerCrossesRotation}
-						>
+						<Link href="/" className="flex items-center no-underline">
 							<div className="logo">
-								<NeulandLogo className="h-10 text-terminal-text" />
+								<NeulandLogo className="h-9 w-auto text-terminal-text sm:h-10" />
 							</div>
 						</Link>
-						{isPrideThemeEnabled && (
-							<div className="mt-1 flex h-0.5 w-full overflow-hidden rounded">
-								<div className="h-full w-1/6 bg-red-500" />
-								<div className="h-full w-1/6 bg-orange-500" />
-								<div className="h-full w-1/6 bg-yellow-400" />
-								<div className="h-full w-1/6 bg-green-500" />
-								<div className="h-full w-1/6 bg-blue-500" />
-								<div className="h-full w-1/6 bg-purple-500" />
-							</div>
-						)}
 					</div>
 
 					{/* Desktop Navigation */}
-					<nav className="hidden items-center gap-6 md:flex">
+					<nav className="hidden items-center gap-8 md:flex">
 						{navLinks.map((link) => (
 							<DesktopNavLink
 								key={link.name}
 								link={link}
-								className="tracking-wider text-terminal-text font-mono font-normal transition-colors hover:text-terminal-cyan"
+								className="font-mono text-sm font-normal uppercase tracking-wide text-terminal-text transition-colors hover:text-terminal-ink"
 							/>
 						))}
-						<ThemeToggle />
-						<LanguageToggle />
 					</nav>
 
-					{/* Mobile Menu Button (Sidebar trigger) */}
-					<div className="flex items-center md:hidden">
+					<div className="hidden items-center justify-end gap-3 md:flex">
+						<ThemeToggle />
+						<LanguageToggle />
+					</div>
+
+					<div className="flex items-center gap-3 md:hidden">
 						<MobileSidebarTrigger />
 					</div>
 				</div>

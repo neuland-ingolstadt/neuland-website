@@ -32,7 +32,7 @@ const CalendarModal: React.FC<CalendarModalProps> = ({
 
 		return () => {
 			document.removeEventListener('keydown', handleEscKey)
-			document.body.style.overflow = 'auto'
+			document.body.style.overflow = ''
 		}
 	}, [isOpen, onClose])
 
@@ -70,13 +70,6 @@ const CalendarModal: React.FC<CalendarModalProps> = ({
 					aria-modal="true"
 					aria-labelledby="calendar-modal-title"
 				>
-					{/* Corner accent brackets - pointer-events-none added for safety */}
-					<div className="absolute top-0 left-0 w-12 h-12 pointer-events-none">
-						<div className="absolute top-0 left-0 w-6 h-px bg-terminal-cyan/30" />
-						<div className="absolute top-0 left-0 w-px h-6 bg-terminal-cyan/30" />
-					</div>
-					{/* ... other corners (keep them as they were) ... */}
-
 					<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none" />
 
 					{/* Header */}
@@ -89,7 +82,7 @@ const CalendarModal: React.FC<CalendarModalProps> = ({
 						</div>
 						<button
 							onClick={onClose}
-							className="ml-4 p-1 text-terminal-text/70 hover:text-terminal-text"
+							className="ml-4 p-1 text-terminal-text/85 hover:text-terminal-text"
 							aria-label="Close"
 							type="button"
 						>
@@ -104,10 +97,10 @@ const CalendarModal: React.FC<CalendarModalProps> = ({
 						{/* Shared component used here */}
 						<TerminalCopyField value={icalUrl} />
 
-						<h3 className="text-lg text-terminal-cyan my-3 font-semibold">
+						<h3 className="text-lg text-terminal-ink my-3 font-semibold">
 							{t('tutorialTitle')}
 						</h3>
-						<ul className="list-disc list-inside space-y-2 mb-0 text-terminal-text/70">
+						<ul className="list-disc list-inside space-y-2 mb-0 text-terminal-text/85">
 							<li>{t('tutorialLine1')}</li>
 							<li>{t('tutorialLine2')}</li>
 							<li>{t('tutorialLine3')}</li>

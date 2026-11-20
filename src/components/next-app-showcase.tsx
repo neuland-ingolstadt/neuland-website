@@ -1,115 +1,20 @@
 'use client'
 import {
 	ArrowUpRight,
-	Bell,
-	BookOpen,
-	Calendar,
-	ForkKnife,
 	Globe,
 	Laptop,
-	MapPin,
 	Shield,
 	TrendingUp,
-	Users,
 	Zap
 } from 'lucide-react'
-import { AnimatePresence, motion, type Variants } from 'motion/react'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { motion } from 'motion/react'
 import { GithubIcon } from '@/components/icons/brand-icons'
 import { useTranslations } from '@/i18n/react'
-import FeatureItem from './feature-item'
+import NoiseOverlay from './noise-overlay'
 import TerminalButton from './terminal-button'
 
 const NextAppShowcase = () => {
-	const phoneRef = useRef<HTMLDivElement>(null)
-	const [activeIndex, setActiveIndex] = useState(0)
-	const screenshots = [
-		'/assets/neuland-next/next_1.webp',
-		'/assets/neuland-next/next_2.webp',
-		'/assets/neuland-next/next_4.webp',
-		'/assets/neuland-next/next_3.webp'
-	]
-
 	const t = useTranslations('Home.neulandNextSection')
-
-	const rotateScreenshot = useCallback(() => {
-		setActiveIndex((prev) => (prev + 1) % screenshots.length)
-	}, [screenshots.length])
-
-	useEffect(() => {
-		const timer = setInterval(rotateScreenshot, 3500)
-		return () => clearInterval(timer)
-	}, [rotateScreenshot])
-
-	useEffect(() => {
-		screenshots.forEach((src) => {
-			const img = new Image()
-			img.src = src
-		})
-	}, [screenshots])
-
-	const imageVariants = {
-		initial: {
-			opacity: 0
-		},
-		animate: {
-			opacity: 1,
-			transition: {
-				duration: 1,
-				ease: 'easeInOut'
-			}
-		},
-		exit: {
-			opacity: 0,
-			transition: {
-				duration: 1.2,
-				ease: 'easeInOut'
-			}
-		}
-	}
-
-	const features = [
-		{
-			icon: <Calendar className="h-5 w-5 text-terminal-cyan" />,
-			title: t('features.timetable.title'),
-			description: t('features.timetable.description')
-		},
-		{
-			icon: <Calendar className="h-5 w-5 text-terminal-cyan" />,
-			title: t('features.calendar.title'),
-			description: t('features.calendar.description')
-		},
-		{
-			icon: <Users className="h-5 w-5 text-terminal-cyan" />,
-			title: t('features.profile.title'),
-			description: t('features.profile.description')
-		},
-		{
-			icon: <ForkKnife className="h-5 w-5 text-terminal-cyan" />,
-			title: t('features.mensa.title'),
-			description: t('features.mensa.description')
-		},
-		{
-			icon: <MapPin className="h-5 w-5 text-terminal-cyan" />,
-			title: t('features.map.title'),
-			description: t('features.map.description')
-		},
-		{
-			icon: <BookOpen className="h-5 w-5 text-terminal-cyan" />,
-			title: t('features.library.title'),
-			description: t('features.library.description')
-		},
-		{
-			icon: <Globe className="h-5 w-5 text-terminal-cyan" />,
-			title: t('features.links.title'),
-			description: t('features.links.description')
-		},
-		{
-			icon: <Bell className="h-5 w-5 text-terminal-cyan" />,
-			title: t('features.news.title'),
-			description: t('features.news.description')
-		}
-	]
 
 	const highlights = [
 		{ icon: <Shield className="h-4 w-4" />, text: t('container.privacy') },
@@ -127,80 +32,75 @@ const NextAppShowcase = () => {
 	]
 
 	return (
-		<div className="w-full pt-12 pb-16 relative">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+		<div className="w-full pt-12 pb-16 mb-16 md:mb-24 relative">
+			<div
+				aria-hidden="true"
+				className="pointer-events-none absolute -inset-y-24 left-1/2 w-screen -translate-x-1/2"
+				style={{
+					backgroundImage:
+						'radial-gradient(ellipse 45% 55% at 18% 35%, var(--backdrop-glow-a), transparent 70%), radial-gradient(ellipse 40% 50% at 82% 65%, var(--backdrop-glow-b), transparent 70%), radial-gradient(var(--backdrop-dot) 1px, transparent 1px)',
+					backgroundSize: 'auto, auto, 24px 24px',
+					maskImage:
+						'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.04) 6%, rgba(0,0,0,0.15) 12%, rgba(0,0,0,0.35) 19%, rgba(0,0,0,0.6) 26%, rgba(0,0,0,0.85) 33%, black 40%, black 60%, rgba(0,0,0,0.85) 67%, rgba(0,0,0,0.6) 74%, rgba(0,0,0,0.35) 81%, rgba(0,0,0,0.15) 88%, rgba(0,0,0,0.04) 94%, transparent 100%)',
+					WebkitMaskImage:
+						'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.04) 6%, rgba(0,0,0,0.15) 12%, rgba(0,0,0,0.35) 19%, rgba(0,0,0,0.6) 26%, rgba(0,0,0,0.85) 33%, black 40%, black 60%, rgba(0,0,0,0.85) 67%, rgba(0,0,0,0.6) 74%, rgba(0,0,0,0.35) 81%, rgba(0,0,0,0.15) 88%, rgba(0,0,0,0.04) 94%, transparent 100%)'
+				}}
+			>
+				<NoiseOverlay />
+			</div>
+			<div className="relative z-10">
 				{/* Header Section */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6 }}
 					viewport={{ once: true }}
-					className="text-center mb-16"
+					className="text-center mb-12 md:mb-16"
 				>
-					<h2 className="text-3xl sm:text-4xl mb-2 font-normal tracking-tight">
-						{t('hero.title')}
-					</h2>
-					<p className="text-lg sm:text-xl/loose mb-6 font-sans font-normal text-terminal-text/90">
+					<p className="font-script marker mb-2 inline-block -rotate-1 text-2xl text-terminal-ink">
 						{t('hero.subtitle')}
 					</p>
-					<p className="text-lg text-terminal-text/80 max-w-3xl mx-auto">
+					<h2 className="mb-6 font-mono text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+						{t('hero.title')}
+					</h2>
+					<p className="text-base text-terminal-text/80 max-w-3xl mx-auto">
 						{t('hero.introduction')}
 					</p>
 				</motion.div>
 
 				{/* Main Content Grid */}
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch mb-20">
 					{/* Phone Showcase */}
 					<motion.div
-						ref={phoneRef}
 						initial={{ opacity: 0, x: -50 }}
 						whileInView={{ opacity: 1, x: 0 }}
 						transition={{ duration: 0.8, delay: 0.2 }}
 						viewport={{ once: true }}
-						className="flex flex-col items-center"
+						className="flex items-start justify-center self-stretch overflow-hidden"
+						style={{
+							maskImage:
+								'linear-gradient(to bottom, black 55%, transparent 95%)',
+							WebkitMaskImage:
+								'linear-gradient(to bottom, black 55%, transparent 95%)'
+						}}
 					>
 						<div
-							className="relative mx-auto w-[270px] h-[560px] rounded-[48px] overflow-hidden"
-							style={{ willChange: 'transform' }}
+							className="flex h-full w-full items-start justify-center"
+							style={{
+								maskImage:
+									'radial-gradient(ellipse 62% 85% at 30% 30%, black 55%, transparent 100%)',
+								WebkitMaskImage:
+									'radial-gradient(ellipse 62% 85% at 30% 30%, black 55%, transparent 100%)'
+							}}
 						>
-							<AnimatePresence mode="sync">
-								<motion.img
-									key={activeIndex}
-									src={screenshots[activeIndex]}
-									alt={`Neuland Next App Screenshot ${activeIndex + 1}`}
-									className="absolute inset-0 h-full w-full object-cover"
-									variants={imageVariants as Variants}
-									initial="initial"
-									animate="animate"
-									exit="exit"
-									style={{ willChange: 'opacity' }}
-									loading="eager"
-								/>
-							</AnimatePresence>
-						</div>
-
-						<div className="flex justify-center gap-2 mt-6">
-							{screenshots.map((_, idx) => (
-								<motion.button
-									key={idx}
-									onClick={() => setActiveIndex(idx)}
-									className="w-3 bg-terminal-window border border-terminal-window-border focus:outline-none transition-all duration-200"
-									animate={{
-										scale: activeIndex === idx ? 1.2 : 1,
-										backgroundColor:
-											activeIndex === idx
-												? 'var(--color-terminal-lightGreen)'
-												: 'var(--color-terminal-window)',
-										borderColor:
-											activeIndex === idx
-												? 'var(--color-terminal-lightGreen)'
-												: 'var(--color-terminal-window-border)'
-									}}
-									whileHover={{ scale: 1.1 }}
-									transition={{ duration: 0.2 }}
-									aria-label={`Show screenshot ${idx + 1}`}
-								/>
-							))}
+							<img
+								src="/assets/neuland-next/next-hand.webp"
+								alt="Neuland Next App"
+								width={2000}
+								height={1500}
+								className="-mt-[22%] block w-[170%] max-w-none shrink-0"
+								loading="lazy"
+							/>
 						</div>
 					</motion.div>
 
@@ -211,19 +111,13 @@ const NextAppShowcase = () => {
 							whileInView={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.8, delay: 0.4 }}
 							viewport={{ once: true }}
-							className="relative bg-terminal-window border border-terminal-window-border p-8 overflow-hidden"
+							className="relative bg-terminal-window border border-terminal-window-border p-5 sm:p-8 overflow-hidden"
 						>
-							{/* Outer accent corners */}
-							<div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-terminal-cyan/30" />
-							<div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-terminal-cyan/30" />
-							<div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-terminal-cyan/30" />
-							<div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-terminal-cyan/30" />
-
 							{/* Subtle background gradient */}
 							<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/2 via-transparent to-terminal-cyan/1 pointer-events-none" />
 
 							<div className="relative z-10">
-								<h3 className="text-xl sm:text-2xl mb-3 font-normal text-terminal-text tracking-tight">
+								<h3 className="text-xl sm:text-2xl mb-3 font-bold font-mono text-terminal-text tracking-tight">
 									{t('container.title')}
 								</h3>
 
@@ -233,7 +127,7 @@ const NextAppShowcase = () => {
 
 								{/* Highlights */}
 								<div className="mb-8 pb-8 border-b border-terminal-window-border">
-									<h4 className="text-sm font-normal mb-4 text-terminal-cyan uppercase tracking-wider">
+									<h4 className="text-sm font-bold font-mono mb-4 text-terminal-ink uppercase tracking-wider">
 										{t('container.whyNeulandNext')}
 									</h4>
 									<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -246,7 +140,7 @@ const NextAppShowcase = () => {
 												viewport={{ once: true }}
 												className="flex items-center gap-3 text-sm group"
 											>
-												<div className="text-terminal-text/70 group-hover:text-terminal-cyan shrink-0 transition-colors duration-200">
+												<div className="text-terminal-text/70 group-hover:text-terminal-ink shrink-0 transition-colors duration-200">
 													{highlight.icon}
 												</div>
 												<span className="text-terminal-text/70 group-hover:text-terminal-text transition-colors duration-200">
@@ -259,10 +153,10 @@ const NextAppShowcase = () => {
 
 								{/* Download Section */}
 								<div className="mb-6">
-									<div className="text-xs font-normal mb-4 text-terminal-cyan/80 uppercase tracking-wider">
+									<h4 className="text-sm font-bold font-mono mb-4 text-terminal-ink uppercase tracking-wider">
 										{t('container.download')}
-									</div>
-									<div className="flex flex-col sm:flex-row gap-3 mb-6">
+									</h4>
+									<div className="flex flex-row flex-wrap items-center gap-3 mb-6">
 										<a
 											href="https://apps.apple.com/app/neuland-next/id1617096811"
 											rel="noreferrer noopener"
@@ -272,7 +166,7 @@ const NextAppShowcase = () => {
 											<img
 												src="/assets/app_store_badge_de.svg"
 												alt="Apple App Store"
-												className="h-12"
+												className="h-10 sm:h-12"
 											/>
 										</a>
 										<a
@@ -284,7 +178,7 @@ const NextAppShowcase = () => {
 											<img
 												src="/assets/play_store_badge_de.svg"
 												alt="Google Play Store"
-												className="h-12"
+												className="h-10 sm:h-12"
 											/>
 										</a>
 									</div>
@@ -306,58 +200,6 @@ const NextAppShowcase = () => {
 						</motion.div>
 					</div>
 				</div>
-
-				{/* Features Section */}
-				<motion.div
-					initial={{ opacity: 0, y: 30 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
-					className="mb-16 hidden lg:block"
-				>
-					<h3 className="text-xl sm:text-2xl font-normal text-center mb-12 tracking-tight">
-						{t('features.title')}
-					</h3>
-					<div className="relative bg-terminal-window border border-terminal-window-border overflow-hidden">
-						{/* Outer accent corners */}
-						<div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-terminal-cyan/30" />
-						<div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-terminal-cyan/30" />
-						<div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-terminal-cyan/30" />
-						<div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-terminal-cyan/30" />
-
-						{/* Subtle glow effect */}
-						<div className="absolute inset-0 bg-gradient-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3 pointer-events-none" />
-
-						<div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 relative z-10">
-							{features.map((feature, idx) => {
-								const cols = 4
-								const row = Math.floor(idx / cols)
-								const totalRows = Math.ceil(features.length / cols)
-								const isLastRow = row === totalRows - 1
-								const isLastInRow = (idx + 1) % cols === 0
-								const isLastItem = idx === features.length - 1
-								return (
-									<motion.div
-										key={idx}
-										initial={{ opacity: 0, y: 20 }}
-										whileInView={{ opacity: 1, y: 0 }}
-										transition={{ duration: 0.5, delay: idx * 0.1 }}
-										viewport={{ once: true }}
-										className="h-full"
-									>
-										<FeatureItem
-											icon={feature.icon}
-											title={feature.title}
-											description={feature.description}
-											isLastInRow={isLastInRow || isLastItem}
-											isLastRow={isLastRow}
-										/>
-									</motion.div>
-								)
-							})}
-						</div>
-					</div>
-				</motion.div>
 			</div>
 		</div>
 	)

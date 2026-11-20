@@ -1,16 +1,23 @@
 'use client'
-import { ArrowUpRight, CalendarIcon, LucideArrowBigLeft } from 'lucide-react'
+import {
+	ArrowUpRight,
+	CalendarIcon,
+	Clock3,
+	LucideArrowBigLeft
+} from 'lucide-react'
 import React, { useCallback, useRef, useState } from 'react'
 import TerminalTypeWriter from '@/components/Events/terminal-type-writer'
 import TerminalWindow from '@/components/Events/terminal-window'
-import TerminalSection from '@/components/Layout/terminal-section'
 import TerminalButton from '@/components/terminal-button'
 import TerminalList from '@/components/terminal-list'
 import { InternalOnlyTooltip } from '@/components/ui/tooltip'
+import { useNow } from '@/hooks/use-now'
+import { Link } from '@/i18n/navigation'
 import { useLocale, useTranslations } from '@/i18n/react'
+import { getEventCountdown } from '@/lib/events'
 import { getCurrentSemester } from '@/lib/semester'
 import { cn } from '@/lib/utils'
-import type { fetchEvents } from '@/services/events'
+import type { Event, fetchEvents } from '@/services/events'
 import CalendarModal from './calendar-modal'
 
 interface TerminalEventsProps {
@@ -19,6 +26,7 @@ interface TerminalEventsProps {
 }
 
 const MAX_TERMINAL_CONTENT_HEIGHT_PX = 576
+const MAX_PREVIEW_EVENTS = 4
 
 const InternalBadge = React.forwardRef<
 	HTMLSpanElement,
@@ -51,12 +59,26 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 }) => {
 	const locale = useLocale()
 	const t = useTranslations('Home.eventsSection')
+	const now = useNow()
 
 	const eventsData = initialData || {
 		semester: getCurrentSemester(),
 		events: []
 	}
 	const error = serverError
+
+	const renderCountdown = (event: Event) => {
+		const label =
+			now === null
+				? null
+				: getEventCountdown(event, now, locale, t('happeningNow'))
+		return label ? (
+			<span className="mt-1 flex items-center gap-1.5 text-xs text-terminal-text/70">
+				<Clock3 size={12} aria-hidden="true" />
+				{label}
+			</span>
+		) : null
+	}
 
 	const [selectedEventIndex, setSelectedEventIndex] = useState<number | null>(
 		null
@@ -99,19 +121,34 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 	}, [])
 
 	return (
-		<TerminalSection
-			title={t('title')}
-			subtitle={`${t('eventsIn')} ${getCurrentSemester()}`}
-			headingLevel={2}
-		>
-			<div className="max-w-5xl mx-auto justify-start mt-10 mb-8 relative overflow-visible min-h-50 font-mono">
+		<section className="relative mb-32 md:mb-40 grid grid-cols-1 items-stretch gap-10 border border-dashed border-terminal-window-border bg-white/[0.04] p-6 sm:p-8 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-10 lg:p-12">
+			<div>
+				<h2 className="font-mono text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+					{t('headline')}
+				</h2>
+				<div className="mt-6">
+					<TerminalButton
+						onClick={openCalModal}
+						className="group -ml-5 !border-transparent hover:!border-transparent hover:!bg-transparent hover:!text-terminal-ink"
+					>
+						<span
+							aria-hidden="true"
+							className="-mr-2 flex w-0 items-center overflow-hidden opacity-0 transition-all duration-300 group-hover:mr-0 group-hover:w-4 group-hover:opacity-100 group-focus-visible:mr-0 group-focus-visible:w-4 group-focus-visible:opacity-100"
+						>
+							<CalendarIcon size={16} className="shrink-0" />
+						</span>
+						{t('subscribeToEvents')}
+					</TerminalButton>
+				</div>
+			</div>
+			<div className="relative flex min-h-50 flex-col overflow-visible font-mono">
 				<TerminalWindow
 					title={`eventsData.sh --semester '${getCurrentSemester()}'`}
 					showStickyNote={true}
 					onRedButtonClick={handleRedButtonClick}
-					className="max-h-none"
+					className="max-h-none flex-1 !mb-0"
 				>
-					<div className="overflow-y-auto overflow-x-hidden max-h-[65vh] md:max-h-144">
+					<div className="overflow-x-hidden">
 						<TerminalList>
 							{error ? (
 								<div className="p-4 text-terminal-lightGreen">
@@ -125,7 +162,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 												? error
 												: t('unknownError')}
 									</p>
-									<p className="text-sm mt-4 text-terminal-text/70">
+									<p className="text-base mt-4 text-terminal-text/70">
 										{t('apiErrorMessageLine1')}
 										<br />
 										{t('apiErrorMessageLine2')}
@@ -136,10 +173,10 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 									<p className="text-md mb-3">
 										{t('noEventsToDisplayMessageLine1')}
 									</p>
-									<p className="text-sm mb-3 text-terminal-text/80">
+									<p className="text-base mb-3 text-terminal-text/80">
 										{t('noEventsToDisplayMessageLine2')}
 										<br />
-										<span className="text-terminal-highlight">$</span>{' '}
+										<span className="text-terminal-ink">$</span>{' '}
 										./prepare_events.sh --season SoSe26 --hype-level=MAXIMUM
 									</p>
 								</div>
@@ -211,6 +248,9 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 																			1 && <br />}
 																</React.Fragment>
 															))}
+														{renderCountdown(
+															eventsData.events[selectedEventIndex]
+														)}
 													</div>
 
 													<strong
@@ -225,7 +265,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 												</div>
 
 												<div
-													className="overflow-y-auto overflow-x-hidden pr-4 max-w-full flex-1"
+													className="overflow-y-auto overflow-x-hidden pr-4 max-w-full flex-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
 													style={{
 														maxHeight: containerHeight
 															? `${containerHeight - 150}px`
@@ -256,7 +296,7 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 														>
 															<LucideArrowBigLeft
 																size={16}
-																className="mr-1 group-hover:text-terminal-highlight transition-colors"
+																className="mr-1 group-hover:text-terminal-ink transition-colors"
 															/>
 															{t('showAllEvents')}
 														</button>
@@ -281,52 +321,62 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 												: 'opacity-0 pointer-events-none'
 										)}
 									>
-										{eventsData?.events?.map((event, index) => (
-											// biome-ignore lint/a11y/noStaticElementInteractions: no problem
-											<div
-												key={index}
-												onClick={() => handleEventClick(index)}
-												className="cursor-pointer hover:bg-terminal-window-border/30 p-1 rounded-sm transition-colors mb-1"
-												onKeyDown={(e) => {
-													if (e.key === 'Enter') {
-														handleEventClick(index)
-													}
-												}}
-											>
-												<div className="flex flex-wrap items-center gap-2">
-													<strong className="text-terminal-lightGreen text-[1.05rem] wrap-break-word">
-														{locale.startsWith('de')
-															? event.titleDe
-															: event.titleEn}
-														{event.location && (
-															<span className="text-terminal-text/60 ml-2">
-																@{event.location}
-															</span>
+										{eventsData?.events
+											?.slice(0, MAX_PREVIEW_EVENTS)
+											.map((event, index) => (
+												// biome-ignore lint/a11y/noStaticElementInteractions: no problem
+												<div
+													key={index}
+													onClick={() => handleEventClick(index)}
+													className="mb-1 cursor-pointer p-1 transition-opacity hover:opacity-70"
+													onKeyDown={(e) => {
+														if (e.key === 'Enter') {
+															handleEventClick(index)
+														}
+													}}
+												>
+													<div className="flex flex-wrap items-center gap-2">
+														<strong className="text-terminal-lightGreen text-[1.05rem] wrap-break-word">
+															{locale.startsWith('de')
+																? event.titleDe
+																: event.titleEn}
+															{event.location && (
+																<span className="text-terminal-text/60 ml-2">
+																	@{event.location}
+																</span>
+															)}
+														</strong>
+														{event.isInternal && (
+															<InternalOnlyTooltip>
+																<InternalBadge />
+															</InternalOnlyTooltip>
 														)}
-													</strong>
-													{event.isInternal && (
-														<InternalOnlyTooltip>
-															<InternalBadge />
-														</InternalOnlyTooltip>
-													)}
+													</div>
+													{event.date.split('\n').map((line, i) => (
+														<React.Fragment key={i}>
+															<span
+																className={
+																	line.trim().toLowerCase() === 'tbd'
+																		? 'text-terminal-text/50 text-[0.95rem]'
+																		: 'text-[0.95rem]'
+																}
+															>
+																{line}
+															</span>
+															{i < event.date.split('\n').length - 1 && <br />}
+														</React.Fragment>
+													))}
+													{renderCountdown(event)}
+													{/* rrule short text removed in new API */}
 												</div>
-												{event.date.split('\n').map((line, i) => (
-													<React.Fragment key={i}>
-														<span
-															className={
-																line.trim().toLowerCase() === 'tbd'
-																	? 'text-terminal-text/50 text-[0.95rem]'
-																	: 'text-[0.95rem]'
-															}
-														>
-															{line}
-														</span>
-														{i < event.date.split('\n').length - 1 && <br />}
-													</React.Fragment>
-												))}
-												{/* rrule short text removed in new API */}
-											</div>
-										))}
+											))}
+										<Link
+											href="/events"
+											className="mt-2 inline-flex items-center gap-1 p-1 font-mono text-[0.95rem] font-bold text-terminal-ink no-underline hover:underline"
+										>
+											{t('showAllEventsLink')}
+											<ArrowUpRight size={14} />
+										</Link>
 									</div>
 								</div>
 							)}
@@ -334,23 +384,13 @@ const TerminalEvents: React.FC<TerminalEventsProps> = ({
 					</div>
 				</TerminalWindow>
 
-				<div className="flex flex-wrap gap-2 sm:justify-end -mt-4 ">
-					<TerminalButton onClick={openCalModal}>
-						<CalendarIcon
-							size={16}
-							className="mr-2 group-hover:rotate-8 transition-transform duration-300"
-						/>
-						{t('subscribeToEvents')}
-					</TerminalButton>
-				</div>
-
 				<CalendarModal
 					isOpen={isCalModalOpen}
 					onClose={closeCalModal}
 					icalUrl={icalUrl}
 				/>
 			</div>
-		</TerminalSection>
+		</section>
 	)
 }
 

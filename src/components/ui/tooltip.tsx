@@ -43,10 +43,10 @@ const InternalOnlyTooltip: React.FC<InternalOnlyTooltipProps> = ({
 			<Tooltip>
 				<TooltipTrigger asChild>{children}</TooltipTrigger>
 				<TooltipContent className="border-terminal-window-border/70 bg-terminal-window text-left font-mono text-terminal-text shadow-terminal/40 max-w-xs">
-					<span className="block text-xs font-semibold uppercase tracking-wide text-terminal-text/80">
+					<span className="block text-xs font-semibold uppercase tracking-wide text-terminal-text/90">
 						{t('onlyForMembersTitle')}
 					</span>
-					<span className="text-[0.8rem] text-terminal-text/80">
+					<span className="text-[0.8rem] text-terminal-text/90">
 						{t('onlyForMembersDescription')}
 					</span>
 				</TooltipContent>

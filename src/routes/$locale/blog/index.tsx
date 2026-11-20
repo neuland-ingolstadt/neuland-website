@@ -1,16 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { allPosts } from 'content-collections'
 import { compareDesc } from 'date-fns'
-import { RssIcon, TagIcon } from 'lucide-react'
+import { FileText, RssIcon, TagIcon } from 'lucide-react'
+import { motion } from 'motion/react'
 import { PostCard } from '@/components/blog/post-card'
 import TerminalButton from '@/components/terminal-button'
-import {
-	Breadcrumb,
-	BreadcrumbItem,
-	BreadcrumbLink,
-	BreadcrumbList,
-	BreadcrumbSeparator
-} from '@/components/ui/breadcrumb'
 import {
 	Pagination,
 	PaginationContent,
@@ -20,7 +14,7 @@ import {
 	PaginationNext,
 	PaginationPrevious
 } from '@/components/ui/pagination'
-import { Link, useRouter } from '@/i18n/navigation'
+import { useRouter } from '@/i18n/navigation'
 import { createTranslator, resolveLocale, useTranslations } from '@/i18n/react'
 
 export const Route = createFileRoute('/$locale/blog/')({
@@ -46,6 +40,7 @@ function BlogPage() {
 		compareDesc(new Date(a.date), new Date(b.date))
 	)
 
+	const t = useTranslations('Blog')
 	const search = Route.useSearch()
 	const router = useRouter()
 
@@ -146,38 +141,52 @@ function BlogPage() {
 		return items
 	}
 
-	const t = useTranslations('Blog')
-
 	return (
-		<div className="mx-auto max-w-5xl">
-			<Breadcrumb>
-				<BreadcrumbList className="flex items-center">
-					<BreadcrumbItem className="flex items-center">
-						<BreadcrumbLink asChild className="flex items-center">
-							<Link href="/" className="flex items-center">
-								Home
-							</Link>
-						</BreadcrumbLink>
-					</BreadcrumbItem>
-					<BreadcrumbSeparator className="mx-1 flex items-center" />
-					<BreadcrumbItem className="flex items-center">
-						<BreadcrumbLink asChild className="flex items-center">
-							<Link href="/blog" className="flex items-center">
-								Blog
-							</Link>
-						</BreadcrumbLink>
-					</BreadcrumbItem>
-				</BreadcrumbList>
-			</Breadcrumb>
+		<div className="relative">
+			<div
+				aria-hidden="true"
+				className="pointer-events-none absolute -top-[var(--navbar-height,4.5rem)] left-1/2 -z-10 h-[100vh] w-screen -translate-x-1/2"
+				style={{
+					backgroundImage:
+						'radial-gradient(ellipse 60% 70% at 100% 0%, var(--backdrop-glow-a), transparent 70%)'
+				}}
+			/>
+			{/* Header Section */}
+			<motion.div
+				initial={{ opacity: 0, y: -20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.6 }}
+				className="max-w-6xl mx-auto pt-8 mb-12 md:pt-16 md:mb-16"
+			>
+				<h1 className="mb-6 mt-0 font-mono text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl xl:text-7xl">
+					{t('title')}
+				</h1>
 
-			<div className="mt-4 mb-8 flex items-center justify-between">
-				<h1 className="text-3xl font-normal ">Neuland Blog</h1>
-				<div className="flex gap-2">
+				<motion.p
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ duration: 0.6, delay: 0.2 }}
+					className="mt-3 text-lg text-terminal-text/90 max-w-3xl"
+				>
+					{t('subtitle')}
+				</motion.p>
+
+				<motion.div
+					initial={{ opacity: 0, y: 10 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6, delay: 0.4 }}
+					className="flex items-center gap-2 mt-4 text-sm text-terminal-text/80 font-mono"
+				>
+					<FileText size={16} />
+					<span>{t('postsFound', { amountPosts: posts.length })}</span>
+				</motion.div>
+
+				<div className="mt-6 flex flex-wrap gap-3">
 					<TerminalButton
 						href="/feed"
 						className="group no-underline flex items-center gap-2"
 					>
-						RSS Feed
+						{t('rssFeed')}
 						<RssIcon
 							size={16}
 							className="transition-transform duration-300 group-hover:scale-110"
@@ -194,51 +203,54 @@ function BlogPage() {
 						/>
 					</TerminalButton>
 				</div>
+			</motion.div>
+
+			<div className="max-w-6xl mx-auto">
+				<div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
+					{paginatedPosts.map((post) => (
+						<PostCard post={post} key={post.url} />
+					))}
+				</div>
+
+				{totalPages > 1 && (
+					<Pagination className="mt-12 md:mt-16">
+						<PaginationContent>
+							<PaginationItem>
+								<PaginationPrevious
+									href="#"
+									onClick={(event) => {
+										event.preventDefault()
+										if (currentPage > 1) navigateToPage(currentPage - 1)
+									}}
+									aria-disabled={currentPage === 1}
+									className={
+										currentPage === 1 ? 'pointer-events-none opacity-50' : ''
+									}
+								/>
+							</PaginationItem>
+
+							{generatePaginationItems()}
+
+							<PaginationItem>
+								<PaginationNext
+									href="#"
+									onClick={(event) => {
+										event.preventDefault()
+										if (currentPage < totalPages)
+											navigateToPage(currentPage + 1)
+									}}
+									aria-disabled={currentPage === totalPages}
+									className={
+										currentPage === totalPages
+											? 'pointer-events-none opacity-50'
+											: ''
+									}
+								/>
+							</PaginationItem>
+						</PaginationContent>
+					</Pagination>
+				)}
 			</div>
-
-			<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 ">
-				{paginatedPosts.map((post, idx) => (
-					<PostCard post={post} key={idx} />
-				))}
-			</div>
-
-			{totalPages > 1 && (
-				<Pagination className="my-12">
-					<PaginationContent>
-						<PaginationItem>
-							<PaginationPrevious
-								href="#"
-								onClick={(event) => {
-									event.preventDefault()
-									if (currentPage > 1) navigateToPage(currentPage - 1)
-								}}
-								aria-disabled={currentPage === 1}
-								className={
-									currentPage === 1 ? 'pointer-events-none opacity-50' : ''
-								}
-							/>
-						</PaginationItem>
-
-						{generatePaginationItems()}
-
-						<PaginationItem>
-							<PaginationNext
-								href="#"
-								onClick={(event) => {
-									event.preventDefault()
-									if (currentPage < totalPages) navigateToPage(currentPage + 1)
-								}}
-								aria-disabled={currentPage === totalPages}
-								className={
-									currentPage === totalPages
-										? 'pointer-events-none opacity-50'
-										: ''
-								}
-							/>
-						</PaginationItem>
-					</PaginationContent>
-				</Pagination>
-			)}
 		</div>
 	)
 }

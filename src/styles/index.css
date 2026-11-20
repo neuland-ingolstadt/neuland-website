@@ -2,6 +2,7 @@
 @import "@fontsource/ibm-plex-mono/400.css";
 @import "@fontsource/ibm-plex-mono/600.css";
 @import "@fontsource/ibm-plex-mono/700.css";
+@import "@fontsource/mansalva/400.css";
 @import "tailwindcss";
 @import "./animations.css";
 
@@ -33,6 +34,8 @@
 	--color-terminal-bg: var(--terminal-bg, #000000);
 	--color-terminal-text: var(--terminal-text, #ffffff);
 	--color-terminal-cyan: var(--terminal-cyan, oklch(0.857 0.265 148.5));
+	/* Neon green on dark, black on light: for text, thin lines and small icons */
+	--color-terminal-ink: var(--terminal-ink, #23ff88);
 	--color-terminal-highlight: var(
 		--terminal-highlight,
 		oklch(0.885 0.255 150.2)
@@ -62,6 +65,7 @@
 	--animate-cyberpunk: cyberpunk-glow 1.5s ease-in-out infinite;
 
 	--font-mono: "IBM Plex Mono", ui-monospace, monospace;
+	--font-script: "Mansalva", cursive;
 	--font-sans:
 		"IBM Plex Sans Variable", "IBM Plex Sans", system-ui, -apple-system,
 		BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -116,8 +120,8 @@
 }
 
 @theme inline {
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
+	--color-background: hsl(var(--background));
+	--color-foreground: hsl(var(--foreground));
 	--color-sidebar-ring: var(--sidebar-ring);
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -131,45 +135,49 @@
 :root {
 	color-scheme: dark;
 	--navbar-height: 4.5rem;
-	--background: 150 9% 4%;
-	--foreground: 150 25% 95%;
+	--background: 0 0% 0%;
+	--foreground: 0 0% 100%;
 	--muted: 150 9% 12%;
 	--muted-foreground: 150 9% 70%;
 	--border: 150 7% 20%;
 	--input: var(--border);
-	--ring: 148 82% 54%;
-	--primary: 148 82% 54%;
-	--primary-foreground: 160 30% 12%;
+	--ring: 149 100% 57%;
+	--primary: 149 100% 57%;
+	--primary-foreground: 0 0% 0%;
 	--secondary: 150 9% 22%;
 	--secondary-foreground: 160 20% 94%;
-	--accent: 148 88% 56%;
-	--accent-foreground: 160 35% 12%;
+	--accent: 149 100% 57%;
+	--accent-foreground: 0 0% 0%;
 	--destructive: 0 70% 45%;
 	--destructive-foreground: 0 0% 98%;
 
-	--terminal-bg: #020302;
-	--terminal-text: #f6fff8;
-	/* ~60% toward #24ff8a — brighter mint, slightly less punchy chroma */
-	--terminal-cyan: oklch(0.857 0.265 148.5);
-	--terminal-highlight: oklch(0.885 0.255 150.2);
-	--terminal-darkGreen: #003300;
+	--terminal-bg: #000000;
+	--terminal-text: #ffffff;
+	/* Neuland brand green (CI) */
+	--terminal-cyan: #23ff88;
+	--terminal-highlight: #23ff88;
+	--terminal-darkGreen: #04180d;
 	--terminal-mutedGreen: #0a4f2b;
-	--terminal-lightGreen: oklch(0.82 0.245 148.2);
-	--terminal-mediumGreen: oklch(0.745 0.23 147.8);
-	--terminal-window: #0b0b0b;
-	--terminal-window-border: #333333;
-	--terminal-window-title: #414141;
+	--terminal-lightGreen: #23ff88;
+	--terminal-mediumGreen: #23ff88;
+	--terminal-window: #000000;
+	/* frame + divider lines: white at 28% */
+	--terminal-window-border: rgba(255, 255, 255, 0.28);
+	--terminal-window-title: rgba(255, 255, 255, 0.08);
 	--terminal-overlay: rgba(0, 0, 0, 0.8);
-	--terminal-card: #101413;
-	--terminal-onAccent: #001f12;
-	--terminal-paper: #ffe44a;
-	--terminal-paper-text: #2a1f00;
+	--terminal-card: rgba(35, 255, 136, 0.04);
+	--terminal-onAccent: #000000;
+	--terminal-paper: #23ff88;
+	--terminal-paper-text: #000000;
+	--brand-glow: 0 0 18px 3px rgba(0, 255, 117, 0.5);
 
-	--ambient-background: #010101;
-	--ambient-grid-line: rgba(156, 163, 175, 0.09);
-	--ambient-grid-highlight: rgba(52, 242, 134, 0.28);
-	--ambient-grid-cross: rgba(70, 255, 170, 0.25);
-	--ambient-grid-glow: rgba(52, 242, 134, 0.8);
+	/* Hero / showcase backdrop */
+	--backdrop-glow-a: rgba(35, 255, 136, 0.16);
+	--backdrop-glow-b: rgba(35, 255, 136, 0.12);
+	--backdrop-dot: rgba(255, 255, 255, 0.14);
+	--backdrop-end: #04180d;
+	--backdrop-photo-opacity: 0.16;
+
 	--sidebar: hsl(0 0% 98%);
 	--sidebar-foreground: hsl(240 5.3% 26.1%);
 	--sidebar-primary: hsl(240 5.9% 10%);
@@ -182,50 +190,6 @@
 
 :root[data-theme="dark"] {
 	color-scheme: dark;
-}
-
-@media (prefers-color-scheme: light) {
-	:root:not([data-theme]) {
-		color-scheme: light;
-		--background: 145 40% 97%;
-		--foreground: 155 24% 12%;
-		--muted: 145 26% 90%;
-		--muted-foreground: 150 20% 32%;
-		--border: 145 20% 82%;
-		--input: var(--border);
-		--ring: 149 45% 40%;
-		--primary: 150 55% 40%;
-		--primary-foreground: 140 50% 98%;
-		--secondary: 150 18% 86%;
-		--secondary-foreground: 150 28% 20%;
-		--accent: 150 55% 40%;
-		--accent-foreground: 140 40% 96%;
-		--destructive: 0 70% 40%;
-		--destructive-foreground: 0 0% 98%;
-
-		--terminal-bg: #f5f8f5;
-		--terminal-text: #0b1d14;
-		--terminal-cyan: oklch(0.72 0.24 142.83);
-		--terminal-highlight: oklch(0.64 0.2 142.83);
-		--terminal-darkGreen: #0a4a2e;
-		--terminal-mutedGreen: #1a6b40;
-		--terminal-lightGreen: #0d8f5c;
-		--terminal-mediumGreen: #0c6b46;
-		--terminal-window: #ffffff;
-		--terminal-window-border: #c7d3c8;
-		--terminal-window-title: #e3ede6;
-		--terminal-overlay: rgba(7, 24, 19, 0.55);
-		--terminal-card: #eff4ef;
-		--terminal-onAccent: #042011;
-		--terminal-paper: #ffe88c;
-		--terminal-paper-text: #3c3100;
-
-		--ambient-background: #fafafa;
-		--ambient-grid-line: rgba(13, 50, 36, 0.05);
-		--ambient-grid-highlight: rgba(19, 119, 75, 0.18);
-		--ambient-grid-cross: rgba(6, 89, 58, 0.22);
-		--ambient-grid-glow: rgba(25, 141, 94, 0.4);
-	}
 }
 
 :root[data-theme="light"] {
@@ -248,26 +212,28 @@
 
 	--terminal-bg: #f5f8f5;
 	--terminal-text: #0b1d14;
-	--terminal-cyan: oklch(0.72 0.24 142.83);
-	--terminal-highlight: oklch(0.64 0.2 142.83);
+	/* CI: neon green stays, but only for surfaces. Details are black. */
+	--terminal-cyan: #23ff88;
+	--terminal-highlight: #23ff88;
+	--terminal-ink: #000000;
 	--terminal-darkGreen: #0a4a2e;
 	--terminal-mutedGreen: #1a6b40;
-	--terminal-lightGreen: #0d8f5c;
-	--terminal-mediumGreen: #0c6b46;
+	--terminal-lightGreen: #000000;
+	--terminal-mediumGreen: #23ff88;
 	--terminal-window: #ffffff;
 	--terminal-window-border: #c7d3c8;
 	--terminal-window-title: #e3ede6;
 	--terminal-overlay: rgba(7, 24, 19, 0.55);
 	--terminal-card: #eff4ef;
-	--terminal-onAccent: #042011;
-	--terminal-paper: #ffe88c;
-	--terminal-paper-text: #3c3100;
+	--terminal-onAccent: #000000;
+	--terminal-paper: #91ffc3;
+	--terminal-paper-text: #000000;
 
-	--ambient-background: #fafafa;
-	--ambient-grid-line: rgba(13, 50, 36, 0.05);
-	--ambient-grid-highlight: rgba(19, 119, 75, 0.18);
-	--ambient-grid-cross: rgba(6, 89, 58, 0.22);
-	--ambient-grid-glow: rgba(25, 141, 94, 0.4);
+	--backdrop-glow-a: rgba(35, 255, 136, 0.4);
+	--backdrop-glow-b: rgba(35, 255, 136, 0.28);
+	--backdrop-dot: rgba(0, 0, 0, 0.14);
+	--backdrop-end: #d9ffe8;
+	--backdrop-photo-opacity: 0.1;
 }
 
 /*
@@ -291,6 +257,8 @@
 @layer utilities {
 	html {
 		@apply scroll-smooth;
+		/* Elements that slide in from the side must not widen the page on mobile */
+		overflow-x: clip;
 	}
 }
 
@@ -317,39 +285,39 @@
 	h4,
 	h5,
 	h6 {
-		@apply font-mono font-normal;
+		@apply font-mono font-bold;
 	}
 
 	button,
 	[type="button"],
 	[type="submit"],
 	[type="reset"] {
-		@apply font-mono font-normal;
+		@apply font-mono font-bold;
 	}
 
 	/* Add specific heading styles for articles */
 	article h1 {
-		@apply text-3xl font-normal mb-4 text-terminal-lightGreen;
+		@apply text-3xl font-bold mb-4 text-terminal-lightGreen;
 	}
 
 	article h2 {
-		@apply text-2xl font-normal mt-12 pb-2 text-terminal-lightGreen;
+		@apply text-2xl font-bold mt-12 pb-2 text-terminal-lightGreen;
 	}
 
 	article h3 {
-		@apply text-xl font-normal mt-10 pb-2 text-terminal-lightGreen;
+		@apply text-xl font-bold mt-10 pb-2 text-terminal-lightGreen;
 	}
 
 	article h4 {
-		@apply text-lg font-normal mt-8 pb-2 text-terminal-lightGreen;
+		@apply text-lg font-bold mt-8 pb-2 text-terminal-lightGreen;
 	}
 
 	article h5 {
-		@apply text-base font-normal mt-8 pb-2 text-terminal-lightGreen;
+		@apply text-base font-bold mt-8 pb-2 text-terminal-lightGreen;
 	}
 
 	article h6 {
-		@apply text-sm font-normal mt-6 pb-2 text-terminal-lightGreen;
+		@apply text-sm font-bold mt-6 pb-2 text-terminal-lightGreen;
 	}
 
 	p {
@@ -372,12 +340,12 @@
 	}
 
 	a {
-		@apply text-terminal-cyan hover:text-terminal-highlight transition-colors duration-300 relative;
+		@apply text-terminal-ink transition-colors duration-300 relative;
 	}
 
 	a::after {
 		content: "";
-		@apply absolute bottom-0 left-0 w-0 h-[1px] bg-terminal-highlight transition-all duration-300;
+		@apply absolute bottom-0 left-0 w-0 h-[1px] bg-terminal-ink transition-all duration-300;
 	}
 
 	a:hover::after {
@@ -467,5 +435,117 @@
 	}
 	body {
 		@apply bg-background text-foreground;
+	}
+}
+
+/* ---- Neuland CI utilities ---- */
+@layer utilities {
+	.font-script {
+		font-family: var(--font-script);
+		font-weight: 400;
+	}
+	.glow {
+		box-shadow: var(--brand-glow);
+	}
+	/* Highlighter effect: neon text on dark, black text on a 50% neon marker on light */
+	.marker {
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+	}
+	/* Hand-drawn stroke with ragged ends, stretched to the element's box */
+	.marker,
+	.marker-stroke {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath fill='rgba(35,255,136,1)' d='M4 7 L40 4 L90 6 L150 3 L196 5 L191 10 L199 15 L192 21 L198 27 L193 33 L150 37 L90 35 L40 38 L7 36 L2 31 L8 26 L1 20 L7 14 L2 10 Z'/%3E%3C/svg%3E");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
+	.marker {
+		padding: 0.05em 0.7em;
+	}
+	/* On the solid neon stroke everything on top (text, icons) is black */
+	:root:not([data-theme="light"]) :is(.marker, .marker-stroke),
+	:root:not([data-theme="light"]) :is(.marker, .marker-stroke) * {
+		/* biome-ignore lint/complexity/noImportantStyles: must beat the utilities layer (text-terminal-*, group-hover) */
+		color: #000 !important;
+	}
+	:root[data-theme="light"] .marker,
+	:root[data-theme="light"] .marker-stroke {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath fill='rgba(35,255,136,0.5)' d='M4 7 L40 4 L90 6 L150 3 L196 5 L191 10 L199 15 L192 21 L198 27 L193 33 L150 37 L90 35 L40 38 L7 36 L2 31 L8 26 L1 20 L7 14 L2 10 Z'/%3E%3C/svg%3E");
+	}
+	.frame-line {
+		border-color: rgba(255, 255, 255, 0.5);
+	}
+}
+
+/*
+  Fullscreen mobile menu: the sheet fades in while its body slides up from the
+  bottom, so the top bar (logo, close button) stays exactly where the navbar
+  has it. Only transform and opacity are animated so it stays on the
+  compositor, and will-change is applied for the duration of the animation
+  only.
+*/
+@keyframes sheet-fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes sheet-fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes sheet-slide-up {
+	from {
+		transform: translate3d(0, 100%, 0);
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes sheet-slide-down {
+	from {
+		transform: translate3d(0, 0, 0);
+	}
+	to {
+		transform: translate3d(0, 100%, 0);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.sheet-bottom[data-state="open"] {
+		animation: sheet-fade-in 200ms ease-out both;
+		will-change: opacity;
+	}
+
+	.sheet-bottom[data-state="closed"] {
+		animation: sheet-fade-out 200ms ease-in both;
+		will-change: opacity;
+	}
+
+	.sheet-bottom[data-state="open"] .sheet-body {
+		animation: sheet-slide-up 280ms cubic-bezier(0.32, 0.72, 0, 1) both;
+		will-change: transform;
+	}
+
+	.sheet-bottom[data-state="closed"] .sheet-body {
+		animation: sheet-slide-down 200ms cubic-bezier(0.4, 0, 1, 1) both;
+		will-change: transform;
+	}
+
+	.sheet-overlay[data-state="open"] {
+		animation: sheet-fade-in 200ms ease-out both;
+	}
+
+	.sheet-overlay[data-state="closed"] {
+		animation: sheet-fade-out 200ms ease-in both;
 	}
 }

@@ -1,9 +1,16 @@
 {
     "Home": {
+        "sponsorsStrip": {
+            "title": "Unterstützt von"
+        },
         "clientIntro": {
-            "typewriter": "Der studentische Verein für alle informatikbegeisterten Studierenden der TH Ingolstadt."
+            "primaryCta": "Mitglied werden",
+            "secondaryCta": "Unsere Projekte",
+            "greeting": "Hi zusammen",
+            "typewriter": "Wir sind die Tech Community an\u00a0der\u00a0THI"
         },
         "eventsSection": {
+            "headline": "Unsere nächsten Events",
             "title": "Unsere Veranstaltungen",
             "unknownError": "Unbekannter Fehler",
             "apiErrorTitle": "Oh nein! Beim Abrufen der Events ist etwas schiefgelaufen.",
@@ -14,7 +21,9 @@
             "onlyForMembersTitle": "Nur für Mitglieder",
             "onlyForMembersDescription": "Diese Veranstaltung ist ausschließlich für Vereinsmitglieder und nicht öffentlich.",
             "internalBadge": "Intern",
+            "happeningNow": "Läuft gerade",
             "showAllEvents": "Alle Events",
+            "showAllEventsLink": "Alle Events anzeigen",
             "openEventDetails": "Details öffnen",
             "openEventsPage": "Events-Seite öffnen",
             "subscribeToEvents": "Events abonnieren",
@@ -82,6 +91,12 @@
         },
         "aboutUsSection": {
             "title": "Über uns",
+            "heading": "Über Neuland",
+            "stats": {
+                "members": { "label": "Mitglieder im Verein" },
+                "events": { "label": "Veranstaltungen im Sommersemester 2026" },
+                "linesOfCode": { "label": "Zeilen Code in den letzten 6 Monaten geschrieben" }
+            },
             "container": {
                 "title": "Gemeinschaft & Plattform",
                 "subtitle": "Wir bieten Studierenden eine Plattform zum Austausch, zur Projektarbeit und zur Wissensvermittlung.",
@@ -101,6 +116,12 @@
                 }
             }
         },
+        "gallerySection": {
+            "heading": "Einblicke in den Verein",
+            "subtitle": "Vorträge, Workshops, Wettbewerbe und viel Zeit miteinander. So sieht das Vereinsleben bei Neuland aus.",
+            "placeholder": "Foto folgt",
+            "items": { "lanparty": "LAN-Party von Hochschulgaming und Neuland", "social": "Neue Leute kennenlernen beim Ersti-Tag", "brainstorming": "Workshop mit Studierenden von UX Design", "talk": "Die Cookie Talks sind unsere wiederkehrende Event-Reihe.", "printing": "Unser beliebter 3D-Druck-Workshop", "meetup": "Zusammenbauen der eigenen 3D-gedruckten Lampe für das Neulandbüro" }
+        },
         "membershipSection": {
             "title": "Mitgliedschaft",
             "pricing": {
@@ -113,8 +134,9 @@
                 "line1": "Teil eines aktiven studentischen Vereins mit regelmäßigen Treffen und Austausch",
                 "line2": "Gemeinsame Arbeit an Open-Source Projekten",
                 "line3": "Exklusive Workshops, Hackathons und soziale Events mit Gleichgesinnten",
-                "becomeMember": "Mitglied werden",
-                "writeEmail": "E-Mail schreiben"
+                "openPositions": "Offene Stellen & FAQ",
+                "writeEmail": "Discord beitreten",
+                "discordHint": "Steig hier in den Verein ein"
             }
         },
         "partnerSection": {
@@ -146,18 +168,26 @@
         }
     },
     "Navigation": {
-        "becomeMember": "Mitglied werden",
+        "home": "Startseite",
         "events": "Events",
         "projects": "Projekte",
         "blog": "Blog",
         "donate": "Spenden",
-        "login": "Login"
+        "login": "Login",
+        "connectLogin": "Member Login",
+        "team": "Mitmachen"
     },
     "Footer": {
         "bylaws": "Satzung",
         "privacyPolicyNeuland": "Datenschutz Neuland",
         "privacyPolicyWebsite": "Datenschutz Website",
-        "legalNotice": "Impressum"
+        "legalNotice": "Impressum",
+        "membershipForm": "Mitgliedsantrag",
+        "headings": {
+            "club": "Verein",
+            "social": "Folge uns",
+            "dev": "Entwicklung"
+        }
     },
     "NotFound": {
         "description": "Die angeforderte Seite existiert nicht oder wurde verschoben. Bitte überprüfe die URL oder kehre zur Startseite zurück.",
@@ -177,20 +207,22 @@
         "allProjects": "Alle Projekte",
         "githubText": "Sieh dir unsere Projekte auf GitHub an!",
         "learnMore": "Mehr erfahren",
-        "breadcrumbs": {
-            "home": "Home",
-            "projects": "Projekte"
-        },
         "metadata": {
+            "title": "Projekte - Neuland Ingolstadt",
+            "description": "Kreative, technische und community-getragene Projekte des Neuland Ingolstadt e.V.",
             "notFound": "Projekt nicht gefunden"
         },
         "detailClient": {
             "title": "Über das Projekt",
-            "technologies": "Technologien",
+            "technologies": "Technologien & Tags",
             "back": "Zurück zu allen Projekten"
         }
     },
     "Blog": {
+        "title": "Neuland Blog",
+        "subtitle": "Einblicke in unsere Arbeit: Informatik- und Technikthemen, Events, Workshops und Neuigkeiten aus dem Verein.",
+        "postsFound": "{amountPosts, plural, =0 {Keine Beiträge gefunden} =1 {Ein Beitrag gefunden} other {# Beiträge gefunden}}",
+        "rssFeed": "RSS Feed",
         "allTags": "Alle Tags",
         "allPosts": "Alle Beiträge",
         "by": "Von",
@@ -227,15 +259,14 @@
         "location": "Ort",
         "details": "Details",
         "tbd": "Offen",
+        "happeningNow": "Läuft gerade",
+        "dayOffset": "(+{count} T.)",
         "noDescription": "Es sind noch keine weiteren Details verfügbar.",
         "shareableHint": "Teilbare URL:",
         "copyLink": "Link kopieren",
         "copied": "Kopiert",
+        "copyFailed": "Kopieren fehlgeschlagen",
         "backToEvents": "Zurück zu allen Events",
-        "breadcrumbs": {
-            "home": "Home",
-            "events": "Events"
-        },
         "metadata": {
             "title": "Events - Neuland Ingolstadt",
             "description": "Alle Neuland-Events mit Filtern für öffentlich/intern und kommend/vergangen.",
@@ -279,5 +310,160 @@
         "disclaimer": "Neuland Ingolstadt e.V. ist ein offiziell anerkannter gemeinnütziger Verein. Spenden sind steuerlich absetzbar – wir stellen auf Anfrage gerne eine Spendenquittung aus, sofern keine Gegenleistung erbracht wurde.",
         "receiptRequest": "Quittung anfordern:",
         "receiptSubject": "Anfrage%20Spendenquittung"
+    },
+    "Team": {
+        "title": "Bei Neuland mitmachen",
+        "subtitle": "Wir sind ein ehrenamtlicher Verein von Studierenden für Studierende. Such dir eine Rolle, die zu dir passt, und gestalte die Tech-Community an der THI mit.",
+        "positionsFound": "{count, plural, =0 {Keine offenen Stellen} =1 {Eine Stelle} other {# Stellen}}",
+        "why": {
+            "learn": {
+                "title": "Praxis statt Theorie",
+                "description": "Echte Projekte statt Lehrbuch."
+            },
+            "team": {
+                "title": "Starkes Team",
+                "description": "Eine offene, hilfsbereite Community."
+            },
+            "network": {
+                "title": "Netzwerk",
+                "description": "Kontakte zu Studierenden, Alumni und Firmen."
+            },
+            "impact": {
+                "title": "Echte Wirkung",
+                "description": "Studierende und THI-Mitarbeitende nutzen deine Arbeit."
+            },
+            "volunteer": {
+                "title": "Bestätigung fürs Ehrenamt",
+                "description": "Ein Pluspunkt für deinen Lebenslauf."
+            }
+        },
+        "filter": {
+            "teamLabel": "Nach Kategorie filtern",
+            "allTeams": "Alle Kategorien"
+        },
+        "status": {
+            "open": "Offen",
+            "filled": "Besetzt"
+        },
+        "teams": {
+            "development": "Engineering",
+            "design": "Design",
+            "events": "Events",
+            "hr": "HR",
+            "management": "Management",
+            "marketing": "Marketing",
+            "cybersecurity": "Cybersecurity",
+            "sponsoring": "Sponsoring",
+            "board": "Vorstand"
+        },
+        "format": {
+            "remote": "Remote",
+            "onsite": "Auf dem Campus",
+            "hybrid": "Hybrid"
+        },
+        "language": {
+            "de": "Deutsch",
+            "en": "Englisch",
+            "both": "Deutsch & Englisch"
+        },
+        "hoursPerWeek": "{min}–{max} Std. / Woche",
+        "card": {
+            "more": "Mehr erfahren"
+        },
+        "faq": {
+            "title": "Häufige Fragen",
+            "items": {
+                "cost": {
+                    "q": "Was kostet die Mitgliedschaft?",
+                    "a": "Studierende zahlen 10 € im Jahr, alle anderen 20 €. Der Beitrag wird einmal jährlich zum 15. März fällig. Wer sich besonders für den Verein engagiert, kann vom Vorstand befreit werden."
+                },
+                "thi": {
+                    "q": "Muss ich an der THI studieren?",
+                    "a": "Nein. Mitglied kann jede Person werden, die die Ziele des Vereins unterstützt. Studierende zahlen einen ermäßigten Beitrag."
+                },
+                "experience": {
+                    "q": "Brauche ich Vorkenntnisse?",
+                    "a": "Nicht für jede Stelle. Wir vermitteln Praxis- und Theoriewissen im Informatikbereich, und neben Entwicklung und Infrastruktur gibt es auch Bereiche wie Marketing und HR, in denen du keinen Code schreibst."
+                },
+                "time": {
+                    "q": "Wie viel Zeit muss ich investieren?",
+                    "a": "Wir arbeiten ehrenamtlich und du teilst dir die Zeit selbst ein. Bei jeder Stelle steht, mit wie vielen Stunden pro Woche du ungefähr rechnen kannst."
+                },
+                "joining": {
+                    "q": "Wie läuft der Beitritt ab?",
+                    "a": "Ganz unkompliziert: Komm einfach auf unseren Discord. Dort öffnet sich automatisch ein Ticket, in dem wir dich und deine Interessen kennenlernen. Wenn es für dich passt, stellst du anschließend deinen Mitgliedsantrag. Danach bekommst du Zugriff auf unsere internen Plattformen und kannst direkt in ein Projekt einsteigen. Wir freuen uns auf dich!"
+                }
+            }
+        },
+        "spontaneous": {
+            "title": "Nichts Passendes dabei? Werde trotzdem Mitglied.",
+            "description": "Du musst dich nicht auf eine Stelle bewerben. Tritt dem Verein jederzeit bei, nimm an Events teil und sei Teil der Community. Wenn du Lust hast mitzumachen, findet sich immer etwas zu tun: Melde dich einfach im Discord.",
+            "cta": "Discord beitreten"
+        },
+        "detail": {
+            "back": "Zurück zu allen Stellen",
+            "description": "Beschreibung",
+            "tasks": "Deine Aufgaben",
+            "requirements": "Das bringst du mit",
+            "niceToHave": "Nice to have",
+            "benefits": "Das bekommst du",
+            "contact": "Ansprechperson",
+            "jobId": "Job-ID",
+            "copyJobId": "Job-ID kopieren",
+            "filledNotice": "Diese Stelle ist aktuell besetzt. Du kannst dich trotzdem melden, wir geben dir Bescheid, wenn wieder etwas frei wird.",
+            "apply": {
+                "title": "Bewerbung",
+                "hint": "Die Bewerbung läuft über unseren Discord. Kopiere einfach die Job-ID und nenne sie in deinem Discord-Ticket.",
+                "hintMember": "Bist du schon Mitglied, melde dich einfach direkt beim Ansprechpartner per Signal oder Discord und nenne die Job-ID.",
+                "copied": "Kopiert!",
+                "copyFailed": "Kopieren fehlgeschlagen",
+                "cta": "Im Discord bewerben"
+            },
+            "steps": {
+                "title": "So läuft es ab",
+                "tabs": {
+                    "new": "Noch kein Mitglied",
+                    "member": "Bereits Mitglied"
+                },
+                "new": {
+                    "ticket": {
+                        "title": "Ticket im Discord",
+                        "description": "Öffne ein Ticket und nenne die Job-ID der Stelle."
+                    },
+                    "meeting": {
+                        "title": "Kennenlernen",
+                        "description": "Wir lernen uns in einem kurzen, lockeren Gespräch kennen."
+                    },
+                    "join": {
+                        "title": "Mitglied werden",
+                        "description": "Fülle das Beitrittsformular aus. Dein Account wird innerhalb von 48 Stunden freigeschaltet."
+                    },
+                    "onboarding": {
+                        "title": "Onboarding",
+                        "description": "Du wirst im Team begrüßt und bekommst deine ersten Aufgaben."
+                    }
+                },
+                "member": {
+                    "contact": {
+                        "title": "Ansprechpartner kontaktieren",
+                        "description": "Schreib dem Ansprechpartner der Stelle direkt per Signal oder Discord und nenne die Job-ID."
+                    },
+                    "meeting": {
+                        "title": "Kurzes Gespräch",
+                        "description": "Wir klären, ob die Stelle zu dir passt und wie viel Zeit du einbringen möchtest."
+                    },
+                    "start": {
+                        "title": "Direkt loslegen",
+                        "description": "Du kennst den Verein und unsere Tools bereits. Du bekommst Zugang zum Team und deine ersten Aufgaben."
+                    }
+                }
+            }
+        },
+        "metadata": {
+            "title": "Mitmachen - Neuland Ingolstadt",
+            "description": "Offene ehrenamtliche Stellen beim Neuland Ingolstadt e.V. Bewirb dich im Discord und gestalte die Tech-Community an der THI mit.",
+            "detailTitle": "{title} - Neuland Ingolstadt",
+            "notFound": "Stelle nicht gefunden"
+        }
     }
 }

@@ -11,6 +11,7 @@ interface TerminalSectionProps {
 	classNames?: string
 	headingLevel?: number // 1 = h1, 2 = h2, 3 = h3
 	showPrefix?: boolean // Add this prop to control the '>' symbol
+	display?: boolean // Large bold section heading (homepage style)
 }
 
 const TerminalSection: React.FC<TerminalSectionProps> = ({
@@ -19,7 +20,8 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 	children,
 	id,
 	classNames = '',
-	headingLevel = 3
+	headingLevel = 3,
+	display = false
 }) => {
 	const [isVisible, setIsVisible] = useState(false)
 	const sectionRef = useRef<HTMLDivElement>(null)
@@ -49,6 +51,9 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 
 	// Determine heading size based on heading level
 	const getTitleClass = () => {
+		if (display) {
+			return 'text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl mb-8'
+		}
 		switch (headingLevel) {
 			case 1:
 				return 'text-3xl'
@@ -63,12 +68,12 @@ const TerminalSection: React.FC<TerminalSectionProps> = ({
 
 	return (
 		<section
-			className={`${classNames} mb-20 relative`}
+			className={`${classNames} ${display ? 'mb-32 md:mb-40' : 'mb-20'} relative`}
 			id={id}
 			ref={sectionRef}
 		>
 			<h2
-				className={`${getTitleClass()} font-normal mb-4 font-mono flex items-center tracking-tight`}
+				className={`${getTitleClass()} ${display ? '' : 'font-normal mb-4'} font-mono flex items-center tracking-tight`}
 			>
 				{title}
 			</h2>

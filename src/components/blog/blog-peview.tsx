@@ -43,8 +43,8 @@ const BlogPreview = () => {
 				viewport={{ once: true }}
 				className="mb-6"
 			>
-				<p className="text-sm opacity-80 mb-6 font-mono">
-					$ blog --list | grep featured
+				<p className="mb-6 font-mono text-sm">
+					$ <span className="text-terminal-ink">ls</span> posts/
 				</p>
 			</motion.div>
 
@@ -59,8 +59,8 @@ const BlogPreview = () => {
 						</CarouselItem>
 					))}
 				</CarouselContent>
-				<CarouselPrevious className="left-0" />
-				<CarouselNext className="right-0" />
+				<CarouselPrevious className="left-auto right-12 top-[-3.75rem] translate-y-0" />
+				<CarouselNext className="right-0 top-[-3.75rem] translate-y-0" />
 			</Carousel>
 
 			<div className="mt-6 mb-8">

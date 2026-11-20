@@ -1,18 +1,18 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
-import { ArrowLeft, ExternalLink } from 'lucide-react'
+import {
+	ArrowLeft,
+	Calendar,
+	Clock3,
+	ExternalLink,
+	Lock,
+	MapPin
+} from 'lucide-react'
 import ShareEventLinkButton from '@/components/Events/share-event-link-button'
 import TerminalButton from '@/components/terminal-button'
-import {
-	Breadcrumb,
-	BreadcrumbItem,
-	BreadcrumbLink,
-	BreadcrumbList,
-	BreadcrumbSeparator
-} from '@/components/ui/breadcrumb'
 import { Link } from '@/i18n/navigation'
 import { createTranslator, resolveLocale, useTranslations } from '@/i18n/react'
 import {
-	formatEventDateRange,
+	formatEventDateAndTime,
 	getLocalizedEventDescription,
 	getLocalizedEventTitle
 } from '@/lib/events'
@@ -68,63 +68,68 @@ function EventDetailPage() {
 
 	const title = getLocalizedEventTitle(event, locale)
 	const description = getLocalizedEventDescription(event, locale)
+	const schedule = formatEventDateAndTime(event, locale, t('tbd'))
 
 	return (
-		<div className="mx-auto max-w-5xl">
-			<Breadcrumb>
-				<BreadcrumbList className="flex items-center">
-					<BreadcrumbItem className="flex items-center">
-						<BreadcrumbLink asChild className="flex items-center">
-							<Link href="/" className="flex items-center">
-								{t('breadcrumbs.home')}
-							</Link>
-						</BreadcrumbLink>
-					</BreadcrumbItem>
-					<BreadcrumbSeparator className="mx-1 flex items-center" />
-					<BreadcrumbItem className="flex items-center">
-						<BreadcrumbLink asChild className="flex items-center">
-							<Link href="/events" className="flex items-center">
-								{t('breadcrumbs.events')}
-							</Link>
-						</BreadcrumbLink>
-					</BreadcrumbItem>
-					<BreadcrumbSeparator className="mx-1 flex items-center" />
-					<BreadcrumbItem className="flex items-center">
-						<BreadcrumbLink className="flex items-center">
-							{title.length > 36 ? `${title.slice(0, 36)}...` : title}
-						</BreadcrumbLink>
-					</BreadcrumbItem>
-				</BreadcrumbList>
-			</Breadcrumb>
+		<div className="mx-auto max-w-3xl pt-8 md:pt-16 mb-20 md:mb-28">
+			<div className="mb-10 flex justify-start">
+				<Link
+					href="/events"
+					className="group inline-flex items-center gap-2 font-mono text-sm text-terminal-text/70 no-underline hover:text-terminal-ink transition-colors duration-200"
+				>
+					<ArrowLeft
+						size={14}
+						className="group-hover:-translate-x-1 transition-transform"
+					/>
+					<span>{t('backToEvents')}</span>
+				</Link>
+			</div>
 
-			<div className="bg-terminal-window relative mt-8 overflow-hidden border border-terminal-window-border p-6 md:p-8">
+			<div className="bg-terminal-window relative overflow-hidden border border-terminal-window-border p-6 md:p-8">
 				<div className="pointer-events-none absolute inset-0 bg-linear-to-br from-terminal-cyan/3 via-transparent to-terminal-cyan/3" />
 				<div className="relative z-10">
-					<div className="mb-4 flex items-start justify-between gap-3">
-						<h1 className="text-terminal-lightGreen text-3xl leading-tight font-bold">
-							{title}
-						</h1>
-						<div className="shrink-0">
-							<span className="text-terminal-text/80 inline-flex items-center border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.65rem] font-semibold tracking-[0.08em] uppercase">
-								{event.isInternal ? t('filters.internal') : t('filters.public')}
-							</span>
-						</div>
-					</div>
+					{event.isInternal && (
+						<span className="text-terminal-text/90 mb-4 inline-flex items-center gap-1 border border-terminal-window-border/80 bg-terminal-card/70 px-2 py-0.5 text-[0.65rem] font-semibold tracking-[0.08em] uppercase">
+							<Lock size={10} />
+							{t('filters.internal')}
+						</span>
+					)}
+					<h1 className="text-terminal-lightGreen mb-4 mt-0 text-3xl leading-tight font-bold break-words">
+						{title}
+					</h1>
 
-					<div className="text-terminal-text/80 mb-6 space-y-2">
-						<div>
-							<span className="text-terminal-text/60 mr-2">{t('date')}:</span>
-							{formatEventDateRange(event, locale, t('tbd'))}
-						</div>
-						{event.location && (
-							<div>
-								<span className="text-terminal-text/60 mr-2">
-									{t('location')}:
-								</span>
-								{event.location}
-							</div>
+					<ul className="text-terminal-text/90 m-0 mb-6 list-none space-y-2 p-0 font-mono">
+						<li className="flex items-start gap-3">
+							<Calendar
+								size={16}
+								aria-hidden="true"
+								className="mt-1 shrink-0 text-terminal-ink"
+							/>
+							{schedule.date}
+						</li>
+						{schedule.time && (
+							<li className="flex items-start gap-3">
+								<Clock3
+									size={16}
+									aria-hidden="true"
+									className="mt-1 shrink-0 text-terminal-ink"
+								/>
+								{schedule.time}
+								{schedule.dayOffset > 0 &&
+									` ${t('dayOffset', { count: schedule.dayOffset })}`}
+							</li>
 						)}
-					</div>
+						{event.location && (
+							<li className="flex items-start gap-3">
+								<MapPin
+									size={16}
+									aria-hidden="true"
+									className="mt-1 shrink-0 text-terminal-ink"
+								/>
+								{event.location}
+							</li>
+						)}
+					</ul>
 
 					<div className="border-terminal-window-border/60 pt-6 border-t">
 						<h2 className="text-terminal-text mb-3 text-xl font-semibold">
@@ -135,29 +140,22 @@ function EventDetailPage() {
 								{description}
 							</p>
 						) : (
-							<p className="text-terminal-text/60">{t('noDescription')}</p>
+							<p className="text-terminal-text/80">{t('noDescription')}</p>
 						)}
 					</div>
 
 					<div className="mt-6">
-						<p className="text-terminal-text/75 mb-2 text-xs">
+						<p className="text-terminal-text/85 mb-2 text-xs">
 							{t('shareableHint')}
 						</p>
-						<div className="text-terminal-text border border-terminal-window-border/70 bg-terminal-card/70 px-3 py-2 font-mono text-sm break-all">
-							{shareUrl}
+						<div className="text-terminal-text flex flex-col gap-3 border border-terminal-window-border/70 bg-terminal-card/70 p-3 font-mono text-sm sm:flex-row sm:items-center sm:justify-between">
+							<span className="min-w-0 break-all">{shareUrl}</span>
+							<ShareEventLinkButton url={shareUrl} />
 						</div>
 					</div>
 
-					<div className="flex flex-wrap gap-3 pt-8">
-						<TerminalButton href="/events" className="group">
-							<ArrowLeft
-								size={16}
-								className="transition-transform duration-200 group-hover:-translate-x-0.5"
-							/>
-							{t('backToEvents')}
-						</TerminalButton>
-						<ShareEventLinkButton url={shareUrl} />
-						{event.eventUrl && (
+					{event.eventUrl && (
+						<div className="flex flex-wrap gap-3 pt-8">
 							<TerminalButton
 								href={event.eventUrl}
 								target="_blank"
@@ -166,8 +164,8 @@ function EventDetailPage() {
 								{t('eventWebsite')}
 								<ExternalLink size={16} />
 							</TerminalButton>
-						)}
-					</div>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>

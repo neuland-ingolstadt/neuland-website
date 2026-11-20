@@ -8,9 +8,21 @@ import { useTranslations } from '@/i18n/react'
 import TerminalButton from '../terminal-button'
 import ProjectCard, { type ProjectDetails } from './project-card'
 
+const FEATURED_PROJECT_IDS = [
+	'neuland-next',
+	'campus-life-events',
+	'neuland-connect'
+]
+
 const ProjectsShowcase: React.FC = () => {
 	const router = useRouter()
-	const memoizedProjects = useMemo(() => projectsData.slice(0, 3), [])
+	const memoizedProjects = useMemo(
+		() =>
+			FEATURED_PROJECT_IDS.flatMap((id) =>
+				projectsData.filter((project) => project.id === id)
+			),
+		[]
+	)
 
 	const t = useTranslations('Home.projectsSection')
 
@@ -32,7 +44,7 @@ const ProjectsShowcase: React.FC = () => {
 				className="mb-8"
 			>
 				<p className="text-sm opacity-80 mb-4 font-mono">
-					$ projects --list | grep featured
+					$ <span className="text-terminal-ink">ls</span> projects/
 				</p>
 			</motion.div>
 
@@ -45,18 +57,7 @@ const ProjectsShowcase: React.FC = () => {
 					/>
 				))}
 			</div>
-			<div className="flex justify-between items-center w-full mb-8">
-				<div className="font-mono text-sm opacity-80">
-					<span className="text-terminal-cyan">$</span> curl{' '}
-					<a
-						href="https://github.com/neuland-ingolstadt"
-						target="_blank"
-						rel="noreferrer noopener"
-						className="text-terminal-cyan"
-					>
-						github.com/neuland-ingolstadt
-					</a>
-				</div>
+			<div className="flex justify-end items-center w-full mb-8">
 				<TerminalButton href="/projects">{t('showAll')}</TerminalButton>
 			</div>
 		</div>

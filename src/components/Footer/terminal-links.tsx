@@ -9,9 +9,21 @@ const TerminalLinks: React.FC = () => {
 		<nav>
 			<ul>
 				<li className="mb-2">
+					<a
+						href="https://join.neuland-ingolstadt.de/"
+						target="_blank"
+						rel="noreferrer noopener"
+						className="text-terminal-text! group"
+					>
+						<span className="group-hover:animate-cyberpunk">$</span>{' '}
+						<span className="text-terminal-ink">open</span>{' '}
+						{t('membershipForm')}
+					</a>
+				</li>
+				<li className="mb-2">
 					<Link href="/legal/satzung" className="text-terminal-text! group">
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
-						<span className="text-terminal-cyan">cat</span> {t('bylaws')}
+						<span className="text-terminal-ink">cat</span> {t('bylaws')}
 					</Link>
 				</li>
 				<li className="mb-2">
@@ -20,21 +32,21 @@ const TerminalLinks: React.FC = () => {
 						className="text-terminal-text! group"
 					>
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
-						<span className="text-terminal-cyan">cat</span>{' '}
+						<span className="text-terminal-ink">cat</span>{' '}
 						{t('privacyPolicyNeuland')}
 					</Link>
 				</li>
 				<li className="mb-2">
 					<Link href="/legal/datenschutz" className="text-terminal-text! group">
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
-						<span className="text-terminal-cyan">cat</span>{' '}
+						<span className="text-terminal-ink">cat</span>{' '}
 						{t('privacyPolicyWebsite')}
 					</Link>
 				</li>
 				<li className="mb-2">
 					<Link href="/legal/impressum" className="text-terminal-text! group">
 						<span className="group-hover:animate-cyberpunk">$</span>{' '}
-						<span className="text-terminal-cyan">cat</span> {t('legalNotice')}
+						<span className="text-terminal-ink">cat</span> {t('legalNotice')}
 					</Link>
 				</li>
 			</ul>

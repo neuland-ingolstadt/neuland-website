@@ -157,14 +157,6 @@ function TagPage() {
 				<BreadcrumbList className="flex items-center">
 					<BreadcrumbItem className="flex items-center">
 						<BreadcrumbLink asChild className="flex items-center">
-							<Link href="/" className="flex items-center">
-								Home
-							</Link>
-						</BreadcrumbLink>
-					</BreadcrumbItem>
-					<BreadcrumbSeparator className="mx-1 flex items-center" />
-					<BreadcrumbItem className="flex items-center">
-						<BreadcrumbLink asChild className="flex items-center">
 							<Link href="/blog" className="flex items-center">
 								Blog
 							</Link>
@@ -179,7 +171,7 @@ function TagPage() {
 				</BreadcrumbList>
 			</Breadcrumb>
 			<h1 className="mt-4 mb-2 text-3xl font-bold ">{displayTag}</h1>
-			<p className="text-terminal-text/70 mb-8">
+			<p className="text-terminal-text/85 mb-8">
 				{t('amountPosts', { numberOfPosts: filteredPosts.length })}
 			</p>
 
@@ -232,12 +224,12 @@ function TagPage() {
 				</>
 			) : (
 				<div className="py-12 text-center">
-					<p className="text-terminal-text/70 text-lg">
+					<p className="text-terminal-text/85 text-base">
 						{t('noPostsFoundWithTag')}
 					</p>
 					<Link
 						href="/blog"
-						className="text-terminal-cyan hover:underline mt-4 inline-block"
+						className="text-terminal-ink hover:underline mt-4 inline-block"
 					>
 						{t('backToAll')}
 					</Link>

@@ -26,6 +26,8 @@ import { Route as LocaleLegalDatenschutzRouteImport } from './routes/$locale/leg
 import { Route as LocaleLegalDatenschutzordnungRouteImport } from './routes/$locale/legal/datenschutzordnung'
 import { Route as LocaleLegalImpressumRouteImport } from './routes/$locale/legal/impressum'
 import { Route as LocaleLegalSatzungRouteImport } from './routes/$locale/legal/satzung'
+import { Route as LocaleOpenPositionsIndexRouteImport } from './routes/$locale/open-positions/index'
+import { Route as LocaleOpenPositionsSlugRouteImport } from './routes/$locale/open-positions/$slug'
 import { Route as LocaleProjectsIndexRouteImport } from './routes/$locale/projects/index'
 import { Route as LocaleProjectsIdRouteImport } from './routes/$locale/projects/$id'
 import { Route as LocaleBlogTagsIndexRouteImport } from './routes/$locale/blog/tags/index'
@@ -117,6 +119,17 @@ const LocaleLegalSatzungRoute = LocaleLegalSatzungRouteImport.update({
   path: '/legal/satzung',
   getParentRoute: () => LocaleRoute,
 } as any)
+const LocaleOpenPositionsIndexRoute =
+  LocaleOpenPositionsIndexRouteImport.update({
+    id: '/open-positions/',
+    path: '/open-positions/',
+    getParentRoute: () => LocaleRoute,
+  } as any)
+const LocaleOpenPositionsSlugRoute = LocaleOpenPositionsSlugRouteImport.update({
+  id: '/open-positions/$slug',
+  path: '/open-positions/$slug',
+  getParentRoute: () => LocaleRoute,
+} as any)
 const LocaleProjectsIndexRoute = LocaleProjectsIndexRouteImport.update({
   id: '/projects/',
   path: '/projects/',
@@ -154,9 +167,11 @@ export interface FileRoutesByFullPath {
   '/$locale/legal/datenschutzordnung': typeof LocaleLegalDatenschutzordnungRoute
   '/$locale/legal/impressum': typeof LocaleLegalImpressumRoute
   '/$locale/legal/satzung': typeof LocaleLegalSatzungRoute
+  '/$locale/open-positions/$slug': typeof LocaleOpenPositionsSlugRoute
   '/$locale/projects/$id': typeof LocaleProjectsIdRoute
   '/$locale/blog/': typeof LocaleBlogIndexRoute
   '/$locale/events/': typeof LocaleEventsIndexRoute
+  '/$locale/open-positions/': typeof LocaleOpenPositionsIndexRoute
   '/$locale/projects/': typeof LocaleProjectsIndexRoute
   '/$locale/blog/tags/$tag': typeof LocaleBlogTagsTagRoute
   '/$locale/blog/tags/': typeof LocaleBlogTagsIndexRoute
@@ -176,9 +191,11 @@ export interface FileRoutesByTo {
   '/$locale/legal/datenschutzordnung': typeof LocaleLegalDatenschutzordnungRoute
   '/$locale/legal/impressum': typeof LocaleLegalImpressumRoute
   '/$locale/legal/satzung': typeof LocaleLegalSatzungRoute
+  '/$locale/open-positions/$slug': typeof LocaleOpenPositionsSlugRoute
   '/$locale/projects/$id': typeof LocaleProjectsIdRoute
   '/$locale/blog': typeof LocaleBlogIndexRoute
   '/$locale/events': typeof LocaleEventsIndexRoute
+  '/$locale/open-positions': typeof LocaleOpenPositionsIndexRoute
   '/$locale/projects': typeof LocaleProjectsIndexRoute
   '/$locale/blog/tags/$tag': typeof LocaleBlogTagsTagRoute
   '/$locale/blog/tags': typeof LocaleBlogTagsIndexRoute
@@ -200,9 +217,11 @@ export interface FileRoutesById {
   '/$locale/legal/datenschutzordnung': typeof LocaleLegalDatenschutzordnungRoute
   '/$locale/legal/impressum': typeof LocaleLegalImpressumRoute
   '/$locale/legal/satzung': typeof LocaleLegalSatzungRoute
+  '/$locale/open-positions/$slug': typeof LocaleOpenPositionsSlugRoute
   '/$locale/projects/$id': typeof LocaleProjectsIdRoute
   '/$locale/blog/': typeof LocaleBlogIndexRoute
   '/$locale/events/': typeof LocaleEventsIndexRoute
+  '/$locale/open-positions/': typeof LocaleOpenPositionsIndexRoute
   '/$locale/projects/': typeof LocaleProjectsIndexRoute
   '/$locale/blog/tags/$tag': typeof LocaleBlogTagsTagRoute
   '/$locale/blog/tags/': typeof LocaleBlogTagsIndexRoute
@@ -225,9 +244,11 @@ export interface FileRouteTypes {
     | '/$locale/legal/datenschutzordnung'
     | '/$locale/legal/impressum'
     | '/$locale/legal/satzung'
+    | '/$locale/open-positions/$slug'
     | '/$locale/projects/$id'
     | '/$locale/blog/'
     | '/$locale/events/'
+    | '/$locale/open-positions/'
     | '/$locale/projects/'
     | '/$locale/blog/tags/$tag'
     | '/$locale/blog/tags/'
@@ -247,9 +268,11 @@ export interface FileRouteTypes {
     | '/$locale/legal/datenschutzordnung'
     | '/$locale/legal/impressum'
     | '/$locale/legal/satzung'
+    | '/$locale/open-positions/$slug'
     | '/$locale/projects/$id'
     | '/$locale/blog'
     | '/$locale/events'
+    | '/$locale/open-positions'
     | '/$locale/projects'
     | '/$locale/blog/tags/$tag'
     | '/$locale/blog/tags'
@@ -270,9 +293,11 @@ export interface FileRouteTypes {
     | '/$locale/legal/datenschutzordnung'
     | '/$locale/legal/impressum'
     | '/$locale/legal/satzung'
+    | '/$locale/open-positions/$slug'
     | '/$locale/projects/$id'
     | '/$locale/blog/'
     | '/$locale/events/'
+    | '/$locale/open-positions/'
     | '/$locale/projects/'
     | '/$locale/blog/tags/$tag'
     | '/$locale/blog/tags/'
@@ -407,6 +432,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleLegalSatzungRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/open-positions/': {
+      id: '/$locale/open-positions/'
+      path: '/open-positions'
+      fullPath: '/$locale/open-positions/'
+      preLoaderRoute: typeof LocaleOpenPositionsIndexRouteImport
+      parentRoute: typeof LocaleRoute
+    }
+    '/$locale/open-positions/$slug': {
+      id: '/$locale/open-positions/$slug'
+      path: '/open-positions/$slug'
+      fullPath: '/$locale/open-positions/$slug'
+      preLoaderRoute: typeof LocaleOpenPositionsSlugRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/$locale/projects/': {
       id: '/$locale/projects/'
       path: '/projects'
@@ -449,9 +488,11 @@ interface LocaleRouteChildren {
   LocaleLegalDatenschutzordnungRoute: typeof LocaleLegalDatenschutzordnungRoute
   LocaleLegalImpressumRoute: typeof LocaleLegalImpressumRoute
   LocaleLegalSatzungRoute: typeof LocaleLegalSatzungRoute
+  LocaleOpenPositionsSlugRoute: typeof LocaleOpenPositionsSlugRoute
   LocaleProjectsIdRoute: typeof LocaleProjectsIdRoute
   LocaleBlogIndexRoute: typeof LocaleBlogIndexRoute
   LocaleEventsIndexRoute: typeof LocaleEventsIndexRoute
+  LocaleOpenPositionsIndexRoute: typeof LocaleOpenPositionsIndexRoute
   LocaleProjectsIndexRoute: typeof LocaleProjectsIndexRoute
   LocaleBlogTagsTagRoute: typeof LocaleBlogTagsTagRoute
   LocaleBlogTagsIndexRoute: typeof LocaleBlogTagsIndexRoute
@@ -468,9 +509,11 @@ const LocaleRouteChildren: LocaleRouteChildren = {
   LocaleLegalDatenschutzordnungRoute: LocaleLegalDatenschutzordnungRoute,
   LocaleLegalImpressumRoute: LocaleLegalImpressumRoute,
   LocaleLegalSatzungRoute: LocaleLegalSatzungRoute,
+  LocaleOpenPositionsSlugRoute: LocaleOpenPositionsSlugRoute,
   LocaleProjectsIdRoute: LocaleProjectsIdRoute,
   LocaleBlogIndexRoute: LocaleBlogIndexRoute,
   LocaleEventsIndexRoute: LocaleEventsIndexRoute,
+  LocaleOpenPositionsIndexRoute: LocaleOpenPositionsIndexRoute,
   LocaleProjectsIndexRoute: LocaleProjectsIndexRoute,
   LocaleBlogTagsTagRoute: LocaleBlogTagsTagRoute,
   LocaleBlogTagsIndexRoute: LocaleBlogTagsIndexRoute,
