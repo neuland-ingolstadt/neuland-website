@@ -167,6 +167,14 @@
             "importantDefault": "IMPORTANT!!"
         }
     },
+    "LanPartyBanner": {
+        "title": "LAN Party",
+        "description": "Gaming, food and good vibes with HGI and Neuland.",
+        "date": "Nov 28–29",
+        "location": "THI, J101",
+        "cta": "Get your ticket",
+        "dismiss": "Dismiss banner"
+    },
     "Navigation": {
         "home": "Home",
         "events": "Events",

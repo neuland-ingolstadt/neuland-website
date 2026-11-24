@@ -549,3 +549,36 @@
 		animation: sheet-fade-out 200ms ease-in both;
 	}
 }
+
+/* LAN party banner: a light glint sweeping across, like light on a sword blade */
+@keyframes lan-shine-sweep {
+	0% {
+		transform: translateX(-150%) skewX(-20deg);
+	}
+	30%,
+	100% {
+		transform: translateX(800%) skewX(-20deg);
+	}
+}
+
+.lan-shine {
+	pointer-events: none;
+	position: absolute;
+	inset: 0 auto 0 0;
+	width: 15%;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgb(255 255 255 / 0.04) 35%,
+		rgb(255 255 255 / 0.22) 50%,
+		rgb(255 255 255 / 0.04) 65%,
+		transparent
+	);
+	transform: translateX(-150%) skewX(-20deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.lan-shine {
+		animation: lan-shine-sweep 5s ease-in-out infinite;
+	}
+}
