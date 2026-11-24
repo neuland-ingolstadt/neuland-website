@@ -167,6 +167,14 @@
             "importantDefault": "WICHTIG!!"
         }
     },
+    "LanPartyBanner": {
+        "title": "LAN-Party",
+        "description": "Zocken, Snacks und gute Laune mit HGI und Neuland.",
+        "date": "28–29 Nov",
+        "location": "THI, J101",
+        "cta": "Ticket sichern",
+        "dismiss": "Banner schließen"
+    },
     "Navigation": {
         "home": "Startseite",
         "events": "Events",

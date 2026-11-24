@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Sidebar, SidebarProvider, useSidebar } from '@/components/ui/sidebar'
 import { Link, usePathname, useRouter } from '@/i18n/navigation'
 import { useTranslations } from '@/i18n/react'
+import LanPartyBanner from './lan-party-banner'
 import LanguageToggle from './language-toggle'
 import NeulandLogo from './neuland-logo'
 import ThemeToggle, { ThemeToggleMobile } from './theme-toggle'
@@ -257,7 +258,13 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 		}
 		setNavbarHeight()
 		window.addEventListener('resize', setNavbarHeight)
-		return () => window.removeEventListener('resize', setNavbarHeight)
+		// The announcement banner can be dismissed, which changes the height
+		const observer = new ResizeObserver(setNavbarHeight)
+		if (headerRef.current) observer.observe(headerRef.current)
+		return () => {
+			window.removeEventListener('resize', setNavbarHeight)
+			observer.disconnect()
+		}
 	}, [])
 
 	const navLinks = useNavigation()
@@ -270,6 +277,7 @@ const TerminalHeader: React.FC<TerminalHeaderProps> = ({
 					isScrolled ? 'bg-terminal-bg' : 'bg-transparent'
 				}`}
 			>
+				<LanPartyBanner />
 				{isPrideThemeEnabled && (
 					<div aria-hidden="true" className="flex h-0.5 w-full">
 						<div className="h-full w-1/6 bg-red-500" />
